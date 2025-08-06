@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flint Directors Onboarding Portal</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading your portal...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header" id="app-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <div class="flint-logo">
+                        <i class="fas fa-fire-flame-curved"></i>
+                    </div>
+                    <span class="brand-text">Flint Directors</span>
+                </div>
+                
+                <!-- Progress Indicator -->
+                <div class="header-progress d-none d-md-flex">
+                    <div class="progress-dots" id="headerProgressDots">
+                        <!-- Progress dots will be generated -->
+                    </div>
+                </div>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="navbar-nav ms-auto">
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle user-profile" href="#" role="button" data-bs-toggle="dropdown">
+                                <div class="user-avatar">
+                                    <span id="userInitials">JD</span>
+                                </div>
+                                <span id="userName" class="d-none d-md-inline">Director</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#" onclick="showProfile()">
+                                    <i class="fas fa-user me-2"></i>Profile
+                                </a></li>
+                                <li><a class="dropdown-item" href="#" onclick="showDocuments()">
+                                    <i class="fas fa-folder-open me-2"></i>My Documents
+                                </a></li>
+                                <li><a class="dropdown-item" href="#" onclick="showSettings()">
+                                    <i class="fas fa-cog me-2"></i>Settings
+                                </a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" onclick="signOut()">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Sign Out
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        
+        <!-- Dashboard View -->
+        <div id="dashboardView" class="view">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="container">
+                    <div class="row align-items-center min-vh-75">
+                        <div class="col-lg-7">
+                            <h1 class="hero-title">Welcome to Flint</h1>
+                            <h2 class="hero-subtitle">Your Director Onboarding Journey</h2>
+                            <p class="hero-tagline">Build your business. Backed by Flint.</p>
+                            
+                            <!-- Progress Tracker -->
+                            <div class="progress-tracker-main mb-4">
+                                <div class="progress-header">
+                                    <span class="progress-label">Overall Progress</span>
+                                    <span class="progress-percentage" id="overallProgressText">0%</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" id="overallProgressBar"></div>
+                                </div>
+                                <div class="progress-steps" id="progressSteps">
+                                    <!-- Steps will be generated -->
+                                </div>
+                            </div>
+                            
+                            <!-- CTA Buttons -->
+                            <div class="hero-actions">
+                                <button class="btn btn--primary btn--lg" id="startButton" onclick="startOnboarding()">
+                                    <i class="fas fa-play me-2"></i>Start Your Journey
+                                </button>
+                                <button class="btn btn--secondary btn--lg ms-3" onclick="continueOnboarding()">
+                                    <i class="fas fa-arrow-right me-2"></i>Continue Where You Left Off
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-5">
+                            <!-- Welcome Video -->
+                            <div class="welcome-video-container">
+                                <div class="video-player" id="welcomeVideo">
+                                    <div class="video-thumbnail" onclick="playWelcomeVideo()">
+                                        <div class="video-overlay">
+                                            <div class="play-button">
+                                                <i class="fas fa-play"></i>
+                                            </div>
+                                        </div>
+                                        <div class="video-info">
+                                            <h4>Welcome Message</h4>
+                                            <p>From Christian & the Flint Team</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Links Panel -->
+            <section class="quick-links-section">
+                <div class="container">
+                    <div class="quick-links-panel">
+                        <h3>Quick Access</h3>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <a href="https://flint.slack.com" target="_blank" class="quick-link-card">
+                                    <i class="fab fa-slack"></i>
+                                    <span>Slack Group</span>
+                                    <small>Join the community</small>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" onclick="showFAQ()" class="quick-link-card">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>FAQ</span>
+                                    <small>Get answers</small>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" onclick="showSupport()" class="quick-link-card">
+                                    <i class="fas fa-headset"></i>
+                                    <span>Support</span>
+                                    <small>Contact team</small>
+                                </a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#" onclick="showDocuments()" class="quick-link-card">
+                                    <i class="fas fa-folder-open"></i>
+                                    <span>My Documents</span>
+                                    <small>Download files</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Onboarding Steps Overview -->
+            <section class="steps-overview">
+                <div class="container">
+                    <h2 class="section-title">Your 7-Step Journey</h2>
+                    <div class="steps-grid" id="stepsGrid">
+                        <!-- Steps will be dynamically generated -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Step 1 View -->
+        <div id="step1View" class="view step-view hidden">
+            <div class="container">
+                <div class="step-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Step 1</li>
+                        </ol>
+                    </nav>
+                    <div class="step-title-section">
+                        <div class="step-number">01</div>
+                        <div>
+                            <h1 id="step1Title">Welcome & Introduction</h1>
+                            <p id="step1Description">Get started with your Flint journey and meet the team</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Messaging Block -->
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h3>Welcome to the Flint Family</h3>
+                                        <p class="lead">This journey you're starting isn't just about joining a company - it's about building your own thriving business with the full support of our team.</p>
+                                        
+                                        <div class="collapsible-content">
+                                            <button class="btn btn--outline btn--sm" type="button" data-bs-toggle="collapse" data-bs-target="#missionContent">
+                                                <i class="fas fa-chevron-down me-2"></i>Our Mission & Values
+                                            </button>
+                                            <div class="collapse mt-3" id="missionContent">
+                                                <div class="mission-content">
+                                                    <h5>Trust</h5>
+                                                    <p>We build relationships on transparency and reliability.</p>
+                                                    <h5>Consistency</h5>
+                                                    <p>Predictable processes and dependable results.</p>
+                                                    <h5>Expertise</h5>
+                                                    <p>Deep industry knowledge and proven strategies.</p>
+                                                    <h5>Integrity</h5>
+                                                    <p>Doing what's right for our clients and partners.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="illustration-placeholder">
+                                            <i class="fas fa-handshake"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Section -->
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Welcome Video</h3>
+                                <div class="video-player-container">
+                                    <div class="video-player" id="step1VideoPlayer">
+                                        <div class="video-thumbnail" onclick="playStepVideo(1)">
+                                            <div class="video-overlay">
+                                                <div class="play-button">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="video-info">
+                                                <h5>Welcome to Flint - Christian's Message</h5>
+                                                <p>Duration: 3:45</p>
+                                            </div>
+                                        </div>
+                                        <div class="video-controls mt-3">
+                                            <button class="btn btn--primary" onclick="playStepVideo(1)">
+                                                <i class="fas fa-play me-2"></i>Watch Video (3:45)
+                                            </button>
+                                            <button class="btn btn--outline ms-2" data-bs-toggle="collapse" data-bs-target="#step1Transcript">
+                                                <i class="fas fa-file-text me-2"></i>Show Transcript
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="video-transcript collapse" id="step1Transcript">
+                                    <h6>Transcript</h6>
+                                    <p>Welcome to the Flint family. This journey you're starting isn't just about joining a company - it's about building your own thriving business with the full support of our team.</p>
+                                </div>
+                                
+                                <div class="tagline-quote">
+                                    <blockquote>
+                                        "You're not working for us. You're building your own business with us by your side."
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Downloads Panel -->
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Downloads</h3>
+                                <div class="downloads-grid" id="step1Downloads">
+                                    <!-- Downloads will be generated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <!-- Checklist & Progress -->
+                        <div class="card sidebar-card sticky-top">
+                            <div class="card-body">
+                                <h5>Step 1 Checklist</h5>
+                                <div class="checklist" id="step1Checklist">
+                                    <!-- Checklist items will be generated -->
+                                </div>
+                                
+                                <div class="step-progress mt-4">
+                                    <div class="progress-label mb-2">
+                                        <span>Progress</span>
+                                        <span id="step1ProgressText">0%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="step1ProgressBar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn--primary w-100 mt-3" id="step1Complete" disabled onclick="completeStep(1)">
+                                    <i class="fas fa-check me-2"></i>Mark Step as Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <button class="btn btn--secondary" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                    </button>
+                    <button class="btn btn--primary" id="step1Next" disabled onclick="goToStep(2)">
+                        Next Step: Understanding Your Role
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2 View -->
+        <div id="step2View" class="view step-view hidden">
+            <div class="container">
+                <div class="step-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Step 2</li>
+                        </ol>
+                    </nav>
+                    <div class="step-title-section">
+                        <div class="step-number">02</div>
+                        <div>
+                            <h1 id="step2Title">Understanding Your Role</h1>
+                            <p id="step2Description">Learn about your responsibilities and revenue structure</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Messaging Block -->
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Your Role as a Flint Director</h3>
+                                <p class="lead">As a Flint Director, you're an entrepreneur with the backing of our full platform. Here's what that means for your success.</p>
+                                
+                                <div class="row mt-4">
+                                    <div class="col-md-6">
+                                        <h5>Key Responsibilities</h5>
+                                        <ul>
+                                            <li>Client relationship management</li>
+                                            <li>Loan origination and processing</li>
+                                            <li>Partner network utilization</li>
+                                            <li>Business development</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Revenue Structure</h5>
+                                        <ul>
+                                            <li>60-80% commission split</li>
+                                            <li>Performance-based bonuses</li>
+                                            <li>Territory exclusivity</li>
+                                            <li>Growth incentives</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Section -->
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Director Role & Responsibilities</h3>
+                                <div class="video-player-container">
+                                    <div class="video-player">
+                                        <div class="video-thumbnail" onclick="playStepVideo(2)">
+                                            <div class="video-overlay">
+                                                <div class="play-button">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="video-info">
+                                                <h5>Director Role & Responsibilities</h5>
+                                                <p>Duration: 4:20</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tagline-quote">
+                                    <blockquote>
+                                        "Success is built on clear expectations and unlimited support."
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Downloads Panel -->
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Downloads</h3>
+                                <div class="downloads-grid" id="step2Downloads">
+                                    <!-- Downloads will be generated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card sidebar-card sticky-top">
+                            <div class="card-body">
+                                <h5>Step 2 Checklist</h5>
+                                <div class="checklist" id="step2Checklist">
+                                    <!-- Checklist items will be generated -->
+                                </div>
+                                
+                                <div class="step-progress mt-4">
+                                    <div class="progress-label mb-2">
+                                        <span>Progress</span>
+                                        <span id="step2ProgressText">0%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="step2ProgressBar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn--primary w-100 mt-3" id="step2Complete" disabled onclick="completeStep(2)">
+                                    <i class="fas fa-check me-2"></i>Mark Step as Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button class="btn btn--secondary" onclick="goToStep(1)">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" id="step2Next" disabled onclick="goToStep(3)">
+                        Next Step: Platform & Tools Training
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 View -->
+        <div id="step3View" class="view step-view hidden">
+            <div class="container">
+                <div class="step-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Step 3</li>
+                        </ol>
+                    </nav>
+                    <div class="step-title-section">
+                        <div class="step-number">03</div>
+                        <div>
+                            <h1 id="step3Title">Platform & Tools Training</h1>
+                            <p id="step3Description">Master the technology stack that powers your business</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Technology Platform Overview</h3>
+                                <p class="lead">Our integrated platform gives you everything you need to manage clients and close loans efficiently.</p>
+                                
+                                <div class="tools-overview mt-4">
+                                    <div class="row g-4">
+                                        <div class="col-md-4">
+                                            <div class="tool-preview">
+                                                <i class="fab fa-hubspot text-primary"></i>
+                                                <h5>HubSpot CRM</h5>
+                                                <p>Lead tracking and pipeline management</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="tool-preview">
+                                                <i class="fas fa-home text-success"></i>
+                                                <h5>Middle Platform</h5>
+                                                <p>Loan origination and processing</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="tool-preview">
+                                                <i class="fas fa-chart-line text-warning"></i>
+                                                <h5>BrokerEngine</h5>
+                                                <p>Comprehensive mortgage platform</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Platform Integration Video</h3>
+                                <div class="video-player-container">
+                                    <div class="video-player">
+                                        <div class="video-thumbnail" onclick="playStepVideo(3)">
+                                            <div class="video-overlay">
+                                                <div class="play-button">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="video-info">
+                                                <h5>Platform Overview & Integration</h5>
+                                                <p>Duration: 6:15</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tagline-quote">
+                                    <blockquote>
+                                        "The right tools make all the difference in your success."
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Training Materials</h3>
+                                <div class="downloads-grid" id="step3Downloads">
+                                    <!-- Downloads will be generated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card sidebar-card sticky-top">
+                            <div class="card-body">
+                                <h5>Step 3 Checklist</h5>
+                                <div class="checklist" id="step3Checklist">
+                                    <!-- Checklist items will be generated -->
+                                </div>
+                                
+                                <div class="step-progress mt-4">
+                                    <div class="progress-label mb-2">
+                                        <span>Progress</span>
+                                        <span id="step3ProgressText">0%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="step3ProgressBar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn--primary w-100 mt-3" id="step3Complete" disabled onclick="completeStep(3)">
+                                    <i class="fas fa-check me-2"></i>Mark Step as Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button class="btn btn--secondary" onclick="goToStep(2)">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" id="step3Next" disabled onclick="goToStep(4)">
+                        Next Step: Financial Setup
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Steps 4-7 follow similar pattern -->
+        <div id="step4View" class="view step-view hidden">
+            <div class="container">
+                <div class="step-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Step 4</li>
+                        </ol>
+                    </nav>
+                    <div class="step-title-section">
+                        <div class="step-number">04</div>
+                        <div>
+                            <h1 id="step4Title">Financial Setup</h1>
+                            <p id="step4Description">Establish your financial foundation and revenue tracking</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Financial Foundation</h3>
+                                <p class="lead">Set up your revenue streams and understand your earning potential.</p>
+                                
+                                <div class="video-player-container mt-4">
+                                    <div class="video-player">
+                                        <div class="video-thumbnail" onclick="playStepVideo(4)">
+                                            <div class="video-overlay">
+                                                <div class="play-button">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="video-info">
+                                                <h5>Financial Structure & Revenue Sharing</h5>
+                                                <p>Duration: 5:30</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="downloads-grid mt-4" id="step4Downloads">
+                                    <!-- Downloads will be generated -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card sidebar-card sticky-top">
+                            <div class="card-body">
+                                <h5>Step 4 Checklist</h5>
+                                <div class="checklist" id="step4Checklist"></div>
+                                
+                                <div class="step-progress mt-4">
+                                    <div class="progress-label mb-2">
+                                        <span>Progress</span>
+                                        <span id="step4ProgressText">0%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="step4ProgressBar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn--primary w-100 mt-3" id="step4Complete" disabled onclick="completeStep(4)">
+                                    <i class="fas fa-check me-2"></i>Mark Step as Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button class="btn btn--secondary" onclick="goToStep(3)">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" id="step4Next" disabled onclick="goToStep(5)">
+                        Next Step: Partner Network
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="step5View" class="view step-view hidden">
+            <div class="container">
+                <div class="step-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Step 5</li>
+                        </ol>
+                    </nav>
+                    <div class="step-title-section">
+                        <div class="step-number">05</div>
+                        <div>
+                            <h1 id="step5Title">Partner Network</h1>
+                            <p id="step5Description">Connect with our lending partners and build relationships</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Building Partner Relationships</h3>
+                                <p class="lead">Our network of lending partners gives you competitive advantages.</p>
+                                
+                                <div class="video-player-container mt-4">
+                                    <div class="video-player">
+                                        <div class="video-thumbnail" onclick="playStepVideo(5)">
+                                            <div class="video-overlay">
+                                                <div class="play-button">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="video-info">
+                                                <h5>Building Partner Relationships</h5>
+                                                <p>Duration: 4:45</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="downloads-grid mt-4" id="step5Downloads"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card sidebar-card sticky-top">
+                            <div class="card-body">
+                                <h5>Step 5 Checklist</h5>
+                                <div class="checklist" id="step5Checklist"></div>
+                                
+                                <div class="step-progress mt-4">
+                                    <div class="progress-label mb-2">
+                                        <span>Progress</span>
+                                        <span id="step5ProgressText">0%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="step5ProgressBar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn--primary w-100 mt-3" id="step5Complete" disabled onclick="completeStep(5)">
+                                    <i class="fas fa-check me-2"></i>Mark Step as Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button class="btn btn--secondary" onclick="goToStep(4)">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" id="step5Next" disabled onclick="goToStep(6)">
+                        Next Step: Marketing & Branding
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="step6View" class="view step-view hidden">
+            <div class="container">
+                <div class="step-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Step 6</li>
+                        </ol>
+                    </nav>
+                    <div class="step-title-section">
+                        <div class="step-number">06</div>
+                        <div>
+                            <h1 id="step6Title">Marketing & Branding</h1>
+                            <p id="step6Description">Access marketing resources and establish your brand presence</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Marketing Strategy & Brand Guidelines</h3>
+                                <p class="lead">Your personal brand, backed by Flint's reputation, is your most valuable asset.</p>
+                                
+                                <div class="video-player-container mt-4">
+                                    <div class="video-player">
+                                        <div class="video-thumbnail" onclick="playStepVideo(6)">
+                                            <div class="video-overlay">
+                                                <div class="play-button">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="video-info">
+                                                <h5>Marketing Strategy & Brand Guidelines</h5>
+                                                <p>Duration: 5:10</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="downloads-grid mt-4" id="step6Downloads"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card sidebar-card sticky-top">
+                            <div class="card-body">
+                                <h5>Step 6 Checklist</h5>
+                                <div class="checklist" id="step6Checklist"></div>
+                                
+                                <div class="step-progress mt-4">
+                                    <div class="progress-label mb-2">
+                                        <span>Progress</span>
+                                        <span id="step6ProgressText">0%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="step6ProgressBar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn--primary w-100 mt-3" id="step6Complete" disabled onclick="completeStep(6)">
+                                    <i class="fas fa-check me-2"></i>Mark Step as Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button class="btn btn--secondary" onclick="goToStep(5)">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" id="step6Next" disabled onclick="goToStep(7)">
+                        Next Step: Launch Preparation
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="step7View" class="view step-view hidden">
+            <div class="container">
+                <div class="step-header">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#" onclick="showDashboard()">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Step 7</li>
+                        </ol>
+                    </nav>
+                    <div class="step-title-section">
+                        <div class="step-number">07</div>
+                        <div>
+                            <h1 id="step7Title">Launch Preparation</h1>
+                            <p id="step7Description">Final steps to launch your Flint director business</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card step-section">
+                            <div class="card-body">
+                                <h3>Launch Day & Beyond</h3>
+                                <p class="lead">Congratulations on completing your onboarding. Here's what to expect in your first 90 days.</p>
+                                
+                                <div class="video-player-container mt-4">
+                                    <div class="video-player">
+                                        <div class="video-thumbnail" onclick="playStepVideo(7)">
+                                            <div class="video-overlay">
+                                                <div class="play-button">
+                                                    <i class="fas fa-play"></i>
+                                                </div>
+                                            </div>
+                                            <div class="video-info">
+                                                <h5>Launch Day & Beyond</h5>
+                                                <p>Duration: 3:55</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tagline-quote">
+                                    <blockquote>
+                                        "You're ready to build something amazing. Let's launch your success."
+                                    </blockquote>
+                                </div>
+                                
+                                <div class="downloads-grid mt-4" id="step7Downloads"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card sidebar-card sticky-top">
+                            <div class="card-body">
+                                <h5>Final Checklist</h5>
+                                <div class="checklist" id="step7Checklist"></div>
+                                
+                                <div class="step-progress mt-4">
+                                    <div class="progress-label mb-2">
+                                        <span>Progress</span>
+                                        <span id="step7ProgressText">0%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" id="step7ProgressBar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn--primary w-100 mt-3" id="step7Complete" disabled onclick="completeStep(7)">
+                                    <i class="fas fa-check me-2"></i>Mark Step as Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-navigation">
+                    <button class="btn btn--secondary" onclick="goToStep(6)">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" id="step7Next" disabled onclick="completeOnboarding()">
+                        Complete Onboarding
+                        <i class="fas fa-check ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ View -->
+        <div id="faqView" class="view hidden">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="faq-sidebar sticky-top">
+                            <h4>Categories</h4>
+                            <div class="faq-categories" id="faqCategories">
+                                <!-- Categories will be generated -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="faq-content">
+                            <div class="faq-header">
+                                <h2>Frequently Asked Questions</h2>
+                                <div class="faq-search">
+                                    <input type="text" class="form-control" placeholder="Search FAQs..." id="faqSearch">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion" id="faqAccordion">
+                                <!-- FAQ items will be generated -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents View -->
+        <div id="documentsView" class="view hidden">
+            <div class="container">
+                <div class="documents-header">
+                    <h2>Resource Library</h2>
+                    <div class="documents-filters">
+                        <select class="form-control" id="documentTypeFilter">
+                            <option value="">All Document Types</option>
+                            <option value="PDF">PDF</option>
+                            <option value="Excel">Excel</option>
+                            <option value="DOCX">Word Documents</option>
+                        </select>
+                        <select class="form-control" id="documentStepFilter">
+                            <option value="">All Steps</option>
+                            <option value="1">Step 1</option>
+                            <option value="2">Step 2</option>
+                            <option value="3">Step 3</option>
+                            <option value="4">Step 4</option>
+                            <option value="5">Step 5</option>
+                            <option value="6">Step 6</option>
+                            <option value="7">Step 7</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="documents-grid" id="documentsGrid">
+                    <!-- Documents will be generated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile View -->
+        <div id="profileView" class="view hidden">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Profile Settings</h2>
+                                <form id="profileForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="profileFirstName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="profileLastName" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="profileEmail" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone</label>
+                                        <input type="tel" class="form-control" id="profilePhone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" id="profileLocation">
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn--primary">
+                                            <i class="fas fa-save me-2"></i>Save Changes
+                                        </button>
+                                        <button type="button" class="btn btn--secondary ms-2" onclick="showDashboard()">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings View -->
+        <div id="settingsView" class="view hidden">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Settings</h2>
+                                <form id="settingsForm">
+                                    <div class="form-group">
+                                        <label class="form-label">Email Notifications</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                            <label class="form-check-label" for="emailNotifications">
+                                                Receive email notifications about your progress
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Theme Preference</label>
+                                        <select class="form-control" id="themePreference">
+                                            <option value="system">System Default</option>
+                                            <option value="light">Light Mode</option>
+                                            <option value="dark">Dark Mode</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Language</label>
+                                        <select class="form-control" id="languagePreference">
+                                            <option value="en">English</option>
+                                            <option value="es">Spanish</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn--primary">
+                                            <i class="fas fa-save me-2"></i>Save Settings
+                                        </button>
+                                        <button type="button" class="btn btn--secondary ms-2" onclick="showDashboard()">
+                                            Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Help Button -->
+    <div class="floating-help" id="floatingHelp">
+        <button class="help-button" onclick="showSupport()">
+            <i class="fas fa-question"></i>
+        </button>
+        <div class="help-tooltip">Need Help?</div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" id="toastContainer"></div>
+
+    <!-- Modals -->
+    <!-- Support Modal -->
+    <div class="modal fade" id="supportModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Need Help?</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="support-options">
+                        <button class="btn btn--outline w-100 mb-2" onclick="openLiveChat()">
+                            <i class="fas fa-comments me-2"></i>Live Chat
+                        </button>
+                        <button class="btn btn--outline w-100 mb-2" onclick="submitFeedback()">
+                            <i class="fas fa-paper-plane me-2"></i>Submit Feedback
+                        </button>
+                        <button class="btn btn--outline w-100" onclick="contactSupport()">
+                            <i class="fas fa-envelope me-2"></i>Contact Support Team
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Completion Modal -->
+    <div class="modal fade" id="completionModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="completion-animation">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2>Congratulations!</h2>
+                    <p class="lead">You've successfully completed your Flint Directors onboarding!</p>
+                    <div class="completion-actions mt-4">
+                        <button class="btn btn--primary me-3" onclick="startDirectorJourney()">
+                            <i class="fas fa-rocket me-2"></i>Start Your Director Journey
+                        </button>
+                        <button class="btn btn--outline" onclick="downloadCertificate()">
+                            <i class="fas fa-download me-2"></i>Download Certificate
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
