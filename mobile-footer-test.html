@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Footer Test - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional test styles */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .test-content {
+            padding: 80px 20px 50px;
+            text-align: center;
+        }
+        .test-section {
+            background: white;
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .mobile-instructions {
+            background: linear-gradient(135deg, #4D0032, #6D0042);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Quick Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="javascript:void(0)">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Footer Test</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <div class="test-section">
+            <div class="mobile-instructions">
+                <h3><i class="fas fa-mobile-alt me-2"></i>Mobile Footer Enhancement Test</h3>
+                <p class="mb-2">🚀 Enhanced mobile footer features:</p>
+                <ul class="text-start mb-0">
+                    <li>Premium gradient backgrounds and blur effects</li>
+                    <li>Organized mobile-first navigation structure</li>
+                    <li>Enhanced touch-friendly interactions</li>
+                    <li>Beautiful stats display with hover animations</li>
+                    <li>Improved social media integration</li>
+                    <li>Responsive contact information layout</li>
+                    <li>Professional legal links organization</li>
+                </ul>
+            </div>
+            
+            <h1>Mobile Footer Test Page</h1>
+            <p class="lead">This page demonstrates the enhanced mobile footer navigation. Scroll down to see the footer and test on different screen sizes.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📱 Mobile Optimized</h4>
+                    <ul class="mb-0">
+                        <li>Centered layout for better readability</li>
+                        <li>Touch-friendly buttons (44px minimum)</li>
+                        <li>Organized sections with cards</li>
+                        <li>Enhanced visual hierarchy</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🎨 Premium Design</h4>
+                    <ul class="mb-0">
+                        <li>Beautiful gradient backgrounds</li>
+                        <li>Smooth hover animations</li>
+                        <li>Enhanced brand presentation</li>
+                        <li>Professional color scheme</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>🖥️ Desktop Preserved</h4>
+                    <ul class="mb-0">
+                        <li>Original desktop layout unchanged</li>
+                        <li>All existing functionality preserved</li>
+                        <li>No impact on desktop user experience</li>
+                        <li>Responsive breakpoints maintained</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>⚡ Performance</h4>
+                    <ul class="mb-0">
+                        <li>Optimized animations</li>
+                        <li>Efficient CSS organization</li>
+                        <li>Smooth transitions</li>
+                        <li>Fast loading times</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-3 bg-light rounded">
+                <strong>Testing Instructions:</strong>
+                <ol class="text-start mt-2 mb-0">
+                    <li>Scroll down to view the enhanced mobile footer</li>
+                    <li>Resize your browser window to see responsive behavior</li>
+                    <li>Test on mobile device for best experience</li>
+                    <li>Notice the organized sections and smooth animations</li>
+                    <li>Compare with desktop view (footer remains unchanged)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Responsive Breakpoints</h3>
+            <div class="row text-start">
+                <div class="col-md-4">
+                    <h5>📱 Mobile (≤768px)</h5>
+                    <ul>
+                        <li>Enhanced footer layout</li>
+                        <li>Centered content</li>
+                        <li>Card-based sections</li>
+                        <li>Touch optimized</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>📱 Small Mobile (≤576px)</h5>
+                    <ul>
+                        <li>Compact spacing</li>
+                        <li>Smaller social icons</li>
+                        <li>Stacked legal links</li>
+                        <li>Optimized text sizes</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>💻 Desktop (>768px)</h5>
+                    <ul>
+                        <li>Original layout preserved</li>
+                        <li>All functionality intact</li>
+                        <li>No visual changes</li>
+                        <li>Professional appearance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spacer content to demonstrate scroll -->
+        <div class="test-section">
+            <h3>Scroll Down to See Enhanced Footer</h3>
+            <p>The enhanced footer navigation awaits below with all the mobile optimizations!</p>
+            <div style="height: 300px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e9ecef, #f8f9fa); border-radius: 12px;">
+                <div class="text-center">
+                    <i class="fas fa-arrow-down fa-3x text-muted mb-3"></i>
+                    <p class="text-muted">Keep scrolling to see the footer magic! ✨</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Footer (Same as main site) -->
+    <footer class="main-footer-enhanced">
+        <div class="footer-background">
+            <div class="footer-pattern"></div>
+        </div>
+        <div class="container">
+            <!-- Footer Main Content -->
+            <div class="footer-main">
+                <div class="row">
+                    <!-- Brand Section -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="footer-brand-enhanced">
+                            <div class="brand-logo-wrapper">
+                                <img src="icon.PNG" alt="Flint Logo" class="footer-logo-enhanced">
+                                <div class="brand-text">
+                                    <h5>Flint Directors Portal</h5>
+                                    <span class="brand-tagline">Build Your Future. Backed by Excellence.</span>
+                                </div>
+                            </div>
+                            <p class="brand-description">
+                                Australia's #1 independent mortgage brokerage empowering directors 
+                                with cutting-edge technology, comprehensive support, and unmatched opportunities.
+                            </p>
+                            
+                            <!-- Our Impact Below Brand Description -->
+                            <div class="footer-stats-compact">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-chart-line me-2"></i>Our Impact
+                                </h6>
+                                <div class="stats-row">
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">500+</span>
+                                        <span class="stat-label">Directors</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">$2B+</span>
+                                        <span class="stat-label">Settled</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">4.9★</span>
+                                        <span class="stat-label">Rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Navigation -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-compass me-2"></i>Navigation
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-home me-2"></i>Dashboard
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-play me-2"></i>Getting Started
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-question me-2"></i>FAQ
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-headset me-2"></i>Support
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Resources -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-book me-2"></i>Resources
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-file-alt me-2"></i>Documentation
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-video me-2"></i>Training Videos
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-download me-2"></i>Templates
+                                    <span class="link-badge new">New</span>
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-tools me-2"></i>Calculators
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Community & Support -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-users me-2"></i>Community
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="javascript:void(0)">
+                                    <i class="fab fa-slack me-2"></i>Slack Channel
+                                    <span class="link-indicator online"></span>
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-calendar me-2"></i>Events
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-graduation-cap me-2"></i>Training
+                                </a></li>
+                                <li><a href="javascript:void(0)">
+                                    <i class="fas fa-trophy me-2"></i>Leaderboard
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-phone me-2"></i>Contact Us
+                            </h6>
+                            <div class="contact-info-compact">
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-envelope me-2"></i>
+                                    <a href="mailto:support@flint.com.au">support@flint.com.au</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-phone me-2"></i>
+                                    <a href="tel:1300354686">1300 354 686</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                    <span>Sydney, Australia</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Social Media -->
+                            <div class="social-media-enhanced">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-share-alt me-2"></i>Follow Us
+                                </h6>
+                                <div class="social-links-row">
+                                    <a href="#" class="social-link-enhanced linkedin" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced twitter" title="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced facebook" title="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced instagram" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced youtube" title="YouTube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-divider-enhanced"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="copyright-enhanced">
+                            <p>&copy; 2025 Flint Group. All rights reserved.</p>
+                            <div class="company-info">
+                                <span>ACN: 123 456 789</span>
+                                <span>Australian Credit Licence: 987654</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-legal-enhanced">
+                            <a href="#privacy">Privacy Policy</a>
+                            <a href="#terms">Terms of Service</a>
+                            <a href="#cookies">Cookie Policy</a>
+                            <a href="#accessibility">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
