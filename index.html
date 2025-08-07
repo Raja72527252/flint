@@ -15,45 +15,119 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="javascript:void(0)" onclick="navigateToSection('landing')">
-                <img src="icon.PNG" alt="Flint Logo" class="header-logo">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="javascript:void(0)" onclick="navigateToSection('landing')">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
                 <div class="brand-text">
                     <span class="brand-title">Flint Directors Portal</span>
-                    <span class="brand-subtitle">Your Onboarding Journey</span>
+                    <span class="brand-subtitle d-none d-lg-block">Your Onboarding Journey</span>
                 </div>
             </a>
 
-            <!-- Right Side Header Elements -->
-            <div class="header-right d-flex align-items-center gap-3">
-                <!-- Progress Indicator -->
-                <div class="progress-indicator d-flex">
-                    <span class="progress-text">Welcome back, John</span>
-                    <span class="progress-steps">2 of 5 steps completed</span>
-                </div>
-                
-                <!-- User Profile -->
-                <div class="user-profile-dropdown dropdown">
-                    <button class="user-profile-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="user-avatar">
-                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=FFAF9C&color=4D0032&bold=true&size=40" alt="John Doe" class="profile-image">
-                        </div>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li class="dropdown-header">
-                            <div class="user-info">
-                                <strong>John Doe</strong>
-                                <small class="text-muted">Director</small>
-                            </div>
-                        </li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#" onclick="showProfileSettings()"><i class="fas fa-user me-2"></i>Profile</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showSettings()"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showHelp()"><i class="fas fa-question-circle me-2"></i>Help & Support</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="login.html" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
-                    </ul>
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navigation Menu -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)" onclick="navigateToSection('landing')">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-tasks me-1"></i>Steps
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)" onclick="navigateToSection('step1')">
+                                <i class="fas fa-play-circle me-2"></i>Step 1: Welcome & Introduction
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" onclick="navigateToSection('step2')">
+                                <i class="fas fa-tools me-2"></i>Step 2: Tools & Tech Stack
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" onclick="navigateToSection('step3')">
+                                <i class="fas fa-calculator me-2"></i>Step 3: Financial Setup
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" onclick="navigateToSection('step4')">
+                                <i class="fas fa-cogs me-2"></i>Step 4: Operational Training
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" onclick="navigateToSection('step5')">
+                                <i class="fas fa-bullhorn me-2"></i>Step 5: Branding & Marketing
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" onclick="navigateToSection('step6')">
+                                <i class="fas fa-handshake me-2"></i>Step 6: Partnership & Growth
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)" onclick="navigateToSection('step7')">
+                                <i class="fas fa-support me-2"></i>Step 7: Continuous Support
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showFaqModal()">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-headset me-1"></i>Support
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Side Elements -->
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Progress Indicator (Hidden on mobile) -->
+                    <div class="progress-indicator d-none d-lg-flex flex-column me-3">
+                        <span class="progress-text">Welcome back, John</span>
+                        <span class="progress-steps">2 of 5 steps completed</span>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="nav-item dropdown me-2">
+                        <a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">Notifications</li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle me-2 text-info"></i>Step 3 available</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-check-circle me-2 text-success"></i>Step 2 completed</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope me-2 text-primary"></i>Welcome message</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=FFAF9C&color=4D0032&bold=true&size=32" alt="John Doe" class="rounded-circle me-2">
+                            <span class="d-none d-lg-inline">John Doe</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=FFAF9C&color=4D0032&bold=true&size=40" alt="John Doe" class="rounded-circle me-2">
+                                    <div>
+                                        <strong>John Doe</strong><br>
+                                        <small class="text-muted">Director</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showFaqModal()"><i class="fas fa-question-circle me-2"></i>Help & Support</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -63,303 +137,458 @@
     <main class="main-content">
         <!-- Landing Page -->
         <section id="landing" class="section-page active">
-            <!-- Homepage Header -->
-            <div class="homepage-header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="welcome-banner">
-                                <div class="welcome-content">
-                                    <h1 class="welcome-title">Welcome to Flint</h1>
-                                    <p class="welcome-subtitle">Build your business. Backed by Flint.</p>
-                                    <p class="welcome-description">You're not working for us. You're building your own business with us by your side. Let's get you set up for success.</p>
-                                    <div class="welcome-actions">
-                                        <button class="btn btn--primary btn--lg" onclick="navigateToSection('step1')">
-                                            Continue Journey
-                                        </button>
-                                        <button class="btn btn--outline btn--lg" onclick="showVideoModal()">
-                                            View Progress
-                                        </button>
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Main Content Area -->
+                    <div class="col-lg-8 content-area">
+                        <!-- Welcome Hero Section -->
+                        <div class="welcome-hero-section">
+                            <div class="hero-content">
+                                <h1 class="hero-title">Welcome to Flint</h1>
+                                <h2 class="hero-subtitle">Build your business. Backed by Flint.</h2>
+                                <p class="hero-description">You're not working for us. You're building your own business with us by your side. Let's get you set up for success.</p>
+                                
+                                <div class="hero-actions">
+                                    <button class="btn btn-coral" onclick="navigateToSection('step1')">
+                                        Continue Journey →
+                                    </button>
+                                    <button class="btn btn-outline-coral" onclick="showVideoModal()">
+                                        View Progress
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-video">
+                                <div class="video-player" onclick="showVideoModal()">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=300&fit=crop&crop=face" alt="Welcome from Christian" class="video-thumbnail">
+                                    <div class="play-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                    <div class="video-caption">
+                                        <strong>Welcome from Christian</strong><br>
+                                        <small>Click to play introduction</small>
                                     </div>
                                 </div>
-                                <div class="welcome-video">
-                                    <div class="video-container" onclick="showVideoModal()">
-                                        <div class="video-thumbnail">
-                                            <!-- Video thumbnail background -->
-                                            <div class="thumbnail-bg"></div>
-                                            <div class="play-button">
-                                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+
+                        <!-- Enhanced Progress Section -->
+                        <div class="progress-overview-enhanced">
+                            <div class="progress-header-modern">
+                                <div class="progress-title-section">
+                                    <h3><i class="fas fa-chart-line me-2"></i>Your Journey Progress</h3>
+                                    <p class="progress-subtitle">Track your onboarding steps and milestones</p>
+                                </div>
+                                <div class="progress-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number">3</span>
+                                        <span class="stat-label">of 7 Steps</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">43%</span>
+                                        <span class="stat-label">Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-visual-wrapper">
+                                <div class="progress-bar-modern">
+                                    <div class="progress-track">
+                                        <div class="progress-fill-animated" style="width: 43%">
+                                            <div class="progress-shine"></div>
+                                        </div>
+                                    </div>
+                                    <div class="progress-milestones">
+                                        <div class="milestone completed" title="25% Complete"></div>
+                                        <div class="milestone active" title="50% Complete"></div>
+                                        <div class="milestone pending" title="75% Complete"></div>
+                                        <div class="milestone pending" title="100% Complete"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="steps-grid-enhanced">
+                                <div class="step-card completed" onclick="navigateToSection('step1')">
+                                    <div class="step-card-header">
+                                        <div class="step-icon completed">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="step-badge completed">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h5>Welcome & Introduction</h5>
+                                        <p>Get familiar with Flint's vision and values</p>
+                                        <div class="step-meta">
+                                            <span class="completion-time"><i class="fas fa-clock"></i> Completed</span>
+                                            <span class="step-points">+50 pts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-card completed" onclick="navigateToSection('step2')">
+                                    <div class="step-card-header">
+                                        <div class="step-icon completed">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="step-badge completed">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h5>Legal & Ownership</h5>
+                                        <p>Understand legal structure and compliance</p>
+                                        <div class="step-meta">
+                                            <span class="completion-time"><i class="fas fa-clock"></i> Completed</span>
+                                            <span class="step-points">+50 pts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-card in-progress active" onclick="navigateToSection('step3')">
+                                    <div class="step-card-header">
+                                        <div class="step-icon in-progress">
+                                            <span class="step-number">3</span>
+                                            <div class="progress-ring">
+                                                <svg viewBox="0 0 36 36">
+                                                    <circle cx="18" cy="18" r="16" fill="none" stroke="#e5e7eb" stroke-width="2"/>
+                                                    <circle cx="18" cy="18" r="16" fill="none" stroke="#ff9c7d" stroke-width="2" 
+                                                            stroke-dasharray="60, 100" stroke-linecap="round" 
+                                                            style="transform: rotate(-90deg); transform-origin: 50% 50%;"/>
+                                                </svg>
                                             </div>
-                                            <div class="video-info">
-                                                <h4>Welcome from Christian</h4>
-                                                <p>Click to play introduction</p>
-                                                <span class="video-duration">2:45</span>
-                                            </div>
+                                        </div>
+                                        <div class="step-badge in-progress">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                        </div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h5>Financial Setup & Revenue</h5>
+                                        <p>Set up banking and revenue tracking</p>
+                                        <div class="step-meta">
+                                            <span class="completion-time"><i class="fas fa-clock"></i> 60% Complete</span>
+                                            <span class="step-points">30/50 pts</span>
+                                        </div>
+                                        <div class="continue-btn">
+                                            <i class="fas fa-arrow-right"></i> Continue
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-card pending" onclick="navigateToSection('step4')">
+                                    <div class="step-card-header">
+                                        <div class="step-icon pending">
+                                            <span class="step-number">4</span>
+                                        </div>
+                                        <div class="step-badge pending">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h5>Technology & Tools</h5>
+                                        <p>Master essential tools and systems</p>
+                                        <div class="step-meta">
+                                            <span class="completion-time"><i class="fas fa-clock"></i> Locked</span>
+                                            <span class="step-points">50 pts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-card pending" onclick="navigateToSection('step5')">
+                                    <div class="step-card-header">
+                                        <div class="step-icon pending">
+                                            <span class="step-number">5</span>
+                                        </div>
+                                        <div class="step-badge pending">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h5>Branding & Marketing</h5>
+                                        <p>Build your brand and marketing assets</p>
+                                        <div class="step-meta">
+                                            <span class="completion-time"><i class="fas fa-clock"></i> Locked</span>
+                                            <span class="step-points">50 pts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-card pending" onclick="navigateToSection('step6')">
+                                    <div class="step-card-header">
+                                        <div class="step-icon pending">
+                                            <span class="step-number">6</span>
+                                        </div>
+                                        <div class="step-badge pending">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h5>Operations & Compliance</h5>
+                                        <p>Learn operational procedures and compliance</p>
+                                        <div class="step-meta">
+                                            <span class="completion-time"><i class="fas fa-clock"></i> Locked</span>
+                                            <span class="step-points">50 pts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="step-card pending" onclick="navigateToSection('step7')">
+                                    <div class="step-card-header">
+                                        <div class="step-icon pending">
+                                            <span class="step-number">7</span>
+                                        </div>
+                                        <div class="step-badge pending">
+                                            <i class="fas fa-lock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="step-content">
+                                        <h5>Launch Preparation</h5>
+                                        <p>Final preparations for your launch</p>
+                                        <div class="step-meta">
+                                            <span class="completion-time"><i class="fas fa-clock"></i> Locked</span>
+                                            <span class="step-points">50 pts</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="progress-summary">
+                                <div class="summary-stats">
+                                    <div class="summary-item">
+                                        <i class="fas fa-trophy text-warning"></i>
+                                        <span>Total Points: <strong>100/350</strong></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <i class="fas fa-target text-success"></i>
+                                        <span>Next Milestone: <strong>Step 4</strong></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <i class="fas fa-calendar text-info"></i>
+                                        <span>Est. Completion: <strong>2 weeks</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Sidebar -->
+                    <div class="col-lg-4 sidebar-enhanced">
+                        <!-- Quick Links Enhanced -->
+                        <div class="sidebar-section-modern quick-links-enhanced">
+                            <div class="section-header">
+                                <h4><i class="fas fa-rocket me-2"></i>Quick Actions</h4>
+                                <span class="section-badge">Essential</span>
+                            </div>
+                            <div class="quick-links-grid-modern">
+                                <a href="#" class="quick-link-modern slack">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fab fa-slack"></i>
+                                        </div>
+                                        <div class="link-indicator online"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">Slack Community</span>
+                                        <span class="link-subtitle">24/7 Support Chat</span>
+                                        <div class="link-stats">
+                                            <span class="active-users">156 online</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </div>
+                                </a>
+                                
+                                <a href="#" class="quick-link-modern faq" onclick="showFaqModal()">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fas fa-question-circle"></i>
+                                        </div>
+                                        <div class="link-indicator"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">FAQ & Help</span>
+                                        <span class="link-subtitle">Instant Answers</span>
+                                        <div class="link-stats">
+                                            <span class="help-articles">50+ articles</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+                                
+                                <a href="#" class="quick-link-modern support">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fas fa-headset"></i>
+                                        </div>
+                                        <div class="link-indicator available"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">Live Support</span>
+                                        <span class="link-subtitle">Expert Assistance</span>
+                                        <div class="link-stats">
+                                            <span class="response-time">< 2min response</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                </a>
+                                
+                                <a href="#" class="quick-link-modern calendar">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </div>
+                                        <div class="link-indicator"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">Schedule Meeting</span>
+                                        <span class="link-subtitle">Book 1-on-1 Session</span>
+                                        <div class="link-stats">
+                                            <span class="next-slot">Next: Today 3PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- My Documents Enhanced -->
+                        <div class="sidebar-section-modern documents-enhanced">
+                            <div class="section-header">
+                                <h4><i class="fas fa-file-alt me-2"></i>My Documents</h4>
+                                <span class="document-count">8 files</span>
+                            </div>
+                            <div class="documents-list">
+                                <div class="document-item">
+                                    <div class="doc-icon pdf">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="doc-info">
+                                        <span class="doc-name">Director Agreement</span>
+                                        <span class="doc-meta">PDF • 2.3 MB • Signed</span>
+                                    </div>
+                                    <div class="doc-actions">
+                                        <button class="btn-doc-action"><i class="fas fa-download"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="document-item">
+                                    <div class="doc-icon excel">
+                                        <i class="fas fa-file-excel"></i>
+                                    </div>
+                                    <div class="doc-info">
+                                        <span class="doc-name">Revenue Tracker</span>
+                                        <span class="doc-meta">XLSX • 1.1 MB • Updated</span>
+                                    </div>
+                                    <div class="doc-actions">
+                                        <button class="btn-doc-action"><i class="fas fa-external-link-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="document-item">
+                                    <div class="doc-icon word">
+                                        <i class="fas fa-file-word"></i>
+                                    </div>
+                                    <div class="doc-info">
+                                        <span class="doc-name">Training Manual</span>
+                                        <span class="doc-meta">DOCX • 5.7 MB • New</span>
+                                    </div>
+                                    <div class="doc-actions">
+                                        <button class="btn-doc-action"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-all">
+                                <i class="fas fa-folder-open me-1"></i>View All Documents
+                            </button>
+                        </div>
+                        
+                        <!-- Recent Activity Enhanced -->
+                        <div class="sidebar-section-modern activity-enhanced">
+                            <div class="section-header">
+                                <h4><i class="fas fa-clock me-2"></i>Recent Activity</h4>
+                                <span class="activity-badge live">Live</span>
+                            </div>
+                            <div class="activity-timeline">
+                                <div class="activity-item-modern">
+                                    <div class="activity-time">2h ago</div>
+                                    <div class="activity-dot completed"></div>
+                                    <div class="activity-content-modern">
+                                        <div class="activity-header">
+                                            <span class="activity-title">Step 2 Completed</span>
+                                            <span class="activity-points">+50 pts</span>
+                                        </div>
+                                        <p class="activity-description">Finished Legal & Ownership Structure</p>
+                                        <div class="activity-meta">
+                                            <span class="achievement">🏆 Legal Expert Badge Earned</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item-modern">
+                                    <div class="activity-time">1d ago</div>
+                                    <div class="activity-dot download"></div>
+                                    <div class="activity-content-modern">
+                                        <div class="activity-header">
+                                            <span class="activity-title">Documents Downloaded</span>
+                                        </div>
+                                        <p class="activity-description">Partnership Agreement & Tax Forms</p>
+                                        <div class="activity-files">
+                                            <span class="file-count">3 files</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item-modern">
+                                    <div class="activity-time">2d ago</div>
+                                    <div class="activity-dot video"></div>
+                                    <div class="activity-content-modern">
+                                        <div class="activity-header">
+                                            <span class="activity-title">Video Watched</span>
+                                        </div>
+                                        <p class="activity-description">Welcome from Christian (12:34)</p>
+                                        <div class="activity-meta">
+                                            <span class="watch-time">100% completion</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Progress Overview -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="progress-section-header">
-                            <h2 class="section-title">Your Progress</h2>
-                            <p class="section-description">Track your onboarding journey and see what's coming next</p>
-                        </div>
-                        <div class="progress-overview-card">
-                            <div class="progress-header">
-                                <span class="progress-percentage">40% Complete</span>
-                                <span class="progress-steps-count">Step 2 of 5</span>
-                            </div>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar-fill" style="width: 40%"></div>
-                            </div>
-                            <div class="progress-steps-grid">
-                                <div class="step-card completed" onclick="navigateToSection('step1')">
-                                    <div class="step-icon completed">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="step-info">
-                                        <h5>Welcome & Introduction</h5>
-                                        <span class="step-status">Completed</span>
-                                    </div>
-                                </div>
-                                <div class="step-card completed" onclick="navigateToSection('step2')">
-                                    <div class="step-icon completed">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="step-info">
-                                        <h5>Tools & Tech Stack</h5>
-                                        <span class="step-status">Completed</span>
-                                    </div>
-                                </div>
-                                <div class="step-card in-progress" onclick="navigateToSection('step3')">
-                                    <div class="step-icon in-progress">
-                                        <span>3</span>
-                                    </div>
-                                    <div class="step-info">
-                                        <h5>Financial Setup & Revenue</h5>
-                                        <span class="step-status">In Progress</span>
-                                    </div>
-                                </div>
-                                <div class="step-card pending" onclick="navigateToSection('step4')">
-                                    <div class="step-icon pending">
-                                        <span>4</span>
-                                    </div>
-                                    <div class="step-info">
-                                        <h5>Meet the Partners</h5>
-                                        <span class="step-status">Pending</span>
-                                    </div>
-                                </div>
-                                <div class="step-card pending" onclick="navigateToSection('step5')">
-                                    <div class="step-icon pending">
-                                        <span>5</span>
-                                    </div>
-                                    <div class="step-info">
-                                        <h5>FAQ & Completion</h5>
-                                        <span class="step-status">Pending</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Onboarding Steps Cards -->
-            <div class="container my-5">
-                <div class="row g-4" id="onboardingSteps">
-                    <!-- Steps will be generated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- Quick Links Section -->
-            <div class="container my-5">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="quick-links-section">
-                            <h3 class="section-subtitle">Quick Links</h3>
-                            <div class="quick-links-grid">
-                                <div class="quick-link-item" onclick="navigateToSection('step1')">
-                                    <div class="quick-link-icon slack">
-                                        <i class="fas fa-slack"></i>
-                                    </div>
-                                    <span>Slack Group</span>
-                                </div>
-                                <div class="quick-link-item">
-                                    <div class="quick-link-icon faq">
-                                        <i class="fas fa-question-circle"></i>
-                                    </div>
-                                    <span>FAQ</span>
-                                </div>
-                                <div class="quick-link-item">
-                                    <div class="quick-link-icon support">
-                                        <i class="fas fa-headset"></i>
-                                    </div>
-                                    <span>Support Contact</span>
-                                </div>
-                                <div class="quick-link-item">
-                                    <div class="quick-link-icon documents">
-                                        <i class="fas fa-file-alt"></i>
-                                    </div>
-                                    <span>My Documents</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="recent-activity-section">
-                            <h3 class="section-subtitle">Recent Activity</h3>
-                            <div class="activity-list">
-                                <div class="activity-item">
-                                    <div class="activity-icon completed">
-                                        <i class="fas fa-check"></i>
-                                    </div>
-                                    <div class="activity-details">
-                                        <h6>Completed Step 2</h6>
-                                        <p>Tools & Tech Stack</p>
-                                        <span class="activity-time">2 hours ago</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon download">
-                                        <i class="fas fa-download"></i>
-                                    </div>
-                                    <div class="activity-details">
-                                        <h6>Downloaded documents</h6>
-                                        <p>Partnership Agreement, Tax Forms</p>
-                                        <span class="activity-time">Yesterday</span>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon video">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                    <div class="activity-details">
-                                        <h6>Watched welcome video</h6>
-                                        <p>Introduction from Christian</p>
-                                        <span class="activity-time">2 days ago</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Enhanced Help Section -->
-            <div class="container my-5">
-                <div class="enhanced-help-section">
-                    <div class="row align-items-center">
-                        <div class="col-lg-8">
-                            <div class="help-content">
-                                <div class="help-icon">
+                        
+                        <!-- Support Enhanced -->
+                        <div class="sidebar-section-modern support-enhanced">
+                            <div class="support-card">
+                                <div class="support-icon">
                                     <i class="fas fa-life-ring"></i>
                                 </div>
-                                <div class="help-text">
-                                    <h3 class="help-title">Need Help?</h3>
-                                    <p class="help-description">Our dedicated support team is here 24/7 to help you succeed. Get instant answers or schedule a one-on-one consultation.</p>
-                                    <div class="help-features">
-                                        <div class="feature-item">
-                                            <i class="fas fa-clock"></i>
-                                            <span>24/7 Support</span>
-                                        </div>
-                                        <div class="feature-item">
-                                            <i class="fas fa-user-friends"></i>
-                                            <span>Personal Mentor</span>
-                                        </div>
-                                        <div class="feature-item">
-                                            <i class="fas fa-video"></i>
-                                            <span>Live Chat</span>
-                                        </div>
+                                <h4>Need Assistance?</h4>
+                                <p>Our expert team is here to guide you through every step of your journey.</p>
+                                <div class="support-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">4.9★</span>
+                                        <span class="stat-label">Support Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">< 1h</span>
+                                        <span class="stat-label">Avg Response</span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="help-actions">
-                                <button class="btn btn--primary btn--lg mb-3" onclick="showFaqModal()">
-                                    <i class="fas fa-headset me-2"></i>Contact Support
-                                </button>
-                                <button class="btn btn--outline btn--lg mb-3" onclick="showFaqModal()">
-                                    <i class="fas fa-question-circle me-2"></i>View FAQ
-                                </button>
-                                <button class="btn btn--secondary btn--lg" onclick="showVideoModal()">
-                                    <i class="fas fa-calendar-alt me-2"></i>Schedule Call
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Enhanced Testimonials Section -->
-            <div class="enhanced-testimonials-section">
-                <div class="container">
-                    <div class="testimonials-header text-center mb-5">
-                        <div class="testimonials-badge">
-                            <i class="fas fa-quote-left"></i>
-                            <span>Success Stories</span>
-                        </div>
-                        <h2 class="section-title">What Our Directors Say</h2>
-                        <p class="section-description">Real stories from Flint Directors who've built thriving businesses</p>
-                    </div>
-                    
-                    <div class="testimonials-wrapper">
-                        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></button>
-                                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
-                                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></button>
-                            </div>
-                            
-                            <div class="carousel-inner" id="testimonialsContainer">
-                                <!-- Testimonials will be generated by JavaScript -->
-                            </div>
-                            
-                            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                                <div class="control-icon">
-                                    <i class="fas fa-chevron-left"></i>
-                                </div>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                                <div class="control-icon">
-                                    <i class="fas fa-chevron-right"></i>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonials-stats">
-                        <div class="row text-center">
-                            <div class="col-md-3">
-                                <div class="stat-item">
-                                    <h3>500+</h3>
-                                    <p>Directors</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="stat-item">
-                                    <h3>$2.5B+</h3>
-                                    <p>Loans Settled</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="stat-item">
-                                    <h3>95%</h3>
-                                    <p>Satisfaction Rate</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="stat-item">
-                                    <h3>24/7</h3>
-                                    <p>Support</p>
+                                <div class="support-actions">
+                                    <button class="btn btn-support-primary">
+                                        <i class="fas fa-comments me-1"></i>Start Chat
+                                    </button>
+                                    <button class="btn btn-support-secondary">
+                                        <i class="fas fa-phone me-1"></i>Call Now
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -369,7 +598,7 @@
         </section>
 
         <!-- Step 1: Welcome & Introduction -->
-        <section id="step1" class="section-page">
+        <section id="step1" class="section-page section-brand-coral">
             <div class="container py-5">
                 <div class="step-header-modern">
                     <h1>Step 1: Welcome & Introduction</h1>
@@ -509,7 +738,7 @@
         </section>
 
         <!-- Step 2: Tools & Tech Stack -->
-        <section id="step2" class="section-page">
+        <section id="step2" class="section-page section-brand-cornflower">
             <div class="container py-5">
                 <div class="step-header-modern">
                     <h1>Step 2: Tools & Tech Stack</h1>
@@ -681,26 +910,101 @@
         </section>
 
         <!-- Step 3: Accounting & Financial -->
-        <section id="step3" class="section-page">
+        <section id="step3" class="section-page section-brand-mustard">
             <div class="container py-5">
-                <div class="step-header">
+                <div class="step-header-modern">
                     <h1>Step 3: Accounting & Financial Orientation</h1>
-                    <p class="lead">Set up accounting systems, understand revenue flows and financial planning</p>
-                    <div class="step-progress">
-                        <div class="progress-circle" data-step="3">
-                            <span class="progress-text">0%</span>
+                    <p class="step-description">Set up robust accounting systems, understand revenue flows, and master financial planning for sustainable business growth.</p>
+                </div>
+
+                <!-- Hero Financial Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="financial-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Master Your Financial Foundation</h3>
+                                <p>Build a solid financial framework that scales with your success</p>
+                                <div class="hero-benefits">
+                                    <div class="benefit-item">
+                                        <i class="fas fa-calculator"></i>
+                                        <span>Automated Accounting</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-chart-pie"></i>
+                                        <span>Revenue Tracking</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-file-invoice-dollar"></i>
+                                        <span>Tax Optimization</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <span>Step 3 Progress</span>
                     </div>
                 </div>
 
-                <!-- Content placeholder -->
+                <!-- Financial Setup Cards -->
                 <div class="my-5">
-                    <div class="card">
-                        <div class="card__body text-center py-5">
-                            <i class="fas fa-calculator fa-4x text-primary mb-4"></i>
-                            <h3>Financial Setup & Training</h3>
-                            <p class="lead">Comprehensive financial orientation content</p>
+                    <h2 class="section-title text-center mb-5">Complete Financial Setup</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="financial-card">
+                                <div class="card-icon accounting">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h4>Accounting System</h4>
+                                <p>Set up your complete accounting infrastructure with industry-leading tools.</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i>Xero Integration</li>
+                                    <li><i class="fas fa-check"></i>Automated Invoicing</li>
+                                    <li><i class="fas fa-check"></i>Expense Tracking</li>
+                                    <li><i class="fas fa-check"></i>Bank Reconciliation</li>
+                                </ul>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-cog me-2"></i>Setup Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="financial-card">
+                                <div class="card-icon revenue">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <h4>Revenue Flows</h4>
+                                <p>Understand commission structures, payment cycles, and income optimization.</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i>Commission Calculator</li>
+                                    <li><i class="fas fa-check"></i>Payment Schedules</li>
+                                    <li><i class="fas fa-check"></i>Bonus Structures</li>
+                                    <li><i class="fas fa-check"></i>Revenue Forecasting</li>
+                                </ul>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-chart-bar me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="financial-card">
+                                <div class="card-icon planning">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <h4>Financial Planning</h4>
+                                <p>Create budgets, set financial goals, and plan for business growth.</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i>Budget Templates</li>
+                                    <li><i class="fas fa-check"></i>Goal Setting</li>
+                                    <li><i class="fas fa-check"></i>Cash Flow Planning</li>
+                                    <li><i class="fas fa-check"></i>Growth Projections</li>
+                                </ul>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-rocket me-2"></i>Start Planning
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -717,24 +1021,171 @@
         </section>
 
         <!-- Step 4: Operational Training -->
-        <section id="step4" class="section-page">
+        <section id="step4" class="section-page section-brand-mint">
             <div class="container py-5">
-                <div class="step-header">
+                <div class="step-header-modern">
                     <h1>Step 4: Operational Training</h1>
-                    <p class="lead">Master Flint's technology stack and operational processes</p>
-                    <div class="step-progress">
-                        <div class="progress-circle" data-step="4">
-                            <span class="progress-text">0%</span>
+                    <p class="step-description">Master Flint's technology stack, operational processes, and workflow systems to maximize your efficiency and client satisfaction.</p>
+                </div>
+
+                <!-- Hero Operations Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="operations-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h3>Streamlined Operations Mastery</h3>
+                                <p>Learn the systems and processes that drive successful directors</p>
+                                <div class="hero-metrics">
+                                    <div class="metric-item">
+                                        <span class="metric-number">75%</span>
+                                        <span class="metric-label">Time Saved</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-number">40+</span>
+                                        <span class="metric-label">Automated Tasks</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-number">99.9%</span>
+                                        <span class="metric-label">Uptime</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <span>Step 4 Progress</span>
                     </div>
                 </div>
 
                 <!-- Tech Stack Overview -->
                 <div class="my-5">
-                    <h2 class="section-title text-center mb-4">Technology Stack</h2>
-                    <div class="row g-4" id="techStackGrid">
-                        <!-- Tech stack items will be generated by JavaScript -->
+                    <h2 class="section-title text-center mb-5">Master Your Technology Stack</h2>
+                    <div class="operations-grid">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="operations-card workflow">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h4>Workflow Automation</h4>
+                                    <p>Automate repetitive tasks and streamline your daily operations.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-robot"></i>
+                                            <span>Automated lead routing</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>Email sequences</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-calendar-check"></i>
+                                            <span>Appointment scheduling</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-file-signature"></i>
+                                            <span>Document processing</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-play me-2"></i>Watch Training
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="operations-card systems">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h4>System Integration</h4>
+                                    <p>Learn how all systems work together seamlessly for maximum efficiency.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-sync"></i>
+                                            <span>CRM synchronization</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-database"></i>
+                                            <span>Data integration</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>Security protocols</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-backup"></i>
+                                            <span>Backup systems</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-book me-2"></i>Study Guide
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="operations-card processes">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-clipboard-list"></i>
+                                    </div>
+                                    <h4>Standard Processes</h4>
+                                    <p>Master the proven processes that ensure consistent, quality outcomes.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-user-plus"></i>
+                                            <span>Client onboarding</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-file-contract"></i>
+                                            <span>Loan processing</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-handshake"></i>
+                                            <span>Settlement procedures</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-chart-line"></i>
+                                            <span>Follow-up protocols</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-download me-2"></i>Download SOPs
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="operations-card quality">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <h4>Quality Assurance</h4>
+                                    <p>Implement quality controls that ensure excellence in every interaction.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-check-double"></i>
+                                            <span>Quality checklists</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-star"></i>
+                                            <span>Client satisfaction</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-balance-scale"></i>
+                                            <span>Compliance monitoring</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            <span>Performance metrics</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-clipboard-check me-2"></i>View Checklist
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -750,26 +1201,230 @@
         </section>
 
         <!-- Step 5: Branding & Marketing -->
-        <section id="step5" class="section-page">
+        <section id="step5" class="section-page section-brand-purple">
             <div class="container py-5">
-                <div class="step-header">
+                <div class="step-header-modern">
                     <h1>Step 5: Branding & Marketing Launch</h1>
-                    <p class="lead">Develop personal brand and launch marketing campaigns</p>
-                    <div class="step-progress">
-                        <div class="progress-circle" data-step="5">
-                            <span class="progress-text">0%</span>
+                    <p class="step-description">Develop your personal brand, launch targeted marketing campaigns, and build a powerful online presence that attracts and converts prospects.</p>
+                </div>
+
+                <!-- Hero Marketing Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="marketing-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <h3>Build Your Brand Empire</h3>
+                                <p>Create a compelling brand that stands out in the competitive mortgage market</p>
+                                <div class="hero-showcase">
+                                    <div class="showcase-item">
+                                        <i class="fas fa-palette"></i>
+                                        <span>Brand Identity</span>
+                                    </div>
+                                    <div class="showcase-item">
+                                        <i class="fas fa-globe"></i>
+                                        <span>Digital Presence</span>
+                                    </div>
+                                    <div class="showcase-item">
+                                        <i class="fas fa-magnet"></i>
+                                        <span>Lead Generation</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <span>Step 5 Progress</span>
                     </div>
                 </div>
 
-                <!-- Content placeholder -->
+                <!-- Marketing Components -->
                 <div class="my-5">
-                    <div class="card">
-                        <div class="card__body text-center py-5">
-                            <i class="fas fa-bullhorn fa-4x text-primary mb-4"></i>
-                            <h3>Marketing & Branding</h3>
-                            <p class="lead">Build your personal brand and marketing strategy</p>
+                    <h2 class="section-title text-center mb-5">Complete Marketing Suite</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card branding">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <h4>Brand Development</h4>
+                                <p>Create a professional brand identity that reflects your values and attracts your ideal clients.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Logo & Visual Identity</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Brand Guidelines</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Color Schemes</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Typography System</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-palette me-2"></i>Create Brand
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card website">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <h4>Website & Digital</h4>
+                                <p>Launch a professional website with integrated lead capture and conversion optimization.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Responsive Website</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>SEO Optimization</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Lead Capture Forms</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Analytics Integration</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-globe me-2"></i>Build Website
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card social">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <h4>Social Media</h4>
+                                <p>Establish a strong social media presence with content that engages and converts.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Platform Setup</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Content Calendar</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Post Templates</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Engagement Strategy</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-thumbs-up me-2"></i>Start Social
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card campaigns">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4>Lead Generation</h4>
+                                <p>Launch targeted campaigns that generate quality leads and grow your business.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Google Ads Setup</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Facebook Marketing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Email Campaigns</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Landing Pages</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-magnet me-2"></i>Generate Leads
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card content">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-pen-fancy"></i>
+                                </div>
+                                <h4>Content Strategy</h4>
+                                <p>Develop compelling content that educates prospects and positions you as an expert.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Blog Articles</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Video Content</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Downloadable Guides</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Newsletter Templates</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-edit me-2"></i>Create Content
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card analytics">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h4>Analytics & ROI</h4>
+                                <p>Track performance, measure ROI, and optimize your marketing for maximum results.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Performance Tracking</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>ROI Analysis</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>A/B Testing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Optimization Reports</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-analytics me-2"></i>View Analytics
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -786,26 +1441,233 @@
         </section>
 
         <!-- Step 6: Partnership & Growth -->
-        <section id="step6" class="section-page">
+        <section id="step6" class="section-page section-brand-orange">
             <div class="container py-5">
-                <div class="step-header">
+                <div class="step-header-modern">
                     <h1>Step 6: Partnership & Growth Strategy</h1>
-                    <p class="lead">Build strategic partnerships and develop growth plans</p>
-                    <div class="step-progress">
-                        <div class="progress-circle" data-step="6">
-                            <span class="progress-text">0%</span>
+                    <p class="step-description">Build strategic partnerships, develop growth plans, and scale your business through proven strategies and powerful network connections.</p>
+                </div>
+
+                <!-- Hero Growth Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="growth-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Scale Your Success</h3>
+                                <p>Transform your business through strategic partnerships and accelerated growth</p>
+                                <div class="hero-growth-stats">
+                                    <div class="growth-stat">
+                                        <span class="stat-number">300%</span>
+                                        <span class="stat-label">Avg. Growth</span>
+                                    </div>
+                                    <div class="growth-stat">
+                                        <span class="stat-number">500+</span>
+                                        <span class="stat-label">Partner Network</span>
+                                    </div>
+                                    <div class="growth-stat">
+                                        <span class="stat-number">$50M+</span>
+                                        <span class="stat-label">Partnership Value</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <span>Step 6 Progress</span>
                     </div>
                 </div>
 
-                <!-- Content placeholder -->
+                <!-- Partnership & Growth Components -->
                 <div class="my-5">
-                    <div class="card">
-                        <div class="card__body text-center py-5">
-                            <i class="fas fa-handshake fa-4x text-primary mb-4"></i>
-                            <h3>Partnership & Growth</h3>
-                            <p class="lead">Strategic partnerships and business growth planning</p>
+                    <h2 class="section-title text-center mb-5">Strategic Growth Framework</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="growth-card partnerships">
+                                <div class="growth-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h4>Strategic Partnerships</h4>
+                                <p>Connect with key partners who can accelerate your business growth and expand your market reach.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Referral Partners</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-home"></i>
+                                                <span>Real Estate Agents</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-calculator"></i>
+                                                <span>Accountants & CPAs</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-gavel"></i>
+                                                <span>Legal Professionals</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-chart-pie"></i>
+                                                <span>Financial Planners</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-network-wired me-2"></i>Build Network
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="growth-card scaling">
+                                <div class="growth-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4>Business Scaling</h4>
+                                <p>Implement proven strategies to scale your operations, increase revenue, and build a sustainable business.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Growth Strategies</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-users"></i>
+                                                <span>Team Building</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-cogs"></i>
+                                                <span>Process Optimization</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-expand-arrows-alt"></i>
+                                                <span>Market Expansion</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-layer-group"></i>
+                                                <span>Service Diversification</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-chart-line me-2"></i>Scale Business
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="growth-card network">
+                                <div class="growth-icon">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <h4>Director Network</h4>
+                                <p>Connect with fellow directors, share insights, and collaborate on business opportunities.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Networking Benefits</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-comment-dots"></i>
+                                                <span>Peer Collaboration</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-lightbulb"></i>
+                                                <span>Knowledge Sharing</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-puzzle-piece"></i>
+                                                <span>Joint Ventures</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-trophy"></i>
+                                                <span>Best Practice Exchange</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-user-friends me-2"></i>Join Network
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="growth-card mentorship">
+                                <div class="growth-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <h4>Mentorship Program</h4>
+                                <p>Access experienced mentors who provide guidance, insights, and strategic advice for your growth journey.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Mentorship Benefits</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-compass"></i>
+                                                <span>Strategic Guidance</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-bullseye"></i>
+                                                <span>Goal Setting</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-chart-bar"></i>
+                                                <span>Performance Review</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-graduation-cap"></i>
+                                                <span>Skill Development</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-chalkboard-teacher me-2"></i>Find Mentor
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Growth Metrics Dashboard -->
+                <div class="my-5">
+                    <div class="growth-metrics-section">
+                        <h3 class="text-center mb-4">Track Your Growth Journey</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">$0</span>
+                                    <span class="metric-label">Monthly Revenue</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">0</span>
+                                    <span class="metric-label">New Clients</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">0</span>
+                                    <span class="metric-label">Partnerships</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">0%</span>
+                                    <span class="metric-label">Growth Rate</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -822,24 +1684,249 @@
         </section>
 
         <!-- Step 7: Continuous Support -->
-        <section id="step7" class="section-page">
+        <section id="step7" class="section-page section-brand-teal">
             <div class="container py-5">
-                <div class="step-header">
+                <div class="step-header-modern">
                     <h1>Step 7: Continuous Support & Feedback</h1>
-                    <p class="lead">Access ongoing support and feedback mechanisms</p>
-                    <div class="step-progress">
-                        <div class="progress-circle" data-step="7">
-                            <span class="progress-text">0%</span>
+                    <p class="step-description">Experience world-class ongoing support, feedback mechanisms, and continuous learning opportunities. Your success is our commitment.</p>
+                </div>
+
+                <!-- Hero Support Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="support-hero-section">
+                            <div class="support-hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-life-ring"></i>
+                                </div>
+                                <h3>24/7 Support Ecosystem</h3>
+                                <p>Access comprehensive support whenever you need it, from technical assistance to business coaching.</p>
+                                <div class="hero-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number">< 15min</span>
+                                        <span class="stat-label">Response Time</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">4.9★</span>
+                                        <span class="stat-label">Support Rating</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">24/7</span>
+                                        <span class="stat-label">Availability</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <span>Step 7 Progress</span>
                     </div>
                 </div>
 
-                <!-- Support Resources -->
+                <!-- Support Channels -->
                 <div class="my-5">
-                    <h2 class="section-title text-center mb-4">Always Here to Help</h2>
-                    <div class="row g-4" id="supportResourcesGrid">
-                        <!-- Support resources will be generated by JavaScript -->
+                    <h2 class="section-title text-center mb-5">Multiple Support Channels</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="support-channel-card">
+                                <div class="channel-icon live-chat">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <h4>Live Chat Support</h4>
+                                <p>Instant help with real-time chat support available 24/7.</p>
+                                <div class="channel-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i>Instant messaging</li>
+                                        <li><i class="fas fa-check"></i>Screen sharing</li>
+                                        <li><i class="fas fa-check"></i>File sharing</li>
+                                        <li><i class="fas fa-check"></i>Priority routing</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-comment-dots me-2"></i>Start Chat
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="support-channel-card">
+                                <div class="channel-icon phone-support">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h4>Phone Support</h4>
+                                <p>Speak directly with our expert support team for complex issues.</p>
+                                <div class="channel-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i>Dedicated hotline</li>
+                                        <li><i class="fas fa-check"></i>Expert technicians</li>
+                                        <li><i class="fas fa-check"></i>Callback service</li>
+                                        <li><i class="fas fa-check"></i>Conference calls</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-phone me-2"></i>Call Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="support-channel-card">
+                                <div class="channel-icon video-support">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h4>Video Sessions</h4>
+                                <p>Face-to-face support sessions for personalized assistance.</p>
+                                <div class="channel-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i>One-on-one sessions</li>
+                                        <li><i class="fas fa-check"></i>Screen sharing</li>
+                                        <li><i class="fas fa-check"></i>Recording available</li>
+                                        <li><i class="fas fa-check"></i>Group training</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-calendar me-2"></i>Book Session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback & Improvement -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Continuous Feedback & Improvement</h2>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="feedback-card">
+                                <div class="feedback-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Performance Analytics</h4>
+                                <p>Track your progress with detailed analytics and insights into your business performance.</p>
+                                <div class="feedback-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <span>Monthly Performance Reports</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-target"></i>
+                                        <span>Goal Tracking & Milestones</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>Achievement Recognition</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="feedback-card">
+                                <div class="feedback-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <h4>Mentorship Program</h4>
+                                <p>Connect with experienced directors for guidance, advice, and strategic business insights.</p>
+                                <div class="feedback-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-handshake"></i>
+                                        <span>Dedicated Mentor Assignment</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-calendar-check"></i>
+                                        <span>Regular Check-in Sessions</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <span>Strategic Business Advice</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community & Resources -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Community & Learning Resources</h2>
+                    <div class="community-section">
+                        <div class="row g-4">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon slack">
+                                        <i class="fab fa-slack"></i>
+                                    </div>
+                                    <h5>Slack Community</h5>
+                                    <p>Join 500+ directors in our active community</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-circle text-success"></i>
+                                        124 online now
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon knowledge">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <h5>Knowledge Base</h5>
+                                    <p>Comprehensive guides and documentation</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-file-alt"></i>
+                                        200+ articles
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon webinars">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                    </div>
+                                    <h5>Weekly Webinars</h5>
+                                    <p>Live training sessions and Q&A</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-calendar"></i>
+                                        Every Tuesday 2PM
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon events">
+                                        <i class="fas fa-calendar-star"></i>
+                                    </div>
+                                    <h5>Networking Events</h5>
+                                    <p>Regular meetups and conferences</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Next: March 15
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Guarantee -->
+                <div class="my-5">
+                    <div class="success-guarantee-section">
+                        <div class="guarantee-content">
+                            <div class="guarantee-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Your Success is Guaranteed</h3>
+                            <p class="lead">We're committed to your long-term success. If you're not satisfied with our support within the first 90 days, we'll work with you until you are.</p>
+                            <div class="guarantee-features">
+                                <div class="guarantee-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>90-Day Success Guarantee</span>
+                                </div>
+                                <div class="guarantee-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Unlimited Support Access</span>
+                                </div>
+                                <div class="guarantee-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Personal Success Manager</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -864,66 +1951,6 @@
         Next Step <i class="fas fa-arrow-right ms-1"></i>
     </button>
 
-    <!-- Footer -->
-    <footer class="flint-footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-brand">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABfCAYAAACgCTpnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAeXSURBVHhe7Zx5TFRXFMbdYjfbdE2bmrRN0zbpYrolpmmb7ovaqm21da9VU2s1soggLlRbEUQFpaBWW0VcUNzQGtSCKGq1rhgsGqhINCMqKqAosg6ncx53cJicmTf3vfveu2Pml3x/wNx37uXjLffce960gQA+EzCLg4BZHLSYVbznX9g6dUVAbqq/WcsccjHrr+g0CGrTLSA3VZdXMYcCZqkqYBaHAmZxKGAWh0izsmLWkI2nPTUU5n88EcZ3+oL8/HZXdcV15pDrmTVjNdkYNfmxAbAjbi0UZh2FzJ+WQ/wbIWS721HcZjk18ZF+kD0zHepu1EBtVTXkb9wH6T8mwS/PDCPb3w6i71k+mOVU5IN9Yfv0NMUwJxVny2DfokxY0jda+Zw6zh/FZdaE+/uQv0eF3/cVZEalws2rN1iUW5w5WKjETHw3nDzWX8RlVm7iJpj65LfkZ06haVsmpbQK7EpddS2cyDwEG0J+g5gXR5IxZBWXWb++FwHXL1VC3Mujyc9dNf6e3rAp/A9H+6ssKk1VWSUcTM2G5YNnweRH+5OxZBH3Pas0v8RxdtTAwm5TyM/dFXZXL+UsqrpYwaJ7B+PnzFkPCz6drBxLxbRK3GYt6x+rtLHb7bBqWALZhlLoHT1h3ZhkuHa+XDneFxrr6qEo5xj8GbkUZr02BoLa0rHNEm2Wlxl8cNvuUHnuMmvJJrAcf0Rox89hzchE5YnJCw726JpcSBsxF6Y+MYSMb6S4zUKtD1rIWjaTt3YPhHT4jGzrSSEdejjOzHi4UnKBReGnrMgGu5M2w+Je05QHC9WPSGkyK+zOXlDjMq9CTuXmQ3inL8n23hTcvodyc790qpRF0oa90Q6n/y5QFunmvhmq/DOo/vRIk1kovPzcOV9wBqI6Dybbqym4XXflflhWaGPR9KFkFRn7YO3oZJj+7HCyT15pNmuSI91pcNyA3bl2oRxiXtAxf3Lc/5b0mQ6lx0tYRDFU2i7D/t+3Qco3MyDyoa/pvlWk2SzUP0u2syNag5do8oeR5DE8wnuRLa+YRRVHk+NJfvZwkXJ1JL0foTx0qP7dpcus6OdGQFNTEzuqNfbGRkgdGEcex6uF3acof5xR4EbEyW2HIWPcIoh96QdyDCjSrKzYdLIxpRNbD7GjaDBfpI7TIpyont5bwCIbB2YVh5bvgPVjF8C8t8Mg/N7mB5cr3GcWCk9jNfByDW4n7umECTlOVq1Ek1moc44URY3C7DxH+tKbPF6r5r41Dk5uP8J6MBfNZjlTIDVsx4odyfIAMoYezekaBAVbDrBezEGzWe4pkDcqbZeUBwMVR6/iXh2jrNiagWazULiy4Cu4QJhg4Np9bJdRkJe+2+OTWgS6zKJSIG801NbB0r7RZCxRmvH893Bk1U5lXiUaXWahcMrBCy4QUrFECtOdg8uylfxRFLrNwhSosaGRRfGdvQu2KPc9KqZI/fz0d0rKY9cwRnd0m4U6kJLFovCBk9txd/QkY4oWroXhP6ixvoH1zo8Qs/BJpxVMaSIfMG/rLKrzIGUTpr6mjo3Ad4SYhcI8SyuXi0sdl4u5G7W4y47r/q7FamoIMyvpgwkskjZuOBLW2a+PJWMbKdxlx4cU7rKrIcwslC8pkDfw0sAlGiq20aJ22d0RalbqwJksmnZwUpk+KomMb4ZwBx6LX25W3ioIcdJilqeSI15dLb3CIuojZ/Y6Mr5ZCru7N2SELWajaUbomYXCxTRR4A5SaEdzphaepGulVE28KZAaJftPQoQJW16eZKhZKCx8E8nFQptjUum9OMUoGW6W1hTIG74Wp4iW4WahsEpGNFicImIHiUemmKUnBfIG7iDxFKfolSlmoYxcK8cJJNWnaJlmVvJHkSy6MRxemcNdnMIr08xC6U2B1NBanOKrTDULq2WMBotTjNhBQplqVkj7Hj7vAukBd5B0Fad4kKlmodxzLKPAzCHxHbGl5KabhfcUkSmQN3DZWFRxCsp0s1C4imAmWJdPjYNXlpgV9fgg4SmQGkpxis4dJEvMQmFJj9ngDpKe4hTLzJrZZRTrzVywOGXiw/3IManJMrNQ+M6iFZSfuaipOMVSs+Z/Mon1aD5ailMsNQtldArkDSxO4dlBstysFUOMT4G8gTtIG0MXkWNzl+VmmZUCqYG1D9T4XGW5WSgsO5KB45v2e91BksIsM1MgNXAHyVNxCmmWqE1WHu2M38B6tx586Yp634f+qgKTzyyUFSmQN6orqiC+a3CrMUpzZqGOpO1iI5CHlH4xLeNzrXm4ZRbH6ygiFffKaDYCucDikFXDE9hPzVh6GTpVtMPa10x8RQqz8GUmf0AKs1BYzyA70pi1cugcNhJ5kcYsTIHwnT+ZkcYs1OYIOVIgT0hlFqZAdRyl1mYjlVmonQkb2YjkQzqzMAXC77yREenMQsmYAiFSmmXVLpAaUpqFsvpNewppzcIvwZANac1CyZYCSW0WfteWTEhtlmwpkNRmofC7/2RBerNkSoGkNwuVOy+DjdJa/MIsWVIgvzALdXR1LhupdfiNWTKkQH5jFuq/XflstNbQYhZ+Oy0ORmZdOX2ejdYaWswKoE7ALJ8B+B9vqWUspipioQAAAABJRU5ErkJggg==" alt="Flint Logo" class="footer-logo">
-                        <h5>Flint Directors Portal</h5>
-                        <p>Build your business. Backed by Flint.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="footer-title">Quick Links</h6>
-                    <ul class="footer-links">
-                        <li><a href="javascript:void(0)" onclick="navigateToSection('landing')">Dashboard</a></li>
-                        <li><a href="javascript:void(0)" onclick="navigateToSection('step1')">Getting Started</a></li>
-                        <li><a href="javascript:void(0)" onclick="showFaqModal()">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="footer-title">Resources</h6>
-                    <ul class="footer-links">
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Training Videos</a></li>
-                        <li><a href="#">Templates</a></li>
-                        <li><a href="#">Best Practices</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <h6 class="footer-title">Contact</h6>
-                    <div class="footer-contact">
-                        <p><i class="fas fa-envelope"></i>support@flint.com.au</p>
-                        <p><i class="fas fa-phone"></i>1300 354 686</p>
-                        <p><i class="fas fa-map-marker-alt"></i>Sydney, Australia</p>
-                    </div>
-                    <div class="footer-social">
-                        <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="footer-divider">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="footer-copyright">&copy; 2025 Flint Group. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="footer-legal">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Cookie Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <!-- Modals -->
     <!-- Video Modal -->
     <div class="modal fade" id="videoModal" tabindex="-1">
@@ -941,6 +1968,206 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer-enhanced">
+        <div class="footer-background">
+            <div class="footer-pattern"></div>
+        </div>
+        <div class="container">
+            <!-- Footer Main Content -->
+            <div class="footer-main">
+                <div class="row">
+                    <!-- Brand Section -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="footer-brand-enhanced">
+                            <div class="brand-logo-wrapper">
+                                <img src="icon.PNG" alt="Flint Logo" class="footer-logo-enhanced">
+                                <div class="brand-text">
+                                    <h5>Flint Directors Portal</h5>
+                                    <span class="brand-tagline">Build Your Future. Backed by Excellence.</span>
+                                </div>
+                            </div>
+                            <p class="brand-description">
+                                Australia's #1 independent mortgage brokerage empowering directors 
+                                with cutting-edge technology, comprehensive support, and unmatched opportunities.
+                            </p>
+                            <div class="footer-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">500+</span>
+                                    <span class="stat-label">Directors</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">$2B+</span>
+                                    <span class="stat-label">Settled</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">4.9★</span>
+                                    <span class="stat-label">Rating</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Navigation -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-compass me-2"></i>Navigation
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="javascript:void(0)" onclick="navigateToSection('landing')">
+                                    <i class="fas fa-home me-2"></i>Dashboard
+                                </a></li>
+                                <li><a href="javascript:void(0)" onclick="navigateToSection('step1')">
+                                    <i class="fas fa-play me-2"></i>Getting Started
+                                </a></li>
+                                <li><a href="#" onclick="showFaqModal()">
+                                    <i class="fas fa-question me-2"></i>FAQ
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-headset me-2"></i>Support
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Resources -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-book me-2"></i>Resources
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#">
+                                    <i class="fas fa-file-alt me-2"></i>Documentation
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-video me-2"></i>Training Videos
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-download me-2"></i>Templates
+                                    <span class="link-badge new">New</span>
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-tools me-2"></i>Calculators
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Community & Support -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-users me-2"></i>Community
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#">
+                                    <i class="fab fa-slack me-2"></i>Slack Channel
+                                    <span class="link-indicator online"></span>
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-calendar me-2"></i>Events
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-graduation-cap me-2"></i>Training
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-trophy me-2"></i>Leaderboard
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact & Connect -->
+                    <div class="col-lg-2 col-md-12 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-phone me-2"></i>Contact
+                            </h6>
+                            <div class="contact-info-enhanced">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Email</span>
+                                        <a href="mailto:support@flint.com.au">support@flint.com.au</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Phone</span>
+                                        <a href="tel:1300354686">1300 354 686</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Location</span>
+                                        <span>Sydney, Australia</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Social Media Enhanced -->
+                            <div class="social-media-enhanced">
+                                <h6 class="social-title">Follow Us</h6>
+                                <div class="social-links-enhanced">
+                                    <a href="#" class="social-link-enhanced linkedin" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced twitter" title="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced facebook" title="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced instagram" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced youtube" title="YouTube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-divider-enhanced"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="copyright-enhanced">
+                            <p>&copy; 2025 Flint Group. All rights reserved.</p>
+                            <div class="company-info">
+                                <span>ACN: 123 456 789</span>
+                                <span>Australian Credit Licence: 987654</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-legal-enhanced">
+                            <a href="#privacy">Privacy Policy</a>
+                            <a href="#terms">Terms of Service</a>
+                            <a href="#cookies">Cookie Policy</a>
+                            <a href="#accessibility">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     </div>
 
     <!-- FAQ Modal -->
