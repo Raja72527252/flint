@@ -743,6 +743,188 @@ i, .fas, .far, .fab, .fal, .fad {
     display: block !important;
 }
 
+/* Enhanced Video Section */
+.video-section-enhanced {
+    margin-bottom: 3rem;
+}
+
+.video-placeholder-enhanced {
+    position: relative;
+    background: var(--step-white);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-placeholder-enhanced:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.video-thumbnail {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.video-placeholder-enhanced:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(25, 60, 109, 0.7), rgba(91, 160, 212, 0.7));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.video-placeholder-enhanced:hover .video-overlay {
+    opacity: 0.95;
+}
+
+.play-button-large {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.play-button-large i {
+    font-size: 2rem !important;
+    color: var(--step-primary) !important;
+    margin-left: 4px; /* Align play icon properly */
+}
+
+.video-placeholder-enhanced:hover .play-button-large {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.video-content {
+    padding: 2rem;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.video-content h3 {
+    color: var(--step-primary) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+}
+
+.video-content p {
+    color: var(--step-text-secondary) !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.video-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: auto;
+}
+
+.video-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--step-text-secondary) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+}
+
+.video-stats i {
+    color: var(--step-accent) !important;
+    font-size: 0.875rem !important;
+}
+
+/* Responsive Video Section */
+@media (max-width: 768px) {
+    .video-placeholder-enhanced {
+        min-height: 320px;
+    }
+    
+    .video-thumbnail {
+        height: 200px;
+    }
+    
+    .video-content {
+        padding: 1.5rem;
+    }
+    
+    .video-content h3 {
+        font-size: 1.25rem !important;
+    }
+    
+    .play-button-large {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .play-button-large i {
+        font-size: 1.5rem !important;
+    }
+    
+    .video-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-placeholder-enhanced {
+        min-height: 280px;
+    }
+    
+    .video-thumbnail {
+        height: 160px;
+    }
+    
+    .video-content {
+        padding: 1rem;
+    }
+    
+    .video-content h3 {
+        font-size: 1.125rem !important;
+    }
+    
+    .video-content p {
+        font-size: 0.875rem !important;
+    }
+}
+
 /* Values grid icons */
 .step-white-bg #valuesGrid .card i, .step-white-bg #valuesGrid .card .fas {
     font-size: 2.5rem !important;
@@ -6206,25 +6388,35 @@ i[class*="fa-"],
 
 /* Video Player */
 .hero-video {
-  flex: 0 0 300px;
+  flex: 0 0 400px;
+  margin-left: 2rem;
 }
 
 .video-player {
   position: relative;
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(25, 60, 109, 0.15);
+  border: 2px solid transparent;
 }
 
 .video-player:hover {
-  transform: scale(1.02);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(25, 60, 109, 0.2);
+  border-color: var(--color-accent-sky-blue);
 }
 
 .video-thumbnail {
   width: 100%;
-  height: 200px;
+  height: 280px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.video-player:hover .video-thumbnail {
+  transform: scale(1.05);
 }
 
 .play-overlay {
@@ -6233,27 +6425,59 @@ i[class*="fa-"],
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-player:hover .play-overlay {
+  opacity: 1;
 }
 
 .play-button {
-  width: 60px;
-  height: 60px;
-  background: var(--color-accent-coral);
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-accent-coral), #ff6b6b);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary-burgundy);
-  font-size: 1.5rem;
+  color: white;
+  font-size: 2rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(255, 107, 107, 0.3);
+  position: relative;
+}
+
+.play-button::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
 }
 
 .play-button:hover {
   transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(255, 107, 107, 0.4);
 }
 
 .video-caption {
@@ -6261,9 +6485,23 @@ i[class*="fa-"],
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   color: white;
-  padding: 1.5rem 1rem 1rem;
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.video-caption strong {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.video-caption small {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 400;
 }
 
 /* Progress Overview */
@@ -6564,7 +6802,18 @@ i[class*="fa-"],
   .hero-video {
     flex: none;
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
+    margin: 2rem auto 0;
+  }
+  
+  .video-thumbnail {
+    height: 220px;
+  }
+  
+  .play-button {
+    width: 70px;
+    height: 70px;
+    font-size: 1.8rem;
   }
   
   .steps-grid {
@@ -7659,13 +7908,7 @@ i[class*="fa-"],
   font-size: 1rem;
 }
 
-.progress-ring {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  top: 0;
-  left: 0;
-}
+
 
 .progress-ring svg {
   width: 100%;
@@ -7954,7 +8197,6 @@ i[class*="fa-"],
 }
 
 .link-indicator {
-  position: absolute;
   top: -1px;
   right: -1px;
   width: 10px;
@@ -9743,13 +9985,44 @@ i[class*="fa-"],
 
 .progress-circle-compact .progress-ring-circle {
     fill: none;
-    stroke: #ff6b35;
+    stroke: url(#progressGradient);
     stroke-width: 6;
     stroke-linecap: round;
     stroke-dasharray: 157;
-    stroke-dashoffset: 89.5; /* 43% progress */
+    stroke-dashoffset: 157; /* Start from 0% */
     transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: progressFill 2s ease-out;
+    animation: progressPulse 2s ease-out;
+}
+
+/* Enhanced Progress Animations */
+@keyframes progressPulse {
+    0% {
+        stroke-width: 6;
+        opacity: 0.8;
+    }
+    50% {
+        stroke-width: 8;
+        opacity: 1;
+    }
+    100% {
+        stroke-width: 6;
+        opacity: 1;
+    }
+}
+
+@keyframes pointsEarned {
+    0% {
+        transform: scale(1);
+        color: var(--color-text-secondary);
+    }
+    50% {
+        transform: scale(1.2);
+        color: #36d399;
+    }
+    100% {
+        transform: scale(1);
+        color: #36d399;
+    }
 }
 
 .progress-circle-compact .progress-text {
@@ -10108,6 +10381,76 @@ i[class*="fa-"],
     background: linear-gradient(135deg, #dcfce7, #bbf7d0);
     color: #166534;
     border: 1px solid #bbf7d0;
+    animation: pointsEarned 1s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.journey-card .points.earned::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: shine 2s ease-out;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Points Counter Animation */
+.stat-number {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-number.updating {
+    animation: countUp 1s ease-out;
+}
+
+@keyframes countUp {
+    0% {
+        transform: scale(1);
+        color: inherit;
+    }
+    50% {
+        transform: scale(1.2);
+        color: #36d399;
+    }
+    100% {
+        transform: scale(1);
+        color: #36d399;
+    }
+}
+
+/* Progress Ring Gradient */
+.progress-ring defs {
+    display: none;
+}
+
+.progress-circle-compact .progress-ring {
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.2));
+}
+
+.progress-circle-compact .progress-ring::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: conic-gradient(from 0deg, #ff6b35, #36d399, #5ba0d4, #ff6b35);
+    border-radius: 50%;
+    padding: 3px;
+    z-index: -1;
 }
 
 .journey-card .points.earning {
@@ -11880,4 +12223,10 @@ i, .fas, .far, .fab, .fal, .fad {
 .value-card:hover .value-icon {
 	background: #4D003245 !important;
 	color: var(--color-background-white) !important;
+}
+i, .fas, .far, .fab, .fal, .fad {
+	color: #C4A953 !important;
+}
+.journey-card .step-icon.pending {
+	color: #020202 ;
 }

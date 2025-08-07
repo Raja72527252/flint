@@ -164,6 +164,117 @@ const appData = {
 let currentSection = 'landing';
 let completedSteps = new Set();
 
+// Journey Progress System - Total 100 Points
+const journeyProgress = {
+  stepPoints: {
+    1: 10,  // Welcome & Introduction
+    2: 25,  // Legal & Ownership
+    3: 20,  // Financial Setup & Revenue
+    4: 15,  // Technology & Tools
+    5: 10,  // Branding & Marketing
+    6: 10,  // Operations & Compliance
+    7: 10   // Launch Preparation
+  },
+  
+  // Calculate total earned points
+  getTotalPoints() {
+    let total = 0;
+    completedSteps.forEach(step => {
+      total += this.stepPoints[step] || 0;
+    });
+    return total;
+  },
+  
+  // Calculate overall percentage
+  getOverallPercentage() {
+    return Math.round((this.getTotalPoints() / 100) * 100);
+  },
+  
+  // Get step completion status
+  getStepStatus(stepNumber) {
+    if (completedSteps.has(stepNumber)) {
+      return 'completed';
+    } else if (stepNumber === this.getCurrentStep()) {
+      return 'current';
+    } else {
+      return 'pending';
+    }
+  },
+  
+  // Get current step (next incomplete step)
+  getCurrentStep() {
+    for (let i = 1; i <= 7; i++) {
+      if (!completedSteps.has(i)) {
+        return i;
+      }
+    }
+    return 7; // All completed
+  },
+  
+  // Update progress display
+  updateDisplay() {
+    const totalPoints = this.getTotalPoints();
+    const percentage = this.getOverallPercentage();
+    
+    // Update main progress circle
+    $('.progress-percentage').text(`${percentage}%`);
+    
+    // Update progress ring visual
+    const circle = document.querySelector('.progress-ring-circle');
+    if (circle) {
+      const circumference = 2 * Math.PI * 25; // radius is 25
+      const strokeDasharray = `${(percentage / 100) * circumference} ${circumference}`;
+      circle.style.strokeDasharray = strokeDasharray;
+    }
+    
+    // Update stats
+    $('.stat-number').first().text(totalPoints);
+    $('.stat-label').first().text('Points Earned');
+    
+    // Update individual step cards
+    this.updateStepCards();
+  },
+  
+  // Update step cards based on completion status
+  updateStepCards() {
+    for (let stepNum = 1; stepNum <= 7; stepNum++) {
+      const card = $(`.journey-card[onclick*="step${stepNum}"]`);
+      const status = this.getStepStatus(stepNum);
+      
+      // Remove all status classes
+      card.removeClass('completed current pending');
+      
+      // Add current status class
+      card.addClass(status);
+      
+      // Update step icon
+      const stepIcon = card.find('.step-icon');
+      stepIcon.removeClass('completed current pending').addClass(status);
+      
+      // Update status badge
+      const statusBadge = card.find('.status-badge');
+      const pointsSpan = card.find('.points');
+      
+      if (status === 'completed') {
+        statusBadge.html('<i class="fas fa-trophy"></i> Completed');
+        statusBadge.removeClass('current pending').addClass('completed');
+        pointsSpan.removeClass('earning available').addClass('earned');
+        pointsSpan.text(`+${this.stepPoints[stepNum]} pts`);
+      } else if (status === 'current') {
+        statusBadge.html('<i class="fas fa-play"></i> In Progress');
+        statusBadge.removeClass('completed pending').addClass('current');
+        pointsSpan.removeClass('earned available').addClass('earning');
+        pointsSpan.text(`0/${this.stepPoints[stepNum]} pts`);
+      } else {
+        statusBadge.html('<i class="fas fa-lock"></i> Locked');
+        statusBadge.removeClass('completed current').addClass('pending');
+        pointsSpan.removeClass('earned earning').addClass('available');
+        pointsSpan.text(`${this.stepPoints[stepNum]} pts`);
+      }
+    }
+  }
+};
+
 // Initialize when DOM is ready
 $(document).ready(function() {
     console.log('Initializing Flint Directors Portal...');
@@ -177,8 +288,8 @@ $(document).ready(function() {
     // Setup dark mode
     setupDarkMode();
     
-    // Update progress display
-    updateProgressDisplay();
+    // Update progress display using new journey progress system
+    journeyProgress.updateDisplay();
     
     // Setup mobile navigation
     updateMobileNextButton();
@@ -225,18 +336,31 @@ function completeStep(stepNumber) {
     // Save progress
     saveProgress();
     
-    // Update displays
-    updateProgressDisplay();
-    generateOnboardingSteps();
+    // Update displays using new journey progress system
+    journeyProgress.updateDisplay();
     
-    // Show completion notification
-    showNotification(`Step ${stepNumber} completed!`, 'success');
+    // Show completion notification with points earned
+    const pointsEarned = journeyProgress.stepPoints[stepNumber] || 0;
+    showNotification(`Step ${stepNumber} completed! +${pointsEarned} points earned`, 'success');
+    
+    // Check if all steps completed
+    if (completedSteps.size === 7) {
+        setTimeout(() => {
+            showCompletionModal();
+        }, 1500);
+    }
 }
 
 // Show Video Modal
 function showVideoModal() {
     console.log('Showing video modal');
     $('#videoModal').modal('show');
+}
+
+// Open YouTube Video in new tab
+function openYouTubeVideo(videoId) {
+    const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    window.open(youtubeUrl, '_blank');
 }
 
 // Show FAQ Modal
