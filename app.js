@@ -31,7 +31,7 @@ const appData = {
     {
       "title": "Growth",
       "description": "Continuous learning and development for lasting success",
-      "icon": "fa-chart-line-up"
+      "icon": "fa-chart-line"
     }
   ],
   "tech_stack": [
@@ -66,43 +66,50 @@ const appData = {
       "step": 1,
       "title": "Welcome & Introduction",
       "description": "Learn about Flint's mission, values, and unique business model",
-      "estimated_time": "30 minutes"
+      "estimated_time": "30 minutes",
+      "icon": "fa-play-circle"
     },
     {
       "step": 2, 
       "title": "Legal & Compliance Setup",
       "description": "Complete legal requirements, ABN setup, and compliance documentation",
-      "estimated_time": "45 minutes"
+      "estimated_time": "45 minutes",
+      "icon": "fa-gavel"
     },
     {
       "step": 3,
       "title": "Accounting & Financial Orientation", 
       "description": "Set up accounting systems, understand revenue flows and financial planning",
-      "estimated_time": "60 minutes"
+      "estimated_time": "60 minutes",
+      "icon": "fa-calculator"
     },
     {
       "step": 4,
       "title": "Operational Training",
       "description": "Master Flint's technology stack and operational processes",
-      "estimated_time": "90 minutes"
+      "estimated_time": "90 minutes",
+      "icon": "fa-cogs"
     },
     {
       "step": 5,
       "title": "Branding & Marketing Launch",
       "description": "Develop personal brand and launch marketing campaigns",
-      "estimated_time": "75 minutes"
+      "estimated_time": "75 minutes",
+      "icon": "fa-bullhorn"
     },
     {
       "step": 6,
       "title": "Partnership & Growth Strategy",
       "description": "Build strategic partnerships and develop growth plans",
-      "estimated_time": "60 minutes"
+      "estimated_time": "60 minutes",
+      "icon": "fa-handshake"
     },
     {
       "step": 7,
       "title": "Continuous Support & Feedback",
       "description": "Access ongoing support and feedback mechanisms", 
-      "estimated_time": "30 minutes"
+      "estimated_time": "30 minutes",
+      "icon": "fa-headset"
     }
   ],
   "testimonials": [
@@ -283,7 +290,9 @@ function generateOnboardingSteps() {
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="step-card" onclick="navigateToSection('step${step.step}')">
                     <div class="step-card-header">
-                        <div class="step-number">${step.step}</div>
+                        <div class="step-number">
+                            <i class="fas ${step.icon || 'fa-circle'}"></i>
+                        </div>
                         <div>
                             <h4>${step.title}</h4>
                             <p class="lead">${step.description}</p>
