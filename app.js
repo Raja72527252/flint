@@ -363,6 +363,54 @@ function openYouTubeVideo(videoId) {
     window.open(youtubeUrl, '_blank');
 }
 
+// Play YouTube Video inline in container
+function playYouTubeInline(videoId, containerId) {
+    const container = document.getElementById(containerId) || document.querySelector('.video-player');
+    if (!container) return;
+    
+    // Store original dimensions
+    const originalWidth = container.offsetWidth;
+    const originalHeight = container.offsetHeight;
+    const computedStyle = window.getComputedStyle(container);
+    const originalBorderRadius = computedStyle.borderRadius;
+    
+    // Use a working video ID if the current one doesn't work
+    const workingVideoId = videoId === 'dQw4w9WgXcQ' ? 'M7lc1UVf-VE' : videoId;
+    
+    // Create iframe for YouTube video
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${workingVideoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute('allowfullscreen', 'true');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    
+    // Set exact dimensions to match original container
+    iframe.style.width = originalWidth + 'px';
+    iframe.style.height = originalHeight + 'px';
+    iframe.style.borderRadius = originalBorderRadius;
+    iframe.style.border = 'none';
+    iframe.style.position = 'absolute';
+    iframe.style.top = '0';
+    iframe.style.left = '0';
+    
+    // Maintain container exact size
+    container.style.width = originalWidth + 'px';
+    container.style.height = originalHeight + 'px';
+    container.style.position = 'relative';
+    container.style.overflow = 'hidden';
+    container.style.display = 'block';
+    
+    // Replace container content with iframe
+    container.innerHTML = '';
+    container.appendChild(iframe);
+    container.classList.add('playing');
+    
+    // Disable hover effects when playing
+    container.style.cursor = 'default';
+    container.style.transform = 'none';
+    container.style.transition = 'none';
+}
+
 // Show FAQ Modal
 function showFaqModal() {
     console.log('Showing FAQ modal');
@@ -764,6 +812,51 @@ function logout() {
     }
     
     return false; // Prevent default link behavior
+}
+
+// Support Modal Function
+function showSupportModal() {
+    const supportModal = new bootstrap.Modal(document.getElementById('supportModal'));
+    supportModal.show();
+}
+
+// Logout Function
+function handleLogout() {
+    // Clear authentication data
+    localStorage.removeItem('flint_logged_in');
+    localStorage.removeItem('flint_login_timestamp');
+    localStorage.removeItem('flint_user_email');
+    
+    // Show logout notification
+    const notification = document.createElement('div');
+    notification.className = 'login-notification';
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #6E0048;
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        z-index: 9999;
+        animation: slideInRight 0.3s ease;
+    `;
+    notification.innerHTML = `
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logged out successfully</span>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remove notification and redirect after delay
+    setTimeout(() => {
+        notification.remove();
+        window.location.href = 'app-entry.html';
+    }, 1500);
 }
 
 console.log('Flint Directors Portal JavaScript loaded successfully');

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Navigation Demo - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .demo-content {
+            padding: 100px 20px 50px;
+            text-align: center;
+        }
+        .demo-card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1000px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .icon-demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .icon-demo-item {
+            background: #FFF3E9CC;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(77, 0, 50, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .icon-demo-item:hover {
+            border-color: #FFAF9C;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 175, 156, 0.2);
+        }
+        .icon-demo-item i {
+            font-size: 2rem;
+            color: rgba(77, 0, 50, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .icon-demo-item:hover i {
+            color: #FFAF9C !important;
+            transform: scale(1.2);
+        }
+        .color-swatch {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+        .feature-highlight {
+            background: linear-gradient(135deg, #4D0032, rgba(77, 0, 50, 0.9));
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .animation-demo {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Navigation with Resources -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Your Onboarding Journey</span>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navigation Menu with Resources -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-tasks me-1"></i>Steps
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#step1">
+                                <i class="fas fa-play-circle me-2"></i>Step 1: Welcome & Introduction
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step2">
+                                <i class="fas fa-gavel me-2"></i>Step 2: Legal & Compliance
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step3">
+                                <i class="fas fa-calculator me-2"></i>Step 3: Financial Orientation
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step4">
+                                <i class="fas fa-cogs me-2"></i>Step 4: Operational Training
+                            </a></li>
+                        </ul>
+                    </li>
+                    <!-- NEW Resources Navigation -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-folder-open me-1"></i>Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="resources.html">
+                                <i class="fas fa-file-pdf me-2"></i>Documents & Forms
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#videos">
+                                <i class="fas fa-video me-2"></i>Training Videos
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#knowledge">
+                                <i class="fas fa-book me-2"></i>Knowledge Base
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#downloads">
+                                <i class="fas fa-download me-2"></i>Downloads
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="resources.html#external">
+                                <i class="fas fa-external-link-alt me-2"></i>External Resources
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-headset me-1"></i>Support
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Side Elements -->
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Progress Indicator (Hidden on mobile) -->
+                    <div class="progress-indicator d-none d-lg-flex flex-column me-3">
+                        <span class="progress-text">Welcome back, John</span>
+                        <span class="progress-steps">2 of 5 steps completed</span>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="nav-item dropdown me-2">
+                        <a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">Notifications</li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle me-2"></i>Step 3 available</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-check-circle me-2"></i>Step 2 completed</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=4D0032&color=FFFFFF&bold=true&size=32" alt="John Doe" class="rounded-circle me-2">
+                            <span class="d-none d-lg-inline">John Doe</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=4D0032&color=FFFFFF&bold=true&size=40" alt="John Doe" class="rounded-circle me-2">
+                                    <div>
+                                        <strong>John Doe</strong><br>
+                                        <small class="text-muted">Director</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Help</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <div class="demo-card">
+            <h2>✨ Enhanced Navigation with Resources & Icon Hover Effects</h2>
+            <p class="lead">Resources navigation added with beautiful hover animations for all icons</p>
+            
+            <!-- Feature Highlights -->
+            <div class="feature-highlight">
+                <h4><i class="fas fa-plus-circle me-2"></i>New Features Added</h4>
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>✅ <strong>Resources navigation item</strong> with dropdown menu</li>
+                            <li>✅ <strong>Separate Resources page</strong> with comprehensive content</li>
+                            <li>✅ <strong>Enhanced icon hover effects</strong> with animations</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>✅ <strong>Coral color (#FFAF9C)</strong> on hover</li>
+                            <li>✅ <strong>Unique animations</strong> for each navigation icon</li>
+                            <li>✅ <strong>Smooth transitions</strong> and scale effects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Hover Demo -->
+            <div class="animation-demo">
+                <h4>🎯 Icon Hover Effects Demo</h4>
+                <p class="text-muted">Hover over each icon to see the enhanced animations</p>
+                
+                <div class="icon-demo-grid">
+                    <div class="icon-demo-item">
+                        <i class="fas fa-home mb-2"></i>
+                        <h6>Dashboard</h6>
+                        <small>Scale + bounce animation</small>
+                    </div>
+                    <div class="icon-demo-item">
+                        <i class="fas fa-tasks mb-2"></i>
+                        <h6>Steps</h6>
+                        <small>Scale + rotate animation</small>
+                    </div>
+                    <div class="icon-demo-item">
+                        <i class="fas fa-folder-open mb-2"></i>
+                        <h6>Resources</h6>
+                        <small>Scale + rotate + lift animation</small>
+                    </div>
+                    <div class="icon-demo-item">
+                        <i class="fas fa-question-circle mb-2"></i>
+                        <h6>FAQ</h6>
+                        <small>Scale + wiggle animation</small>
+                    </div>
+                    <div class="icon-demo-item">
+                        <i class="fas fa-headset mb-2"></i>
+                        <h6>Support</h6>
+                        <small>Scale + shake animation</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Scheme -->
+            <div class="mt-4 p-3 bg-light rounded">
+                <h5>🎨 Navigation Icon Color Scheme</h5>
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <h6>Default State:</h6>
+                        <div class="mb-2">
+                            <span class="color-swatch" style="background: rgba(77, 0, 50, 0.8);"></span>
+                            <code>rgba(77, 0, 50, 0.8)</code> - Burgundy (80% opacity)
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Hover State:</h6>
+                        <div class="mb-2">
+                            <span class="color-swatch" style="background: #FFAF9C;"></span>
+                            <code>#FFAF9C</code> - Coral (Brand accent color)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources Page Link -->
+            <div class="mt-4">
+                <h5>📁 Resources Page</h5>
+                <p>Complete resources page created with sections for:</p>
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>📄 <strong>Documents & Forms</strong> - Templates, contracts, forms</li>
+                            <li>🎥 <strong>Training Videos</strong> - Step-by-step tutorials</li>
+                            <li>📚 <strong>Knowledge Base</strong> - Guides and best practices</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>⬇️ <strong>Downloads</strong> - Tools, templates, software</li>
+                            <li>🔗 <strong>External Resources</strong> - Partner links and references</li>
+                            <li>🎯 <strong>Quick Navigation</strong> - Easy access to all sections</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-3">
+                    <a href="resources.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-folder-open me-2"></i>Visit Resources Page
+                    </a>
+                </div>
+            </div>
+
+            <!-- Implementation Summary -->
+            <div class="alert alert-success mt-4" role="alert">
+                <h6 class="alert-heading">🎉 Implementation Complete!</h6>
+                <ul class="mb-0 text-start">
+                    <li>✅ Resources navigation item added to header menu</li>
+                    <li>✅ Complete resources.html page created with all sections</li>
+                    <li>✅ Enhanced icon hover effects with coral color (#FFAF9C)</li>
+                    <li>✅ Unique animations for each navigation icon</li>
+                    <li>✅ Smooth transitions and scaling effects</li>
+                    <li>✅ Responsive design maintained across all devices</li>
+                </ul>
+            </div>
+
+            <!-- Technical Details -->
+            <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+                <h6>🔧 Technical Implementation:</h6>
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <strong>Files Modified:</strong>
+                        <ul>
+                            <li><code>index.html</code> - Added Resources navigation</li>
+                            <li><code>resources.html</code> - New comprehensive page</li>
+                            <li><code>style.css</code> - Enhanced icon hover effects</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Features Added:</strong>
+                        <ul>
+                            <li>CSS animations with @keyframes</li>
+                            <li>Transform effects (scale, rotate, translate)</li>
+                            <li>Smooth transitions with cubic-bezier curves</li>
+                            <li>Text-shadow effects for enhanced visibility</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

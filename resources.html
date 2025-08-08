@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="flint-style.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Mobile Navigation Fix -->
+    <style>
+        @media (max-width: 768px) {
+            /* Ensure mobile navbar toggler is visible */
+            .navbar-toggler {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                border: 2px solid #4D0032 !important;
+                background-color: rgba(77, 0, 50, 0.1) !important;
+                padding: 8px 10px !important;
+                border-radius: 8px !important;
+                position: relative !important;
+            }
+            
+            /* Font Awesome hamburger and close icons */
+            .navbar-toggler .hamburger-icon,
+            .navbar-toggler .close-icon {
+                font-size: 18px !important;
+                color: #4D0032 !important;
+                transition: all 0.3s ease !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+            
+            /* Initially show hamburger, hide close */
+            .navbar-toggler .hamburger-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            .navbar-toggler .close-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            /* When menu is open, show close icon, hide hamburger */
+            .navbar-toggler[aria-expanded="true"] .hamburger-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            .navbar-toggler[aria-expanded="true"] .close-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            /* Hide default bootstrap toggler icon */
+            .navbar-toggler .navbar-toggler-icon {
+                display: none !important;
+            }
+            
+            /* Fix brand title visibility */
+            .brand-title {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Ensure navbar collapse is HIDDEN by default on mobile */
+            .navbar-collapse {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: all 0.3s ease !important;
+                background-color: rgba(255, 243, 233, 0.98) !important;
+                border-radius: 0 0 15px 15px !important;
+                margin-top: 10px !important;
+                padding: 20px !important;
+                box-shadow: 0 4px 20px rgba(77, 0, 50, 0.2) !important;
+            }
+            
+            /* Show navbar collapse only when .show class is added */
+            .navbar-collapse.show {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Fix navbar collapse transition */
+            .navbar-collapse.collapsing {
+                opacity: 0.5 !important;
+                display: block !important;
+            }
+            
+            /* Fix navigation menu visibility */
+            .navbar-nav .nav-link {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                font-weight: 500 !important;
+                display: flex !important;
+                align-items: center !important;
+                padding: 12px 16px !important;
+                margin-bottom: 8px !important;
+                background-color: rgba(77, 0, 50, 0.05) !important;
+                border-radius: 8px !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .navbar-nav .nav-link i {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                margin-right: 8px !important;
+                display: inline-block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Fix dropdown menu visibility */
+            .navbar-nav .dropdown-menu {
+                background-color: rgba(255, 243, 233, 0.95) !important;
+                border: 1px solid rgba(77, 0, 50, 0.2) !important;
+                border-radius: 8px !important;
+                margin-top: 8px !important;
+            }
+            
+            .navbar-nav .dropdown-item {
+                color: #4D0032 !important;
+                font-size: 14px !important;
+                padding: 10px 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .navbar-nav .dropdown-item i {
+                color: #4D0032 !important;
+                margin-right: 8px !important;
+                font-size: 14px !important;
+            }
+            
+            /* Fix user profile section */
+            .navbar-nav.ms-auto .nav-link {
+                background-color: rgba(77, 0, 50, 0.1) !important;
+            }
+            
+            .user-display-name {
+                color: #4D0032 !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Notification and profile icons */
+            .navbar-nav .nav-link .fas {
+                color: #4D0032 !important;
+                font-size: 18px !important;
+            }
+            
+            /* Fix resource cards mobile visibility */
+            .resource-card {
+                margin-bottom: 20px !important;
+                padding: 20px !important;
+            }
+            
+            .resource-card h3 {
+                font-size: 1.5rem !important;
+                color: #4D0032 !important;
+            }
+            
+            .resource-card .text-muted {
+                color: #6E0048 !important;
+            }
+            
+            .resource-icon {
+                display: flex !important;
+                width: 60px !important;
+                height: 60px !important;
+                background: #4D0032 !important;
+                color: white !important;
+                font-size: 1.5rem !important;
+            }
+        }
+    </style>
+    
+    <!-- Mobile Menu Toggle Fix -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure hamburger menu works properly
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            // Make sure menu is closed initially on mobile
+            if (window.innerWidth <= 768) {
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+            }
+            
+            if (navbarToggler && navbarCollapse) {
+                // Remove any existing Bootstrap handlers and add custom handler
+                navbarToggler.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle the menu
+                    const isExpanded = navbarCollapse.classList.contains('show');
+                    
+                    if (isExpanded) {
+                        // Close menu
+                        navbarCollapse.classList.remove('show');
+                        navbarToggler.setAttribute('aria-expanded', 'false');
+                    } else {
+                        // Open menu
+                        navbarCollapse.classList.add('show');
+                        navbarToggler.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                
+                // Close menu when clicking nav links
+                const navLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            navbarCollapse.classList.remove('show');
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (window.innerWidth <= 768) {
+                        if (!navbarToggler.contains(event.target) && !navbarCollapse.contains(event.target)) {
+                            navbarCollapse.classList.remove('show');
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        navbarCollapse.classList.remove('show');
+                        navbarToggler.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Authentication Check Script -->
+    <script>
+        // Update user display with logged-in user info
+        function updateUserDisplay() {
+            const userEmail = localStorage.getItem('flint_user_email');
+            if (userEmail) {
+                // Extract name from email (before @ symbol)
+                const userName = userEmail.split('@')[0];
+                const displayName = userName.charAt(0).toUpperCase() + userName.slice(1);
+                
+                // Update user display elements
+                const userNameElements = document.querySelectorAll('.user-display-name');
+                
+                userNameElements.forEach(element => {
+                    element.textContent = displayName;
+                });
+                
+                // Update avatar URLs
+                const avatarElements = document.querySelectorAll('.user-avatar');
+                const newAvatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=4D0032&color=FFFFFF&bold=true&size=`;
+                
+                avatarElements.forEach(element => {
+                    const size = element.classList.contains('avatar-small') ? '32' : '40';
+                    element.src = newAvatarUrl + size;
+                    element.alt = displayName;
+                });
+            }
+        }
+        
+        // Run updateUserDisplay when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUserDisplay();
+        });
+    </script>
+    
+    <style>
+        /* Enhanced Resources Page Styling */
+        .hero-section-resources {
+            background: #FFF3E9CC;
+            color: #6E0048;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section-resources::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236E0048' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-section-resources h1 {
+            color: #6E0048 !important;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(110, 0, 72, 0.1);
+        }
+        
+        .hero-section-resources p {
+            color: #6E0048 !important;
+            font-size: 1.3rem;
+            opacity: 0.8;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(110, 0, 72, 0.15);
+            border: 1px solid rgba(110, 0, 72, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(110, 0, 72, 0.2);
+            border-color: #FFAF9C;
+        }
+        
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #6E0048, #4D0032);
+        }
+        
+        .resource-card h3 {
+            color: #6E0048 !important;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-card .text-muted {
+            color: #6E0048 !important;
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+        
+        .resource-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6E0048, #4D0032);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(110, 0, 72, 0.3);
+        }
+        
+        .resource-item {
+            background: rgba(110, 0, 72, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(110, 0, 72, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .resource-item:hover {
+            background: rgba(110, 0, 72, 0.1);
+            border-color: #FFAF9C;
+            transform: translateX(8px);
+            box-shadow: 0 4px 15px rgba(110, 0, 72, 0.15);
+        }
+        
+        .resource-item i {
+            color: #6E0048 !important;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .resource-item strong {
+            color: #6E0048 !important;
+            font-weight: 600;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #6E0048, #4D0032);
+            border: none;
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(110, 0, 72, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(110, 0, 72, 0.4);
+            background: linear-gradient(135deg, #4D0032, #6E0048);
+        }
+        
+        .breadcrumb-item a {
+            color: #6E0048;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item.active {
+            color: rgba(110, 0, 72, 0.7);
+        }
+        
+        .btn-outline-primary {
+            border-color: #6E0048;
+            color: #6E0048;
+        }
+        
+        .btn-outline-primary:hover {
+            background: #6E0048;
+            border-color: #6E0048;
+            color: white;
+        }
+        
+        /* Enhanced Quick Access Bar */
+        .quick-access-bar {
+            background: rgba(110, 0, 72, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .quick-access-bar .btn-group .btn {
+            margin: 0.25rem;
+            border-radius: 10px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+        }
+    </style>
+            padding: 8px 16px;
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(77, 0, 50, 0.3);
+        }
+        
+        .breadcrumb-item a {
+            color: var(--color-primary-burgundy);
+            text-decoration: none;
+        }
+        
+        .breadcrumb-item.active {
+            color: rgba(77, 0, 50, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Your Onboarding Journey</span>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars hamburger-icon"></i>
+                <i class="fas fa-times close-icon"></i>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navigation Menu -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-tasks me-1"></i>Steps
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html#step1">
+                                <i class="fas fa-play-circle me-2"></i>Step 1: Welcome & Introduction
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step2">
+                                <i class="fas fa-gavel me-2"></i>Step 2: Legal & Compliance Setup
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step3">
+                                <i class="fas fa-calculator me-2"></i>Step 3: Accounting & Financial Orientation
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step4">
+                                <i class="fas fa-cogs me-2"></i>Step 4: Operational Training
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step5">
+                                <i class="fas fa-bullhorn me-2"></i>Step 5: Branding & Marketing
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step6">
+                                <i class="fas fa-handshake me-2"></i>Step 6: Partnership & Growth
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html#step7">
+                                <i class="fas fa-headset me-2"></i>Step 7: Continuous Support
+                            </a></li>
+                        </ul>
+                    </li>
+                    <!-- Resources Navigation -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-folder-open me-1"></i>Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#documents">
+                                <i class="fas fa-file-pdf me-2"></i>Documents & Forms
+                            </a></li>
+                            <li><a class="dropdown-item" href="#videos">
+                                <i class="fas fa-video me-2"></i>Training Videos
+                            </a></li>
+                            <li><a class="dropdown-item" href="#knowledge">
+                                <i class="fas fa-book me-2"></i>Knowledge Base
+                            </a></li>
+                            <li><a class="dropdown-item" href="#downloads">
+                                <i class="fas fa-download me-2"></i>Downloads
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#external">
+                                <i class="fas fa-external-link-alt me-2"></i>External Resources
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" onclick="showFaqModal()">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSupportModal()">
+                            <i class="fas fa-headset me-1"></i>Support
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Side Elements -->
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Progress Indicator (Hidden on mobile) -->
+                    <div class="progress-indicator d-none d-lg-flex flex-column me-3">
+                        <span class="progress-text">Welcome back, User</span>
+                        <span class="progress-steps">2 of 5 steps completed</span>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="nav-item dropdown me-2">
+                        <a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">Notifications</li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle me-2 text-info"></i>Step 3 available</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-check-circle me-2 text-success"></i>Step 2 completed</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope me-2 text-primary"></i>Welcome message</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=32" alt="User" class="rounded-circle me-2 user-avatar avatar-small">
+                            <span class="d-none d-lg-inline user-display-name">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=40" alt="User" class="rounded-circle me-2 user-avatar">
+                                    <div>
+                                        <strong class="user-display-name">User</strong><br>
+                                        <small class="text-muted">Director</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showFaqModal()"><i class="fas fa-question-circle me-2"></i>Help & Support</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section-resources">
+        <div class="container">
+            <div class="hero-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <!-- Breadcrumb -->
+                        <nav aria-label="breadcrumb" class="mb-4">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Resources</li>
+                            </ol>
+                        </nav>
+                        
+                        <h1 class="display-4 fw-bold mb-4">
+                            <i class="resource-hero-icon fa-folder-open me-3"></i>
+                            Resources Hub
+                        </h1>
+                        <p class="lead mb-4">
+                            Your comprehensive resource center for documents, training materials, knowledge base, and external tools to help you succeed as a Flint director.
+                        </p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="#documents" class="btn btn-outline-primary btn-lg">
+                                <i class="resource-nav-icon fa-file-pdf me-2"></i>Documents
+                            </a>
+                            <a href="#videos" class="btn btn-outline-primary btn-lg">
+                                <i class="resource-nav-icon fa-video me-2"></i>Videos
+                            </a>
+                            <a href="#knowledge" class="btn btn-outline-primary btn-lg">
+                                <i class="resource-nav-icon fa-book me-2"></i>Knowledge Base
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="resource-icon mx-auto" style="width: 120px; height: 120px; font-size: 48px;">
+                            <i class="resource-main-icon fa-folder-open"></i>
+                        </div>
+                        
+                        <!-- Quick Stats -->
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="hero-stat">
+                                    <h4 style="color: #6E0048; margin-bottom: 0.5rem;">50+</h4>
+                                    <small style="color: #6E0048; opacity: 0.8;">Documents</small>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="hero-stat">
+                                    <h4 style="color: #6E0048; margin-bottom: 0.5rem;">25+</h4>
+                                    <small style="color: #6E0048; opacity: 0.8;">Videos</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Enhanced Search and Filter Bar -->
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="search-filter-bar">
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="resource-search-icon fa-search text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" placeholder="Search resources, documents, videos..." id="resourceSearch">
+                            <button class="btn btn-primary" type="button">
+                                <i class="resource-search-icon fa-search me-1"></i>Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="filter-dropdown">
+                        <select class="form-select" id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="documents">📄 Documents & Forms</option>
+                            <option value="videos">🎥 Training Videos</option>
+                            <option value="knowledge">📚 Knowledge Base</option>
+                            <option value="tools">🛠️ Tools & Downloads</option>
+                            <option value="external">🔗 External Resources</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-primary flex-fill" id="listView">
+                            <i class="resource-action-icon fa-list me-1"></i>List
+                        </button>
+                        <button class="btn btn-primary flex-fill" id="gridView">
+                            <i class="resource-action-icon fa-th me-1"></i>Grid
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Quick Stats Overview -->
+            <div class="row mb-5">
+                <div class="col-12 mb-4">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h3 class="mb-0" style="color: #6E0048; font-weight: 700;">
+                            <i class="resource-stats-icon fa-chart-line me-2"></i>
+                            Resources Overview
+                        </h3>
+                        <div class="d-flex gap-2">
+                            <span class="badge bg-success">
+                                <i class="resource-stats-icon fa-check me-1"></i>All Systems Active
+                            </span>
+                            <span class="badge bg-info">
+                                <i class="resource-stats-icon fa-clock me-1"></i>Last Updated: Today
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card">
+                        <div class="stats-icon documents">
+                            <i class="resource-stats-icon fa-file-pdf"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3>45</h3>
+                            <p>Legal Documents</p>
+                            <small class="text-muted">+3 new this week</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card">
+                        <div class="stats-icon videos">
+                            <i class="resource-stats-icon fa-video"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3>22</h3>
+                            <p>Training Videos</p>
+                            <small class="text-muted">5.2 hours total</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card">
+                        <div class="stats-icon knowledge">
+                            <i class="resource-stats-icon fa-book"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3>67</h3>
+                            <p>Knowledge Articles</p>
+                            <small class="text-muted">4 categories</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card">
+                        <div class="stats-icon tools">
+                            <i class="resource-stats-icon fa-tools"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h3>15</h3>
+                            <p>Essential Tools</p>
+                            <small class="text-muted">Calculators & Apps</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Documents & Forms Section -->
+            <div id="documents" class="resource-section mb-5">
+                <div class="section-header mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <div class="d-flex align-items-center">
+                                <div class="section-icon me-3">
+                                    <i class="resource-section-icon fa-file-pdf"></i>
+                                </div>
+                                <div>
+                                    <h2 class="section-title mb-1"> Documents & Forms</h2>
+                                    <p class="section-subtitle mb-0">Essential legal documents, application forms, and compliance templates</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-light text-dark me-2">
+                                            <i class="resource-action-icon fa-check-circle me-1"></i>Legally Verified
+                                        </span>
+                                        <span class="badge bg-light text-dark">
+                                            <i class="resource-action-icon fa-shield-alt me-1"></i>Up-to-date
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-end">
+                            <div class="d-flex gap-2 justify-content-end">
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="resource-action-icon fa-download me-2"></i>Download All
+                                </button>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-action-icon fa-folder-open me-2"></i>Browse Folder
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Document Categories -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="document-categories">
+                            <button class="btn btn-outline-primary active" data-category="all">
+                                <i class="resource-action-icon fa-th me-1"></i>All Documents
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="legal">
+                                <i class="resource-action-icon fa-gavel me-1"></i>Legal & Compliance
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="financial">
+                                <i class="resource-action-icon fa-calculator me-1"></i>Financial Forms
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="operational">
+                                <i class="resource-action-icon fa-cogs me-1"></i>Operational
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="templates">
+                                <i class="resource-action-icon fa-file-alt me-1"></i>Templates
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="resource-item-card">
+                            <div class="resource-item-header">
+                                <div class="resource-item-icon">
+                                    <i class="resource-item-fa fa-file-contract"></i>
+                                </div>
+                                <div class="resource-item-badge new">New</div>
+                            </div>
+                            <div class="resource-item-content">
+                                <h5>Director Agreement Template</h5>
+                                <p class="text-muted">Comprehensive director agreement template with all legal requirements</p>
+                                <div class="resource-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">2.5 MB</span>
+                                </div>
+                            </div>
+                            <div class="resource-item-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-btn-icon fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="resource-btn-icon fa-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="resource-item-card">
+                            <div class="resource-item-header">
+                                <div class="resource-item-icon">
+                                    <i class="resource-item-fa fa-file-invoice"></i>
+                                </div>
+                            </div>
+                            <div class="resource-item-content">
+                                <h5>Financial Reporting Forms</h5>
+                                <p class="text-muted">Complete set of financial reporting forms and templates</p>
+                                <div class="resource-meta">
+                                    <span class="file-type">Excel</span>
+                                    <span class="file-size">1.8 MB</span>
+                                </div>
+                            </div>
+                            <div class="resource-item-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-btn-icon fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="resource-btn-icon fa-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="resource-item-card">
+                            <div class="resource-item-header">
+                                <div class="resource-item-icon">
+                                    <i class="resource-item-fa fa-file-signature"></i>
+                                </div>
+                            </div>
+                            <div class="resource-item-content">
+                                <h5>Compliance Checklist</h5>
+                                <p class="text-muted">Detailed compliance checklist for directors</p>
+                                <div class="resource-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">1.2 MB</span>
+                                </div>
+                            </div>
+                            <div class="resource-item-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-btn-icon fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="resource-btn-icon fa-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="resource-item-card">
+                            <div class="resource-item-header">
+                                <div class="resource-item-icon">
+                                    <i class="resource-item-fa fa-file-medical"></i>
+                                </div>
+                            </div>
+                            <div class="resource-item-content">
+                                <h5>Risk Assessment Template</h5>
+                                <p class="text-muted">Comprehensive risk assessment framework</p>
+                                <div class="resource-meta">
+                                    <span class="file-type">Word</span>
+                                    <span class="file-size">950 KB</span>
+                                </div>
+                            </div>
+                            <div class="resource-item-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-btn-icon fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="resource-btn-icon fa-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="resource-item-card">
+                            <div class="resource-item-header">
+                                <div class="resource-item-icon">
+                                    <i class="resource-item-fa fa-file-chart-line"></i>
+                                </div>
+                                <div class="resource-item-badge popular">Popular</div>
+                            </div>
+                            <div class="resource-item-content">
+                                <h5>Performance Metrics Dashboard</h5>
+                                <p class="text-muted">Track and analyze director performance metrics</p>
+                                <div class="resource-meta">
+                                    <span class="file-type">Excel</span>
+                                    <span class="file-size">3.2 MB</span>
+                                </div>
+                            </div>
+                            <div class="resource-item-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-btn-icon fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="resource-btn-icon fa-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="resource-item-card">
+                            <div class="resource-item-header">
+                                <div class="resource-item-icon">
+                                    <i class="resource-item-fa fa-file-shield"></i>
+                                </div>
+                            </div>
+                            <div class="resource-item-content">
+                                <h5>Data Protection Guidelines</h5>
+                                <p class="text-muted">GDPR compliance and data protection guidelines</p>
+                                <div class="resource-meta">
+                                    <span class="file-type">PDF</span>
+                                    <span class="file-size">1.5 MB</span>
+                                </div>
+                            </div>
+                            <div class="resource-item-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-btn-icon fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="resource-btn-icon fa-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-primary">
+                        <i class="resource-load-icon fa-plus me-2"></i>Load More Documents
+                    </button>
+                </div>
+            </div>
+
+            <!-- Enhanced Training Videos Section -->
+            <div id="videos" class="resource-section mb-5">
+                <div class="section-header mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <div class="d-flex align-items-center">
+                                <div class="section-icon me-3">
+                                    <i class="resource-section-icon fa-video"></i>
+                                </div>
+                                <div>
+                                    <h2 class="section-title mb-1"> Training Videos</h2>
+                                    <p class="section-subtitle mb-0">Comprehensive video tutorials and training materials for directors</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-light text-dark me-2">
+                                            <i class="resource-action-icon fa-clock me-1"></i>5.2 Hours Total
+                                        </span>
+                                        <span class="badge bg-light text-dark">
+                                            <i class="resource-action-icon fa-graduation-cap me-1"></i>Professional Training
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-end">
+                            <div class="d-flex gap-2 justify-content-end">
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="resource-action-icon fa-list me-2"></i>View Playlist
+                                </button>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-action-icon fa-play me-2"></i>Start Learning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video Categories & Progress -->
+                <div class="row mb-4">
+                    <div class="col-lg-8">
+                        <div class="video-categories">
+                            <button class="btn btn-outline-primary active" data-category="all">
+                                <i class="resource-action-icon fa-play-circle me-1"></i>All Videos
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="beginner">
+                                <i class="resource-action-icon fa-seedling me-1"></i>Beginner
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="intermediate">
+                                <i class="resource-action-icon fa-chart-line me-1"></i>Intermediate
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="advanced">
+                                <i class="resource-action-icon fa-crown me-1"></i>Advanced
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="learning-progress">
+                            <small class="text-muted">Your Progress</small>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                            </div>
+                            <small class="text-muted">13 of 22 videos completed</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <div class="video-overlay">
+                                    <button class="play-button">
+                                        <i class="video-play-icon fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="video-duration">15:30</div>
+                                <div class="video-badge new">New</div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Welcome & Orientation</h5>
+                                <p class="text-muted">Complete introduction to Flint Directors Portal and your journey ahead</p>
+                                <div class="video-meta">
+                                    <div class="video-stats">
+                                        <span><i class="video-stat-icon fa-eye me-1"></i>2,847 views</span>
+                                        <span><i class="video-stat-icon fa-thumbs-up me-1"></i>98%</span>
+                                    </div>
+                                    <div class="video-level">
+                                        <span class="badge bg-success">Beginner</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <div class="video-overlay">
+                                    <button class="play-button">
+                                        <i class="video-play-icon fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="video-duration">30:45</div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Legal Compliance Training</h5>
+                                <p class="text-muted">Essential legal requirements and compliance guidelines for directors</p>
+                                <div class="video-meta">
+                                    <div class="video-stats">
+                                        <span><i class="video-stat-icon fa-eye me-1"></i>1,923 views</span>
+                                        <span><i class="video-stat-icon fa-thumbs-up me-1"></i>95%</span>
+                                    </div>
+                                    <div class="video-level">
+                                        <span class="badge bg-warning">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <div class="video-overlay">
+                                    <button class="play-button">
+                                        <i class="video-play-icon fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="video-duration">25:20</div>
+                                <div class="video-badge popular">Popular</div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Financial Management Basics</h5>
+                                <p class="text-muted">Learn the fundamentals of financial planning and management</p>
+                                <div class="video-meta">
+                                    <div class="video-stats">
+                                        <span><i class="video-stat-icon fa-eye me-1"></i>3,456 views</span>
+                                        <span><i class="video-stat-icon fa-thumbs-up me-1"></i>97%</span>
+                                    </div>
+                                    <div class="video-level">
+                                        <span class="badge bg-success">Beginner</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <div class="video-overlay">
+                                    <button class="play-button">
+                                        <i class="video-play-icon fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="video-duration">22:15</div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Operational Procedures</h5>
+                                <p class="text-muted">Day-to-day operational procedures and best practices</p>
+                                <div class="video-meta">
+                                    <div class="video-stats">
+                                        <span><i class="video-stat-icon fa-eye me-1"></i>1,654 views</span>
+                                        <span><i class="video-stat-icon fa-thumbs-up me-1"></i>93%</span>
+                                    </div>
+                                    <div class="video-level">
+                                        <span class="badge bg-warning">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <div class="video-overlay">
+                                    <button class="play-button">
+                                        <i class="video-play-icon fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="video-duration">18:30</div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Brand Management</h5>
+                                <p class="text-muted">Managing and protecting the Flint brand in your operations</p>
+                                <div class="video-meta">
+                                    <div class="video-stats">
+                                        <span><i class="video-stat-icon fa-eye me-1"></i>987 views</span>
+                                        <span><i class="video-stat-icon fa-thumbs-up me-1"></i>91%</span>
+                                    </div>
+                                    <div class="video-level">
+                                        <span class="badge bg-warning">Intermediate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <div class="video-overlay">
+                                    <button class="play-button">
+                                        <i class="video-play-icon fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="video-duration">22:45</div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Partnership Development</h5>
+                                <p class="text-muted">Building and maintaining strategic partnerships</p>
+                                <div class="video-meta">
+                                    <div class="video-stats">
+                                        <span><i class="video-stat-icon fa-eye me-1"></i>1,234 views</span>
+                                        <span><i class="video-stat-icon fa-thumbs-up me-1"></i>94%</span>
+                                    </div>
+                                    <div class="video-level">
+                                        <span class="badge bg-danger">Advanced</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-primary">
+                        <i class="resource-load-icon fa-plus me-2"></i>Load More Videos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Enhanced Knowledge Base Section -->
+            <div id="knowledge" class="resource-section mb-5">
+                <div class="section-header mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <div class="d-flex align-items-center">
+                                <div class="section-icon me-3">
+                                    <i class="resource-section-icon fa-book"></i>
+                                </div>
+                                <div>
+                                    <h2 class="section-title mb-1">Knowledge Base</h2>
+                                    <p class="section-subtitle mb-0">Comprehensive guides, best practices, and expert insights</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-light text-dark me-2">
+                                            <i class="resource-action-icon fa-users me-1"></i>Expert Authored
+                                        </span>
+                                        <span class="badge bg-light text-dark me-2">
+                                            <i class="resource-action-icon fa-search me-1"></i>Searchable
+                                        </span>
+                                        <span class="badge bg-light text-dark">
+                                            <i class="resource-action-icon fa-bookmark me-1"></i>Bookmarkable
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-end">
+                            <div class="d-flex gap-2 justify-content-end">
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="resource-action-icon fa-search me-2"></i>Search Articles
+                                </button>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-action-icon fa-bookmark me-2"></i>My Bookmarks
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Knowledge Base Search -->
+                <div class="row mb-4">
+                    <div class="col-lg-6">
+                        <div class="knowledge-search">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="resource-search-icon fa-search"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search knowledge base...">
+                                <button class="btn btn-primary" type="button">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="d-flex gap-2">
+                            <select class="form-select">
+                                <option>All Topics</option>
+                                <option>Best Practices</option>
+                                <option>Risk Management</option>
+                                <option>Leadership</option>
+                                <option>Legal Compliance</option>
+                            </select>
+                            <select class="form-select">
+                                <option>Sort by Relevance</option>
+                                <option>Most Recent</option>
+                                <option>Most Popular</option>
+                                <option>A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Knowledge Categories -->
+                <div class="knowledge-categories mb-4">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="knowledge-cat-icon fa-lightbulb"></i>
+                                </div>
+                                <h6>Best Practices</h6>
+                                <span class="article-count">15 articles</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="knowledge-cat-icon fa-shield-halved"></i>
+                                </div>
+                                <h6>Risk Management</h6>
+                                <span class="article-count">12 articles</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="knowledge-cat-icon fa-users"></i>
+                                </div>
+                                <h6>Leadership</h6>
+                                <span class="article-count">18 articles</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 mb-3">
+                            <div class="category-card">
+                                <div class="category-icon">
+                                    <i class="knowledge-cat-icon fa-balance-scale"></i>
+                                </div>
+                                <h6>Legal Compliance</h6>
+                                <span class="article-count">22 articles</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Featured Articles -->
+                <div class="featured-articles">
+                    <h5 class="mb-4">Featured Articles</h5>
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="article-card featured">
+                                <div class="article-header">
+                                    <div class="article-category">Best Practices</div>
+                                    <div class="article-badge featured">Featured</div>
+                                </div>
+                                <div class="article-content">
+                                    <h5>Director Best Practices Guide</h5>
+                                    <p class="text-muted">Comprehensive guide covering essential practices for effective directorship, including governance, decision-making, and stakeholder management.</p>
+                                    <div class="article-meta">
+                                        <div class="author-info">
+                                            <img src="https://ui-avatars.com/api/?name=Sarah+Johnson&background=6E0048&color=FFFFFF&bold=true&size=24" class="author-avatar" alt="Sarah Johnson">
+                                            <span>Sarah Johnson</span>
+                                        </div>
+                                        <div class="article-stats">
+                                            <span><i class="article-meta-icon fa-clock me-1"></i>8 min read</span>
+                                            <span><i class="video-stat-icon fa-eye me-1"></i>3.2k views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="article-actions">
+                                    <button class="btn btn-primary btn-sm">
+                                        <i class="video-stat-icon fa-eye me-1"></i>Read Article
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">
+                                        <i class="article-btn-icon fa-bookmark me-1"></i>Bookmark
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 mb-4">
+                            <div class="article-card">
+                                <div class="article-header">
+                                    <div class="article-category">Risk Management</div>
+                                    <div class="article-badge new">New</div>
+                                </div>
+                                <div class="article-content">
+                                    <h5>Risk Management Strategies</h5>
+                                    <p class="text-muted">Advanced strategies for identifying, assessing, and mitigating risks in your directorial responsibilities and business operations.</p>
+                                    <div class="article-meta">
+                                        <div class="author-info">
+                                            <img src="https://ui-avatars.com/api/?name=Michael+Chen&background=6E0048&color=FFFFFF&bold=true&size=24" class="author-avatar" alt="Michael Chen">
+                                            <span>Michael Chen</span>
+                                        </div>
+                                        <div class="article-stats">
+                                            <span><i class="article-meta-icon fa-clock me-1"></i>12 min read</span>
+                                            <span><i class="video-stat-icon fa-eye me-1"></i>1.8k views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="article-actions">
+                                    <button class="btn btn-primary btn-sm">
+                                        <i class="video-stat-icon fa-eye me-1"></i>Read Article
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">
+                                        <i class="article-btn-icon fa-bookmark me-1"></i>Bookmark
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 mb-4">
+                            <div class="article-card">
+                                <div class="article-header">
+                                    <div class="article-category">Leadership</div>
+                                </div>
+                                <div class="article-content">
+                                    <h5>Team Leadership Handbook</h5>
+                                    <p class="text-muted">Essential leadership principles and techniques for building and managing high-performing teams in the mortgage industry.</p>
+                                    <div class="article-meta">
+                                        <div class="author-info">
+                                            <img src="https://ui-avatars.com/api/?name=Emma+Wilson&background=6E0048&color=FFFFFF&bold=true&size=24" class="author-avatar" alt="Emma Wilson">
+                                            <span>Emma Wilson</span>
+                                        </div>
+                                        <div class="article-stats">
+                                            <span><i class="article-meta-icon fa-clock me-1"></i>10 min read</span>
+                                            <span><i class="video-stat-icon fa-eye me-1"></i>2.5k views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="article-actions">
+                                    <button class="btn btn-primary btn-sm">
+                                        <i class="video-stat-icon fa-eye me-1"></i>Read Article
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">
+                                        <i class="article-btn-icon fa-bookmark me-1"></i>Bookmark
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 mb-4">
+                            <div class="article-card">
+                                <div class="article-header">
+                                    <div class="article-category">Legal Compliance</div>
+                                    <div class="article-badge popular">Popular</div>
+                                </div>
+                                <div class="article-content">
+                                    <h5>Legal Compliance Manual</h5>
+                                    <p class="text-muted">Complete compliance manual covering all legal requirements, regulations, and industry standards for mortgage directors.</p>
+                                    <div class="article-meta">
+                                        <div class="author-info">
+                                            <img src="https://ui-avatars.com/api/?name=David+Brown&background=6E0048&color=FFFFFF&bold=true&size=24" class="author-avatar" alt="David Brown">
+                                            <span>David Brown</span>
+                                        </div>
+                                        <div class="article-stats">
+                                            <span><i class="article-meta-icon fa-clock me-1"></i>15 min read</span>
+                                            <span><i class="video-stat-icon fa-eye me-1"></i>4.1k views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="article-actions">
+                                    <button class="btn btn-primary btn-sm">
+                                        <i class="video-stat-icon fa-eye me-1"></i>Read Article
+                                    </button>
+                                    <button class="btn btn-outline-secondary btn-sm">
+                                        <i class="article-btn-icon fa-bookmark me-1"></i>Bookmark
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-primary">
+                        <i class="fas fa-plus me-2"></i>View All Articles
+                    </button>
+                </div>
+            </div>
+
+            <!-- Enhanced Tools & Downloads Section -->
+            <div id="tools" class="resource-section mb-5">
+                <div class="section-header mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <div class="d-flex align-items-center">
+                                <div class="section-icon me-3">
+                                    <i class="resource-section-icon fa-tools"></i>
+                                </div>
+                                <div>
+                                    <h2 class="section-title mb-1"> Tools & Downloads</h2>
+                                    <p class="section-subtitle mb-0">Essential tools, calculators, and applications for directors</p>
+                                    <div class="mt-2">
+                                        <span class="badge bg-light text-dark me-2">
+                                            <i class="resource-action-icon fa-mobile-alt me-1"></i>Mobile Friendly
+                                        </span>
+                                        <span class="badge bg-light text-dark me-2">
+                                            <i class="resource-action-icon fa-cloud-download-alt me-1"></i>Free Downloads
+                                        </span>
+                                        <span class="badge bg-light text-dark">
+                                            <i class="resource-action-icon fa-sync me-1"></i>Auto-Updates
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-end">
+                            <div class="d-flex gap-2 justify-content-end">
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="resource-action-icon fa-download me-2"></i>Download Suite
+                                </button>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="resource-action-icon fa-mobile-alt me-2"></i>Get Mobile App
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tool Categories -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="tool-categories">
+                            <button class="btn btn-outline-primary active" data-category="all">
+                                <i class="resource-action-icon fa-th me-1"></i>All Tools
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="calculators">
+                                <i class="resource-action-icon fa-calculator me-1"></i>Calculators
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="mobile">
+                                <i class="resource-action-icon fa-mobile-alt me-1"></i>Mobile Apps
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="templates">
+                                <i class="resource-action-icon fa-file-excel me-1"></i>Templates
+                            </button>
+                            <button class="btn btn-outline-primary" data-category="external">
+                                <i class="resource-action-icon fa-external-link-alt me-1"></i>External Tools
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <div class="tool-icon">
+                                    <i class="tool-icon-fa fa-calculator"></i>
+                                </div>
+                                <div class="tool-badge essential">Essential</div>
+                            </div>
+                            <div class="tool-content">
+                                <h5>Loan Calculator Suite</h5>
+                                <p class="text-muted">Comprehensive mortgage calculation tools with multiple scenarios</p>
+                                <div class="tool-features">
+                                    <span class="feature-tag">Offline Mode</span>
+                                    <span class="feature-tag">Multi-currency</span>
+                                    <span class="feature-tag">Export Reports</span>
+                                </div>
+                            </div>
+                            <div class="tool-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-info-circle me-1"></i>Info
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <div class="tool-icon">
+                                    <i class="tool-icon-fa fa-mobile-alt"></i>
+                                </div>
+                                <div class="tool-badge new">New</div>
+                            </div>
+                            <div class="tool-content">
+                                <h5>Flint Mobile App</h5>
+                                <p class="text-muted">Full-featured mobile application for on-the-go management</p>
+                                <div class="tool-features">
+                                    <span class="feature-tag">iOS & Android</span>
+                                    <span class="feature-tag">Push Notifications</span>
+                                    <span class="feature-tag">Offline Sync</span>
+                                </div>
+                            </div>
+                            <div class="tool-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fab fa-apple me-1"></i>App Store
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fab fa-google-play me-1"></i>Play Store
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <div class="tool-icon">
+                                    <i class="tool-icon-fa fa-chart-pie"></i>
+                                </div>
+                            </div>
+                            <div class="tool-content">
+                                <h5>Analytics Dashboard</h5>
+                                <p class="text-muted">Advanced analytics and reporting dashboard template</p>
+                                <div class="tool-features">
+                                    <span class="feature-tag">Excel Template</span>
+                                    <span class="feature-tag">Auto-calculations</span>
+                                    <span class="feature-tag">Charts & Graphs</span>
+                                </div>
+                            </div>
+                            <div class="tool-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-download me-1"></i>Download
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="video-stat-icon fa-eye me-1"></i>Preview
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Quick Access Section -->
+            <div class="quick-access-section">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="quick-access-card">
+                            <div class="text-center mb-4">
+                                <h4 class="mb-2">
+                                    <i class="resource-action-icon fa-lightning-bolt me-2"></i>
+                                    Quick Access Hub
+                                </h4>
+                                <p class="text-muted mb-0">Jump to any section instantly</p>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                    <a href="#documents" class="quick-access-item">
+                                        <div class="quick-icon">
+                                            <i class="quick-nav-icon fa-file-pdf"></i>
+                                        </div>
+                                        <span>Documents</span>
+                                        <small class="text-muted">45 Files</small>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                    <a href="#videos" class="quick-access-item">
+                                        <div class="quick-icon">
+                                            <i class="quick-nav-icon fa-video"></i>
+                                        </div>
+                                        <span>Training</span>
+                                        <small class="text-muted">22 Videos</small>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                    <a href="#knowledge" class="quick-access-item">
+                                        <div class="quick-icon">
+                                            <i class="quick-nav-icon fa-book"></i>
+                                        </div>
+                                        <span>Knowledge</span>
+                                        <small class="text-muted">67 Articles</small>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                    <a href="#tools" class="quick-access-item">
+                                        <div class="quick-icon">
+                                            <i class="quick-nav-icon fa-tools"></i>
+                                        </div>
+                                        <span>Tools</span>
+                                        <small class="text-muted">15 Apps</small>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                    <a href="index.html" class="quick-access-item">
+                                        <div class="quick-icon">
+                                            <i class="quick-nav-icon fa-tachometer-alt"></i>
+                                        </div>
+                                        <span>Dashboard</span>
+                                        <small class="text-muted">Main Hub</small>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                    <a href="#" onclick="showSupportModal()" class="quick-access-item">
+                                        <div class="quick-icon">
+                                            <i class="quick-nav-icon fa-headset"></i>
+                                        </div>
+                                        <span>Support</span>
+                                        <small class="text-muted">Get Help</small>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Additional Quick Links -->
+                            <div class="mt-4 pt-4 border-top">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6 class="mb-3">
+                                            <i class="resource-action-icon fa-star me-2"></i>
+                                            Most Popular
+                                        </h6>
+                                        <div class="list-group list-group-flush">
+                                            <a href="#" class="list-group-item list-group-item-action border-0 px-0">
+                                                <i class="quick-nav-icon fa-file-contract me-2"></i>
+                                                Director Agreement Template
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0 px-0">
+                                                <i class="quick-nav-icon fa-calculator me-2"></i>
+                                                Loan Calculator Suite
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0 px-0">
+                                                <i class="quick-nav-icon fa-play-circle me-2"></i>
+                                                Welcome & Orientation Video
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="mb-3">
+                                            <i class="resource-action-icon fa-clock me-2"></i>
+                                            Recently Added
+                                        </h6>
+                                        <div class="list-group list-group-flush">
+                                            <a href="#" class="list-group-item list-group-item-action border-0 px-0">
+                                                <i class="quick-nav-icon fa-shield-alt me-2"></i>
+                                                Risk Management Guide
+                                                <span class="badge bg-success ms-2">New</span>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0 px-0">
+                                                <i class="quick-nav-icon fa-mobile-alt me-2"></i>
+                                                Flint Mobile App v2.0
+                                                <span class="badge bg-info ms-2">Updated</span>
+                                            </a>
+                                            <a href="#" class="list-group-item list-group-item-action border-0 px-0">
+                                                <i class="quick-nav-icon fa-chart-line me-2"></i>
+                                                Performance Dashboard
+                                                <span class="badge bg-warning ms-2">Beta</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                    </a>
+                    <a href="#knowledge" class="btn btn-outline-primary">
+                        <i class="fas fa-book me-2"></i>Knowledge
+                    </a>
+                    <a href="#downloads" class="btn btn-outline-primary">
+                        <i class="fas fa-download me-2"></i>Downloads
+                    </a>
+                    <a href="#external" class="btn btn-outline-primary">
+                        <i class="fas fa-external-link-alt me-2"></i>External
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer-enhanced">
+        <div class="footer-background">
+            <div class="footer-pattern"></div>
+        </div>
+        <div class="container">
+            <!-- Footer Main Content -->
+            <div class="footer-main">
+                <div class="row">
+                    <!-- Brand Section -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="footer-brand-enhanced">
+                            <div class="brand-logo-wrapper">
+                                <img src="icon.PNG" alt="Flint Logo" class="footer-logo-enhanced">
+                                <div class="brand-text">
+                                    <h5>Flint Directors Portal</h5>
+                                    <span class="brand-tagline">Build Your Future. Backed by Excellence.</span>
+                                </div>
+                            </div>
+                            <p class="brand-description">
+                                Australia's #1 independent mortgage brokerage empowering directors 
+                                with cutting-edge technology, comprehensive support, and unmatched opportunities.
+                            </p>
+                            
+                            <!-- Our Impact Below Brand Description -->
+                            <div class="footer-stats-compact">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-chart-line me-2"></i>Our Impact
+                                </h6>
+                                <div class="stats-row">
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">500+</span>
+                                        <span class="stat-label">Directors</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">$2B+</span>
+                                        <span class="stat-label">Settled</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">4.9★</span>
+                                        <span class="stat-label">Rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Navigation -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-compass me-2"></i>Navigation
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="index.html">
+                                    <i class="fas fa-home me-2"></i>Dashboard
+                                </a></li>
+                                <li><a href="index.html#step1">
+                                    <i class="fas fa-play me-2"></i>Getting Started
+                                </a></li>
+                                <li><a href="index.html" onclick="showFaqModal()">
+                                    <i class="fas fa-question me-2"></i>FAQ
+                                </a></li>
+                                <li><a href="#" onclick="showSupportModal()">
+                                    <i class="fas fa-headset me-2"></i>Support
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Resources -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-book me-2"></i>Resources
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#documents">
+                                    <i class="fas fa-file-alt me-2"></i>Documentation
+                                </a></li>
+                                <li><a href="#videos">
+                                    <i class="fas fa-video me-2"></i>Training Videos
+                                </a></li>
+                                <li><a href="#documents">
+                                    <i class="fas fa-download me-2"></i>Templates
+                                    <span class="link-badge new">New</span>
+                                </a></li>
+                                <li><a href="#tools">
+                                    <i class="fas fa-tools me-2"></i>Calculators
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Community & Support -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-users me-2"></i>Community
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#">
+                                    <i class="fab fa-slack me-2"></i>Slack Channel
+                                    <span class="link-indicator online"></span>
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-calendar me-2"></i>Events
+                                </a></li>
+                                <li><a href="#videos">
+                                    <i class="fas fa-graduation-cap me-2"></i>Training
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-trophy me-2"></i>Leaderboard
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info - Next to Community -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-phone me-2"></i>Contact Us
+                            </h6>
+                            <div class="contact-info-compact">
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-envelope me-2"></i>
+                                    <a href="mailto:support@flint.com.au">support@flint.com.au</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-phone me-2"></i>
+                                    <a href="tel:1300354686">1300 354 686</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                    <span>Sydney, Australia</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Social Media Below Contact -->
+                            <div class="social-media-enhanced">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-share-alt me-2"></i>Follow Us
+                                </h6>
+                                <div class="social-links-row">
+                                    <a href="#" class="social-link-enhanced linkedin" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced twitter" title="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced facebook" title="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced instagram" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced youtube" title="YouTube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-divider-enhanced"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="copyright-enhanced">
+                            <p>&copy; 2025 Flint Group. All rights reserved.</p>
+                            <div class="company-info">
+                                <span>ACN: 123 456 789</span>
+                                <span>Australian Credit Licence: 987654</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-legal-enhanced">
+                            <a href="#privacy">Privacy Policy</a>
+                            <a href="#terms">Terms of Service</a>
+                            <a href="#cookies">Cookie Policy</a>
+                            <a href="#accessibility">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Smooth Scrolling for Anchor Links -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to resource cards
+        document.querySelectorAll('.resource-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Support Modal Function
+        function showSupportModal() {
+            const supportModal = new bootstrap.Modal(document.getElementById('supportModal'));
+            supportModal.show();
+        }
+
+        // Logout Function
+        function handleLogout() {
+            // Clear authentication data
+            localStorage.removeItem('flint_logged_in');
+            localStorage.removeItem('flint_login_timestamp');
+            localStorage.removeItem('flint_user_email');
+            
+            // Show logout notification
+            const notification = document.createElement('div');
+            notification.className = 'login-notification';
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #6E0048;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                z-index: 9999;
+                animation: slideInRight 0.3s ease;
+            `;
+            notification.innerHTML = `
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logged out successfully</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification and redirect after delay
+            setTimeout(() => {
+                notification.remove();
+                window.location.href = 'simple-login.html';
+            }, 1500);
+        }
+    </script>
+
+    <!-- Support Modal -->
+    <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Get in touch
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="support-info">
+                        <div class="mb-4">
+                            <i class="fas fa-envelope support-icon mb-3"></i>
+                            <h6>Email Support</h6>
+                            <a href="mailto:hello@flintgroup.au" class="support-link">hello@flintgroup.au</a>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fas fa-phone support-icon mb-3"></i>
+                            <h6>Phone Support</h6>
+                            <a href="tel:0485853537" class="support-link">0485 853 537</a>
+                        </div>
+                        <div class="support-hours">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-2"></i>
+                                Available Monday - Friday, 9AM - 5PM AEST
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="mailto:hello@flintgroup.au" class="btn btn-primary">
+                        <i class="fas fa-envelope me-2"></i>Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

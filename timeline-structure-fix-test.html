@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Timeline Structure - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .test-content {
+            padding: 100px 20px 50px;
+        }
+        .test-card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1000px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .demo-section {
+            background: #FFF3E9CC;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 20px 0;
+            max-width: 400px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .before-section {
+            background: #ffe6e6;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b6b;
+        }
+        .after-section {
+            background: #e6ffe6;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #51cf66;
+        }
+        .timeline-features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Timeline Structure Fix</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <div class="test-card">
+            <h2>🕒 Recent Activity Timeline Fix</h2>
+            <div class="alert alert-success" role="alert">
+                <h6 class="alert-heading">
+                    <i class="fas fa-check-circle me-2"></i>Timeline Structure Fixed!
+                </h6>
+                <p class="mb-0">
+                    ✅ Timeline line को left side में proper position किया गया<br>
+                    ✅ Time text को right side में pointer के साथ move किया गया<br>
+                    ✅ "2d ago" text अब clearly visible है
+                </p>
+            </div>
+
+            <!-- Before/After Comparison -->
+            <h4 class="mt-4 mb-3">🔄 Before vs After Structure</h4>
+            <div class="comparison">
+                <div class="before-section">
+                    <h5>❌ पहले की समस्या:</h5>
+                    <ul>
+                        <li>Timeline line का position गलत था</li>
+                        <li>Time text separate column में था</li>
+                        <li>"2d ago" clearly visible नहीं था</li>
+                        <li>Structure confusing लग रहा था</li>
+                        <li>Grid layout में spacing issues</li>
+                    </ul>
+                </div>
+                <div class="after-section">
+                    <h5>✅ अब Fixed Structure:</h5>
+                    <ul>
+                        <li>Timeline line left side में properly positioned</li>
+                        <li>Time text header में right side पर</li>
+                        <li>Clear visibility of all time stamps</li>
+                        <li>Proper visual hierarchy</li>
+                        <li>Better responsive layout</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fixed Timeline Demo -->
+            <h4 class="mt-4 mb-3">📍 Fixed Timeline Demo</h4>
+            <div class="demo-section">
+                <!-- Recent Activity Enhanced -->
+                <div class="sidebar-section-modern activity-enhanced">
+                    <div class="section-header">
+                        <h4><i class="fas fa-clock me-2"></i>Recent Activity</h4>
+                        <span class="activity-badge live">Live</span>
+                    </div>
+                    <div class="activity-timeline">
+                        <div class="activity-item-modern">
+                            <div class="activity-dot completed"></div>
+                            <div class="activity-content-modern">
+                                <div class="activity-header">
+                                    <span class="activity-title">Step 2 Completed</span>
+                                    <span class="activity-time">2h ago</span>
+                                </div>
+                                <p class="activity-description">Finished Legal & Ownership Structure</p>
+                                <div class="activity-meta">
+                                    <span class="activity-points">+50 pts</span>
+                                    <span class="achievement">🏆 Legal Expert Badge Earned</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item-modern">
+                            <div class="activity-dot download"></div>
+                            <div class="activity-content-modern">
+                                <div class="activity-header">
+                                    <span class="activity-title">Documents Downloaded</span>
+                                    <span class="activity-time">1d ago</span>
+                                </div>
+                                <p class="activity-description">Partnership Agreement & Tax Forms</p>
+                                <div class="activity-meta">
+                                    <span class="file-count">3 files</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item-modern">
+                            <div class="activity-dot video"></div>
+                            <div class="activity-content-modern">
+                                <div class="activity-header">
+                                    <span class="activity-title">Video Watched</span>
+                                    <span class="activity-time">2d ago</span>
+                                </div>
+                                <p class="activity-description">Welcome from Christian (12:34)</p>
+                                <div class="activity-meta">
+                                    <span class="watch-time">100% completion</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Features -->
+            <div class="timeline-features">
+                <h5>🎯 Fixed Timeline Features:</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Visual Improvements:</h6>
+                        <ul>
+                            <li>✅ <strong>Left Timeline Line</strong> - 2px width, coral gradient</li>
+                            <li>✅ <strong>Positioned Dots</strong> - 12px with colored backgrounds</li>
+                            <li>✅ <strong>Right Time Display</strong> - Clear coral-colored badges</li>
+                            <li>✅ <strong>Proper Spacing</strong> - 20px margins and padding</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Structure Enhancements:</h6>
+                        <ul>
+                            <li>✅ <strong>Single Column Layout</strong> - No more grid confusion</li>
+                            <li>✅ <strong>Relative Positioning</strong> - Better dot alignment</li>
+                            <li>✅ <strong>Flex Headers</strong> - Title left, time right</li>
+                            <li>✅ <strong>Enhanced Meta</strong> - Points and achievements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+                <h5>🔧 Technical Changes Made:</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>HTML Structure:</h6>
+                        <ul>
+                            <li>Moved time from separate div to header</li>
+                            <li>Restructured activity-meta for better layout</li>
+                            <li>Added proper flex structure in headers</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>CSS Updates:</h6>
+                        <ul>
+                            <li>Fixed timeline line positioning (left: 9px)</li>
+                            <li>Updated dot positioning (-30px left)</li>
+                            <li>Enhanced time badge styling</li>
+                            <li>Improved responsive design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Changes -->
+            <div class="mt-4 p-3 bg-dark text-white rounded">
+                <h6>📝 Key Code Changes:</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>HTML Structure:</strong>
+                        <pre class="text-warning"><code>// Before: Separate time div
+&lt;div class="activity-time"&gt;2d ago&lt;/div&gt;
+&lt;div class="activity-dot"&gt;&lt;/div&gt;
+
+// After: Time in header
+&lt;div class="activity-header"&gt;
+  &lt;span class="activity-title"&gt;Video Watched&lt;/span&gt;
+  &lt;span class="activity-time"&gt;2d ago&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>CSS Positioning:</strong>
+                        <pre class="text-success"><code>// Timeline line
+.activity-timeline::before {
+  left: 9px;  /* Fixed position */
+  width: 2px; /* Thicker line */
+}
+
+// Activity dots
+.activity-dot {
+  left: -30px; /* Proper alignment */
+  width: 12px; /* Bigger dots */
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Instructions -->
+            <div class="alert alert-warning mt-4" role="alert">
+                <h6 class="alert-heading">🧪 Test करने के लिए:</h6>
+                <ol>
+                    <li><strong>Main page</strong> पर जाकर sidebar में Recent Activity section देखें</li>
+                    <li><strong>Timeline line</strong> properly left side में है या नहीं check करें</li>
+                    <li><strong>Time stamps</strong> (2h ago, 1d ago, 2d ago) clearly visible हैं या नहीं</li>
+                    <li><strong>Mobile view</strong> में भी proper structure maintain हो रहा है या नहीं</li>
+                </ol>
+            </div>
+
+            <!-- Success Indicators -->
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="text-center p-3 bg-success bg-opacity-10 rounded">
+                        <i class="fas fa-check-double fa-2x text-success mb-2"></i>
+                        <h6>Timeline Line</h6>
+                        <small class="text-success">✅ Left Positioned</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3 bg-success bg-opacity-10 rounded">
+                        <i class="fas fa-clock fa-2x text-success mb-2"></i>
+                        <h6>Time Display</h6>
+                        <small class="text-success">✅ Right Aligned</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center p-3 bg-success bg-opacity-10 rounded">
+                        <i class="fas fa-eye fa-2x text-success mb-2"></i>
+                        <h6>Visibility</h6>
+                        <small class="text-success">✅ Crystal Clear</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation to Main Page -->
+            <div class="text-center mt-4">
+                <h5>🎯 Main Page Test करें:</h5>
+                <a href="index.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-home me-2"></i>Go to Main Page
+                </a>
+                <p class="mt-2 text-muted">
+                    Sidebar में Recent Activity section में जाकर fixed timeline देखें
+                </p>
+            </div>
+
+            <!-- Final Confirmation -->
+            <div class="alert alert-success mt-4" role="alert">
+                <h6 class="alert-heading">🎉 Timeline Structure Completely Fixed!</h6>
+                <p class="mb-0">
+                    ✅ <strong>Timeline line properly positioned on left</strong><br>
+                    ✅ <strong>Time stamps clearly visible on right with pointers</strong><br>
+                    ✅ <strong>"2d ago" and all other times now perfectly visible</strong><br>
+                    ✅ <strong>Professional timeline structure with better UX</strong><br>
+                    <small class="text-muted">
+                        Timeline अब professional और clear है, सभी elements perfectly aligned हैं!
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

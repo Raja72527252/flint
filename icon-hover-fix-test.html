@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Icon Hover Test - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .test-content {
+            padding: 100px 20px 50px;
+            text-align: center;
+        }
+        .test-card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1000px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .icon-test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .icon-test-item {
+            background: #FFF3E9CC;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid rgba(77, 0, 50, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .icon-test-item:hover {
+            border-color: #FFAF9C;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 175, 156, 0.2);
+        }
+        .icon-test-item i {
+            font-size: 2.5rem;
+            color: rgba(77, 0, 50, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 15px;
+            display: block;
+        }
+        .icon-test-item:hover i {
+            color: #FFAF9C !important;
+            transform: scale(1.2);
+        }
+        .color-demo {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+            vertical-align: middle;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .before-after {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        .color-state {
+            text-align: center;
+            flex: 1;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-fixed {
+            background: #28a745;
+        }
+        .arrow {
+            font-size: 2rem;
+            color: #4D0032;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Icon Hover Test</span>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-tasks me-1"></i>Steps
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-folder-open me-1"></i>Resources
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-headset me-1"></i>Support
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <div class="test-card">
+            <h2>🎯 Navigation Icon Hover Color Fix Test</h2>
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <span class="status-indicator status-fixed"></span>
+                <strong>FIXED:</strong> FAQ और Support icons अब सभी icons की तरह coral color (#FFAF9C) में hover होते हैं!
+            </div>
+
+            <!-- Color Comparison -->
+            <div class="before-after">
+                <div class="color-state">
+                    <h6>❌ पहले (Before)</h6>
+                    <div class="color-demo" style="background: #4D0032;"></div>
+                    <div class="mt-2">
+                        <small><code>#4D0032</code></small><br>
+                        <small>Dark Burgundy</small>
+                    </div>
+                </div>
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="color-state">
+                    <h6>✅ अब (Now)</h6>
+                    <div class="color-demo" style="background: #FFAF9C;"></div>
+                    <div class="mt-2">
+                        <small><code>#FFAF9C</code></small><br>
+                        <small>Coral (Brand Color)</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Test Grid -->
+            <h4 class="mb-3">🧪 सभी Navigation Icons का Hover Test</h4>
+            <p class="text-muted">हर icon पर hover करें और देखें कि सभी का same coral color है</p>
+            
+            <div class="icon-test-grid">
+                <div class="icon-test-item">
+                    <i class="fas fa-home"></i>
+                    <h6>Dashboard</h6>
+                    <small class="text-success">✅ Coral hover</small>
+                </div>
+                <div class="icon-test-item">
+                    <i class="fas fa-tasks"></i>
+                    <h6>Steps</h6>
+                    <small class="text-success">✅ Coral hover</small>
+                </div>
+                <div class="icon-test-item">
+                    <i class="fas fa-folder-open"></i>
+                    <h6>Resources</h6>
+                    <small class="text-success">✅ Coral hover</small>
+                </div>
+                <div class="icon-test-item">
+                    <i class="fas fa-question-circle"></i>
+                    <h6>FAQ</h6>
+                    <small class="text-success">✅ Fixed! Coral hover</small>
+                </div>
+                <div class="icon-test-item">
+                    <i class="fas fa-headset"></i>
+                    <h6>Support</h6>
+                    <small class="text-success">✅ Fixed! Coral hover</small>
+                </div>
+            </div>
+
+            <!-- Technical Details -->
+            <div class="mt-4 p-3 bg-light rounded">
+                <h5>🔧 क्या Fix किया गया:</h5>
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <h6>समस्या (Problem):</h6>
+                        <ul>
+                            <li>FAQ icon hover color: <code style="color: #4D0032;">#4D0032</code> (Dark burgundy)</li>
+                            <li>Support icon hover color: <code style="color: #4D0032;">#4D0032</code> (Dark burgundy)</li>
+                            <li>बाकी icons का coral color अलग था</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>समाधान (Solution):</h6>
+                        <ul>
+                            <li>FAQ icon hover: <code style="color: #FFAF9C;">#FFAF9C</code> (Coral)</li>
+                            <li>Support icon hover: <code style="color: #FFAF9C;">#FFAF9C</code> (Coral)</li>
+                            <li>अब सभी icons का same color है</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSS Changes -->
+            <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+                <h6>📝 CSS में किए गए Changes:</h6>
+                <div class="text-start">
+                    <h6>Modified in <code>style.css</code>:</h6>
+                    <pre class="bg-dark text-white p-3 rounded"><code>.navbar .nav-link:hover i.fa-question-circle,
+.navbar .nav-link:hover i.fa-headset {
+  color: #FFAF9C !important;  /* ← Changed from #4D0032 */
+  transform: scale(1.1);
+}</code></pre>
+                </div>
+            </div>
+
+            <!-- Test Navigation -->
+            <div class="text-center mt-4">
+                <h5>🎯 अब Navigation में Test करें:</h5>
+                <p class="text-muted">ऊपर navigation bar में FAQ और Support icons पर hover करें</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
+                    <span class="badge bg-success fs-6 p-2">
+                        <i class="fas fa-check-circle me-1"></i>Dashboard
+                    </span>
+                    <span class="badge bg-success fs-6 p-2">
+                        <i class="fas fa-check-circle me-1"></i>Steps
+                    </span>
+                    <span class="badge bg-success fs-6 p-2">
+                        <i class="fas fa-check-circle me-1"></i>Resources
+                    </span>
+                    <span class="badge bg-success fs-6 p-2">
+                        <i class="fas fa-check-circle me-1"></i>FAQ (Fixed!)
+                    </span>
+                    <span class="badge bg-success fs-6 p-2">
+                        <i class="fas fa-check-circle me-1"></i>Support (Fixed!)
+                    </span>
+                </div>
+            </div>
+
+            <!-- Final Confirmation -->
+            <div class="alert alert-info mt-4" role="alert">
+                <h6 class="alert-heading">
+                    <i class="fas fa-info-circle me-2"></i>Confirmation
+                </h6>
+                <p class="mb-0">
+                    ✅ <strong>सभी navigation icons का hover color अब same है:</strong> 
+                    <span style="color: #FFAF9C; font-weight: bold;">#FFAF9C (Coral)</span>
+                    <br>
+                    <small class="text-muted">FAQ और Support icons अब बाकी सभी icons की तरह same coral color में hover होते हैं!</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

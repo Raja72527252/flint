@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Font Size Update - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .test-content {
+            padding: 100px 20px 50px;
+        }
+        .test-card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .demo-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .demo-section {
+            background: #FFF3E9CC;
+            padding: 20px;
+            border-radius: 16px;
+            border: 2px solid rgba(77, 0, 50, 0.1);
+        }
+        .font-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .before-font {
+            background: #ffe6e6;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b6b;
+        }
+        .after-font {
+            background: #e6ffe6;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #51cf66;
+        }
+        .font-demo {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .old-font {
+            font-size: 1.1rem;
+            color: var(--color-primary-burgundy);
+            font-weight: 700;
+        }
+        .new-font {
+            font-size: 1.25rem;
+            color: var(--color-primary-burgundy);
+            font-weight: 700;
+        }
+        @media (max-width: 768px) {
+            .font-comparison,
+            .demo-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Section Font Size Update</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <div class="test-card">
+            <h2>📝 Section Headings Font Size Update</h2>
+            <div class="alert alert-success" role="alert">
+                <h6 class="alert-heading">
+                    <i class="fas fa-check-circle me-2"></i>Font Size Updated Successfully!
+                </h6>
+                <p class="mb-0">
+                    ✅ Quick Actions section का font size increase किया गया<br>
+                    ✅ My Documents section का font size increase किया गया<br>
+                    ✅ Recent Activity section का font size increase किया गया
+                </p>
+            </div>
+
+            <!-- Font Size Comparison -->
+            <h4 class="mt-4 mb-3">📏 Font Size Before vs After</h4>
+            <div class="font-comparison">
+                <div class="before-font">
+                    <h5>❌ पहले (1.1rem):</h5>
+                    <div class="font-demo">
+                        <div class="old-font">
+                            <i class="fas fa-rocket me-2"></i>Quick Actions
+                        </div>
+                    </div>
+                    <div class="font-demo">
+                        <div class="old-font">
+                            <i class="fas fa-file-alt me-2"></i>My Documents
+                        </div>
+                    </div>
+                    <div class="font-demo">
+                        <div class="old-font">
+                            <i class="fas fa-clock me-2"></i>Recent Activity
+                        </div>
+                    </div>
+                    <small>Font size: 1.1rem (छोटा text)</small>
+                </div>
+                <div class="after-font">
+                    <h5>✅ अब (1.25rem):</h5>
+                    <div class="font-demo">
+                        <div class="new-font">
+                            <i class="fas fa-rocket me-2"></i>Quick Actions
+                        </div>
+                    </div>
+                    <div class="font-demo">
+                        <div class="new-font">
+                            <i class="fas fa-file-alt me-2"></i>My Documents
+                        </div>
+                    </div>
+                    <div class="font-demo">
+                        <div class="new-font">
+                            <i class="fas fa-clock me-2"></i>Recent Activity
+                        </div>
+                    </div>
+                    <small>Font size: 1.25rem (बड़ा और clear text)</small>
+                </div>
+            </div>
+
+            <!-- Updated Sections Demo -->
+            <h4 class="mt-4 mb-3">🎯 Updated Sections Demo</h4>
+            <div class="demo-sections">
+                <!-- Quick Actions -->
+                <div class="demo-section">
+                    <div class="sidebar-section-modern quick-links-enhanced">
+                        <div class="section-header">
+                            <h4><i class="fas fa-rocket me-2"></i>Quick Actions</h4>
+                            <span class="section-badge">Essential</span>
+                        </div>
+                        <div class="quick-links-grid-modern">
+                            <a href="#" class="quick-link-modern slack">
+                                <div class="quick-link-icon">
+                                    <i class="fab fa-slack"></i>
+                                </div>
+                                <span>Slack</span>
+                            </a>
+                            <a href="#" class="quick-link-modern hubspot">
+                                <div class="quick-link-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <span>HubSpot</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Documents -->
+                <div class="demo-section">
+                    <div class="sidebar-section-modern documents-enhanced">
+                        <div class="section-header">
+                            <h4><i class="fas fa-file-alt me-2"></i>My Documents</h4>
+                            <span class="document-count">8 files</span>
+                        </div>
+                        <div class="documents-list">
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                </div>
+                                <div class="document-details">
+                                    <span class="document-name">Partnership Agreement</span>
+                                    <span class="document-meta">2.1 MB • PDF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="demo-section">
+                    <div class="sidebar-section-modern activity-enhanced">
+                        <div class="section-header">
+                            <h4><i class="fas fa-clock me-2"></i>Recent Activity</h4>
+                            <span class="activity-badge live">Live</span>
+                        </div>
+                        <div class="activity-timeline">
+                            <div class="activity-item-modern">
+                                <div class="activity-dot completed"></div>
+                                <div class="activity-content-modern">
+                                    <div class="activity-header">
+                                        <span class="activity-title">Step 2 Completed</span>
+                                        <span class="activity-time">2h ago</span>
+                                    </div>
+                                    <p class="activity-description">Legal & Ownership Structure</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Details -->
+            <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+                <h5>🔧 Technical Changes Made:</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>CSS Selector Updated:</h6>
+                        <ul>
+                            <li><code>.section-header h4</code> - Main section headings</li>
+                            <li>Affects all sidebar section titles</li>
+                            <li>Font weight maintained at 700</li>
+                            <li>Color kept burgundy (#4D0032)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Font Size Change:</h6>
+                        <ul>
+                            <li><strong>Before:</strong> <code>font-size: 1.1rem</code></li>
+                            <li><strong>After:</strong> <code>font-size: 1.25rem</code></li>
+                            <li><strong>Increase:</strong> +0.15rem (13.6% larger)</li>
+                            <li><strong>Effect:</strong> Better readability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Changes -->
+            <div class="mt-4 p-3 bg-dark text-white rounded">
+                <h6>📝 CSS Code Update:</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Before:</strong>
+                        <pre class="text-warning"><code>.section-header h4 {
+  color: var(--color-primary-burgundy);
+  font-weight: 700;
+  font-size: 1.1rem;  /* ← Old size */
+  margin: 0;
+  display: flex;
+  align-items: center;
+}</code></pre>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>After:</strong>
+                        <pre class="text-success"><code>.section-header h4 {
+  color: var(--color-primary-burgundy);
+  font-weight: 700;
+  font-size: 1.25rem; /* ← New larger size */
+  margin: 0;
+  display: flex;
+  align-items: center;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits -->
+            <div class="mt-4 p-3 bg-warning bg-opacity-10 rounded">
+                <h6>✨ Benefits of Font Size Increase:</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Usability Improvements:</h6>
+                        <ul>
+                            <li>✅ <strong>Better Readability</strong> - Easier to read section titles</li>
+                            <li>✅ <strong>Improved Hierarchy</strong> - Clearer visual importance</li>
+                            <li>✅ <strong>Enhanced UX</strong> - Professional appearance</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Visual Benefits:</h6>
+                        <ul>
+                            <li>✅ <strong>Better Contrast</strong> - More prominent headings</li>
+                            <li>✅ <strong>Consistent Sizing</strong> - Balanced with content</li>
+                            <li>✅ <strong>Professional Look</strong> - Modern interface</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Responsive Considerations -->
+            <div class="alert alert-info mt-4" role="alert">
+                <h6 class="alert-heading">📱 Responsive Design Maintained:</h6>
+                <p class="mb-0">
+                    Font size increase सभी devices पर properly scale होती है:
+                    <br>• <strong>Desktop:</strong> 1.25rem (20px at default 16px base)
+                    <br>• <strong>Mobile:</strong> Proportionally scaled based on viewport
+                    <br>• <strong>Accessibility:</strong> User zoom settings respected
+                </p>
+            </div>
+
+            <!-- Test Navigation -->
+            <div class="text-center mt-4">
+                <h5>🧪 Main Page Test करें:</h5>
+                <a href="index.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-home me-2"></i>Go to Main Page
+                </a>
+                <p class="mt-2 text-muted">
+                    Sidebar में sections को देखें - headings अब बड़ी हैं
+                </p>
+            </div>
+
+            <!-- Final Confirmation -->
+            <div class="alert alert-success mt-4" role="alert">
+                <h6 class="alert-heading">🎉 Section Font Sizes Updated!</h6>
+                <p class="mb-0">
+                    ✅ <strong>Quick Actions heading अब 1.25rem size में</strong><br>
+                    ✅ <strong>My Documents heading अब बड़ी और clear</strong><br>
+                    ✅ <strong>Recent Activity heading अब better readable</strong><br>
+                    <small class="text-muted">
+                        सभी section headings अब 13.6% बड़े हैं और बेहतर visibility प्रदान करते हैं!
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

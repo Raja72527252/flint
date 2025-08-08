@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Video Test - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .test-content {
+            padding: 100px 20px 50px;
+        }
+        .test-card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .demo-video-container {
+            background: #FFF3E9CC;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        .comparison-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .before {
+            background: #ffe6e6;
+            border: 2px solid #ff6b6b;
+        }
+        .after {
+            background: #e6ffe6;
+            border: 2px solid #51cf66;
+        }
+        .feature-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Inline Video Test</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <div class="test-card">
+            <h2>🎬 Inline Video Playback Test</h2>
+            <div class="alert alert-success" role="alert">
+                <h6 class="alert-heading">
+                    <i class="fas fa-check-circle me-2"></i>Video Enhancement Complete!
+                </h6>
+                <p class="mb-0">
+                    Videos अब same container में play होते हैं बिना new tab खोले। Container size maintain रहता है।
+                </p>
+            </div>
+
+            <!-- Before/After Comparison -->
+            <h4 class="mt-4 mb-3">🔄 Before vs After Comparison</h4>
+            <div class="comparison-grid">
+                <div class="comparison-item before">
+                    <h5>❌ पहले (Before)</h5>
+                    <ul class="text-start">
+                        <li>Video new tab में खुलता था</li>
+                        <li>User को page छोड़ना पड़ता था</li>
+                        <li>YouTube पर redirect हो जाता था</li>
+                        <li>Navigation experience break हो जाता था</li>
+                    </ul>
+                    <div class="mt-3">
+                        <code>window.open(youtubeUrl, '_blank')</code>
+                    </div>
+                </div>
+                <div class="comparison-item after">
+                    <h5>✅ अब (After)</h5>
+                    <ul class="text-start">
+                        <li>Video same container में play होता है</li>
+                        <li>User page पर ही रहता है</li>
+                        <li>Embedded YouTube iframe</li>
+                        <li>Smooth user experience</li>
+                    </ul>
+                    <div class="mt-3">
+                        <code>playYouTubeInline(videoId, containerId)</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Video Section -->
+            <h4 class="mt-4 mb-3">🎯 Demo: Click करके Test करें</h4>
+            <div class="demo-video-container">
+                <div class="row">
+                    <!-- Hero Video Style -->
+                    <div class="col-md-6 mb-4">
+                        <h5>Hero Video Style</h5>
+                        <div class="hero-video">
+                            <div class="video-player" id="demo-hero-video" onclick="playYouTubeInline('dQw4w9WgXcQ', 'demo-hero-video')">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop&crop=center" alt="Demo Video" class="video-thumbnail">
+                                <div class="play-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    <strong>Demo Video</strong><br>
+                                    <small>Click to play inline</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Video Style -->
+                    <div class="col-md-6 mb-4">
+                        <h5>Enhanced Video Style</h5>
+                        <div class="video-section-enhanced">
+                            <div class="video-placeholder-enhanced" id="demo-enhanced-video" onclick="playYouTubeInline('dQw4w9WgXcQ', 'demo-enhanced-video')">
+                                <div class="video-thumbnail">
+                                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Demo Enhanced Video" />
+                                    <div class="video-overlay">
+                                        <div class="play-button-large">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-content">
+                                    <h6>Enhanced Demo Video</h6>
+                                    <p>Click to play inline in enhanced container</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Features -->
+            <div class="feature-list">
+                <h5>🔧 Technical Implementation Features:</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>JavaScript Enhancements:</h6>
+                        <ul>
+                            <li>✅ <code>playYouTubeInline()</code> function added</li>
+                            <li>✅ Dynamic iframe creation</li>
+                            <li>✅ Container size preservation</li>
+                            <li>✅ Autoplay with embedded parameters</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>CSS Improvements:</h6>
+                        <ul>
+                            <li>✅ Iframe positioning styles</li>
+                            <li>✅ Aspect ratio maintenance</li>
+                            <li>✅ Border radius preservation</li>
+                            <li>✅ Playing state classes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implementation Details -->
+            <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+                <h6>📝 Files Modified:</h6>
+                <div class="row text-start">
+                    <div class="col-md-4">
+                        <strong>app.js:</strong>
+                        <ul>
+                            <li>Added <code>playYouTubeInline()</code></li>
+                            <li>Iframe creation logic</li>
+                            <li>Container management</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <strong>index.html:</strong>
+                        <ul>
+                            <li>Updated onclick handlers</li>
+                            <li>Added container IDs</li>
+                            <li>Maintained structure</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <strong>style.css:</strong>
+                        <ul>
+                            <li>Iframe positioning</li>
+                            <li>Playing state styles</li>
+                            <li>Aspect ratio handling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YouTube Embed Parameters -->
+            <div class="alert alert-info mt-4" role="alert">
+                <h6 class="alert-heading">🎬 YouTube Embed Parameters:</h6>
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <ul>
+                            <li><code>autoplay=1</code> - Auto start video</li>
+                            <li><code>rel=0</code> - Hide related videos</li>
+                            <li><code>modestbranding=1</code> - Minimal YouTube branding</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li><code>allowfullscreen</code> - Enable fullscreen</li>
+                            <li><code>allow</code> - Permissions for autoplay</li>
+                            <li>Responsive iframe sizing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Instructions -->
+            <div class="mt-4 p-3 bg-warning bg-opacity-10 rounded">
+                <h6>🧪 Test Instructions:</h6>
+                <ol class="text-start">
+                    <li><strong>Click on either video above</strong> - Video should play inline</li>
+                    <li><strong>Check container size</strong> - Should maintain original dimensions</li>
+                    <li><strong>Verify autoplay</strong> - Video should start automatically</li>
+                    <li><strong>Test responsiveness</strong> - Should work on mobile too</li>
+                    <li><strong>Check main page</strong> - Go to index.html and test hero videos</li>
+                </ol>
+            </div>
+
+            <!-- Success Confirmation -->
+            <div class="alert alert-success mt-4" role="alert">
+                <h6 class="alert-heading">🎉 Implementation Success!</h6>
+                <p class="mb-0">
+                    ✅ <strong>Hero section videos अब inline play होते हैं!</strong><br>
+                    <small class="text-muted">
+                        No more new tabs, videos play in same container, size maintained, smooth user experience!
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

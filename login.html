@@ -19,7 +19,7 @@
                 <div class="col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="login-form-container">
                         <div class="text-center mb-4">
-                            <img src="image/icon.PNG" alt="Flint Logo" class="login-logo mb-3">
+                            <img src="icon.PNG" alt="Flint Logo" class="login-logo mb-3">
                             <h1 class="login-title">Flint</h1>
                         </div>
                         
@@ -62,6 +62,7 @@
                 <!-- Right Side - Hero Section -->
                 <div class="col-lg-6 login-hero-section">
                     <div class="hero-content">
+                        <!-- Hero Card -->
                         <div class="hero-card">
                             <div class="hero-card-header">
                                 <div class="hero-logo">F</div>
@@ -83,30 +84,41 @@
                             </div>
                         </div>
                         
-                        <div class="hero-text">
+                        <!-- Main Heading -->
+                        <div class="hero-heading">
                             <h2>Build Your Business. Backed by Flint.</h2>
                             <p>Join the mortgage brokers that match your ambitions. Our comprehensive platform provides everything you need to succeed.</p>
                         </div>
 
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <h4>Advanced Technology</h4>
-                                <p>Cutting-edge tools and integrations</p>
+                        <!-- Stats Grid -->
+                        <div class="hero-stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <h4>Advanced Technology</h4>
+                                    <p>Cutting-edge tools and integrations</p>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <h4>Expert Support</h4>
-                                <p>Dedicated team to help you grow</p>
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <h4>Expert Support</h4>
+                                    <p>Dedicated team to help you grow</p>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <h4>Proven Results</h4>
-                                <p>Track record of success</p>
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <h4>Proven Results</h4>
+                                    <p>Track record of success</p>
+                                </div>
                             </div>
-                            <div class="stat-item">
-                                <h4>Flexible Growth</h4>
-                                <p>Scale at your own pace</p>
+                            <div class="stat-card">
+                                <div class="stat-content">
+                                    <h4>Flexible Growth</h4>
+                                    <p>Scale at your own pace</p>
+                                </div>
                             </div>
                         </div>
 
+                        <!-- Quote -->
                         <div class="hero-quote">
                             <p>"The mortgage brokers that match your ambitions"</p>
                         </div>
@@ -137,19 +149,44 @@
 
         function handleLogin(event) {
             event.preventDefault();
+            console.log('Login form submitted');
             
             // Simple validation
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             
+            console.log('Email:', email, 'Password:', password ? 'entered' : 'empty');
+            
             if (email && password) {
-                // Simulate login success
-                showLoginSuccess();
+                console.log('Starting login process...');
+                // Show loading state
+                showLoginLoading();
                 
-                // Redirect to main portal after delay
+                // Simulate authentication process
                 setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 1500);
+                    console.log('Setting authentication in localStorage...');
+                    // Set authentication flag in localStorage
+                    localStorage.setItem('flint_logged_in', 'true');
+                    localStorage.setItem('flint_login_timestamp', new Date().getTime().toString());
+                    localStorage.setItem('flint_user_email', email);
+                    
+                    console.log('localStorage set:', {
+                        logged_in: localStorage.getItem('flint_logged_in'),
+                        timestamp: localStorage.getItem('flint_login_timestamp'),
+                        email: localStorage.getItem('flint_user_email')
+                    });
+                    
+                    // Show success notification
+                    showLoginSuccess();
+                    
+                    // Redirect to app entry which will redirect to homepage
+                    setTimeout(() => {
+                        console.log('Redirecting directly to index.html...');
+                        window.location.href = 'index.html';
+                    }, 2000);
+                }, 1000);
+            } else {
+                console.log('Validation failed - missing email or password');
             }
         }
 
@@ -168,6 +205,12 @@
             setTimeout(() => {
                 notification.remove();
             }, 2000);
+        }
+        
+        function showLoginLoading() {
+            const button = document.querySelector('button[type="submit"]');
+            button.innerHTML = '<div class="spinner-border spinner-border-sm me-2" role="status"></div>Logging in...';
+            button.disabled = true;
         }
     </script>
 
@@ -265,13 +308,13 @@
 
         /* Hero Section */
         .login-hero-section {
-            background: linear-gradient(135deg, var(--color-primary-burgundy) 0%, rgba(var(--color-primary-burgundy-rgb), 0.8) 50%, var(--color-accent-coral) 100%);
+            background: linear-gradient(135deg, #6E0048 0%, #4D0032 100%);
             position: relative;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            min-height: 100vh;
         }
 
         .login-hero-section::before {
@@ -281,28 +324,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image:
-                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(var(--color-accent-coral-rgb), 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(var(--color-accent-cornflower-rgb), 0.08) 0%, transparent 50%);
-            opacity: 0.6;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 175, 156, 0.1) 0%, transparent 50%);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 500px;
-            color: var(--color-background-white);
+            max-width: 480px;
+            width: 100%;
         }
 
+        /* Hero Card */
         .hero-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 2rem;
             margin-bottom: 2rem;
             text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .hero-card-header {
@@ -314,76 +355,114 @@
         }
 
         .hero-logo {
-            width: 48px;
-            height: 48px;
-            background: var(--color-accent-coral);
+            width: 50px;
+            height: 50px;
+            background: #FFAF9C;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--color-primary-burgundy);
+            color: #4D0032;
         }
 
         .hero-card h3 {
-            color: var(--color-background-white);
+            color: white;
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .hero-features {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 1rem;
+            text-align: left;
         }
 
         .feature-item {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--color-background-white);
+            color: white;
+            font-size: 0.95rem;
         }
 
         .feature-item i {
-            color: var(--color-accent-mint) !important;
+            color: #FFAF9C;
             font-size: 1rem;
+            width: 16px;
         }
 
-        .hero-text {
+        /* Hero Heading */
+        .hero-heading {
             text-align: center;
             margin-bottom: 2rem;
         }
 
-        .hero-text h2 {
-            font-size: 2rem;
+        .hero-heading h2 {
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--color-background-white);
+            color: white;
+            line-height: 1.3;
         }
 
-        .hero-text p {
-            font-size: 1.1rem;
+        .hero-heading p {
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
+            line-height: 1.5;
+            margin: 0;
         }
 
-        .hero-stats {
+        /* Stats Grid */
+        .hero-stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
-        .stat-item {
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1.2rem;
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
-        .stat-item h4 {
-            font-size: 1rem;
+        .stat-content h4 {
+            font-size: 0.9rem;
             font-weight: 600;
-            color: var(--color-background-white);
+            color: white;
             margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .stat-content p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* Hero Quote */
+        .hero-quote {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-quote p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-style: italic;
+            font-weight: 500;
         }
 
         .stat-item p {
@@ -439,23 +518,90 @@
         /* Responsive Design */
         @media (max-width: 991px) {
             .login-hero-section {
-                display: none;
+                min-height: auto;
+                padding: 2rem 1rem;
             }
             
             .login-form-container {
                 max-width: 500px;
                 padding: 3rem 2rem;
             }
+            
+            .hero-content {
+                max-width: 400px;
+            }
+            
+            .hero-heading h2 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+            
+            .hero-card {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
-            .login-form-container {
-                padding: 2rem 1rem;
+            .login-container {
+                padding: 0;
             }
             
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .login-hero-section {
+                padding: 1.5rem 1rem;
+                order: 2;
+            }
+            
+            .col-lg-6:first-child {
+                order: 1;
+            }
+            
+            .login-form-container {
+                padding: 2rem 1rem;
+                max-width: 100%;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+            
+            .hero-heading h2 {
+                font-size: 1.3rem;
+            }
+            
+            .hero-heading p {
+                font-size: 0.9rem;
+            }
+            
+            .hero-card {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-logo {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .hero-card h3 {
+                font-size: 1.2rem;
+            }
+            
+            .stat-card {
+                padding: 1rem;
+            }
+            
+            .stat-content h4 {
+                font-size: 0.8rem;
+            }
+            
+            .stat-content p {
+                font-size: 0.7rem;
             }
         }
     </style>

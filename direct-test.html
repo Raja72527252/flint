@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Login Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-warning { background: #ffc107; color: black; }
+        .btn-danger { background: #dc3545; color: white; }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Direct Login Test</h2>
+        <p>This will simulate a successful login and test direct homepage access.</p>
+        
+        <div>
+            <button class="btn-primary" onclick="simulateLogin()">Simulate Login</button>
+            <button class="btn-success" onclick="goToHomepage()">Go to Homepage</button>
+            <button class="btn-warning" onclick="checkAuth()">Check Auth Status</button>
+            <button class="btn-danger" onclick="clearAuth()">Clear Auth</button>
+        </div>
+        
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+        }
+        
+        function simulateLogin() {
+            try {
+                // Set authentication data
+                localStorage.setItem('flint_logged_in', 'true');
+                localStorage.setItem('flint_login_timestamp', new Date().getTime().toString());
+                localStorage.setItem('flint_user_email', 'test@flint.com');
+                
+                updateStatus('✅ Login simulated successfully!\n\nLocalStorage set:\n' + 
+                    JSON.stringify({
+                        flint_logged_in: localStorage.getItem('flint_logged_in'),
+                        flint_login_timestamp: localStorage.getItem('flint_login_timestamp'),
+                        flint_user_email: localStorage.getItem('flint_user_email'),
+                        timestamp_readable: new Date(parseInt(localStorage.getItem('flint_login_timestamp'))).toLocaleString()
+                    }, null, 2)
+                );
+            } catch (error) {
+                updateStatus('❌ Error simulating login: ' + error.message);
+            }
+        }
+        
+        function goToHomepage() {
+            updateStatus('🔄 Redirecting to homepage...');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+        
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('flint_logged_in');
+            const loginTimestamp = localStorage.getItem('flint_login_timestamp');
+            const userEmail = localStorage.getItem('flint_user_email');
+            
+            const currentTime = new Date().getTime();
+            const loginTime = loginTimestamp ? parseInt(loginTimestamp) : 0;
+            const twentyFourHours = 24 * 60 * 60 * 1000;
+            const isSessionValid = (currentTime - loginTime) < twentyFourHours;
+            
+            updateStatus('🔍 Authentication Status:\n\n' + 
+                JSON.stringify({
+                    isLoggedIn: isLoggedIn,
+                    loginTimestamp: loginTimestamp,
+                    userEmail: userEmail,
+                    currentTime: currentTime,
+                    loginTime: loginTime,
+                    timeDifference: currentTime - loginTime,
+                    sessionValid: isSessionValid,
+                    shouldRedirectToHomepage: isLoggedIn === 'true' && isSessionValid
+                }, null, 2)
+            );
+        }
+        
+        function clearAuth() {
+            localStorage.removeItem('flint_logged_in');
+            localStorage.removeItem('flint_login_timestamp');
+            localStorage.removeItem('flint_user_email');
+            updateStatus('🗑️ Authentication cleared!');
+        }
+        
+        // Check auth on page load
+        window.addEventListener('load', function() {
+            checkAuth();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #6E0048, #4D0032);
+            color: white;
+            min-height: 100vh;
+            padding: 50px 0;
+        }
+        .card {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+        .auth-status {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .nav-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .nav-card {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .nav-card:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-5px);
+        }
+        .nav-card a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1>🧭 Navigation Test</h1>
+            <p class="lead">Test authentication and navigation between pages</p>
+        </div>
+        
+        <div class="auth-status">
+            <h4>Authentication Status:</h4>
+            <div id="authInfo">Loading...</div>
+        </div>
+        
+        <div class="nav-links">
+            <div class="nav-card">
+                <h5>🏠 Homepage</h5>
+                <p>Main dashboard</p>
+                <a href="index.html" class="btn btn-primary">Go to Homepage</a>
+            </div>
+            
+            <div class="nav-card">
+                <h5>📚 Resources</h5>
+                <p>Resources page (Direct Access)</p>
+                <a href="resources.html" class="btn btn-primary">Go to Resources</a>
+            </div>
+            
+            <div class="nav-card">
+                <h5>🔑 Simple Login</h5>
+                <p>Login page</p>
+                <a href="simple-login.html" class="btn btn-warning">Go to Login</a>
+            </div>
+            
+            <div class="nav-card">
+                <h5>🏠 Test Homepage</h5>
+                <p>Simple test homepage</p>
+                <a href="test-homepage.html" class="btn btn-success">Test Homepage</a>
+            </div>
+        </div>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5>Authentication Actions:</h5>
+                <button class="btn btn-success me-2" onclick="simulateLogin()">Simulate Login</button>
+                <button class="btn btn-danger me-2" onclick="logout()">Logout</button>
+                <button class="btn btn-info" onclick="checkAuth()">Refresh Status</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('flint_logged_in');
+            const loginTimestamp = localStorage.getItem('flint_login_timestamp');
+            const userEmail = localStorage.getItem('flint_user_email');
+            
+            const currentTime = new Date().getTime();
+            const loginTime = loginTimestamp ? parseInt(loginTimestamp) : 0;
+            const twentyFourHours = 24 * 60 * 60 * 1000;
+            const isSessionValid = (currentTime - loginTime) < twentyFourHours;
+            
+            const authInfo = document.getElementById('authInfo');
+            
+            if (isLoggedIn === 'true' && isSessionValid) {
+                const loginTimeFormatted = new Date(parseInt(loginTimestamp)).toLocaleString();
+                authInfo.innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>✅ Authenticated</strong><br>
+                        Email: ${userEmail}<br>
+                        Login Time: ${loginTimeFormatted}<br>
+                        Status: Active Session<br>
+                        <small>You can access all pages without re-login</small>
+                    </div>
+                `;
+            } else {
+                authInfo.innerHTML = `
+                    <div class="alert alert-warning">
+                        <strong>❌ Not Authenticated</strong><br>
+                        You need to login to access protected pages<br>
+                        <small>Protected pages will redirect to login</small>
+                    </div>
+                `;
+            }
+        }
+        
+        function simulateLogin() {
+            localStorage.setItem('flint_logged_in', 'true');
+            localStorage.setItem('flint_login_timestamp', new Date().getTime().toString());
+            localStorage.setItem('flint_user_email', 'test@flint.com');
+            
+            checkAuth();
+            alert('✅ Login simulated! You can now access all pages.');
+        }
+        
+        function logout() {
+            localStorage.removeItem('flint_logged_in');
+            localStorage.removeItem('flint_login_timestamp');
+            localStorage.removeItem('flint_user_email');
+            
+            checkAuth();
+            alert('🚪 Logged out! Protected pages will now redirect to login.');
+        }
+        
+        // Check auth on page load
+        window.addEventListener('load', checkAuth);
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

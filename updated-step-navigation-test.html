@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Step Navigation - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .test-content {
+            padding: 100px 20px 50px;
+        }
+        .test-card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .demo-examples {
+            margin: 30px 0;
+        }
+        .demo-step-nav {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 2px solid rgba(110, 0, 72, 0.1);
+        }
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .explanation-card {
+            background: #FFF3E9CC;
+            padding: 25px;
+            border-radius: 16px;
+            border: 2px solid rgba(110, 0, 72, 0.1);
+        }
+        .layout-example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .example-item {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .example-completed {
+            background: #36D399;
+            color: white;
+        }
+        .example-current {
+            background: #6E0048;
+            color: white;
+        }
+        .example-pending {
+            background: white;
+            border: 2px solid #ddd;
+            color: #666;
+        }
+        .example-connector {
+            height: 2px;
+            width: 15px;
+            background: #ddd;
+        }
+        .example-connector-completed {
+            background: #36D399;
+        }
+        @media (max-width: 768px) {
+            .explanation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Updated Step Navigation</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Test Content -->
+    <div class="test-content">
+        <div class="test-card">
+            <h2>✅ Step Navigation Updated!</h2>
+            <div class="alert alert-success" role="alert">
+                <h6 class="alert-heading">
+                    <i class="fas fa-check-circle me-2"></i>Navigation Layout Improved!
+                </h6>
+                <p class="mb-0">
+                    ✅ Completed steps अब केवल checkmark (✓) show करते हैं, number नहीं<br>
+                    ✅ Current step में number clearly visible है<br>
+                    ✅ Next pending steps में numbers show होते हैं
+                </p>
+            </div>
+
+            <!-- New Layout Examples -->
+            <h4 class="mt-4 mb-3">🎯 New Navigation Layout</h4>
+            
+            <div class="demo-examples">
+                <!-- Step 1 Example -->
+                <div class="demo-step-nav">
+                    <h6>Step 1 पर (Current = Step 1):</h6>
+                    <div class="step-navigation">
+                        <a href="javascript:void(0)" class="step-nav-item current" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    </div>
+                    <p class="text-muted mb-0"><strong>Layout:</strong> [1] - 2 - 3 - 4 - 5 - 6 - 7</p>
+                </div>
+
+                <!-- Step 3 Example -->
+                <div class="demo-step-nav">
+                    <h6>Step 3 पर (Completed = Steps 1-2, Current = Step 3):</h6>
+                    <div class="step-navigation">
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item current" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                        <div class="step-nav-connector"></div>
+                        <a href="javascript:void(0)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    </div>
+                    <p class="text-muted mb-0"><strong>Layout:</strong> ✓ - ✓ - [3] - 4 - 5 - 6 - 7</p>
+                </div>
+
+                <!-- Step 7 Example -->
+                <div class="demo-step-nav">
+                    <h6>Step 7 पर (All Previous Completed, Current = Step 7):</h6>
+                    <div class="step-navigation">
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item completed" title="Step 6: Growth"><span class="step-number">6</span></a>
+                        <div class="step-nav-connector completed"></div>
+                        <a href="javascript:void(0)" class="step-nav-item current" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    </div>
+                    <p class="text-muted mb-0"><strong>Layout:</strong> ✓ - ✓ - ✓ - ✓ - ✓ - ✓ - [7]</p>
+                </div>
+            </div>
+
+            <!-- Layout Explanation -->
+            <h4 class="mt-4 mb-3">📖 Layout Logic Explained</h4>
+            <div class="explanation-grid">
+                <div class="explanation-card">
+                    <h5>
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        Completed Steps
+                    </h5>
+                    <div class="layout-example">
+                        <div class="example-item example-completed">✓</div>
+                        <span class="text-muted">Checkmark Only</span>
+                    </div>
+                    <p>
+                        जो steps पहले complete हो चुके हैं, वे केवल green checkmark (✓) show करते हैं।
+                        Number hide हो जाता है क्योंकि completion ज्यादा important है।
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>• <strong>Color:</strong> Green (#36D399)</li>
+                        <li>• <strong>Symbol:</strong> ✓ checkmark</li>
+                        <li>• <strong>Number:</strong> Hidden</li>
+                    </ul>
+                </div>
+
+                <div class="explanation-card">
+                    <h5>
+                        <i class="fas fa-dot-circle text-primary me-2"></i>
+                        Current Step
+                    </h5>
+                    <div class="layout-example">
+                        <div class="example-item example-current">3</div>
+                        <span class="text-muted">Number Visible</span>
+                    </div>
+                    <p>
+                        Current active step में number clearly visible है blue background के साथ।
+                        यह user को बताता है कि वे currently कौन से step पर हैं।
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>• <strong>Color:</strong> Blue (#6E0048)</li>
+                        <li>• <strong>Symbol:</strong> Step number</li>
+                        <li>• <strong>Highlight:</strong> Enlarged & highlighted</li>
+                    </ul>
+                </div>
+
+                <div class="explanation-card">
+                    <h5>
+                        <i class="fas fa-circle text-secondary me-2"></i>
+                        Pending Steps
+                    </h5>
+                    <div class="layout-example">
+                        <div class="example-item example-pending">5</div>
+                        <span class="text-muted">Number Visible</span>
+                    </div>
+                    <p>
+                        Future steps में numbers visible हैं gray outline के साथ।
+                        Users को पता चलता है कि आगे कौन से steps आने वाले हैं।
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>• <strong>Color:</strong> Gray outline</li>
+                        <li>• <strong>Symbol:</strong> Step number</li>
+                        <li>• <strong>Status:</strong> Clickable for navigation</li>
+                    </ul>
+                </div>
+
+                <div class="explanation-card">
+                    <h5>
+                        <i class="fas fa-arrows-alt-h text-info me-2"></i>
+                        Connectors
+                    </h5>
+                    <div class="layout-example">
+                        <div class="example-connector example-connector-completed"></div>
+                        <span class="text-muted mx-2">vs</span>
+                        <div class="example-connector"></div>
+                    </div>
+                    <p>
+                        Steps के बीच connecting lines भी status show करती हैं।
+                        Completed connections green हैं, pending connections gray हैं।
+                    </p>
+                    <ul class="list-unstyled">
+                        <li>• <strong>Completed:</strong> Green line</li>
+                        <li>• <strong>Pending:</strong> Gray line</li>
+                        <li>• <strong>Flow:</strong> Left to right progression</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Implementation -->
+            <div class="mt-4 p-3 bg-info bg-opacity-10 rounded">
+                <h5>🔧 Technical Implementation:</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>CSS Changes:</h6>
+                        <ul>
+                            <li>Added <code>.step-number</code> span wrapper</li>
+                            <li>Updated <code>.completed::after</code> for checkmark</li>
+                            <li>Added <code>.completed .step-number { display: none; }</code></li>
+                            <li>Larger checkmark size (14px)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>HTML Structure:</h6>
+                        <ul>
+                            <li>Wrapped numbers in <code>&lt;span class="step-number"&gt;</code></li>
+                            <li>Progressive completion status per step</li>
+                            <li>Maintained all navigation functionality</li>
+                            <li>Consistent tooltip titles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="mt-4 p-3 bg-dark text-white rounded">
+                <h6>📝 HTML Structure Example:</h6>
+                <pre class="text-light mb-0"><code>&lt;!-- Completed Step (Shows ✓) --&gt;
+&lt;a class="step-nav-item completed"&gt;
+  &lt;span class="step-number"&gt;1&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- Current Step (Shows Number) --&gt;
+&lt;a class="step-nav-item current"&gt;
+  &lt;span class="step-number"&gt;3&lt;/span&gt;
+&lt;/a&gt;
+
+&lt;!-- Pending Step (Shows Number) --&gt;
+&lt;a class="step-nav-item"&gt;
+  &lt;span class="step-number"&gt;5&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+            </div>
+
+            <!-- Testing Instructions -->
+            <div class="mt-4 p-3 bg-warning bg-opacity-10 rounded">
+                <h6>🧪 Testing Instructions:</h6>
+                <ol>
+                    <li><strong>Step 1:</strong> Go to index.html#step1 - देखें कि current step 1 है और बाकी numbers visible हैं</li>
+                    <li><strong>Step 3:</strong> Go to index.html#step3 - देखें कि steps 1-2 में checkmarks हैं, step 3 current है</li>
+                    <li><strong>Step 7:</strong> Go to index.html#step7 - देखें कि सभी previous steps में checkmarks हैं</li>
+                    <li><strong>Navigation:</strong> Click करके verify करें कि सभी links काम कर रही हैं</li>
+                </ol>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="text-center mt-4">
+                <h5>🧪 Test Updated Navigation:</h5>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="index.html#step1" class="btn btn-primary">
+                        <i class="fas fa-play-circle me-2"></i>Test Step 1
+                    </a>
+                    <a href="index.html#step3" class="btn btn-primary">
+                        <i class="fas fa-calculator me-2"></i>Test Step 3
+                    </a>
+                    <a href="index.html#step5" class="btn btn-primary">
+                        <i class="fas fa-cogs me-2"></i>Test Step 5
+                    </a>
+                    <a href="index.html#step7" class="btn btn-primary">
+                        <i class="fas fa-flag-checkered me-2"></i>Test Step 7
+                    </a>
+                </div>
+                <div class="mt-3">
+                    <a href="index.html" class="btn btn-outline-secondary btn-lg">
+                        <i class="fas fa-home me-2"></i>Back to Main Portal
+                    </a>
+                </div>
+                <p class="mt-3 text-muted">
+                    हर step के bottom में updated navigation देखें
+                </p>
+            </div>
+
+            <!-- Benefits -->
+            <div class="mt-4 p-3 bg-success bg-opacity-10 rounded">
+                <h6>✨ Benefits of Updated Layout:</h6>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>User Experience:</h6>
+                        <ul>
+                            <li>✅ <strong>Clear Progress</strong> - Checkmarks show completion</li>
+                            <li>✅ <strong>Current Focus</strong> - Number highlights current step</li>
+                            <li>✅ <strong>Future Visibility</strong> - Numbers show upcoming steps</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Visual Clarity:</h6>
+                        <ul>
+                            <li>✅ <strong>Status Differentiation</strong> - Icons vs numbers</li>
+                            <li>✅ <strong>Reduced Clutter</strong> - Less visual noise</li>
+                            <li>✅ <strong>Professional Look</strong> - Modern progress indicator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Confirmation -->
+            <div class="alert alert-success mt-4" role="alert">
+                <h6 class="alert-heading">🎉 Step Navigation Layout Updated!</h6>
+                <p class="mb-0">
+                    ✅ <strong>Completed steps अब केवल ✓ checkmark show करते हैं</strong><br>
+                    ✅ <strong>Current step में number clearly visible है</strong><br>
+                    ✅ <strong>Pending steps में numbers visible हैं navigation के लिए</strong><br>
+                    <small class="text-muted">
+                        यह layout ज्यादा clean और user-friendly है!
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

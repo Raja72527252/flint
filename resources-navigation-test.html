@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation with Resources - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        .test-content {
+            padding: 100px 20px 50px;
+            text-align: center;
+        }
+        .demo-card {
+            background: white;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 900px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .icon-demo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #FFF3E9CC;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(77, 0, 50, 0.2);
+        }
+        .icon-demo:hover {
+            background: rgba(77, 0, 50, 0.1);
+            transform: translateX(4px);
+            transition: all 0.3s ease;
+        }
+        .icon-demo i {
+            color: rgba(77, 0, 50, 0.8) !important;
+            font-size: 1.2rem;
+            margin-right: 12px;
+            transition: all 0.3s ease;
+        }
+        .icon-demo:hover i {
+            color: #4D0032 !important;
+            transform: scale(1.1);
+        }
+        .icon-demo span {
+            color: rgba(77, 0, 50, 0.9);
+            font-weight: 500;
+        }
+        .icon-demo:hover span {
+            color: #4D0032;
+        }
+        .resources-dropdown {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 12px;
+            border-left: 4px solid #4D0032;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation with Resources Added -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="javascript:void(0)">
+                <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
+                <div class="brand-text">
+                    <span class="brand-title">Flint Directors Portal</span>
+                    <span class="brand-subtitle d-none d-lg-block">Your Onboarding Journey</span>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navigation Menu with Resources Added -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-tasks me-1"></i>Steps
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-play-circle me-2"></i>Step 1: Welcome & Introduction
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-gavel me-2"></i>Step 2: Legal & Compliance
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-calculator me-2"></i>Step 3: Financial Orientation
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-cogs me-2"></i>Step 4: Operational Training
+                            </a></li>
+                        </ul>
+                    </li>
+                    <!-- NEW: Resources Navigation Item -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-folder-open me-1"></i>Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-file-pdf me-2"></i>Documents & Forms
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-video me-2"></i>Training Videos
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-book me-2"></i>Knowledge Base
+                            </a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-download me-2"></i>Downloads
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">
+                                <i class="fas fa-external-link-alt me-2"></i>External Resources
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <i class="fas fa-headset me-1"></i>Support
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Side Elements -->
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Progress Indicator (Hidden on mobile) -->
+                    <div class="progress-indicator d-none d-lg-flex flex-column me-3">
+                        <span class="progress-text">Welcome back, John</span>
+                        <span class="progress-steps">2 of 5 steps completed</span>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="nav-item dropdown me-2">
+                        <a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">Notifications</li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle me-2"></i>Step 3 available</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-check-circle me-2"></i>Step 2 completed</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=4D0032&color=FFFFFF&bold=true&size=32" alt="John Doe" class="rounded-circle me-2">
+                            <span class="d-none d-lg-inline">John Doe</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=4D0032&color=FFFFFF&bold=true&size=40" alt="John Doe" class="rounded-circle me-2">
+                                    <div>
+                                        <strong>John Doe</strong><br>
+                                        <small class="text-muted">Director</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Help</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Content -->
+    <div class="test-content">
+        <div class="demo-card">
+            <h2>✅ Navigation Enhanced with Resources</h2>
+            <p class="lead">Resources navigation item added with consistent icon colors</p>
+            
+            <!-- Navigation Icons Demo -->
+            <div class="mt-4">
+                <h4>🎯 Navigation Items with Consistent Icon Colors</h4>
+                
+                <div class="icon-demo">
+                    <div>
+                        <i class="fas fa-home"></i>
+                        <span><strong>Dashboard</strong> - Home icon</span>
+                    </div>
+                    <small>rgba(77, 0, 50, 0.8) → #4D0032 on hover</small>
+                </div>
+
+                <div class="icon-demo">
+                    <div>
+                        <i class="fas fa-tasks"></i>
+                        <span><strong>Steps</strong> - Tasks icon</span>
+                    </div>
+                    <small>rgba(77, 0, 50, 0.8) → #4D0032 on hover</small>
+                </div>
+
+                <div class="icon-demo">
+                    <div>
+                        <i class="fas fa-folder-open"></i>
+                        <span><strong>Resources</strong> - Folder icon (NEW)</span>
+                    </div>
+                    <small>rgba(77, 0, 50, 0.8) → #4D0032 on hover</small>
+                </div>
+
+                <div class="icon-demo">
+                    <div>
+                        <i class="fas fa-question-circle"></i>
+                        <span><strong>FAQ</strong> - Question circle icon</span>
+                    </div>
+                    <small>rgba(77, 0, 50, 0.8) → #4D0032 on hover</small>
+                </div>
+
+                <div class="icon-demo">
+                    <div>
+                        <i class="fas fa-headset"></i>
+                        <span><strong>Support</strong> - Headset icon</span>
+                    </div>
+                    <small>rgba(77, 0, 50, 0.8) → #4D0032 on hover</small>
+                </div>
+            </div>
+
+            <!-- Resources Dropdown Content -->
+            <div class="resources-dropdown">
+                <h5><i class="fas fa-folder-open me-2" style="color: #4D0032;"></i>Resources Dropdown Items</h5>
+                <ul class="list-unstyled mb-0">
+                    <li>📄 <strong>Documents & Forms</strong> - Legal documents, application forms</li>
+                    <li>🎥 <strong>Training Videos</strong> - Step-by-step tutorials</li>
+                    <li>📚 <strong>Knowledge Base</strong> - Articles and guides</li>
+                    <li>⬇️ <strong>Downloads</strong> - Templates and tools</li>
+                    <li>🔗 <strong>External Resources</strong> - Partner links and references</li>
+                </ul>
+            </div>
+
+            <!-- Color Consistency Summary -->
+            <div class="mt-4 p-3 bg-light rounded">
+                <h5>🎨 Icon Color Consistency Applied</h5>
+                <div class="row text-start">
+                    <div class="col-md-6">
+                        <h6>Default State:</h6>
+                        <ul>
+                            <li><code>color: rgba(77, 0, 50, 0.8) !important</code></li>
+                            <li>All navigation icons use same base color</li>
+                            <li>Consistent opacity for subtle look</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Hover State:</h6>
+                        <ul>
+                            <li><code>color: #4D0032 !important</code></li>
+                            <li><code>transform: scale(1.1)</code></li>
+                            <li>All icons become fully opaque on hover</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Implementation Instructions -->
+            <div class="alert alert-info mt-4" role="alert">
+                <h6 class="alert-heading">📋 To Add Resources to Your Navigation:</h6>
+                <ol class="mb-0 text-start">
+                    <li>Add the Resources dropdown item in your navbar HTML between Steps and FAQ</li>
+                    <li>Use the <code>&lt;i class="fas fa-folder-open me-1"&gt;&lt;/i&gt;</code> icon</li>
+                    <li>Include dropdown menu items for different resource types</li>
+                    <li>The CSS already includes consistent icon color styles</li>
+                    <li>All navigation icons will automatically have same colors and hover effects</li>
+                </ol>
+            </div>
+
+            <div class="alert alert-success mt-4" role="alert">
+                <h6 class="alert-heading">🎉 Complete!</h6>
+                Resources navigation item added with fully consistent icon colors and hover effects across all navigation elements!
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

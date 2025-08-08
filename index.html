@@ -12,6 +12,272 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="flint-style.css">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Mobile Navigation Fix -->
+    <style>
+        @media (max-width: 768px) {
+            /* Ensure mobile navbar toggler is visible */
+            .navbar-toggler {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                border: 2px solid #4D0032 !important;
+                background-color: rgba(77, 0, 50, 0.1) !important;
+                padding: 8px 10px !important;
+                border-radius: 8px !important;
+                position: relative !important;
+            }
+            
+            /* Font Awesome hamburger and close icons */
+            .navbar-toggler .hamburger-icon,
+            .navbar-toggler .close-icon {
+                font-size: 18px !important;
+                color: #4D0032 !important;
+                transition: all 0.3s ease !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+            
+            /* Initially show hamburger, hide close */
+            .navbar-toggler .hamburger-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            .navbar-toggler .close-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            /* When menu is open, show close icon, hide hamburger */
+            .navbar-toggler[aria-expanded="true"] .hamburger-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            .navbar-toggler[aria-expanded="true"] .close-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            /* Hide default bootstrap toggler icon */
+            .navbar-toggler .navbar-toggler-icon {
+                display: none !important;
+            }
+            
+            /* Hide default bootstrap toggler icon */
+            .navbar-toggler .navbar-toggler-icon {
+                display: none !important;
+            }
+            
+            /* Fix brand title visibility */
+            .brand-title {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Ensure navbar collapse is HIDDEN by default on mobile */
+            .navbar-collapse {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: all 0.3s ease !important;
+                background-color: rgba(255, 243, 233, 0.98) !important;
+                border-radius: 0 0 15px 15px !important;
+                margin-top: 10px !important;
+                padding: 20px !important;
+                box-shadow: 0 4px 20px rgba(77, 0, 50, 0.2) !important;
+            }
+            
+            /* Show navbar collapse only when .show class is added */
+            .navbar-collapse.show {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Fix navbar collapse transition */
+            .navbar-collapse.collapsing {
+                opacity: 0.5 !important;
+                display: block !important;
+            }
+            
+            /* Fix navigation menu visibility */
+            .navbar-nav .nav-link {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                font-weight: 500 !important;
+                display: flex !important;
+                align-items: center !important;
+                padding: 12px 16px !important;
+                margin-bottom: 8px !important;
+                background-color: rgba(77, 0, 50, 0.05) !important;
+                border-radius: 8px !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .navbar-nav .nav-link i {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                margin-right: 8px !important;
+                display: inline-block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Fix dropdown menu visibility */
+            .navbar-nav .dropdown-menu {
+                background-color: rgba(255, 243, 233, 0.95) !important;
+                border: 1px solid rgba(77, 0, 50, 0.2) !important;
+                border-radius: 8px !important;
+                margin-top: 8px !important;
+            }
+            
+            .navbar-nav .dropdown-item {
+                color: #4D0032 !important;
+                font-size: 14px !important;
+                padding: 10px 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .navbar-nav .dropdown-item i {
+                color: #4D0032 !important;
+                margin-right: 8px !important;
+                font-size: 14px !important;
+            }
+            
+            /* Fix user profile section */
+            .navbar-nav.ms-auto .nav-link {
+                background-color: rgba(77, 0, 50, 0.1) !important;
+            }
+            
+            .user-display-name {
+                color: #4D0032 !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Notification and profile icons */
+            .navbar-nav .nav-link .fas {
+                color: #4D0032 !important;
+                font-size: 18px !important;
+            }
+        }
+    </style>
+    
+    <!-- Mobile Menu Toggle Fix -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure hamburger menu works properly
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            // Make sure menu is closed initially on mobile
+            if (window.innerWidth <= 768) {
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+            }
+            
+            if (navbarToggler && navbarCollapse) {
+                // Remove any existing Bootstrap handlers and add custom handler
+                navbarToggler.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle the menu
+                    const isExpanded = navbarCollapse.classList.contains('show');
+                    
+                    if (isExpanded) {
+                        // Close menu
+                        navbarCollapse.classList.remove('show');
+                        navbarToggler.setAttribute('aria-expanded', 'false');
+                    } else {
+                        // Open menu
+                        navbarCollapse.classList.add('show');
+                        navbarToggler.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                
+                // Close menu when clicking nav links
+                const navLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            navbarCollapse.classList.remove('show');
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (window.innerWidth <= 768) {
+                        if (!navbarToggler.contains(event.target) && !navbarCollapse.contains(event.target)) {
+                            navbarCollapse.classList.remove('show');
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        navbarCollapse.classList.remove('show');
+                        navbarToggler.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Authentication Check Script -->
+    <script>
+        // Update user display with logged-in user info
+        function updateUserDisplay() {
+            const userEmail = localStorage.getItem('flint_user_email');
+            if (userEmail) {
+                // Extract name from email (before @ symbol)
+                const userName = userEmail.split('@')[0];
+                const displayName = userName.charAt(0).toUpperCase() + userName.slice(1);
+                
+                // Update user display elements
+                const userNameElements = document.querySelectorAll('.user-display-name');
+                const progressTextElement = document.querySelector('.progress-text');
+                
+                userNameElements.forEach(element => {
+                    element.textContent = displayName;
+                });
+                
+                if (progressTextElement) {
+                    progressTextElement.textContent = `Welcome back, ${displayName}`;
+                }
+                
+                // Update avatar URLs
+                const avatarElements = document.querySelectorAll('.user-avatar');
+                const newAvatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=FFAF9C&color=4D0032&bold=true&size=`;
+                
+                avatarElements.forEach(element => {
+                    const size = element.classList.contains('avatar-small') ? '32' : '40';
+                    element.src = newAvatarUrl + size;
+                    element.alt = displayName;
+                });
+            }
+        }
+        
+        // Run updateUserDisplay when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUserDisplay();
+        });
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -27,8 +293,9 @@
             </a>
 
             <!-- Mobile Toggle Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars hamburger-icon"></i>
+                <i class="fas fa-times close-icon"></i>
             </button>
 
             <!-- Collapsible Content -->
@@ -68,13 +335,37 @@
                             </a></li>
                         </ul>
                     </li>
+                    <!-- Resources Navigation -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-folder-open me-1"></i>Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="resources.html">
+                                <i class="fas fa-file-pdf me-2"></i>Documents & Forms
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#videos">
+                                <i class="fas fa-video me-2"></i>Training Videos
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#knowledge">
+                                <i class="fas fa-book me-2"></i>Knowledge Base
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#downloads">
+                                <i class="fas fa-download me-2"></i>Downloads
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="resources.html#external">
+                                <i class="fas fa-external-link-alt me-2"></i>External Resources
+                            </a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="showFaqModal()">
                             <i class="fas fa-question-circle me-1"></i>FAQ
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="#" onclick="showSupportModal()">
                             <i class="fas fa-headset me-1"></i>Support
                         </a>
                     </li>
@@ -84,7 +375,7 @@
                 <div class="navbar-nav ms-auto d-flex align-items-center">
                     <!-- Progress Indicator (Hidden on mobile) -->
                     <div class="progress-indicator d-none d-lg-flex flex-column me-3">
-                        <span class="progress-text">Welcome back, John</span>
+                        <span class="progress-text">Welcome back, User</span>
                         <span class="progress-steps">2 of 5 steps completed</span>
                     </div>
                     
@@ -107,15 +398,15 @@
                     <!-- User Profile -->
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=FFAF9C&color=4D0032&bold=true&size=32" alt="John Doe" class="rounded-circle me-2">
-                            <span class="d-none d-lg-inline">John Doe</span>
+                            <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=32" alt="User" class="rounded-circle me-2 user-avatar avatar-small">
+                            <span class="d-none d-lg-inline user-display-name">User</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li class="dropdown-header">
                                 <div class="d-flex align-items-center">
-                                    <img src="https://ui-avatars.com/api/?name=John+Doe&background=FFAF9C&color=4D0032&bold=true&size=40" alt="John Doe" class="rounded-circle me-2">
+                                    <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=40" alt="User" class="rounded-circle me-2 user-avatar">
                                     <div>
-                                        <strong>John Doe</strong><br>
+                                        <strong class="user-display-name">User</strong><br>
                                         <small class="text-muted">Director</small>
                                     </div>
                                 </div>
@@ -125,7 +416,7 @@
                             <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
                             <li><a class="dropdown-item" href="#" onclick="showFaqModal()"><i class="fas fa-question-circle me-2"></i>Help & Support</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -159,7 +450,7 @@
                             </div>
                             
                             <div class="hero-video">
-                                <div class="video-player" onclick="openYouTubeVideo('dQw4w9WgXcQ')">
+                                <div class="video-player" id="hero-video-player" onclick="playYouTubeInline('M7lc1UVf-VE', 'hero-video-player')">
                                     <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop&crop=center" alt="Directors Portal Introduction" class="video-thumbnail">
                                     <div class="play-overlay">
                                         <div class="play-button">
@@ -220,7 +511,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title-center">Welcome & Introduction</h5>
                                                 <div class="step-icon completed">
-                                                    <i class="fas fa-check"></i>
+                                                    <i class="fas fa-handshake" style="color: #4D0032;"></i>
                                                 </div>
                                                 <p class="card-description">Get familiar with Flint's vision and values</p>
                                                 <div class="card-footer">
@@ -239,7 +530,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title-center">Legal & Ownership</h5>
                                                 <div class="step-icon completed">
-                                                    <i class="fas fa-check"></i>
+                                                    <i class="fas fa-gavel" style="color: #4D0032;"></i>
                                                 </div>
                                                 <p class="card-description">Understand legal structure and compliance</p>
                                                 <div class="card-footer">
@@ -258,15 +549,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title-center">Financial Setup & Revenue</h5>
                                                 <div class="step-icon current">
-                                                    <div class="progress-ring">
-                                                        <svg viewBox="0 0 36 36">
-                                                            <circle cx="18" cy="18" r="16" fill="none" stroke="#e5e7eb" stroke-width="3"/>
-                                                            <circle cx="18" cy="18" r="16" fill="none" stroke="#ff6b35" stroke-width="3" 
-                                                                    stroke-dasharray="60, 100" stroke-linecap="round" 
-                                                                    style="transform: rotate(-90deg); transform-origin: 50% 50%;"/>
-                                                        </svg>
-                                                        <span class="progress-text">60%</span>
-                                                    </div>
+                                                    <i class="fas fa-chart-line" style="color: #FFAF9C; font-size: 1.5rem;"></i>
                                                 </div>
                                                 <p class="card-description">Set up banking and revenue tracking</p>
                                                 <div class="card-footer">
@@ -288,7 +571,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title-center">Technology & Tools</h5>
                                                 <div class="step-icon pending">
-                                                    <span class="step-number-marker">4</span>
+                                                    <i class="fas fa-laptop-code" style="color: #4D0032;"></i>
                                                 </div>
                                                 <p class="card-description">Master essential tools and systems</p>
                                                 <div class="card-footer">
@@ -307,7 +590,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title-center">Branding & Marketing</h5>
                                                 <div class="step-icon pending">
-                                                    <span class="step-number-marker">5</span>
+                                                    <i class="fas fa-palette" style="color: #4D0032;"></i>
                                                 </div>
                                                 <p class="card-description">Build your brand and marketing assets</p>
                                                 <div class="card-footer">
@@ -326,7 +609,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title-center">Operations & Compliance</h5>
                                                 <div class="step-icon pending">
-                                                    <span class="step-number-marker">6</span>
+                                                    <i class="fas fa-cogs" style="color: #4D0032;"></i>
                                                 </div>
                                                 <p class="card-description">Learn operational procedures and compliance</p>
                                                 <div class="card-footer">
@@ -345,7 +628,7 @@
                                             <div class="card-body">
                                                 <h5 class="card-title-center">Launch Preparation</h5>
                                                 <div class="step-icon pending">
-                                                    <span class="step-number-marker">7</span>
+                                                    <i class="fas fa-rocket" style="color: #4D0032;"></i>
                                                 </div>
                                                 <p class="card-description">Final preparations for your launch</p>
                                                 <div class="card-footer">
@@ -409,7 +692,7 @@
                                     </div>
                                 </a>
                                 
-                                <a href="#" class="quick-link-modern support">
+                                <a href="tel:+61485853537" class="quick-link-modern support">
                                     <div class="link-visual">
                                         <div class="link-icon-modern">
                                             <i class="fas fa-headset"></i>
@@ -418,7 +701,7 @@
                                     </div>
                                     <div class="link-content">
                                         <span class="link-title">Live Support</span>
-                                        <span class="link-subtitle">Expert Assistance</span>
+                                        <span class="link-subtitle">Call: 0485 853 537</span>
                                         <div class="link-stats">
                                             <span class="response-time">< 2min response</span>
                                         </div>
@@ -428,22 +711,22 @@
                                     </div>
                                 </a>
                                 
-                                <a href="#" class="quick-link-modern calendar">
+                                <a href="https://zoom.us" target="_blank" class="quick-link-modern calendar">
                                     <div class="link-visual">
                                         <div class="link-icon-modern">
-                                            <i class="fas fa-calendar-alt"></i>
+                                            <i class="fas fa-video"></i>
                                         </div>
                                         <div class="link-indicator"></div>
                                     </div>
                                     <div class="link-content">
                                         <span class="link-title">Schedule Meeting</span>
-                                        <span class="link-subtitle">Book 1-on-1 Session</span>
+                                        <span class="link-subtitle">Book Zoom Session</span>
                                         <div class="link-stats">
-                                            <span class="next-slot">Next: Today 3PM</span>
+                                            <span class="next-slot">Via zoom.us</span>
                                         </div>
                                     </div>
                                     <div class="link-arrow">
-                                        <i class="fas fa-plus"></i>
+                                        <i class="fas fa-external-link-alt"></i>
                                     </div>
                                 </a>
                             </div>
@@ -508,40 +791,40 @@
                             </div>
                             <div class="activity-timeline">
                                 <div class="activity-item-modern">
-                                    <div class="activity-time">2h ago</div>
                                     <div class="activity-dot completed"></div>
                                     <div class="activity-content-modern">
                                         <div class="activity-header">
                                             <span class="activity-title">Step 2 Completed</span>
-                                            <span class="activity-points">+50 pts</span>
+                                            <span class="activity-time">2h ago</span>
                                         </div>
                                         <p class="activity-description">Finished Legal & Ownership Structure</p>
                                         <div class="activity-meta">
+                                            <span class="activity-points">+50 pts</span>
                                             <span class="achievement">🏆 Legal Expert Badge Earned</span>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="activity-item-modern">
-                                    <div class="activity-time">1d ago</div>
                                     <div class="activity-dot download"></div>
                                     <div class="activity-content-modern">
                                         <div class="activity-header">
                                             <span class="activity-title">Documents Downloaded</span>
+                                            <span class="activity-time">1d ago</span>
                                         </div>
                                         <p class="activity-description">Partnership Agreement & Tax Forms</p>
-                                        <div class="activity-files">
+                                        <div class="activity-meta">
                                             <span class="file-count">3 files</span>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="activity-item-modern">
-                                    <div class="activity-time">2d ago</div>
                                     <div class="activity-dot video"></div>
                                     <div class="activity-content-modern">
                                         <div class="activity-header">
                                             <span class="activity-title">Video Watched</span>
+                                            <span class="activity-time">2d ago</span>
                                         </div>
                                         <p class="activity-description">Welcome from Christian (12:34)</p>
                                         <div class="activity-meta">
@@ -574,9 +857,9 @@
                                     <button class="btn btn-support-primary">
                                         <i class="fas fa-comments me-1"></i>Start Chat
                                     </button>
-                                    <button class="btn btn-support-secondary">
+                                    <a href="tel:+61485853537" class="btn btn-support-secondary">
                                         <i class="fas fa-phone me-1"></i>Call Now
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -597,9 +880,9 @@
                 <div class="row my-5">
                     <div class="col-12">
                         <div class="video-section-enhanced">
-                            <div class="video-placeholder-enhanced" onclick="openYouTubeVideo('dQw4w9WgXcQ')">
+                            <div class="video-placeholder-enhanced" id="enhanced-video-player" onclick="playYouTubeInline('M7lc1UVf-VE', 'enhanced-video-player')">
                                 <div class="video-thumbnail">
-                                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Welcome to Flint Group" />
+                                    <img src="https://img.youtube.com/vi/M7lc1UVf-VE/maxresdefault.jpg" alt="Welcome to Flint Group" />
                                     <div class="video-overlay">
                                         <div class="play-button-large">
                                             <i class="fas fa-play"></i>
@@ -709,7 +992,9 @@
                                 <i class="fas fa-clipboard-list"></i>
                                 <h5>Week 1 Checklist</h5>
                                 <p>Essential tasks for your first week</p>
-                                <button class="btn btn--primary btn--sm">Download PDF</button>
+                                <a href="week1-checklist.pdf" target="_blank" class="btn btn--primary btn--sm">
+                                    <i class="fas fa-download me-2"></i>Download PDF
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -717,7 +1002,9 @@
                                 <i class="fas fa-tasks"></i>
                                 <h5>Month 1 Goals</h5>
                                 <p>Key objectives for your first month</p>
-                                <button class="btn btn--primary btn--sm">Download PDF</button>
+                                <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="btn btn--primary btn--sm">
+                                    <i class="fas fa-download me-2"></i>Download PDF
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -725,7 +1012,9 @@
                                 <i class="fas fa-trophy"></i>
                                 <h5>90-Day Plan</h5>
                                 <p>Strategic roadmap for your first quarter</p>
-                                <button class="btn btn--primary btn--sm">Download PDF</button>
+                                <a href="https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf" target="_blank" class="btn btn--primary btn--sm">
+                                    <i class="fas fa-download me-2"></i>Download PDF
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -738,6 +1027,23 @@
                     <button class="btn btn--primary" onclick="completeStep(1); navigateToSection('step2')">
                         Complete Step 1 <i class="fas fa-arrow-right ms-2"></i>
                     </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item current" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -779,9 +1085,9 @@
                                     <button class="btn btn--primary">
                                         <i class="fas fa-play me-2"></i>Watch Intro Video
                                     </button>
-                                    <button class="btn btn--outline">
+                                    <a href="https://www.hubspot.com/" target="_blank" class="btn btn--outline">
                                         <i class="fas fa-external-link-alt me-2"></i>Open Platform
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -812,9 +1118,9 @@
                                     <button class="btn btn--primary">
                                         <i class="fas fa-play me-2"></i>Watch Intro Video
                                     </button>
-                                    <button class="btn btn--outline">
+                                    <a href="https://www.brokerengine.com.au/" target="_blank" class="btn btn--outline">
                                         <i class="fas fa-external-link-alt me-2"></i>Open Platform
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -845,9 +1151,9 @@
                                     <button class="btn btn--primary">
                                         <i class="fas fa-play me-2"></i>Watch Intro Video
                                     </button>
-                                    <button class="btn btn--outline">
+                                    <a href="https://www.middleapp.com/" target="_blank" class="btn btn--outline">
                                         <i class="fas fa-external-link-alt me-2"></i>Open Platform
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -878,9 +1184,9 @@
                                     <button class="btn btn--primary">
                                         <i class="fas fa-play me-2"></i>Watch Intro Video
                                     </button>
-                                    <button class="btn btn--outline">
+                                    <a href="https://connect.flint.com.au/" target="_blank" class="btn btn--outline">
                                         <i class="fas fa-external-link-alt me-2"></i>Open Platform
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -910,6 +1216,23 @@
                     <button class="btn btn--primary" onclick="completeStep(2); navigateToSection('step3')">
                         Next Step <i class="fas fa-arrow-right ms-2"></i>
                     </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item current" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -1021,6 +1344,23 @@
                     <button class="btn btn--primary" onclick="completeStep(3); navigateToSection('step4')">
                         Complete Step 3 <i class="fas fa-arrow-right ms-2"></i>
                     </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item current" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -1201,6 +1541,23 @@
                     <button class="btn btn--primary" onclick="completeStep(4); navigateToSection('step5')">
                         Complete Step 4 <i class="fas fa-arrow-right ms-2"></i>
                     </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item current" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -1441,6 +1798,23 @@
                     <button class="btn btn--primary" onclick="completeStep(5); navigateToSection('step6')">
                         Complete Step 5 <i class="fas fa-arrow-right ms-2"></i>
                     </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item current" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -1685,6 +2059,23 @@
                         Complete Step 6 <i class="fas fa-arrow-right ms-2"></i>
                     </button>
                 </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item current" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
             </div>
         </section>
 
@@ -1765,9 +2156,9 @@
                                         <li><i class="fas fa-check"></i>Conference calls</li>
                                     </ul>
                                 </div>
-                                <button class="btn btn--primary btn--full">
+                                <a href="tel:+61485853537" class="btn btn--primary btn--full">
                                     <i class="fas fa-phone me-2"></i>Call Now
-                                </button>
+                                </a>
                             </div>
                         </div>
 
@@ -1942,6 +2333,23 @@
                     <button class="btn btn--primary" onclick="completeStep(7); showCompletionModal()">
                         Complete Onboarding <i class="fas fa-check ms-2"></i>
                     </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item completed" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item current" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -2178,22 +2586,57 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="faq-list">
-                        <div class="faq-item">
-                            <h6>How long does the onboarding process take?</h6>
-                            <p>The complete onboarding process typically takes 2-3 weeks, depending on your pace and the complexity of your setup.</p>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                                    How long does the onboarding process take?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The complete onboarding process typically takes 2-3 weeks, depending on your pace and the complexity of your setup.
+                                </div>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h6>What support is available during onboarding?</h6>
-                            <p>You have access to our dedicated onboarding team, live chat support, and your assigned mentor throughout the process.</p>
+                        
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                                    What support is available during onboarding?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You have access to our dedicated onboarding team, live chat support, and your assigned mentor throughout the process.
+                                </div>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h6>Can I complete steps out of order?</h6>
-                            <p>While we recommend following the sequence, you can skip ahead if needed. Some steps may depend on others being completed first.</p>
+                        
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                                    Can I complete steps out of order?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    While we recommend following the sequence, you can skip ahead if needed. Some steps may depend on others being completed first.
+                                </div>
+                            </div>
                         </div>
-                        <div class="faq-item">
-                            <h6>What happens after I complete onboarding?</h6>
-                            <p>You'll have full access to all Flint systems and ongoing support. Your mentor will continue to be available for guidance.</p>
+                        
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                                    What happens after I complete onboarding?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You'll have full access to all Flint systems and ongoing support. Your mentor will continue to be available for guidance.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2214,6 +2657,46 @@
                         <button class="btn btn--primary me-2" data-bs-dismiss="modal">Close</button>
                         <button class="btn btn--outline" onclick="navigateToSection('landing')">Go to Dashboard</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Get in touch
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="support-info">
+                        <div class="mb-4">
+                            <i class="fas fa-envelope support-icon mb-3"></i>
+                            <h6>Email Support</h6>
+                            <a href="mailto:hello@flintgroup.au" class="support-link">hello@flintgroup.au</a>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fas fa-phone support-icon mb-3"></i>
+                            <h6>Phone Support</h6>
+                            <a href="tel:0485853537" class="support-link">0485 853 537</a>
+                        </div>
+                        <div class="support-hours">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-2"></i>
+                                Available Monday - Friday, 9AM - 5PM AEST
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="mailto:hello@flintgroup.au" class="btn btn-primary">
+                        <i class="fas fa-envelope me-2"></i>Send Email
+                    </a>
                 </div>
             </div>
         </div>

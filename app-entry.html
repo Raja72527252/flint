@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6E0048, #4D0032);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .loading-container {
+            text-align: center;
+            color: white;
+        }
+        
+        .loading-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        .loading-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <img src="icon.PNG" alt="Flint Logo" class="loading-logo">
+        <div class="loading-text">Flint Directors Portal</div>
+        <div class="loading-text">Initializing...</div>
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        // Check authentication status and redirect accordingly
+        function checkAuthentication() {
+            console.log('Checking authentication...');
+            
+            // Clear any previous localStorage for fresh start
+            console.log('Current localStorage:', {
+                isLoggedIn: localStorage.getItem('flint_logged_in'),
+                timestamp: localStorage.getItem('flint_login_timestamp'),
+                email: localStorage.getItem('flint_user_email')
+            });
+            
+            // Check if user is logged in (using localStorage)
+            const isLoggedIn = localStorage.getItem('flint_logged_in');
+            const loginTimestamp = localStorage.getItem('flint_login_timestamp');
+            
+            console.log('isLoggedIn:', isLoggedIn);
+            console.log('loginTimestamp:', loginTimestamp);
+            
+            // Check if login is still valid (24 hours)
+            const currentTime = new Date().getTime();
+            const loginTime = loginTimestamp ? parseInt(loginTimestamp) : 0;
+            const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+            
+            console.log('currentTime:', currentTime);
+            console.log('loginTime:', loginTime);
+            console.log('Time difference:', currentTime - loginTime);
+            console.log('Session valid?', (currentTime - loginTime) < twentyFourHours);
+            
+            if (isLoggedIn === 'true' && (currentTime - loginTime) < twentyFourHours) {
+                // User is logged in and session is still valid, redirect to dashboard
+                console.log('Authentication valid - redirecting to homepage...');
+                setTimeout(() => {
+                    console.log('Redirecting now...');
+                    window.location.href = 'index.html';
+                }, 500);
+            } else {
+                // User is not logged in or session expired, redirect to login
+                console.log('Authentication invalid - redirecting to login...');
+                // Clear any existing session data
+                localStorage.removeItem('flint_logged_in');
+                localStorage.removeItem('flint_login_timestamp');
+                localStorage.removeItem('flint_user_email');
+                
+                setTimeout(() => {
+                    console.log('Redirecting to login...');
+                    window.location.href = 'login.html';
+                }, 500);
+            }
+        }
+
+        // Start authentication check when page loads
+        document.addEventListener('DOMContentLoaded', checkAuthentication);
+    </script>
+</body>
+</html>
