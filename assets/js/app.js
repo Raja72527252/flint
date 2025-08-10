@@ -256,20 +256,14 @@ const journeyProgress = {
       const pointsSpan = card.find('.points');
       
       if (status === 'completed') {
-        statusBadge.html('<i class="fas fa-trophy"></i> Completed');
+        statusBadge.html('Completed');
         statusBadge.removeClass('current pending').addClass('completed');
-        pointsSpan.removeClass('earning available').addClass('earned');
-        pointsSpan.text(`+${this.stepPoints[stepNum]} pts`);
       } else if (status === 'current') {
-        statusBadge.html('<i class="fas fa-play"></i> In Progress');
+        statusBadge.html('<i class="fas fa-play"></i> Available');
         statusBadge.removeClass('completed pending').addClass('current');
-        pointsSpan.removeClass('earned available').addClass('earning');
-        pointsSpan.text(`0/${this.stepPoints[stepNum]} pts`);
       } else {
         statusBadge.html('<i class="fas fa-lock"></i> Locked');
         statusBadge.removeClass('completed current').addClass('pending');
-        pointsSpan.removeClass('earned earning').addClass('available');
-        pointsSpan.text(`${this.stepPoints[stepNum]} pts`);
       }
     }
   }
@@ -385,9 +379,8 @@ function completeStep(stepNumber) {
     // Update home page step cards
     updateHomePageStepCards();
     
-    // Show completion notification with points earned
-    const pointsEarned = journeyProgress.stepPoints[stepNumber] || 0;
-    showNotification(`Step ${stepNumber} completed! +${pointsEarned} points earned. Step ${stepNumber + 1} is now available!`, 'success');
+    // Show completion notification
+    showNotification(`Step ${stepNumber} completed! Step ${stepNumber + 1} is now available!`, 'success');
     
     // Check if all steps completed
     if (completedSteps.size === 7) {
@@ -406,6 +399,36 @@ function completeStep(stepNumber) {
     }
 }
 
+// Save Step Progress
+function saveStep(stepNumber) {
+    console.log(`Saving progress for step ${stepNumber}`);
+    
+    // Save form data for the specific step
+    const formId = `form-step${stepNumber}`;
+    const form = document.getElementById(formId);
+    
+    if (form) {
+        const formData = new FormData(form);
+        const data = {};
+        
+        // Convert FormData to object
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+        
+        // Save to localStorage
+        localStorage.setItem(`step${stepNumber}_data`, JSON.stringify(data));
+        localStorage.setItem(`step${stepNumber}_saved`, new Date().toISOString());
+        
+        // Show save confirmation
+        showNotification(`Step ${stepNumber} progress saved successfully!`, 'success');
+        
+        console.log(`Step ${stepNumber} data saved:`, data);
+    } else {
+        console.warn(`Form not found for step ${stepNumber}`);
+        showNotification(`Unable to save Step ${stepNumber} - form not found`, 'warning');
+    }
+}
 
 // Show Video Modal
 function showVideoModal() {
@@ -777,7 +800,7 @@ function updateNavigationStepStatus() {
         
         if (completedSteps.has(stepNum)) {
             // Step completed
-            stepStatus.text('✓ Completed').removeClass('available locked').addClass('completed');
+            stepStatus.text('Completed').removeClass('available locked').addClass('completed');
             stepLink.removeClass('disabled');
         } else if (isStepAccessible(stepNum)) {
             // Step available
@@ -828,11 +851,8 @@ function updateHomePageStepCards() {
                 journeyCard.addClass('completed');
                 stepIcon.removeClass('current pending locked').addClass('completed');
                 
-                statusBadge.html('<i class="fas fa-trophy"></i> Completed');
+                statusBadge.html('Completed');
                 statusBadge.removeClass('current pending locked').addClass('completed');
-                
-                pointsSpan.removeClass('earning available').addClass('earned');
-                pointsSpan.text(`+${journeyProgress.stepPoints[stepNum]} pts`);
                 
                 continueBtn.hide();
                 

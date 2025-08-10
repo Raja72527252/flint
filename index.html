@@ -677,17 +677,6 @@
                                                 <span class="progress-percentage" id="home-progress-percentage">0%</span>
                                             </div>
                                         </div>
-                                        <div class="stats-row">
-                                            <div class="stat-item">
-                                                <span class="stat-number" id="home-points-earned">0</span>
-                                                <span class="stat-label">Points Earned</span>
-                                            </div>
-                                            <div class="stat-divider">|</div>
-                                            <div class="stat-item">
-                                                <span class="stat-number">100</span>
-                                                <span class="stat-label">Total Points</span>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -708,7 +697,6 @@
                                                     <span class="status-badge">
                                                         <i class="fas fa-play"></i> Available
                                                     </span>
-                                                    <span class="points">10 pts</span>
                                                 </div>
                                                 <button class="continue-btn" style="display: none;">
                                                     <i class="fas fa-arrow-right"></i> Continue
@@ -730,7 +718,6 @@
                                                     <span class="status-badge">
                                                         <i class="fas fa-lock"></i> Locked
                                                     </span>
-                                                    <span class="points">25 pts</span>
                                                 </div>
                                                 <button class="continue-btn" style="display: none;">
                                                     <i class="fas fa-arrow-right"></i> Continue
@@ -752,7 +739,6 @@
                                                     <span class="status-badge">
                                                         <i class="fas fa-lock"></i> Locked
                                                     </span>
-                                                    <span class="points">20 pts</span>
                                                 </div>
                                                 <button class="continue-btn" style="display: none;">
                                                     <i class="fas fa-arrow-right"></i> Continue
@@ -774,7 +760,6 @@
                                                     <span class="status-badge">
                                                         <i class="fas fa-lock"></i> Locked
                                                     </span>
-                                                    <span class="points">15 pts</span>
                                                 </div>
                                                 <button class="continue-btn" style="display: none;">
                                                     <i class="fas fa-arrow-right"></i> Continue
@@ -796,7 +781,6 @@
                                                     <span class="status-badge">
                                                         <i class="fas fa-lock"></i> Locked
                                                     </span>
-                                                    <span class="points">10 pts</span>
                                                 </div>
                                                 <button class="continue-btn" style="display: none;">
                                                     <i class="fas fa-arrow-right"></i> Continue
@@ -818,7 +802,6 @@
                                                     <span class="status-badge">
                                                         <i class="fas fa-lock"></i> Locked
                                                     </span>
-                                                    <span class="points">10 pts</span>
                                                 </div>
                                                 <button class="continue-btn" style="display: none;">
                                                     <i class="fas fa-arrow-right"></i> Continue
@@ -840,7 +823,6 @@
                                                     <span class="status-badge">
                                                         <i class="fas fa-lock"></i> Locked
                                                     </span>
-                                                    <span class="points">10 pts</span>
                                                 </div>
                                                 <button class="continue-btn" style="display: none;">
                                                     <i class="fas fa-arrow-right"></i> Continue
@@ -1286,8 +1268,11 @@
                     <button class="btn btn--secondary" onclick="navigateToSection('landing')">
                         <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
                     </button>
+                    <button class="btn btn--outline" onclick="saveStep(1)">
+                        <i class="fas fa-save me-2"></i>Save Progress
+                    </button>
                     <button class="btn btn--primary" onclick="completeStep(1)">
-                        Complete Step 1 <i class="fas fa-arrow-right ms-2"></i>
+                        Save & Continue <i class="fas fa-arrow-right ms-2"></i>
                     </button>
                 </div>
 
@@ -1551,8 +1536,11 @@
                     <button class="btn btn--secondary" onclick="navigateToSection('step1')">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
+                    <button class="btn btn--outline" onclick="saveStep(2)">
+                        <i class="fas fa-save me-2"></i>Save Progress
+                    </button>
                     <button class="btn btn--primary" onclick="completeStep(2)">
-                        Complete Step 2 <i class="fas fa-arrow-right ms-2"></i>
+                        Save & Continue <i class="fas fa-arrow-right ms-2"></i>
                     </button>
                 </div>
 
@@ -1739,8 +1727,11 @@
                     <button class="btn btn--secondary" onclick="navigateToSection('step2')">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
+                    <button class="btn btn--outline" onclick="saveStep(3)">
+                        <i class="fas fa-save me-2"></i>Save Progress
+                    </button>
                     <button class="btn btn--primary" onclick="completeStep(3)">
-                        Complete Step 3 <i class="fas fa-arrow-right ms-2"></i>
+                        Save & Continue <i class="fas fa-arrow-right ms-2"></i>
                     </button>
                 </div>
 
@@ -2005,8 +1996,11 @@
                     <button class="btn btn--secondary" onclick="navigateToSection('step3')">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
+                    <button class="btn btn--outline" onclick="saveStep(4)">
+                        <i class="fas fa-save me-2"></i>Save Progress
+                    </button>
                     <button class="btn btn--primary" onclick="completeStep(4)">
-                        Complete Step 4 <i class="fas fa-arrow-right ms-2"></i>
+                        Save & Continue <i class="fas fa-arrow-right ms-2"></i>
                     </button>
                 </div>
 
@@ -2318,8 +2312,11 @@
                     <button class="btn btn--secondary" onclick="navigateToSection('step4')">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
+                    <button class="btn btn--outline" onclick="saveStep(5)">
+                        <i class="fas fa-save me-2"></i>Save Progress
+                    </button>
                     <button class="btn btn--primary" onclick="completeStep(5)">
-                        Complete Step 5 <i class="fas fa-arrow-right ms-2"></i>
+                        Save & Continue <i class="fas fa-arrow-right ms-2"></i>
                     </button>
                 </div>
 
@@ -2624,8 +2621,11 @@
                     <button class="btn btn--secondary" onclick="navigateToSection('step5')">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
+                    <button class="btn btn--outline" onclick="saveStep(6)">
+                        <i class="fas fa-save me-2"></i>Save Progress
+                    </button>
                     <button class="btn btn--primary" onclick="completeStep(6)">
-                        Complete Step 6 <i class="fas fa-arrow-right ms-2"></i>
+                        Save & Continue <i class="fas fa-arrow-right ms-2"></i>
                     </button>
                 </div>
 
@@ -2947,8 +2947,11 @@
                     <button class="btn btn--secondary" onclick="navigateToSection('step6')">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
+                    <button class="btn btn--outline" onclick="saveStep(7)">
+                        <i class="fas fa-save me-2"></i>Save Progress
+                    </button>
                     <button class="btn btn--primary" onclick="completeStep(7); showCompletionModal()">
-                        Complete Onboarding <i class="fas fa-check ms-2"></i>
+                        Save & Complete Onboarding <i class="fas fa-check ms-2"></i>
                     </button>
                 </div>
 
