@@ -37,9 +37,19 @@ function checkAuthStatus() {
 
 // Handle login form submission
 document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('loginForm');
+    const loginForm = document.getElementById('loginFormElement');
     if (loginForm) {
         loginForm.addEventListener('submit', handleLogin);
+    }
+    
+    const signupForm = document.getElementById('signupFormElement');
+    if (signupForm) {
+        signupForm.addEventListener('submit', handleSignup);
+    }
+    
+    const forgotPasswordForm = document.getElementById('forgotPasswordFormElement');
+    if (forgotPasswordForm) {
+        forgotPasswordForm.addEventListener('submit', handleForgotPassword);
     }
 });
 
@@ -117,7 +127,7 @@ function showLoginError(message) {
     errorDiv.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i>${message}`;
     
     // Add to login form
-    const loginForm = document.getElementById('loginForm');
+    const loginForm = document.getElementById('loginFormElement');
     loginForm.appendChild(errorDiv);
     
     // Remove after 5 seconds
@@ -175,6 +185,250 @@ function togglePassword() {
 
 // Make togglePassword globally available
 window.togglePassword = togglePassword;
+
+// ================================
+// SIGNUP, FORGOT PASSWORD & FORM SWITCHING
+// ================================
+
+// Show Login Form
+function showLogin() {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('signupForm').style.display = 'none';
+    document.getElementById('forgotPasswordForm').style.display = 'none';
+}
+
+// Show Signup Form
+function showSignup() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('signupForm').style.display = 'block';
+    document.getElementById('forgotPasswordForm').style.display = 'none';
+}
+
+// Show Forgot Password Form
+function showForgotPassword() {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('signupForm').style.display = 'none';
+    document.getElementById('forgotPasswordForm').style.display = 'block';
+}
+
+// Handle Signup
+function handleSignup(event) {
+    event.preventDefault();
+    
+    const firstName = document.getElementById('signupFirstName').value;
+    const lastName = document.getElementById('signupLastName').value;
+    const email = document.getElementById('signupEmail').value;
+    const phone = document.getElementById('signupPhone').value;
+    const password = document.getElementById('signupPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    const agreeTerms = document.getElementById('agreeTerms').checked;
+    
+    // Validation
+    if (!firstName || !lastName || !email || !phone || !password || !confirmPassword) {
+        showSignupError('Please fill in all fields');
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        showSignupError('Passwords do not match');
+        return;
+    }
+    
+    if (password.length < 6) {
+        showSignupError('Password must be at least 6 characters long');
+        return;
+    }
+    
+    if (!agreeTerms) {
+        showSignupError('Please agree to the Terms & Conditions');
+        return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showSignupError('Please enter a valid email address');
+        return;
+    }
+    
+    // Show success and simulate account creation
+    showSignupSuccess(firstName, lastName, email);
+}
+
+// Show signup success
+function showSignupSuccess(firstName, lastName, email) {
+    const signupBtn = document.querySelector('#signupFormElement .login-btn');
+    const originalText = signupBtn.innerHTML;
+    
+    // Show loading state
+    signupBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Creating Account...';
+    signupBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Store user info
+        localStorage.setItem('flint_logged_in', 'true');
+        localStorage.setItem('flint_user_email', email);
+        localStorage.setItem('flint_username', `${firstName} ${lastName}`);
+        
+        // Show success message
+        showSignupError(`Account created successfully! Welcome, ${firstName}!`, 'success');
+        
+        setTimeout(() => {
+            // Hide login section and show main application
+            const loginSection = document.getElementById('loginSection');
+            const mainApplication = document.getElementById('mainApplication');
+            
+            loginSection.style.display = 'none';
+            mainApplication.style.display = 'block';
+            
+            setTimeout(() => {
+                mainApplication.classList.add('show');
+            }, 100);
+            
+            // Reset form
+            document.getElementById('signupFormElement').reset();
+            signupBtn.innerHTML = originalText;
+            signupBtn.disabled = false;
+        }, 2000);
+    }, 2000);
+}
+
+// Show signup error/success
+function showSignupError(message, type = 'error') {
+    // Remove existing messages
+    const existingError = document.querySelector('#signupFormElement .login-error');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Create message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = `login-error alert ${type === 'success' ? 'alert-success' : 'alert-danger'} mt-3`;
+    const icon = type === 'success' ? 'check-circle' : 'exclamation-triangle';
+    errorDiv.innerHTML = `<i class="fas fa-${icon} me-2"></i>${message}`;
+    
+    // Add to signup form
+    const signupForm = document.getElementById('signupFormElement');
+    signupForm.appendChild(errorDiv);
+    
+    // Remove after 5 seconds (unless it's success message)
+    if (type !== 'success') {
+        setTimeout(() => {
+            if (errorDiv.parentNode) {
+                errorDiv.remove();
+            }
+        }, 5000);
+    }
+}
+
+// Handle Forgot Password
+function handleForgotPassword(event) {
+    event.preventDefault();
+    
+    const email = document.getElementById('resetEmail').value;
+    
+    if (!email) {
+        showForgotPasswordError('Please enter your email address');
+        return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showForgotPasswordError('Please enter a valid email address');
+        return;
+    }
+    
+    // Show success
+    showForgotPasswordSuccess(email);
+}
+
+// Show forgot password success
+function showForgotPasswordSuccess(email) {
+    const resetBtn = document.querySelector('#forgotPasswordFormElement .login-btn');
+    const originalText = resetBtn.innerHTML;
+    
+    // Show loading state
+    resetBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+    resetBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Show success message
+        showForgotPasswordError(`Password reset link sent to ${email}! Check your inbox.`, 'success');
+        
+        setTimeout(() => {
+            // Go back to login form
+            showLogin();
+            
+            // Reset form
+            document.getElementById('forgotPasswordFormElement').reset();
+            resetBtn.innerHTML = originalText;
+            resetBtn.disabled = false;
+        }, 3000);
+    }, 2000);
+}
+
+// Show forgot password error/success
+function showForgotPasswordError(message, type = 'error') {
+    // Remove existing messages
+    const existingError = document.querySelector('#forgotPasswordFormElement .login-error');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Create message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = `login-error alert ${type === 'success' ? 'alert-success' : 'alert-danger'} mt-3`;
+    const icon = type === 'success' ? 'check-circle' : 'exclamation-triangle';
+    errorDiv.innerHTML = `<i class="fas fa-${icon} me-2"></i>${message}`;
+    
+    // Add to forgot password form
+    const forgotForm = document.getElementById('forgotPasswordFormElement');
+    forgotForm.appendChild(errorDiv);
+    
+    // Remove after 5 seconds (unless it's success message)
+    if (type !== 'success') {
+        setTimeout(() => {
+            if (errorDiv.parentNode) {
+                errorDiv.remove();
+            }
+        }, 5000);
+    }
+}
+
+// Toggle password visibility for signup forms
+function toggleSignupPassword() {
+    const passwordInput = document.getElementById('signupPassword');
+    const toggleIcon = document.getElementById('signupPasswordToggleIcon');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.className = 'fas fa-eye-slash';
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.className = 'fas fa-eye';
+    }
+}
+
+function toggleConfirmPassword() {
+    const passwordInput = document.getElementById('confirmPassword');
+    const toggleIcon = document.getElementById('confirmPasswordToggleIcon');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.className = 'fas fa-eye-slash';
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.className = 'fas fa-eye';
+    }
+}
+
+// Make functions globally available
+window.showLogin = showLogin;
+window.showSignup = showSignup;
+window.showForgotPassword = showForgotPassword;
+window.toggleSignupPassword = toggleSignupPassword;
+window.toggleConfirmPassword = toggleConfirmPassword;
 
 // Initialize app after authentication
 function initializeApp() {
@@ -497,6 +751,9 @@ $(document).ready(function() {
     
     // Update all step navigation onclick attributes
     updateAllStepNavigationLinks();
+    
+    // Initialize step navigation UI
+    updateStepNavigationUI();
 });
 
 // Navigation Function - Main function for section switching with step access control
@@ -534,6 +791,12 @@ function navigateToSection(sectionId) {
     
     // Update step progress if viewing a step
     updateStepProgress();
+    
+    // Update step navigation UI
+    if (sectionId.startsWith('step')) {
+        const stepNumber = parseInt(sectionId.replace('step', ''));
+        updateStepNavigationUI(stepNumber);
+    }
     
     return false; // Prevent any default action
 }
@@ -575,6 +838,9 @@ function completeStep(stepNumber) {
     
     // Update home page step cards
     updateHomePageStepCards();
+    
+    // Update step navigation UI
+    updateStepNavigationUI();
     
     // Show completion notification
     showNotification(`Step ${stepNumber} completed! Step ${stepNumber + 1} is now available!`, 'success');
@@ -983,10 +1249,58 @@ function checkStepAccess(stepNumber) {
     if (isStepAccessible(stepNumber)) {
         console.log(`Access granted for step ${stepNumber}`);
         navigateToSection(`step${stepNumber}`);
+        updateStepNavigationUI(stepNumber);
     } else {
         console.log(`Access denied for step ${stepNumber}`);
         showNotification(`Step ${stepNumber} is locked. Complete previous steps first!`, 'warning');
     }
+}
+
+// Update Step Navigation UI - Synchronize all step navigation elements
+function updateStepNavigationUI(currentStep = null) {
+    // If no current step provided, detect from active section
+    if (!currentStep) {
+        const activeSection = $('.section-page.active').attr('id');
+        if (activeSection && activeSection.startsWith('step')) {
+            currentStep = parseInt(activeSection.replace('step', ''));
+        }
+    }
+    
+    // Update all step navigation instances
+    $('.step-navigation').each(function() {
+        $(this).find('.step-nav-item').each(function() {
+            const $item = $(this);
+            const $connector = $item.next('.step-nav-connector');
+            const stepNum = parseInt($item.find('.step-number').text());
+            
+            // Remove all classes first
+            $item.removeClass('current completed locked');
+            $connector.removeClass('completed');
+            
+            if (completedSteps.has(stepNum)) {
+                // Step completed
+                $item.addClass('completed');
+                $connector.addClass('completed');
+            } else if (stepNum === currentStep) {
+                // Current step
+                $item.addClass('current');
+            } else if (!isStepAccessible(stepNum)) {
+                // Step locked
+                $item.addClass('locked');
+            }
+            
+            // Update click handler to match access
+            if (isStepAccessible(stepNum)) {
+                $item.attr('onclick', `checkStepAccess(${stepNum})`);
+                $item.css('cursor', 'pointer');
+                $item.css('opacity', '1');
+            } else {
+                $item.attr('onclick', `checkStepAccess(${stepNum})`);
+                $item.css('cursor', 'not-allowed');
+                $item.css('opacity', '0.5');
+            }
+        });
+    });
 }
 
 // Update Navigation Step Status
@@ -1374,3 +1688,241 @@ function updateOverallProgressBar(){
     }
   } catch(e){}
 })();
+
+// ================================
+// FORM SAVE FUNCTIONALITY
+// ================================
+
+/**
+ * Save form data for a specific step
+ * @param {string} stepId - The step identifier (e.g., 'step1', 'step2', etc.)
+ */
+function saveStepForm(stepId) {
+    const form = document.getElementById(`form-${stepId}`);
+    const saveButton = document.querySelector(`#form-${stepId} .btn-save`);
+    
+    if (!form || !saveButton) {
+        console.error(`Form or save button not found for ${stepId}`);
+        return;
+    }
+    
+    // Show saving state
+    const originalText = saveButton.innerHTML;
+    saveButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Saving...';
+    saveButton.classList.add('saving');
+    saveButton.disabled = true;
+    
+    // Collect form data
+    const formData = new FormData(form);
+    const data = {};
+    
+    // Convert FormData to object
+    for (let [key, value] of formData.entries()) {
+        data[key] = value;
+    }
+    
+    // Add timestamp
+    data.savedAt = new Date().toISOString();
+    data.stepId = stepId;
+    
+    // Save to localStorage
+    const storageKey = `flint_${stepId}_data`;
+    
+    try {
+        localStorage.setItem(storageKey, JSON.stringify(data));
+        
+        // Show success state
+        setTimeout(() => {
+            saveButton.innerHTML = '<i class="fas fa-check me-2"></i>Saved!';
+            saveButton.classList.remove('saving');
+            saveButton.classList.add('saved');
+            
+            // Show success notification
+            showSaveNotification('Form data saved successfully!', 'success');
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                saveButton.innerHTML = originalText;
+                saveButton.classList.remove('saved');
+                saveButton.disabled = false;
+            }, 3000);
+            
+        }, 1000); // Simulate save delay
+        
+    } catch (error) {
+        console.error('Error saving form data:', error);
+        
+        // Show error state
+        setTimeout(() => {
+            saveButton.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i>Error!';
+            saveButton.classList.remove('saving');
+            
+            // Show error notification
+            showSaveNotification('Failed to save form data. Please try again.', 'error');
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                saveButton.innerHTML = originalText;
+                saveButton.disabled = false;
+            }, 3000);
+            
+        }, 1000);
+    }
+}
+
+/**
+ * Load saved form data for a specific step
+ * @param {string} stepId - The step identifier
+ */
+function loadStepForm(stepId) {
+    const form = document.getElementById(`form-${stepId}`);
+    const storageKey = `flint_${stepId}_data`;
+    
+    if (!form) {
+        return;
+    }
+    
+    try {
+        const savedData = localStorage.getItem(storageKey);
+        
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            
+            // Populate form fields
+            Object.keys(data).forEach(key => {
+                if (key === 'savedAt' || key === 'stepId') return;
+                
+                const field = form.querySelector(`[name="${key}"]`);
+                if (field) {
+                    if (field.type === 'checkbox') {
+                        field.checked = data[key] === 'on' || data[key] === true;
+                    } else {
+                        field.value = data[key];
+                    }
+                }
+            });
+            
+            console.log(`Loaded saved data for ${stepId}:`, data);
+        }
+    } catch (error) {
+        console.error(`Error loading saved data for ${stepId}:`, error);
+    }
+}
+
+/**
+ * Show save notification
+ * @param {string} message - The message to display
+ * @param {string} type - The type of notification ('success' or 'error')
+ */
+function showSaveNotification(message, type = 'success') {
+    // Remove existing notification
+    const existingNotification = document.querySelector('.save-notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `save-notification alert alert-${type === 'success' ? 'success' : 'danger'}`;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        min-width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        animation: slideInRight 0.3s ease;
+    `;
+    
+    const icon = type === 'success' ? 'check-circle' : 'exclamation-triangle';
+    notification.innerHTML = `
+        <i class="fas fa-${icon} me-2"></i>${message}
+        <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+    `;
+    
+    // Add to document
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 5000);
+}
+
+/**
+ * Get all saved form data
+ * @returns {Object} Object containing all saved step data
+ */
+function getAllSavedData() {
+    const allData = {};
+    
+    for (let i = 1; i <= 7; i++) {
+        const stepId = `step${i}`;
+        const storageKey = `flint_${stepId}_data`;
+        
+        try {
+            const savedData = localStorage.getItem(storageKey);
+            if (savedData) {
+                allData[stepId] = JSON.parse(savedData);
+            }
+        } catch (error) {
+            console.error(`Error loading data for ${stepId}:`, error);
+        }
+    }
+    
+    return allData;
+}
+
+// Make functions globally available
+window.saveStepForm = saveStepForm;
+window.loadStepForm = loadStepForm;
+window.getAllSavedData = getAllSavedData;
+
+// Auto-load saved data when navigating to steps
+document.addEventListener('DOMContentLoaded', function() {
+    // Load saved data for all steps on page load
+    for (let i = 1; i <= 7; i++) {
+        loadStepForm(`step${i}`);
+    }
+});
+
+// Add CSS animation for notification
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .save-notification {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        margin-bottom: 0;
+    }
+    
+    .save-notification .btn-close {
+        background: none;
+        border: none;
+        font-size: 1.2rem;
+        opacity: 0.7;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 10px;
+    }
+    
+    .save-notification .btn-close:hover {
+        opacity: 1;
+    }
+`;
+document.head.appendChild(style);

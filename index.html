@@ -454,14 +454,15 @@
 <body>
     <!-- Login Section -->
     <div id="loginSection" class="login-container">
-        <div class="login-card">
+        <!-- Login Form -->
+        <div id="loginForm" class="login-card">
             <div class="login-header">
                 <img src="FLINT_FULL_LOGO.png" alt="Flint Logo" class="login-logo">
                 <h2>Welcome to Flint Directors Portal</h2>
                 <p>Please login to access your dashboard</p>
             </div>
             
-            <form id="loginForm" class="login-form">
+            <form id="loginFormElement" class="login-form">
                 <div class="form-group mb-3">
                     <label for="username" class="form-label">
                         <i class="fas fa-user me-2"></i>Username or Email
@@ -493,7 +494,121 @@
                 </button>
                 
                 <div class="login-footer mt-3">
-                    <a href="#" class="forgot-password">Forgot your password?</a>
+                    <a href="#" class="forgot-password" onclick="showForgotPassword()">Forgot your password?</a>
+                    <div class="signup-link mt-2">
+                        Don't have an account? <a href="#" onclick="showSignup()">Sign up here</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signupForm" class="login-card" style="display: none;">
+            <div class="login-header">
+                <img src="FLINT_FULL_LOGO.png" alt="Flint Logo" class="login-logo">
+                <h2>Join Flint Directors Portal</h2>
+                <p>Create your account to get started</p>
+            </div>
+            
+            <form id="signupFormElement" class="login-form">
+                <div class="form-group mb-3">
+                    <label for="signupFirstName" class="form-label">
+                        <i class="fas fa-user me-2"></i>First Name
+                    </label>
+                    <input type="text" class="form-control" id="signupFirstName" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="signupLastName" class="form-label">
+                        <i class="fas fa-user me-2"></i>Last Name
+                    </label>
+                    <input type="text" class="form-control" id="signupLastName" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="signupEmail" class="form-label">
+                        <i class="fas fa-envelope me-2"></i>Email Address
+                    </label>
+                    <input type="email" class="form-control" id="signupEmail" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="signupPhone" class="form-label">
+                        <i class="fas fa-phone me-2"></i>Phone Number
+                    </label>
+                    <input type="tel" class="form-control" id="signupPhone" required>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="signupPassword" class="form-label">
+                        <i class="fas fa-lock me-2"></i>Password
+                    </label>
+                    <div class="password-input-group">
+                        <input type="password" class="form-control" id="signupPassword" required>
+                        <button type="button" class="password-toggle" onclick="toggleSignupPassword()">
+                            <i class="fas fa-eye" id="signupPasswordToggleIcon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="confirmPassword" class="form-label">
+                        <i class="fas fa-lock me-2"></i>Confirm Password
+                    </label>
+                    <div class="password-input-group">
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                        <button type="button" class="password-toggle" onclick="toggleConfirmPassword()">
+                            <i class="fas fa-eye" id="confirmPasswordToggleIcon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                    <label class="form-check-label" for="agreeTerms">
+                        I agree to the <a href="#" class="terms-link">Terms & Conditions</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary login-btn">
+                    <i class="fas fa-user-plus me-2"></i>Create Account
+                </button>
+                
+                <div class="login-footer mt-3">
+                    <div class="signup-link">
+                        Already have an account? <a href="#" onclick="showLogin()">Login here</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgotPasswordForm" class="login-card" style="display: none;">
+            <div class="login-header">
+                <img src="FLINT_FULL_LOGO.png" alt="Flint Logo" class="login-logo">
+                <h2>Reset Your Password</h2>
+                <p>Enter your email to receive reset instructions</p>
+            </div>
+            
+            <form id="forgotPasswordFormElement" class="login-form">
+                <div class="form-group mb-3">
+                    <label for="resetEmail" class="form-label">
+                        <i class="fas fa-envelope me-2"></i>Email Address
+                    </label>
+                    <input type="email" class="form-control" id="resetEmail" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary login-btn">
+                    <i class="fas fa-paper-plane me-2"></i>Send Reset Link
+                </button>
+                
+                <div class="login-footer mt-3">
+                    <div class="signup-link">
+                        Remember your password? <a href="#" onclick="showLogin()">Login here</a>
+                    </div>
+                    <div class="signup-link mt-2">
+                        Don't have an account? <a href="#" onclick="showSignup()">Sign up here</a>
+                    </div>
                 </div>
             </form>
         </div>
@@ -674,7 +789,7 @@
                                 <p class="hero-description">You're not working for us. You're building your own business with us by your side. Let's get you set up for success.</p>
                                 
                                 <div class="hero-actions">
-                                    <button class="btn btn-coral" onclick="navigateToSection('step1')">
+                                    <button class="btn btn-coral" onclick="checkStepAccess(1)">
                                         Continue Journey →
                                     </button>
                                     <button class="btn btn-outline-coral" onclick="showVideoModal()">
@@ -1160,6 +1275,13 @@
                             <div class="form-status">
                                 <small class="status-text" id="form-step1-status">Form auto-saves as you type</small>
                             </div>
+                            
+                            <!-- Save Button -->
+                            <div class="form-save-section">
+                                <button type="button" class="btn btn-save" onclick="saveStepForm('step1')">
+                                    <i class="fas fa-save me-2"></i>Save Progress
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -1322,19 +1444,19 @@
 
                 <!-- Step Navigation -->
                 <div class="step-navigation">
-                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item current" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
                     <div class="step-nav-connector"></div>
                     <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(3)" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(4)" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(5)" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(6)" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(7)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -1418,6 +1540,13 @@
                             
                             <div class="form-status">
                                 <small class="status-text" id="form-step2-status">Form auto-saves as you type</small>
+                            </div>
+                            
+                            <!-- Save Button -->
+                            <div class="form-save-section">
+                                <button type="button" class="btn btn-save" onclick="saveStepForm('step2')">
+                                    <i class="fas fa-save me-2"></i>Save Progress
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -1577,7 +1706,7 @@
                 </div>
 
                 <div class="step-actions">
-                    <button class="btn btn--secondary" onclick="navigateToSection('step1')">
+                    <button class="btn btn--secondary" onclick="checkStepAccess(1)">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
                     <button class="btn btn--outline" onclick="saveStep(2)">
@@ -1590,19 +1719,19 @@
 
                 <!-- Step Navigation -->
                 <div class="step-navigation">
-                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item current" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item current" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(3)" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(4)" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(5)" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(6)" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(7)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -1670,6 +1799,13 @@
                             
                             <div class="form-status">
                                 <small class="status-text" id="form-step3-status">Form auto-saves as you type</small>
+                            </div>
+                            
+                            <!-- Save Button -->
+                            <div class="form-save-section">
+                                <button type="button" class="btn btn-save" onclick="saveStepForm('step3')">
+                                    <i class="fas fa-save me-2"></i>Save Progress
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -1768,7 +1904,7 @@
                 </div>
 
                 <div class="step-actions">
-                    <button class="btn btn--secondary" onclick="navigateToSection('step2')">
+                    <button class="btn btn--secondary" onclick="checkStepAccess(2)">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
                     <button class="btn btn--outline" onclick="saveStep(3)">
@@ -1781,19 +1917,19 @@
 
                 <!-- Step Navigation -->
                 <div class="step-navigation">
-                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item current" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(3)" class="step-nav-item current" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(4)" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(5)" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(6)" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(7)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -1870,6 +2006,13 @@
                             
                             <div class="form-status">
                                 <small class="status-text" id="form-step4-status">Form auto-saves as you type</small>
+                            </div>
+                            
+                            <!-- Save Button -->
+                            <div class="form-save-section">
+                                <button type="button" class="btn btn-save" onclick="saveStepForm('step4')">
+                                    <i class="fas fa-save me-2"></i>Save Progress
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -2037,7 +2180,7 @@
                 </div>
 
                 <div class="step-actions">
-                    <button class="btn btn--secondary" onclick="navigateToSection('step3')">
+                    <button class="btn btn--secondary" onclick="checkStepAccess(3)">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
                     <button class="btn btn--outline" onclick="saveStep(4)">
@@ -2050,19 +2193,19 @@
 
                 <!-- Step Navigation -->
                 <div class="step-navigation">
-                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(3)" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item current" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(4)" class="step-nav-item current" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(5)" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(6)" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(7)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         </section>
@@ -2126,6 +2269,13 @@
                             
                             <div class="form-status">
                                 <small class="status-text" id="form-step5-status">Form auto-saves as you type</small>
+                            </div>
+                            
+                            <!-- Save Button -->
+                            <div class="form-save-section">
+                                <button type="button" class="btn btn-save" onclick="saveStepForm('step5')">
+                                    <i class="fas fa-save me-2"></i>Save Progress
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -2353,7 +2503,7 @@
                 </div>
 
                 <div class="step-actions">
-                    <button class="btn btn--secondary" onclick="navigateToSection('step4')">
+                    <button class="btn btn--secondary" onclick="checkStepAccess(4)">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
                     <button class="btn btn--outline" onclick="saveStep(5)">
@@ -2366,19 +2516,19 @@
 
                 <!-- Step Navigation -->
                 <div class="step-navigation">
-                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(3)" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(4)" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item current" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(5)" class="step-nav-item current" title="Step 5: Operations"><span class="step-number">5</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(6)" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(7)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         
@@ -2432,6 +2582,13 @@
                             
                             <div class="form-status">
                                 <small class="status-text" id="form-step6-status">Form auto-saves as you type</small>
+                            </div>
+                            
+                            <!-- Save Button -->
+                            <div class="form-save-section">
+                                <button type="button" class="btn btn-save" onclick="saveStepForm('step6')">
+                                    <i class="fas fa-save me-2"></i>Save Progress
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -2662,7 +2819,7 @@
                 </div>
 
                 <div class="step-actions">
-                    <button class="btn btn--secondary" onclick="navigateToSection('step5')">
+                    <button class="btn btn--secondary" onclick="checkStepAccess(5)">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
                     <button class="btn btn--outline" onclick="saveStep(6)">
@@ -2675,19 +2832,19 @@
 
                 <!-- Step Navigation -->
                 <div class="step-navigation">
-                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(3)" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(4)" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(5)" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item current" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(6)" class="step-nav-item current" title="Step 6: Growth"><span class="step-number">6</span></a>
                     <div class="step-nav-connector"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(7)" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         
@@ -2743,6 +2900,13 @@
                             
                             <div class="form-status">
                                 <small class="status-text" id="form-step7-status">Form auto-saves as you type</small>
+                            </div>
+                            
+                            <!-- Save Button -->
+                            <div class="form-save-section">
+                                <button type="button" class="btn btn-save" onclick="saveStepForm('step7')">
+                                    <i class="fas fa-save me-2"></i>Save Progress
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -2988,7 +3152,7 @@
                 </div>
 
                 <div class="step-actions">
-                    <button class="btn btn--secondary" onclick="navigateToSection('step6')">
+                    <button class="btn btn--secondary" onclick="checkStepAccess(6)">
                         <i class="fas fa-arrow-left me-2"></i>Previous Step
                     </button>
                     <button class="btn btn--outline" onclick="saveStep(7)">
@@ -3001,19 +3165,19 @@
 
                 <!-- Step Navigation -->
                 <div class="step-navigation">
-                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(3)" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(4)" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(5)" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item completed" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(6)" class="step-nav-item completed" title="Step 6: Growth"><span class="step-number">6</span></a>
                     <div class="step-nav-connector completed"></div>
-                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item current" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(7)" class="step-nav-item current" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
         
@@ -3101,7 +3265,7 @@
                                 <li><a href="javascript:void(0)" onclick="navigateToSection('landing')">
                                     <i class="fas fa-home me-2"></i>Dashboard
                                 </a></li>
-                                <li><a href="javascript:void(0)" onclick="navigateToSection('step1')">
+                                <li><a href="javascript:void(0)" onclick="checkStepAccess(1)">
                                     <i class="fas fa-play me-2"></i>Getting Started
                                 </a></li>
                                 <li><a href="#" onclick="showFaqModal()">

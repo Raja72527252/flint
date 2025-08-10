@@ -326,6 +326,82 @@
   transform: translateY(0);
 }
 
+/* Signup and Forgot Password Form Styles */
+.signup-link {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.signup-link a {
+  color: var(--color-primary-burgundy);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+  color: #6E0048;
+  text-decoration: underline;
+}
+
+.terms-link {
+  color: var(--color-primary-burgundy);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-link:hover {
+  color: #6E0048;
+  text-decoration: underline;
+}
+
+/* Form transition animations */
+.login-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Error/Success message styles */
+.login-error {
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 0 !important;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
 /* Mobile Responsive for Login */
 @media (max-width: 768px) {
   .login-container {
@@ -14330,7 +14406,18 @@ i, .fas, .far, .fab, .fal, .fad {
   text-decoration: none;
   color: #666;
   background: white;
+  border: 2px solid #ddd;
   position: relative;
+}
+
+.step-nav-item .step-number {
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 .step-nav-item:hover {
@@ -14338,11 +14425,13 @@ i, .fas, .far, .fab, .fal, .fad {
   background: var(--step-primary);
   border-color: var(--step-primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(110, 0, 72, 0.2);
+  text-decoration: none;
 }
 
 .step-nav-item.current {
   color: white;
+  background: var(--step-primary);
+  border-color: var(--step-primary);
   transform: scale(1.1);
 }
 
@@ -14352,8 +14441,30 @@ i, .fas, .far, .fab, .fal, .fad {
   color: white;
 }
 
-.step-number {
-  background: #C8C8C8;
+.step-nav-item.completed .step-number {
+  background: transparent;
+  color: white;
+}
+
+.step-nav-item.completed:hover {
+  background: var(--step-success);
+  border-color: var(--step-success);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.step-nav-item.locked {
+  background: #f5f5f5;
+  border-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.step-nav-item.locked:hover {
+  background: #f5f5f5;
+  border-color: #ccc;
+  color: #999;
+  transform: none;
 }
 
 .step-nav-connector {
@@ -15661,6 +15772,58 @@ i, .fas, .far, .fab, .fal, .fad {
 .status-text {
   color: rgba(var(--color-primary-burgundy-rgb), 0.6);
   font-size: 0.8rem;
+}
+
+/* Save Button Styles */
+.form-save-section {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(var(--color-primary-burgundy-rgb), 0.15);
+  text-align: left;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, var(--color-primary-burgundy), #6E0048);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(77, 0, 50, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 0, 50, 0.3);
+  background: linear-gradient(135deg, #6E0048, var(--color-primary-burgundy));
+  color: white;
+}
+
+.btn-save:active {
+  transform: translateY(0);
+}
+
+.btn-save:focus {
+  box-shadow: 0 0 0 3px rgba(77, 0, 50, 0.2);
+  outline: none;
+}
+
+.btn-save.saving {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.btn-save.saved {
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: white;
+}
+
+.btn-save .fas {
+  color: white !important;
 }
 
 /* Responsive breakpoints */
