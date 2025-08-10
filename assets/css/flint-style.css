@@ -19,14 +19,14 @@
 /* Typography - Armand Grotesk */
 @font-face {
     font-family: 'Armand Grotesk';
-    src: url('fonts/ArmandGrotesk-Regular.ttf') format('truetype');
+    src: url('fonts/ArmandGrotesk-Regular.html') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Armand Grotesk';
-    src: url('fonts/ArmandGrotesk-Bold.ttf') format('truetype');
+    src: url('fonts/ArmandGrotesk-Bold.html') format('truetype');
     font-weight: 700;
     font-style: normal;
 }

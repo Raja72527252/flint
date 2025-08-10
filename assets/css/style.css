@@ -15084,3 +15084,225 @@ i, .fas, .far, .fab, .fal, .fad {
         margin-bottom: 0.5rem;
     }
 }
+
+/* === Step Forms Enhancements (Flint) === */
+.step-form-card .step-card-title { display:flex; align-items:center; gap:.5rem; }
+.step-form .step-form-group + .step-form-group { margin-top: 1rem; }
+.step-form .form-control[type="file"] { padding:.75rem; }
+.step-form .completion-checkbox { display:flex; align-items:center; gap:.5rem; margin:.5rem 0; }
+.step-form .small.text-muted { color: var(--step-text-secondary) !important; }
+
+
+/* === Attractive Form Card (Flint) === */
+.step-form-card.is-elevated {
+  border: 1px solid rgba(99, 17, 36, .12); /* burgundy tint */
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+.form-header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(99,17,36,.08), rgba(99,17,36,.02));
+  border-bottom: 1px solid rgba(99,17,36,.12);
+}
+.form-step-badge {
+  display:inline-block; font-weight:600; font-size:.75rem; letter-spacing:.02em;
+  padding:.25rem .5rem; border-radius:999px;
+  color:#631124; background:#F8E8EC; /* light burgundy tint */
+  margin-right:.5rem;
+}
+.form-header-title { display:flex; align-items:center; gap:.5rem; }
+.form-header-meta { font-size:.8rem; color: var(--step-text-secondary); }
+
+.step-form { padding-top: .25rem; }
+.step-form-grid {
+  display:grid; gap: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px){
+  .step-form-grid { grid-template-columns: 1fr 1fr; }
+  .step-form-group--full { grid-column: 1 / -1; }
+}
+.step-form-group { display:flex; flex-direction:column; }
+.step-form-label { font-weight:600; margin-bottom:.35rem; }
+.step-form-input, .step-textarea, .step-form select {
+  border: 1.5px solid rgba(99,17,36,.18);
+  border-radius: 12px;
+  padding: .75rem .9rem;
+  background: #fff;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .02s ease;
+}
+.step-form-input:focus, .step-textarea:focus, .step-form select:focus {
+  outline: none;
+  border-color: #631124;
+  box-shadow: 0 0 0 4px rgba(99,17,36,.12);
+}
+.step-textarea { min-height: 120px; resize: vertical; }
+
+/* Buttons */
+.step-btn { border-radius: 999px; padding:.65rem 1rem; font-weight:600; }
+.step-btn-primary { background:#631124; color:#fff; border: 1px solid #631124; }
+.step-btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.step-btn-outline { background: transparent; color:#631124; border:1.5px solid #631124; }
+.step-btn-outline:hover { background: #631124; color:#fff; }
+.step-btn-ghost { background: transparent; color:#631124; border:1.5px dashed rgba(99,17,36,.5); }
+.step-btn-ghost:hover { background: rgba(99,17,36,.06); }
+
+/* File input */
+.file-upload-area input[type="file"]{
+  border-radius: 12px; border: 1.5px dashed rgba(99,17,36,.4); padding: .9rem; background: #fff;
+}
+.file-upload-area input[type="file"]:hover{
+  background: rgba(99,17,36,.04);
+}
+
+
+/* === Form Alignment Tweaks (Flint) === */
+.step-form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(12, 1fr);
+}
+.step-form-group { grid-column: span 12; }
+@media (min-width: 992px){
+  .step-form-group { grid-column: span 6; } /* default half-width on desktop */
+  .step-form-group--full { grid-column: 1 / -1; }
+}
+
+/* Label + control rhythm */
+.step-form-label {
+  display:block;
+  font-weight:600;
+  margin-bottom: .4rem;
+  line-height: 1.2;
+}
+
+/* Normalize control sizing */
+.step-form-input, .step-textarea, .step-form select, .step-form .form-control {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: .75rem .9rem;
+  border-radius: 12px;
+}
+
+/* Textarea uses taller min-height */
+.step-textarea { min-height: 120px; resize: vertical; }
+
+/* Checkbox group aligns neatly and spans full width */
+.completion-checkbox {
+  display:flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem .75rem;
+  background: rgba(99,17,36,.03);
+  border: 1px solid rgba(99,17,36,.12);
+  border-radius: 12px;
+}
+
+/* File input should span full width and align with grid */
+.step-form-group:has(input[type="file"]) { grid-column: 1 / -1; } /* modern browsers */
+@supports not(selector(:has(*))) {
+  /* Fallback: we also add --full class in HTML below */
+}
+
+/* Tighten vertical spacing consistency */
+.step-form .step-form-group + .step-form-group { margin-top: 0; } /* grid gap manages spacing */
+
+
+/* === Flint Form Card Width + Label Alignment === */
+.step-form-label {
+  text-align: left;
+}
+
+.step-form-card.is-elevated {
+  max-width: 880px; /* standard content width */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.25rem 1.5rem;
+}
+
+@media (max-width: 991px){
+  .step-form-card.is-elevated {
+    max-width: 100%;
+    padding: 1rem;
+  }
+}
+
+
+/* === Flint Standard Width & Label Alignment === */
+.step-form-label { text-align: left; }
+
+.step-form-card.is-elevated {
+  width: 100%;
+  max-width: 880px;           /* Flint content column width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step-form-card.is-elevated .step-card-body {
+  padding: 1rem 1.25rem;      /* slightly tighter */
+}
+
+.step-form-card.is-elevated .form-header {
+  padding: .75rem 1.0rem;     /* slightly tighter header */
+}
+
+@media (min-width: 992px){
+  .step-form-grid { gap: .9rem; } /* tighter but roomy */
+}
+
+
+/* === Gated Steps & Professional Form Polish === */
+.step-btn[disabled], .step-btn.is-locked {
+  opacity: .5; cursor: not-allowed;
+}
+
+.step-card.step-form-card.is-elevated {
+  background: #fff;
+  border-left: 4px solid #631124; /* subtle brand accent */
+}
+
+.step-form-label,
+.step-form label { 
+  text-align: left !important; 
+  display: block; 
+  justify-content: flex-start !important;
+}
+
+/* Input polish */
+.step-form-input, .step-textarea, .step-form select, .step-form .form-control{
+  background: #fff;
+  border: 1.4px solid rgba(99,17,36,.18);
+}
+.step-form-input:focus, .step-textarea:focus, .step-form select:focus{
+  border-color: #631124;
+  box-shadow: 0 0 0 4px rgba(99,17,36,.12);
+}
+
+/* Section spacing to feel like Flint site */
+.section-page .container { max-width: 1440px; } /* comfortable reading width */
+
+
+/* === Overall Steps Progress Bar (replace points) === */
+.overall-progress { background: #fff; border-bottom: 1px solid rgba(99,17,36,.12); z-index: 99; }
+.overall-progress .container { max-width: 1040px; padding-top: .5rem; padding-bottom: .5rem; }
+.overall-progress__bar { width: 100%; height: 10px; background: rgba(99,17,36,.12); border-radius: 999px; overflow: hidden; }
+.overall-progress__bar-fill { height: 100%; background: #631124; width: 0%; transition: width .3s ease; }
+.overall-progress__label { font-weight: 600; font-size: .9rem; margin-top: .35rem; color: #631124; }
+
+/* Lock style on step cards */
+.step-card--locked { opacity: .6; position: relative; cursor: not-allowed; }
+.step-card--locked::after {
+  content: "\f023"; /* lock icon */
+  font-family: "Font Awesome 6 Free"; font-weight: 900;
+  position: absolute; right: .75rem; top: .75rem; color: rgba(99,17,36,.7);
+}
+
+/* Hide legacy points / circles */
+.progress-circle, .points-display, .total-points, .points-widget { display: none !important; }
+
+/* Force left alignment for labels */
+.step-form .step-form-label,
+.step-form label { text-align:left !important; justify-content:flex-start !important; display:block; }

@@ -326,6 +326,17 @@ function navigateToSection(sectionId) {
     return false; // Prevent any default action
 }
 
+
+/* === Ascending step logic (robust) === */
+function highestUnlockedStep() {
+    let max = 0;
+    if (window.completedSteps && completedSteps.size) {
+        completedSteps.forEach(n => { if (n > max) max = n; });
+    }
+    const next = Math.min(max + 1, 7);
+    return Math.max(next, 1);
+}
+function isStepAccessible(stepNum){ return stepNum <= highestUnlockedStep(); }
 // Complete Step Function
 function completeStep(stepNumber) {
     console.log(`Completing step: ${stepNumber}`);
@@ -349,7 +360,18 @@ function completeStep(stepNumber) {
             showCompletionModal();
         }, 1500);
     }
+
+    // Auto-advance to next step using original router (bypass gate race)
+    const nextStep = Math.min(stepNumber + 1, 7);
+    setTimeout(() => {
+        if (window._origNavigateToSection) {
+            window._origNavigateToSection('step' + nextStep);
+        } else {
+            navigateToSection('step' + nextStep);
+        }
+    }, 250);
 }
+
 
 // Show Video Modal
 function showVideoModal() {
@@ -860,3 +882,30 @@ function handleLogout() {
 }
 
 console.log('Flint Directors Portal JavaScript loaded successfully');
+
+/* === Overall Progress JS (navbar bar under nav) === */
+function updateOverallProgressBar(){
+  const total = 7;
+  const done = completedSteps ? completedSteps.size : 0;
+  const pct = Math.round((done/total)*100);
+  const bar = document.getElementById('overallProgressBar');
+  const label = document.getElementById('overallProgressLabel');
+  if(bar){ bar.style.width = pct + '%'; }
+  if(label){ label.textContent = 'Step ' + done + ' of ' + total; }
+}
+// Decorate journeyProgress.updateDisplay to also update bar & cards
+(function(){
+  try{
+    if (window.journeyProgress && typeof journeyProgress.updateDisplay === 'function'){
+      const _origUpd = journeyProgress.updateDisplay.bind(journeyProgress);
+      journeyProgress.updateDisplay = function(){
+        const r = _origUpd();
+        updateOverallProgressBar();
+        try { generateOnboardingSteps(); } catch(e){}
+        return r;
+      }
+    } else {
+      document.addEventListener('DOMContentLoaded', updateOverallProgressBar);
+    }
+  } catch(e){}
+})();
