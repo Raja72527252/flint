@@ -8,10 +8,10 @@
     <!-- Font Awesome - Multiple sources for better compatibility -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="flint-style.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="assets/css/flint-style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     
     <!-- Mobile Navigation Fix -->
     <style>
@@ -282,7 +282,7 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container-fluid">
+        <div class="container">
             <!-- Brand -->
             <a class="navbar-brand d-flex align-items-center" href="javascript:void(0)" onclick="navigateToSection('landing')">
                 <img src="icon.PNG" alt="Flint Logo" class="header-logo me-2">
@@ -398,13 +398,13 @@
                     <!-- User Profile -->
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
-                            <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=32" alt="User" class="rounded-circle me-2 user-avatar avatar-small">
+                            <img src="https://ui-avatars.com/api/?name=User&amp;background=FFAF9C&amp;color=4D0032&amp;bold=true&amp;size=32" alt="User" class="rounded-circle me-2 user-avatar avatar-small">
                             <span class="d-none d-lg-inline user-display-name">User</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li class="dropdown-header">
                                 <div class="d-flex align-items-center">
-                                    <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=40" alt="User" class="rounded-circle me-2 user-avatar">
+                                    <img src="https://ui-avatars.com/api/?name=User&amp;background=FFAF9C&amp;color=4D0032&amp;bold=true&amp;size=40" alt="User" class="rounded-circle me-2 user-avatar">
                                     <div>
                                         <strong class="user-display-name">User</strong><br>
                                         <small class="text-muted">Director</small>
@@ -423,12 +423,22 @@
             </div>
         </div>
     </nav>
+    <!-- Overall Steps Progress -->
+    <div id="overallProgressWrap" class="overall-progress sticky-top">
+      <div class="container">
+        <div class="overall-progress__bar">
+          <div id="overallProgressBar" class="overall-progress__bar-fill" style="width:0%"></div>
+        </div>
+        <div class="overall-progress__label" id="overallProgressLabel">Step 0 of 7</div>
+      </div>
+    </div>
+    
 
     <!-- Main Content -->
     <main class="main-content">
         <!-- Landing Page -->
         <section id="landing" class="section-page active">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <!-- Main Content Area -->
                     <div class="col-lg-8 content-area">
@@ -451,7 +461,7 @@
                             
                             <div class="hero-video">
                                 <div class="video-player" id="hero-video-player" onclick="playYouTubeInline('M7lc1UVf-VE', 'hero-video-player')">
-                                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop&crop=center" alt="Directors Portal Introduction" class="video-thumbnail">
+                                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&amp;h=400&amp;fit=crop&amp;crop=center" alt="Directors Portal Introduction" class="video-thumbnail">
                                     <div class="play-overlay">
                                         <div class="play-button">
                                             <i class="fas fa-play"></i>
@@ -711,7 +721,7 @@
                                     </div>
                                 </a>
                                 
-                                <a href="https://zoom.us" target="_blank" class="quick-link-modern calendar">
+                                <a href="https://zoom.us/" target="_blank" class="quick-link-modern calendar">
                                     <div class="link-visual">
                                         <div class="link-icon-modern">
                                             <i class="fas fa-video"></i>
@@ -1046,7 +1056,62 @@
                     <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
-        </section>
+        
+<!-- Step 1 Form -->
+
+
+<!-- Step 1 Form -->
+<div class="step-card step-form-card is-elevated" id="step1-form-card">
+  <div class="step-card-header form-header">
+    <div class="form-header-title">
+      <span class="form-step-badge">Step 1</span>
+      <h3 class="step-card-title">Welcome & Introduction — Action Form</h3>
+    </div>
+    <div class="form-header-meta">
+      <span class="form-mini-help">Your answers autosave locally</span>
+    </div>
+  </div>
+  <div class="step-card-body">
+    <form id="form-step1" class="step-form" novalidate>
+      <div class="step-form-grid">
+        
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-name">Full name</label>
+      <input type="text" id="step-name" name="name" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-email">Preferred contact email</label>
+      <input type="email" id="step-email" name="email" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-welcome_call_time">When can we do your Initial Welcome Call?</label>
+      <input type="datetime-local" id="step-welcome_call_time" name="welcome_call_time" class="step-form-input" placeholder="" required />
+    </div>
+    
+        <div class="completion-checkbox step-form-group step-form-group--full step-form-group step-form-group--full">
+          <input type="checkbox" id="step-ack_values" name="ack_values" required />
+          <label for="step-ack_values">I’ve reviewed Flint’s core values (Trust, Consistency, Expertise, Integrity)</label>
+        </div>
+        
+        <div class="step-form-group step-form-group--full">
+          <label class="step-form-label" for="step-goals">Anything you want us to know about your goals?</label>
+          <textarea id="step-goals" name="goals" class="step-form-input step-textarea" placeholder="e.g., niche, targets, locations" ></textarea>
+        </div>
+        
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button type="submit" class="btn step-btn step-btn-primary">
+          <i class="fas fa-check-circle me-2"></i>Save & Mark Step 1 Complete
+        </button>
+        <button type="button" class="btn step-btn step-btn-outline" onclick="navigateToSection('step2')">Next Step<i class="fas fa-arrow-right ms-2"></i></button>
+      </div>
+      <p class="mt-3 small text-muted" id="form-step1-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+</section>
 
         <!-- Step 2: Tools & Tech Stack -->
         <section id="step2" class="section-page step-white-bg">
@@ -1235,7 +1300,86 @@
                     <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
-        </section>
+        
+<!-- Step 2 Form -->
+
+
+<!-- Step 2 Form -->
+<div class="step-card step-form-card is-elevated" id="step2-form-card">
+  <div class="step-card-header form-header">
+    <div class="form-header-title">
+      <span class="form-step-badge">Step 2</span>
+      <h3 class="step-card-title">Legal & Compliance Setup — Action Form</h3>
+    </div>
+    <div class="form-header-meta">
+      <span class="form-mini-help">Your answers autosave locally</span>
+    </div>
+  </div>
+  <div class="step-card-body">
+    <form id="form-step2" class="step-form" novalidate>
+      <div class="step-form-grid">
+        
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-entity_name">Entity / Trading name</label>
+      <input type="text" id="step-entity_name" name="entity_name" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-abn">ABN</label>
+      <input type="text" id="step-abn" name="abn" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-acn">ACN (if company)</label>
+      <input type="text" id="step-acn" name="acn" class="step-form-input" placeholder=""  />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-reg_address">Registered business address</label>
+      <input type="text" id="step-reg_address" name="reg_address" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-afca">AFCA number</label>
+      <input type="text" id="step-afca" name="afca" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-crn">Credit Representative number</label>
+      <input type="text" id="step-crn" name="crn" class="step-form-input" placeholder="" required />
+    </div>
+    
+        <div class="step-form-group">
+          <label class="step-form-label">Upload signed Franchise Agreement</label>
+          <div class="file-upload-area">
+            <input type="file" name="franchise_agreement" id="step-franchise_agreement" class="form-control" required />
+          </div>
+        </div>
+        
+        <div class="step-form-group step-form-group--full">
+          <label class="step-form-label">Upload Disclosure Document acknowledgement</label>
+          <div class="file-upload-area">
+            <input type="file" name="disclosure_doc" id="step-disclosure_doc" class="form-control" required />
+          </div>
+        </div>
+        
+        <div class="completion-checkbox step-form-group step-form-group--full step-form-group step-form-group--full">
+          <input type="checkbox" id="step-ownership_ack" name="ownership_ack" required />
+          <label for="step-ownership_ack">I understand and agree that I own my clients, partners, and trail book</label>
+        </div>
+        
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button type="submit" class="btn step-btn step-btn-primary">
+          <i class="fas fa-check-circle me-2"></i>Save & Mark Step 2 Complete
+        </button>
+        <button type="button" class="btn step-btn step-btn-ghost" onclick="navigateToSection('step1')"><i class="fas fa-arrow-left me-2"></i>Previous</button><button type="button" class="btn step-btn step-btn-outline" onclick="navigateToSection('step3')">Next Step<i class="fas fa-arrow-right ms-2"></i></button>
+      </div>
+      <p class="mt-3 small text-muted" id="form-step2-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+</section>
 
         <!-- Step 3: Accounting & Financial -->
         <section id="step3" class="section-page step-white-bg">
@@ -1363,7 +1507,68 @@
                     <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
-        </section>
+        
+<!-- Step 3 Form -->
+
+
+<!-- Step 3 Form -->
+<div class="step-card step-form-card is-elevated" id="step3-form-card">
+  <div class="step-card-header form-header">
+    <div class="form-header-title">
+      <span class="form-step-badge">Step 3</span>
+      <h3 class="step-card-title">Accounting & Financial Orientation — Action Form</h3>
+    </div>
+    <div class="form-header-meta">
+      <span class="form-mini-help">Your answers autosave locally</span>
+    </div>
+  </div>
+  <div class="step-card-body">
+    <form id="form-step3" class="step-form" novalidate>
+      <div class="step-form-grid">
+        
+        <div class="step-form-group">
+          <label class="step-form-label" for="step-accounting_platform">Accounting platform</label>
+          <select id="step-accounting_platform" name="accounting_platform" class="step-form-input" required>
+            <option value="">Select...</option>
+            <option value="Xero">Xero</option><option value="MYOB">MYOB</option><option value="Other">Other</option>
+          </select>
+        </div>
+        
+        <div class="step-form-group">
+          <label class="step-form-label" for="step-gst_registered">GST registered?</label>
+          <select id="step-gst_registered" name="gst_registered" class="step-form-input" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes</option><option value="No">No</option>
+          </select>
+        </div>
+        
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-accounts_email">Accounts email for invoices</label>
+      <input type="email" id="step-accounts_email" name="accounts_email" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-bank">Business bank account (BSB - Account)</label>
+      <input type="text" id="step-bank" name="bank" class="step-form-input" placeholder="" required />
+    </div>
+    
+        <div class="completion-checkbox step-form-group step-form-group--full step-form-group step-form-group--full">
+          <input type="checkbox" id="step-ack_invoicing" name="ack_invoicing" required />
+          <label for="step-ack_invoicing">I know how to invoice Flint for commission splits</label>
+        </div>
+        
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button type="submit" class="btn step-btn step-btn-primary">
+          <i class="fas fa-check-circle me-2"></i>Save & Mark Step 3 Complete
+        </button>
+        <button type="button" class="btn step-btn step-btn-ghost" onclick="navigateToSection('step2')"><i class="fas fa-arrow-left me-2"></i>Previous</button><button type="button" class="btn step-btn step-btn-outline" onclick="navigateToSection('step4')">Next Step<i class="fas fa-arrow-right ms-2"></i></button>
+      </div>
+      <p class="mt-3 small text-muted" id="form-step3-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+</section>
 
         <!-- Step 4: Operational Training -->
         <section id="step4" class="section-page step-white-bg">
@@ -1560,7 +1765,81 @@
                     <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
-        </section>
+        
+<!-- Step 4 Form -->
+
+
+<!-- Step 4 Form -->
+<div class="step-card step-form-card is-elevated" id="step4-form-card">
+  <div class="step-card-header form-header">
+    <div class="form-header-title">
+      <span class="form-step-badge">Step 4</span>
+      <h3 class="step-card-title">Operational Training — Action Form</h3>
+    </div>
+    <div class="form-header-meta">
+      <span class="form-mini-help">Your answers autosave locally</span>
+    </div>
+  </div>
+  <div class="step-card-body">
+    <form id="form-step4" class="step-form" novalidate>
+      <div class="step-form-grid">
+        
+        <div class="step-form-group">
+          <label class="step-form-label" for="step-has_hubspot">Do you have access to HubSpot?</label>
+          <select id="step-has_hubspot" name="has_hubspot" class="step-form-input" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes</option><option value="No">No</option>
+          </select>
+        </div>
+        
+        <div class="step-form-group">
+          <label class="step-form-label" for="step-has_be">Do you have access to BrokerEngine?</label>
+          <select id="step-has_be" name="has_be" class="step-form-input" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes</option><option value="No">No</option>
+          </select>
+        </div>
+        
+        <div class="step-form-group">
+          <label class="step-form-label" for="step-has_aol">Do you have access to AOL?</label>
+          <select id="step-has_aol" name="has_aol" class="step-form-input" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes</option><option value="No">No</option>
+          </select>
+        </div>
+        
+        <div class="step-form-group">
+          <label class="step-form-label" for="step-has_collab">Do you have access to Slack & Google Drive?</label>
+          <select id="step-has_collab" name="has_collab" class="step-form-input" required>
+            <option value="">Select...</option>
+            <option value="Yes">Yes</option><option value="No">No</option>
+          </select>
+        </div>
+        
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-training_time">Preferred Training Session Time</label>
+      <input type="datetime-local" id="step-training_time" name="training_time" class="step-form-input" placeholder="" required />
+    </div>
+    
+        <div class="step-form-group">
+          <label class="step-form-label">Upload signed Loan Submission SOP acknowledgement</label>
+          <div class="file-upload-area">
+            <input type="file" name="sop_ack" id="step-sop_ack" class="form-control"  />
+          </div>
+        </div>
+        
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button type="submit" class="btn step-btn step-btn-primary">
+          <i class="fas fa-check-circle me-2"></i>Save & Mark Step 4 Complete
+        </button>
+        <button type="button" class="btn step-btn step-btn-ghost" onclick="navigateToSection('step3')"><i class="fas fa-arrow-left me-2"></i>Previous</button><button type="button" class="btn step-btn step-btn-outline" onclick="navigateToSection('step5')">Next Step<i class="fas fa-arrow-right ms-2"></i></button>
+      </div>
+      <p class="mt-3 small text-muted" id="form-step4-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+</section>
 
         <!-- Step 5: Branding & Marketing -->
         <section id="step5" class="section-page step-white-bg">
@@ -1817,7 +2096,69 @@
                     <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
-        </section>
+        
+<!-- Step 5 Form -->
+
+
+<!-- Step 5 Form -->
+<div class="step-card step-form-card is-elevated" id="step5-form-card">
+  <div class="step-card-header form-header">
+    <div class="form-header-title">
+      <span class="form-step-badge">Step 5</span>
+      <h3 class="step-card-title">Branding & Marketing Launch — Action Form</h3>
+    </div>
+    <div class="form-header-meta">
+      <span class="form-mini-help">Your answers autosave locally</span>
+    </div>
+  </div>
+  <div class="step-card-body">
+    <form id="form-step5" class="step-form" novalidate>
+      <div class="step-form-grid">
+        
+    <div class="step-form-group step-form-group--full">
+      <label class="step-form-label" for="step-niche">Your niche / positioning</label>
+      <input type="text" id="step-niche" name="niche" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-linkedin">LinkedIn URL</label>
+      <input type="text" id="step-linkedin" name="linkedin" class="step-form-input" placeholder=""  />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-instagram">Instagram handle</label>
+      <input type="text" id="step-instagram" name="instagram" class="step-form-input" placeholder=""  />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-website">Website (if any)</label>
+      <input type="url" id="step-website" name="website" class="step-form-input" placeholder=""  />
+    </div>
+    
+        <div class="step-form-group">
+          <label class="step-form-label">Upload headshot or logo</label>
+          <div class="file-upload-area">
+            <input type="file" name="brand_asset" id="step-brand_asset" class="form-control"  />
+          </div>
+        </div>
+        
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-branding_session">Book your FlintMedia branding session</label>
+      <input type="datetime-local" id="step-branding_session" name="branding_session" class="step-form-input" placeholder="" required />
+    </div>
+    
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button type="submit" class="btn step-btn step-btn-primary">
+          <i class="fas fa-check-circle me-2"></i>Save & Mark Step 5 Complete
+        </button>
+        <button type="button" class="btn step-btn step-btn-ghost" onclick="navigateToSection('step4')"><i class="fas fa-arrow-left me-2"></i>Previous</button><button type="button" class="btn step-btn step-btn-outline" onclick="navigateToSection('step6')">Next Step<i class="fas fa-arrow-right ms-2"></i></button>
+      </div>
+      <p class="mt-3 small text-muted" id="form-step5-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+</section>
 
         <!-- Step 6: Partnership & Growth -->
         <section id="step6" class="section-page step-white-bg">
@@ -2077,7 +2418,59 @@
                     <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
-        </section>
+        
+<!-- Step 6 Form -->
+
+
+<!-- Step 6 Form -->
+<div class="step-card step-form-card is-elevated" id="step6-form-card">
+  <div class="step-card-header form-header">
+    <div class="form-header-title">
+      <span class="form-step-badge">Step 6</span>
+      <h3 class="step-card-title">Partnership & Growth Strategy — Action Form</h3>
+    </div>
+    <div class="form-header-meta">
+      <span class="form-mini-help">Your answers autosave locally</span>
+    </div>
+  </div>
+  <div class="step-card-body">
+    <form id="form-step6" class="step-form" novalidate>
+      <div class="step-form-grid">
+        
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-target">12-month settlement target ($)</label>
+      <input type="number" id="step-target" name="target" class="step-form-input" placeholder="" required />
+    </div>
+    
+    <div class="step-form-group">
+      <label class="step-form-label" for="step-niche_focus">Primary niche focus</label>
+      <input type="text" id="step-niche_focus" name="niche_focus" class="step-form-input" placeholder="" required />
+    </div>
+    
+        <div class="step-form-group step-form-group--full">
+          <label class="step-form-label" for="step-partner_types">Which partner types are you pursuing first?</label>
+          <textarea id="step-partner_types" name="partner_types" class="step-form-input step-textarea" placeholder="e.g., accountants, buyers agents, lawyers, medical" ></textarea>
+        </div>
+        
+        <div class="step-form-group">
+          <label class="step-form-label">Upload draft partnership deck (optional)</label>
+          <div class="file-upload-area">
+            <input type="file" name="deck" id="step-deck" class="form-control"  />
+          </div>
+        </div>
+        
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button type="submit" class="btn step-btn step-btn-primary">
+          <i class="fas fa-check-circle me-2"></i>Save & Mark Step 6 Complete
+        </button>
+        <button type="button" class="btn step-btn step-btn-ghost" onclick="navigateToSection('step5')"><i class="fas fa-arrow-left me-2"></i>Previous</button><button type="button" class="btn step-btn step-btn-outline" onclick="navigateToSection('step7')">Next Step<i class="fas fa-arrow-right ms-2"></i></button>
+      </div>
+      <p class="mt-3 small text-muted" id="form-step6-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+</section>
 
         <!-- Step 7: Continuous Support -->
         <section id="step7" class="section-page step-white-bg">
@@ -2352,7 +2745,55 @@
                     <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item current" title="Step 7: Optimization"><span class="step-number">7</span></a>
                 </div>
             </div>
-        </section>
+        
+<!-- Step 7 Form -->
+
+
+<!-- Step 7 Form -->
+<div class="step-card step-form-card is-elevated" id="step7-form-card">
+  <div class="step-card-header form-header">
+    <div class="form-header-title">
+      <span class="form-step-badge">Step 7</span>
+      <h3 class="step-card-title">Continuous Support & Feedback — Action Form</h3>
+    </div>
+    <div class="form-header-meta">
+      <span class="form-mini-help">Your answers autosave locally</span>
+    </div>
+  </div>
+  <div class="step-card-body">
+    <form id="form-step7" class="step-form" novalidate>
+      <div class="step-form-grid">
+        
+        <div class="step-form-group">
+          <label class="step-form-label" for="step-cadence">Preferred cadence for check-ins</label>
+          <select id="step-cadence" name="cadence" class="step-form-input" required>
+            <option value="">Select...</option>
+            <option value="Monthly">Monthly</option><option value="Quarterly">Quarterly</option>
+          </select>
+        </div>
+        
+        <div class="step-form-group step-form-group--full">
+          <label class="step-form-label" for="step-support_needs">Any areas you'd like more training or support?</label>
+          <textarea id="step-support_needs" name="support_needs" class="step-form-input step-textarea" placeholder="e.g., credit policy, content, HubSpot" ></textarea>
+        </div>
+        
+        <div class="completion-checkbox step-form-group step-form-group--full step-form-group step-form-group--full">
+          <input type="checkbox" id="step-subscribe_ed" name="subscribe_ed"  />
+          <label for="step-subscribe_ed">Subscribe me to education updates</label>
+        </div>
+        
+      </div>
+      <div class="d-flex flex-wrap gap-2 mt-4">
+        <button type="submit" class="btn step-btn step-btn-primary">
+          <i class="fas fa-check-circle me-2"></i>Save & Mark Step 7 Complete
+        </button>
+        <button type="button" class="btn step-btn step-btn-ghost" onclick="navigateToSection('step6')"><i class="fas fa-arrow-left me-2"></i>Previous</button>
+      </div>
+      <p class="mt-3 small text-muted" id="form-step7-status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+</section>
     </main>
 
     <!-- Floating Elements -->
@@ -2705,6 +3146,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="app.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
