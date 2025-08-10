@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Flint Directors Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome - Multiple sources for better compatibility -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="assets/css/flint-style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Mobile Navigation Fix -->
+    <style>
+        @media (max-width: 768px) {
+            /* Ensure mobile navbar toggler is visible */
+            .navbar-toggler {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                border: 2px solid #4D0032 !important;
+                background-color: rgba(77, 0, 50, 0.1) !important;
+                padding: 8px 10px !important;
+                border-radius: 8px !important;
+                position: relative !important;
+            }
+            
+            /* Font Awesome hamburger and close icons */
+            .navbar-toggler .hamburger-icon,
+            .navbar-toggler .close-icon {
+                font-size: 18px !important;
+                color: #4D0032 !important;
+                transition: all 0.3s ease !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+            
+            /* Initially show hamburger, hide close */
+            .navbar-toggler .hamburger-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            .navbar-toggler .close-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            /* When menu is open, show close icon, hide hamburger */
+            .navbar-toggler[aria-expanded="true"] .hamburger-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            .navbar-toggler[aria-expanded="true"] .close-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            /* Hide default bootstrap toggler icon */
+            .navbar-toggler .navbar-toggler-icon {
+                display: none !important;
+            }
+            
+            /* Fix brand title visibility */
+            .brand-title {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Ensure navbar collapse is HIDDEN by default on mobile */
+            .navbar-collapse {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: all 0.3s ease !important;
+                background-color: rgba(255, 243, 233, 0.98) !important;
+                border-radius: 0 0 15px 15px !important;
+                margin-top: 10px !important;
+                padding: 20px !important;
+                box-shadow: 0 4px 20px rgba(77, 0, 50, 0.2) !important;
+            }
+            
+            /* Show navbar collapse only when .show class is added */
+            .navbar-collapse.show {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Mobile menu styling */
+            .navbar-collapse.show .navbar-nav {
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+            }
+            
+            /* Mobile nav items */
+            .navbar-collapse.show .nav-item {
+                margin-bottom: 8px !important;
+            }
+            
+            .navbar-collapse.show .nav-link {
+                color: #4D0032 !important;
+                font-weight: 500 !important;
+                padding: 12px 16px !important;
+                border-radius: 8px !important;
+                transition: all 0.2s ease !important;
+                background-color: transparent !important;
+            }
+            
+            .navbar-collapse.show .nav-link:hover,
+            .navbar-collapse.show .nav-link.active {
+                background-color: rgba(77, 0, 50, 0.1) !important;
+                color: #4D0032 !important;
+            }
+            
+            /* Dropdown menus on mobile */
+            .navbar-collapse.show .dropdown-menu {
+                background-color: rgba(255, 243, 233, 0.95) !important;
+                border: 1px solid rgba(77, 0, 50, 0.15) !important;
+                border-radius: 8px !important;
+                margin-top: 5px !important;
+                box-shadow: 0 2px 10px rgba(77, 0, 50, 0.15) !important;
+            }
+            
+            /* User profile section on mobile */
+            .navbar-collapse.show .navbar-nav.ms-auto {
+                margin-top: 15px !important;
+                padding-top: 15px !important;
+                border-top: 1px solid rgba(77, 0, 50, 0.15) !important;
+            }
+            
+            /* Hide progress indicator on mobile */
+            .progress-indicator {
+                display: none !important;
+            }
+            
+            /* Mobile user dropdown */
+            .navbar-collapse.show .nav-item.dropdown .dropdown-menu {
+                position: static !important;
+                float: none !important;
+                width: 100% !important;
+                margin-top: 5px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="FLINT_FULL_LOGO.png" alt="Flint Logo" class="header-logo">
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars hamburger-icon"></i>
+                <i class="fas fa-times close-icon"></i>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navigation Menu -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-tasks me-1"></i>Steps
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-play-circle me-2"></i>Step 1: Welcome & Introduction
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-gavel me-2"></i>Step 2: Legal & Compliance Setup
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-calculator me-2"></i>Step 3: Accounting & Financial Orientation
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-cogs me-2"></i>Step 4: Operational Training
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-bullhorn me-2"></i>Step 5: Branding & Marketing
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-handshake me-2"></i>Step 6: Partnership & Growth
+                            </a></li>
+                            <li><a class="dropdown-item" href="index.html">
+                                <i class="fas fa-headset me-2"></i>Step 7: Continuous Support
+                            </a></li>
+                        </ul>
+                    </li>
+                    <!-- Resources Navigation -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-folder-open me-1"></i>Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#documents">
+                                <i class="fas fa-file-pdf me-2"></i>Documents & Forms
+                            </a></li>
+                            <li><a class="dropdown-item" href="#videos">
+                                <i class="fas fa-video me-2"></i>Training Videos
+                            </a></li>
+                            <li><a class="dropdown-item" href="#knowledge">
+                                <i class="fas fa-book me-2"></i>Knowledge Base
+                            </a></li>
+                            <li><a class="dropdown-item" href="#downloads">
+                                <i class="fas fa-download me-2"></i>Downloads
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#external">
+                                <i class="fas fa-external-link-alt me-2"></i>External Resources
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSupportModal()">
+                            <i class="fas fa-headset me-1"></i>Support
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Side Elements -->
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Progress Indicator (Hidden on mobile) -->
+                    <div class="progress-indicator d-none d-lg-flex flex-column me-3">
+                        <span class="progress-text">Welcome back, User</span>
+                        <span class="progress-steps">Resources Page</span>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=32" alt="User" class="rounded-circle me-2 user-avatar avatar-small">
+                            <span class="d-none d-lg-inline user-display-name">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://ui-avatars.com/api/?name=User&background=FFAF9C&color=4D0032&bold=true&size=40" alt="User" class="rounded-circle me-2 user-avatar">
+                                    <div>
+                                        <strong class="user-display-name">User</strong><br>
+                                        <small class="text-muted">Director</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-question-circle me-2"></i>Help & Support</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header text-center mb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h1 class="page-title">
+                            <i class="fas fa-folder-open me-3"></i>Resources
+                        </h1>
+                        <p class="page-description">
+                            Access comprehensive resources, training materials, and tools to support your journey as a Flint director
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="resources-nav-cards">
+                        <div class="row g-3">
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <a href="#documents" class="nav-card">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Documents</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <a href="#videos" class="nav-card">
+                                    <i class="fas fa-video"></i>
+                                    <span>Videos</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <a href="#knowledge" class="nav-card">
+                                    <i class="fas fa-book"></i>
+                                    <span>Knowledge Base</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <a href="#downloads" class="nav-card">
+                                    <i class="fas fa-download"></i>
+                                    <span>Downloads</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <a href="#tools" class="nav-card">
+                                    <i class="fas fa-tools"></i>
+                                    <span>Tools</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-4 col-6">
+                                <a href="#external" class="nav-card">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>External</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents & Forms Section -->
+            <section id="documents" class="resources-section mb-5">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-pdf me-3"></i>Documents & Forms</h2>
+                    <p>Essential documents, forms, and templates for your onboarding process</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <h5>Director Agreement</h5>
+                            <p>Your official director agreement and contract documentation</p>
+                            <div class="resource-meta">
+                                <span class="file-type">PDF</span>
+                                <span class="file-size">2.3 MB</span>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-sm">
+                                <i class="fas fa-download me-1"></i>Download
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <h5>Onboarding Checklist</h5>
+                            <p>Complete checklist to track your onboarding progress</p>
+                            <div class="resource-meta">
+                                <span class="file-type">PDF</span>
+                                <span class="file-size">856 KB</span>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-sm">
+                                <i class="fas fa-download me-1"></i>Download
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h5>Compliance Forms</h5>
+                            <p>Required compliance and regulatory documentation</p>
+                            <div class="resource-meta">
+                                <span class="file-type">ZIP</span>
+                                <span class="file-size">4.1 MB</span>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-sm">
+                                <i class="fas fa-download me-1"></i>Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Training Videos Section -->
+            <section id="videos" class="resources-section mb-5">
+                <div class="section-header">
+                    <h2><i class="fas fa-video me-3"></i>Training Videos</h2>
+                    <p>Step-by-step video guides to help you through the onboarding process</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="video-card">
+                            <div class="video-container">
+                                <div class="video-thumbnail" id="video1-thumb">
+                                    <img src="https://img.youtube.com/vi/ScMzIvxBSi4/maxresdefault.jpg" alt="Welcome Video">
+                                    <div class="play-button" onclick="playVideo('video1')">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="video-duration">5:32</div>
+                                </div>
+                                <div class="video-player" id="video1-player" style="display: none;">
+                                    <iframe 
+                                        width="100%" 
+                                        src="" 
+                                        title="Welcome to Flint"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Welcome to Flint</h5>
+                                <p>Introduction to Flint and what to expect during onboarding</p>
+                                <div class="video-meta">
+                                    <span><i class="fas fa-eye me-1"></i>1,234 views</span>
+                                    <span><i class="fas fa-clock me-1"></i>5 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="video-card">
+                            <div class="video-container">
+                                <div class="video-thumbnail" id="video2-thumb">
+                                    <img src="https://img.youtube.com/vi/jNQXAC9IVRw/maxresdefault.jpg" alt="System Setup">
+                                    <div class="play-button" onclick="playVideo('video2')">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="video-duration">12:45</div>
+                                </div>
+                                <div class="video-player" id="video2-player" style="display: none;">
+                                    <iframe 
+                                        width="100%" 
+                                        src="" 
+                                        title="System Setup Guide"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="video-content">
+                                <h5>System Setup Guide</h5>
+                                <p>Learn how to set up your Flint systems and tools</p>
+                                <div class="video-meta">
+                                    <span><i class="fas fa-eye me-1"></i>892 views</span>
+                                    <span><i class="fas fa-clock me-1"></i>12 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="video-card">
+                            <div class="video-container">
+                                <div class="video-thumbnail" id="video3-thumb">
+                                    <img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg" alt="Compliance Training">
+                                    <div class="play-button" onclick="playVideo('video3')">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="video-duration">18:20</div>
+                                </div>
+                                <div class="video-player" id="video3-player" style="display: none;">
+                                    <iframe 
+                                        width="100%" 
+                                        src="" 
+                                        title="Compliance Training"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Compliance Training</h5>
+                                <p>Understanding regulatory requirements and compliance procedures</p>
+                                <div class="video-meta">
+                                    <span><i class="fas fa-eye me-1"></i>756 views</span>
+                                    <span><i class="fas fa-clock me-1"></i>18 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="video-card">
+                            <div class="video-container">
+                                <div class="video-thumbnail" id="video4-thumb">
+                                    <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Best Practices">
+                                    <div class="play-button" onclick="playVideo('video4')">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="video-duration">9:15</div>
+                                </div>
+                                <div class="video-player" id="video4-player" style="display: none;">
+                                    <iframe 
+                                        width="100%" 
+                                        src="" 
+                                        title="Best Practices"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                            <div class="video-content">
+                                <h5>Best Practices</h5>
+                                <p>Tips and best practices from successful Flint directors</p>
+                                <div class="video-meta">
+                                    <span><i class="fas fa-eye me-1"></i>1,089 views</span>
+                                    <span><i class="fas fa-clock me-1"></i>9 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Knowledge Base Section -->
+            <section id="knowledge" class="resources-section mb-5">
+                <div class="section-header">
+                    <h2><i class="fas fa-book me-3"></i>Knowledge Base</h2>
+                    <p>Comprehensive guides and documentation</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="knowledge-card">
+                            <div class="knowledge-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h5>Getting Started Guide</h5>
+                            <p>Complete guide to getting started as a Flint director</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="knowledge-card">
+                            <div class="knowledge-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h5>System Documentation</h5>
+                            <p>Detailed documentation for all Flint systems and tools</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="knowledge-card">
+                            <div class="knowledge-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h5>FAQ</h5>
+                            <p>Frequently asked questions and answers</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Downloads Section -->
+            <section id="downloads" class="resources-section mb-5">
+                <div class="section-header">
+                    <h2><i class="fas fa-download me-3"></i>Downloads</h2>
+                    <p>Software, tools, and templates for download</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <i class="fas fa-file-excel"></i>
+                            </div>
+                            <h6>Loan Calculator</h6>
+                            <p>Excel template for loan calculations</p>
+                            <div class="download-meta">
+                                <span>Excel • 245 KB</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">
+                                <i class="fas fa-download me-1"></i>Download
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <i class="fas fa-file-word"></i>
+                            </div>
+                            <h6>Client Templates</h6>
+                            <p>Document templates for client communication</p>
+                            <div class="download-meta">
+                                <span>Word • 1.2 MB</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">
+                                <i class="fas fa-download me-1"></i>Download
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h6>Mobile App</h6>
+                            <p>Flint mobile application for iOS and Android</p>
+                            <div class="download-meta">
+                                <span>App • Free</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">
+                                <i class="fas fa-download me-1"></i>Download
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="download-card">
+                            <div class="download-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h6>Brand Assets</h6>
+                            <p>Flint logos and brand assets package</p>
+                            <div class="download-meta">
+                                <span>ZIP • 5.8 MB</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">
+                                <i class="fas fa-download me-1"></i>Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section id="tools" class="resources-section mb-5">
+                <div class="section-header">
+                    <h2><i class="fas fa-tools me-3"></i>Tools & Calculators</h2>
+                    <p>Interactive tools to help with your daily work</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="tool-content">
+                                <h5>Loan Calculator</h5>
+                                <p>Calculate loan amounts, repayments, and interest rates</p>
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Open Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="tool-card">
+                            <div class="tool-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="tool-content">
+                                <h5>Commission Calculator</h5>
+                                <p>Calculate your potential commission earnings</p>
+                                <a href="#" class="btn btn-primary">
+                                    <i class="fas fa-external-link-alt me-1"></i>Open Tool
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- External Resources Section -->
+            <section id="external" class="resources-section mb-5">
+                <div class="section-header">
+                    <h2><i class="fas fa-external-link-alt me-3"></i>External Resources</h2>
+                    <p>Useful external links and industry resources</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="external-card">
+                            <div class="external-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <h6>ASIC</h6>
+                            <p>Australian Securities and Investments Commission</p>
+                            <a href="https://asic.gov.au" target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-external-link-alt me-1"></i>Visit
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="external-card">
+                            <div class="external-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h6>MFAA</h6>
+                            <p>Mortgage & Finance Association of Australia</p>
+                            <a href="https://mfaa.com.au" target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-external-link-alt me-1"></i>Visit
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="external-card">
+                            <div class="external-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <h6>RBA</h6>
+                            <p>Reserve Bank of Australia</p>
+                            <a href="https://rba.gov.au" target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-external-link-alt me-1"></i>Visit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer-enhanced">
+        <div class="footer-background">
+            <div class="footer-pattern"></div>
+        </div>
+        <div class="container">
+            <!-- Footer Main Content -->
+            <div class="footer-main">
+                <div class="row">
+                    <!-- Brand Section -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="footer-brand-enhanced">
+                            <div class="brand-logo-wrapper">
+                                <img src="FLINT_FULL_LOGO.png" alt="Flint Logo" class="footer-logo-enhanced">
+                            </div>
+                            <p class="brand-description">
+                                Australia's #1 independent mortgage brokerage empowering directors 
+                                with cutting-edge technology, comprehensive support, and unmatched opportunities.
+                            </p>
+                            
+                            <!-- Our Impact Below Brand Description -->
+                            <div class="footer-stats-compact">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-chart-line me-2"></i>Our Impact
+                                </h6>
+                                <div class="stats-row">
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">500+</span>
+                                        <span class="stat-label">Directors</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">$2B+</span>
+                                        <span class="stat-label">Settled</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">4.9★</span>
+                                        <span class="stat-label">Rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Navigation -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-compass me-2"></i>Navigation
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="index.html">
+                                    <i class="fas fa-home me-2"></i>Dashboard
+                                </a></li>
+                                <li><a href="index.html">
+                                    <i class="fas fa-play me-2"></i>Getting Started
+                                </a></li>
+                                <li><a href="index.html">
+                                    <i class="fas fa-question me-2"></i>FAQ
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-headset me-2"></i>Support
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Resources -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-book me-2"></i>Resources
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#documents">
+                                    <i class="fas fa-file-alt me-2"></i>Documentation
+                                </a></li>
+                                <li><a href="#videos">
+                                    <i class="fas fa-video me-2"></i>Training Videos
+                                </a></li>
+                                <li><a href="#downloads">
+                                    <i class="fas fa-download me-2"></i>Templates
+                                    <span class="link-badge new">New</span>
+                                </a></li>
+                                <li><a href="#tools">
+                                    <i class="fas fa-tools me-2"></i>Calculators
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Community & Support -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-users me-2"></i>Community
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#">
+                                    <i class="fab fa-slack me-2"></i>Slack Channel
+                                    <span class="link-indicator online"></span>
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-calendar me-2"></i>Events
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-graduation-cap me-2"></i>Training
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-trophy me-2"></i>Leaderboard
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info - Next to Community -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-phone me-2"></i>Contact Us
+                            </h6>
+                            <div class="contact-info-compact">
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-envelope me-2"></i>
+                                    <a href="mailto:support@flint.com.au">support@flint.com.au</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-phone me-2"></i>
+                                    <a href="tel:1300354686">1300 354 686</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                    <span>Sydney, Australia</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Social Media Below Contact -->
+                            <div class="social-media-enhanced">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-share-alt me-2"></i>Follow Us
+                                </h6>
+                                <div class="social-links-row">
+                                    <a href="#" class="social-link-enhanced linkedin" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced twitter" title="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced facebook" title="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced instagram" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced youtube" title="YouTube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-divider-enhanced"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="copyright-enhanced">
+                            <p>&copy; 2025 Flint Group. All rights reserved.</p>
+                            <div class="company-info">
+                                <span>ACN: 123 456 789</span>
+                                <span>Australian Credit Licence: 987654</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-legal-enhanced">
+                            <a href="#privacy">Privacy Policy</a>
+                            <a href="#terms">Terms of Service</a>
+                            <a href="#cookies">Cookie Policy</a>
+                            <a href="#accessibility">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Support Modal -->
+    <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Get in touch
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="support-info">
+                        <div class="mb-4">
+                            <i class="fas fa-envelope support-icon mb-3"></i>
+                            <h6>Email Support</h6>
+                            <a href="mailto:hello@flintgroup.au" class="support-link">hello@flintgroup.au</a>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fas fa-phone support-icon mb-3"></i>
+                            <h6>Phone Support</h6>
+                            <a href="tel:0485853537" class="support-link">0485 853 537</a>
+                        </div>
+                        <div class="support-hours">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-2"></i>
+                                Available Monday - Friday, 9AM - 5PM AEST
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="mailto:hello@flintgroup.au" class="btn btn-primary">
+                        <i class="fas fa-envelope me-2"></i>Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- Video Player Functionality -->
+    <script>
+        // Video data with YouTube video IDs
+        const videos = {
+            'video1': 'ScMzIvxBSi4', // Sample business/corporate video
+            'video2': 'jNQXAC9IVRw', // Me at the zoo (first YouTube video)
+            'video3': '9bZkp7q19f0', // PSY - GANGNAM STYLE
+            'video4': 'kJQP7kiw5Fk'  // Despacito (working video)
+        };
+
+        function playVideo(videoId) {
+            console.log('Playing video:', videoId);
+            
+            const thumbnail = document.getElementById(videoId + '-thumb');
+            const player = document.getElementById(videoId + '-player');
+            const iframe = player.querySelector('iframe');
+            
+            if (!thumbnail || !player || !iframe) {
+                console.error('Video elements not found for:', videoId);
+                return;
+            }
+            
+            // Hide thumbnail and show player with smooth transition
+            thumbnail.style.opacity = '0';
+            thumbnail.style.transition = 'opacity 0.3s ease';
+            
+            setTimeout(() => {
+                thumbnail.style.display = 'none';
+                player.style.display = 'block';
+                player.style.opacity = '0';
+                
+                // Set the video source with autoplay and additional parameters
+                const youtubeVideoId = videos[videoId];
+                iframe.src = `https://www.youtube.com/embed/${youtubeVideoId}?autoplay=1&rel=0&modestbranding=1&fs=1&cc_load_policy=0&iv_load_policy=3&autohide=0`;
+                
+                // Fade in the player
+                setTimeout(() => {
+                    player.style.transition = 'opacity 0.3s ease';
+                    player.style.opacity = '1';
+                }, 100);
+                
+            }, 300);
+        }
+
+        // Add click event listeners to all play buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click listeners to play buttons
+            const playButtons = document.querySelectorAll('.play-button');
+            playButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const videoId = this.getAttribute('onclick').match(/playVideo\('(.+?)'\)/)[1];
+                    playVideo(videoId);
+                });
+            });
+
+            // Add click listeners to entire thumbnail area
+            const thumbnails = document.querySelectorAll('.video-thumbnail');
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('click', function(e) {
+                    if (e.target.closest('.play-button')) return; // Don't double-trigger
+                    const videoId = this.id.replace('-thumb', '');
+                    playVideo(videoId);
+                });
+            });
+        });
+
+        // Support modal functionality
+        function showSupportModal() {
+            const supportModal = new bootstrap.Modal(document.getElementById('supportModal'));
+            supportModal.show();
+        }
+    </script>
+
+    <!-- Resources Page Specific Styles -->
+    <style>
+        .main-content {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            background: #F8FAFC;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary-burgundy) 0%, rgba(77, 0, 50, 0.9) 100%);
+            color: white;
+            padding: 80px 0;
+            margin: -120px -15px 80px -15px;
+            border-radius: 0 0 40px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-description {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .resources-nav-cards {
+            margin-bottom: 60px;
+        }
+
+        .resources-nav-cards .nav-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px;
+            background: white;
+            border: 2px solid #E5E7EB;
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--color-primary-burgundy);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resources-nav-cards .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary-burgundy), #6E0048);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .resources-nav-cards .nav-card:hover {
+            border-color: var(--color-primary-burgundy);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(77, 0, 50, 0.15);
+            color: var(--color-primary-burgundy);
+        }
+
+        .resources-nav-cards .nav-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .resources-nav-cards .nav-card i {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            color: var(--color-primary-burgundy);
+            transition: transform 0.3s ease;
+        }
+
+        .resources-nav-cards .nav-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .resources-nav-cards .nav-card span {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--color-primary-burgundy);
+        }
+
+        .resources-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #F1F5F9;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #F1F5F9;
+        }
+
+        .section-header h2 {
+            color: var(--color-primary-burgundy);
+            font-weight: 800;
+            margin-bottom: 12px;
+            font-size: 2.2rem;
+        }
+
+        .section-header p {
+            color: #64748B;
+            font-size: 1.1rem;
+            margin: 0;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .resource-card, .video-card, .knowledge-card, .download-card, .tool-card, .external-card {
+            background: white;
+            border: 2px solid #F1F5F9;
+            border-radius: 12px;
+            padding: 20px;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card::before, .video-card::before, .knowledge-card::before, 
+        .download-card::before, .tool-card::before, .external-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary-burgundy), #6E0048);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover, .video-card:hover, .knowledge-card:hover, 
+        .download-card:hover, .tool-card:hover, .external-card:hover {
+            box-shadow: 0 12px 30px rgba(77, 0, 50, 0.1);
+            transform: translateY(-6px);
+            border-color: var(--color-primary-burgundy);
+        }
+
+        .resource-card:hover::before, .video-card:hover::before, .knowledge-card:hover::before,
+        .download-card:hover::before, .tool-card:hover::before, .external-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .resource-icon, .knowledge-icon, .download-icon, .tool-icon, .external-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 3px solid var(--color-primary-burgundy);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(77, 0, 50, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-icon i, .knowledge-icon i, .download-icon i, .tool-icon i, .external-icon i {
+            font-size: 1.5rem;
+            color: var(--color-primary-burgundy);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover .resource-icon, .knowledge-card:hover .knowledge-icon, 
+        .download-card:hover .download-icon, .tool-card:hover .tool-icon, 
+        .external-card:hover .external-icon {
+            transform: scale(1.15);
+        }
+
+        .resource-card:hover .resource-icon i, .knowledge-card:hover .knowledge-icon i, 
+        .download-card:hover .download-icon i, .tool-card:hover .tool-icon i, 
+        .external-card:hover .external-icon i {
+            transform: scale(1.1);
+        }
+
+        .resource-card h5, .knowledge-card h5, .download-card h6, .external-card h6 {
+            color: var(--color-primary-burgundy);
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .resource-card p, .knowledge-card p, .download-card p, .external-card p {
+            color: #64748B;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .resource-meta, .video-meta, .download-meta {
+            display: flex;
+            gap: 12px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+
+        .file-type, .file-size {
+            background: #F1F5F9;
+            color: var(--color-primary-burgundy);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: 1px solid #E2E8F0;
+        }
+
+        .video-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 280px; /* Fixed height for consistency */
+        }
+
+        .video-thumbnail {
+            position: relative;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            z-index: 10;
+        }
+
+        .video-thumbnail:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.15);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid white;
+        }
+
+        .play-button i {
+            margin-left: 3px; /* Slight offset to center the triangle */
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 5;
+        }
+
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .video-player iframe {
+            border-radius: 12px;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-content h5 {
+            color: var(--color-primary-burgundy);
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .video-content p {
+            color: #64748B;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .video-meta {
+            display: flex;
+            gap: 15px;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .video-meta span {
+            color: #94A3B8;
+            font-size: 0.95rem;
+        }
+
+        .tool-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            padding: 30px;
+        }
+
+        .tool-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .tool-icon i {
+            font-size: 2.2rem;
+            color: var(--color-primary-burgundy);
+        }
+
+        .tool-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .tool-content h5 {
+            color: var(--color-primary-burgundy);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .tool-content p {
+            color: #64748B;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary-burgundy), #6E0048);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(77, 0, 50, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(77, 0, 50, 0.3);
+            background: linear-gradient(135deg, #6E0048, var(--color-primary-burgundy));
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--color-primary-burgundy);
+            color: var(--color-primary-burgundy);
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--color-primary-burgundy);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(77, 0, 50, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-header {
+                padding: 60px 0;
+                margin-bottom: 60px;
+            }
+            
+            .resources-section {
+                padding: 30px 20px;
+                margin-bottom: 30px;
+            }
+            
+            .tool-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                padding: 25px;
+            }
+
+            .tool-icon {
+                margin: 0 auto;
+                margin-bottom: 10px;
+            }
+
+            .tool-content {
+                text-align: center;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .resources-nav-cards .nav-card {
+                padding: 25px 15px;
+            }
+
+            .resources-nav-cards .nav-card i {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-description {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</body>
+</html>

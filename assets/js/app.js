@@ -1,5 +1,202 @@
 // Flint Directors Onboarding Portal JavaScript
 
+// ================================
+// AUTHENTICATION SYSTEM
+// ================================
+
+// Check if user is already logged in on page load
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded');
+    checkAuthStatus();
+    initializeApp();
+    
+    // Debug: Check if logout button exists
+    const logoutButton = document.querySelector('[onclick="handleLogout()"]');
+    console.log('Logout button found:', logoutButton);
+});
+
+// Check authentication status
+function checkAuthStatus() {
+    const isLoggedIn = localStorage.getItem('flint_logged_in');
+    const loginSection = document.getElementById('loginSection');
+    const mainApplication = document.getElementById('mainApplication');
+    
+    if (isLoggedIn === 'true') {
+        // User is logged in, show main application
+        loginSection.style.display = 'none';
+        mainApplication.style.display = 'block';
+        setTimeout(() => {
+            mainApplication.classList.add('show');
+        }, 100);
+    } else {
+        // User is not logged in, show login form
+        loginSection.style.display = 'flex';
+        mainApplication.style.display = 'none';
+    }
+}
+
+// Handle login form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+    }
+});
+
+// Login function
+function handleLogin(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const rememberMe = document.getElementById('rememberMe').checked;
+    
+    // Simple authentication (in real app, this would be server-side)
+    if (username && password) {
+        // For demo purposes, accept any non-empty credentials
+        // In production, this would validate against a secure backend
+        
+        // Store login status
+        localStorage.setItem('flint_logged_in', 'true');
+        localStorage.setItem('flint_username', username);
+        
+        if (rememberMe) {
+            localStorage.setItem('flint_remember_me', 'true');
+        }
+        
+        // Show success and transition to main app
+        showLoginSuccess();
+        
+    } else {
+        showLoginError('Please enter both username and password');
+    }
+}
+
+// Show login success and transition
+function showLoginSuccess() {
+    const loginBtn = document.querySelector('.login-btn');
+    const originalText = loginBtn.innerHTML;
+    
+    // Show loading state
+    loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Logging in...';
+    loginBtn.disabled = true;
+    
+    setTimeout(() => {
+        // Hide login section and show main application
+        const loginSection = document.getElementById('loginSection');
+        const mainApplication = document.getElementById('mainApplication');
+        
+        loginSection.style.display = 'none';
+        mainApplication.style.display = 'block';
+        
+        setTimeout(() => {
+            mainApplication.classList.add('show');
+        }, 100);
+        
+        // Reset button
+        loginBtn.innerHTML = originalText;
+        loginBtn.disabled = false;
+        
+        // Clear form
+        document.getElementById('loginForm').reset();
+        
+    }, 1500);
+}
+
+// Show login error
+function showLoginError(message) {
+    // Remove any existing error
+    const existingError = document.querySelector('.login-error');
+    if (existingError) {
+        existingError.remove();
+    }
+    
+    // Create error message
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'login-error alert alert-danger mt-3';
+    errorDiv.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i>${message}`;
+    
+    // Add to login form
+    const loginForm = document.getElementById('loginForm');
+    loginForm.appendChild(errorDiv);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        errorDiv.remove();
+    }, 5000);
+}
+
+// Handle logout
+function handleLogout() {
+    console.log('handleLogout function called');
+    
+    // Show confirmation
+    if (confirm('Are you sure you want to logout?')) {
+        console.log('User confirmed logout');
+        
+        // Clear login data
+        localStorage.removeItem('flint_logged_in');
+        localStorage.removeItem('flint_username');
+        localStorage.removeItem('flint_remember_me');
+        
+        // Show logout animation
+        const mainApplication = document.getElementById('mainApplication');
+        if (mainApplication) {
+            mainApplication.classList.remove('show');
+            
+            setTimeout(() => {
+                // Hide main application and show login
+                mainApplication.style.display = 'none';
+                const loginSection = document.getElementById('loginSection');
+                if (loginSection) {
+                    loginSection.style.display = 'flex';
+                }
+            }, 500);
+        }
+    }
+}
+
+// Ensure handleLogout is globally available
+window.handleLogout = handleLogout;
+
+// Toggle password visibility
+function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('passwordToggleIcon');
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.className = 'fas fa-eye-slash';
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.className = 'fas fa-eye';
+    }
+}
+
+// Make togglePassword globally available
+window.togglePassword = togglePassword;
+
+// Initialize app after authentication
+function initializeApp() {
+    // Only run if user is logged in
+    if (localStorage.getItem('flint_logged_in') === 'true') {
+        // Update user display name if available
+        const username = localStorage.getItem('flint_username');
+        if (username) {
+            const userDisplayElements = document.querySelectorAll('.user-display-name');
+            userDisplayElements.forEach(element => {
+                element.textContent = username;
+            });
+            
+            // Update avatar with username
+            const avatarElements = document.querySelectorAll('.user-avatar');
+            avatarElements.forEach(element => {
+                element.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=FFAF9C&color=4D0032&bold=true&size=40`;
+            });
+        }
+    }
+}
+
 // Application Data
 const appData = {
   "flint_values": [
@@ -1147,45 +1344,6 @@ function logout() {
 function showSupportModal() {
     const supportModal = new bootstrap.Modal(document.getElementById('supportModal'));
     supportModal.show();
-}
-
-// Logout Function
-function handleLogout() {
-    // Clear authentication data
-    localStorage.removeItem('flint_logged_in');
-    localStorage.removeItem('flint_login_timestamp');
-    localStorage.removeItem('flint_user_email');
-    
-    // Show logout notification
-    const notification = document.createElement('div');
-    notification.className = 'login-notification';
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #6E0048;
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        z-index: 9999;
-        animation: slideInRight 0.3s ease;
-    `;
-    notification.innerHTML = `
-        <i class="fas fa-sign-out-alt"></i>
-        <span>Logged out successfully</span>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Remove notification and redirect after delay
-    setTimeout(() => {
-        notification.remove();
-        window.location.href = 'app-entry.html';
-    }, 1500);
 }
 
 console.log('Flint Directors Portal JavaScript loaded successfully');
