@@ -1,0 +1,3324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flint Directors Onboarding Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome - Multiple sources for better compatibility -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="stylesheet" href="assets/css/flint-style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Mobile Navigation Fix -->
+    <style>
+        @media (max-width: 768px) {
+            /* Ensure mobile navbar toggler is visible */
+            .navbar-toggler {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                border: 2px solid #4D0032 !important;
+                background-color: rgba(77, 0, 50, 0.1) !important;
+                padding: 8px 10px !important;
+                border-radius: 8px !important;
+                position: relative !important;
+            }
+            
+            /* Font Awesome hamburger and close icons */
+            .navbar-toggler .hamburger-icon,
+            .navbar-toggler .close-icon {
+                font-size: 18px !important;
+                color: #4D0032 !important;
+                transition: all 0.3s ease !important;
+                position: absolute !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+            
+            /* Initially show hamburger, hide close */
+            .navbar-toggler .hamburger-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            .navbar-toggler .close-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            /* When menu is open, show close icon, hide hamburger */
+            .navbar-toggler[aria-expanded="true"] .hamburger-icon {
+                display: none !important;
+                opacity: 0 !important;
+            }
+            
+            .navbar-toggler[aria-expanded="true"] .close-icon {
+                display: block !important;
+                opacity: 1 !important;
+            }
+            
+            /* Hide default bootstrap toggler icon */
+            .navbar-toggler .navbar-toggler-icon {
+                display: none !important;
+            }
+            
+            /* Hide default bootstrap toggler icon */
+            .navbar-toggler .navbar-toggler-icon {
+                display: none !important;
+            }
+            
+            /* Fix brand title visibility */
+            .brand-title {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Ensure navbar collapse is HIDDEN by default on mobile */
+            .navbar-collapse {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: all 0.3s ease !important;
+                background-color: rgba(255, 243, 233, 0.98) !important;
+                border-radius: 0 0 15px 15px !important;
+                margin-top: 10px !important;
+                padding: 20px !important;
+                box-shadow: 0 4px 20px rgba(77, 0, 50, 0.2) !important;
+            }
+            
+            /* Show navbar collapse only when .show class is added */
+            .navbar-collapse.show {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Fix navbar collapse transition */
+            .navbar-collapse.collapsing {
+                opacity: 0.5 !important;
+                display: block !important;
+            }
+            
+            /* Fix navigation menu visibility */
+            .navbar-nav .nav-link {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                font-weight: 500 !important;
+                display: flex !important;
+                align-items: center !important;
+                padding: 12px 16px !important;
+                margin-bottom: 8px !important;
+                background-color: rgba(77, 0, 50, 0.05) !important;
+                border-radius: 8px !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .navbar-nav .nav-link i {
+                color: #4D0032 !important;
+                font-size: 16px !important;
+                margin-right: 8px !important;
+                display: inline-block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            /* Fix dropdown menu visibility */
+            .navbar-nav .dropdown-menu {
+                background-color: rgba(255, 243, 233, 0.95) !important;
+                border: 1px solid rgba(77, 0, 50, 0.2) !important;
+                border-radius: 8px !important;
+                margin-top: 8px !important;
+            }
+            
+            .navbar-nav .dropdown-item {
+                color: #4D0032 !important;
+                font-size: 14px !important;
+                padding: 10px 16px !important;
+                display: flex !important;
+                align-items: center !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            .navbar-nav .dropdown-item i {
+                color: #4D0032 !important;
+                margin-right: 8px !important;
+                font-size: 14px !important;
+            }
+            
+            /* Fix user profile section */
+            .navbar-nav.ms-auto .nav-link {
+                background-color: rgba(77, 0, 50, 0.1) !important;
+            }
+            
+            .user-display-name {
+                color: #4D0032 !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Notification and profile icons */
+            .navbar-nav .nav-link .fas {
+                color: #4D0032 !important;
+                font-size: 18px !important;
+            }
+        }
+        
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            min-width: 300px;
+            animation: slideInRight 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .notification-success {
+            border-left: 4px solid #28a745;
+        }
+        
+        .notification-warning {
+            border-left: 4px solid #ffc107;
+        }
+        
+        .notification-info {
+            border-left: 4px solid #17a2b8;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .notification-content i {
+            font-size: 18px;
+        }
+        
+        .notification-success i {
+            color: #28a745;
+        }
+        
+        .notification-warning i {
+            color: #ffc107;
+        }
+        
+        .notification-info i {
+            color: #17a2b8;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            margin-left: 10px;
+        }
+        
+        .notification-close:hover {
+            color: #333;
+        }
+        
+        /* Step Status Styles */
+        .step-status {
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 10px;
+            font-weight: 500;
+        }
+        
+        .step-status.completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .step-status.available {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .step-status.locked {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .step-link.disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        
+        /* Journey Card Lock Styles */
+        .journey-card.locked {
+            opacity: 0.5;
+            background: #f8f9fa;
+            cursor: not-allowed;
+            position: relative;
+        }
+        
+        .journey-card.locked::before {
+            content: '🔒';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            z-index: 2;
+        }
+        
+        .journey-card.locked:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .journey-card.available {
+            border: 2px solid #17a2b8;
+            background: #f8f9fa;
+        }
+        
+        .journey-card.available .step-icon.available {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .journey-card.available .status-badge.available {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .step-nav-item.locked {
+            opacity: 0.5;
+            pointer-events: none;
+            background-color: #f8f9fa !important;
+        }
+        
+        .step-nav-item.available {
+            background-color: #d1ecf1 !important;
+            color: #0c5460 !important;
+        }
+        
+        /* Progress Ring Styles */
+        .progress-ring-circle {
+            stroke: #4D0032;
+            stroke-width: 3;
+            fill: transparent;
+            stroke-dasharray: 0 157; /* Initial state: 0 progress */
+            stroke-linecap: round;
+            transition: stroke-dasharray 0.5s ease;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        
+        .progress-ring-circle-bg {
+            stroke: #e9ecef;
+            stroke-width: 3;
+            fill: transparent;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+    
+    <!-- Mobile Menu Toggle Fix -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure hamburger menu works properly
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            
+            // Make sure menu is closed initially on mobile
+            if (window.innerWidth <= 768) {
+                navbarCollapse.classList.remove('show');
+                navbarToggler.setAttribute('aria-expanded', 'false');
+            }
+            
+            if (navbarToggler && navbarCollapse) {
+                // Remove any existing Bootstrap handlers and add custom handler
+                navbarToggler.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Toggle the menu
+                    const isExpanded = navbarCollapse.classList.contains('show');
+                    
+                    if (isExpanded) {
+                        // Close menu
+                        navbarCollapse.classList.remove('show');
+                        navbarToggler.setAttribute('aria-expanded', 'false');
+                    } else {
+                        // Open menu
+                        navbarCollapse.classList.add('show');
+                        navbarToggler.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                
+                // Close menu when clicking nav links
+                const navLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (window.innerWidth <= 768) {
+                            navbarCollapse.classList.remove('show');
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (window.innerWidth <= 768) {
+                        if (!navbarToggler.contains(event.target) && !navbarCollapse.contains(event.target)) {
+                            navbarCollapse.classList.remove('show');
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+                
+                // Handle window resize
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) {
+                        navbarCollapse.classList.remove('show');
+                        navbarToggler.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Authentication Check Script -->
+    <script>
+        // Update user display with logged-in user info
+        function updateUserDisplay() {
+            const userEmail = localStorage.getItem('flint_user_email');
+            if (userEmail) {
+                // Extract name from email (before @ symbol)
+                const userName = userEmail.split('@')[0];
+                const displayName = userName.charAt(0).toUpperCase() + userName.slice(1);
+                
+                // Update user display elements
+                const userNameElements = document.querySelectorAll('.user-display-name');
+                const progressTextElement = document.querySelector('.progress-text');
+                
+                userNameElements.forEach(element => {
+                    element.textContent = displayName;
+                });
+                
+                if (progressTextElement) {
+                    progressTextElement.textContent = `Welcome back, ${displayName}`;
+                }
+                
+                // Update avatar URLs
+                const avatarElements = document.querySelectorAll('.user-avatar');
+                const newAvatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=FFAF9C&color=4D0032&bold=true&size=`;
+                
+                avatarElements.forEach(element => {
+                    const size = element.classList.contains('avatar-small') ? '32' : '40';
+                    element.src = newAvatarUrl + size;
+                    element.alt = displayName;
+                });
+            }
+        }
+        
+        // Run updateUserDisplay when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateUserDisplay();
+        });
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="javascript:void(0)" onclick="navigateToSection('landing')">
+                <img src="FLINT_FULL_LOGO.png" alt="Flint Logo" class="header-logo">
+            </a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars hamburger-icon"></i>
+                <i class="fas fa-times close-icon"></i>
+            </button>
+
+            <!-- Collapsible Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Navigation Menu -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)" onclick="navigateToSection('landing')">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-tasks me-1"></i>Steps
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item step-link" href="javascript:void(0)" onclick="checkStepAccess(1)" data-step="1">
+                                <i class="fas fa-play-circle me-2"></i>Step 1: Welcome & Introduction
+                                <span class="step-status" id="step1-status"></span>
+                            </a></li>
+                            <li><a class="dropdown-item step-link" href="javascript:void(0)" onclick="checkStepAccess(2)" data-step="2">
+                                <i class="fas fa-gavel me-2"></i>Step 2: Legal & Compliance Setup
+                                <span class="step-status" id="step2-status"></span>
+                            </a></li>
+                            <li><a class="dropdown-item step-link" href="javascript:void(0)" onclick="checkStepAccess(3)" data-step="3">
+                                <i class="fas fa-calculator me-2"></i>Step 3: Accounting & Financial Orientation
+                                <span class="step-status" id="step3-status"></span>
+                            </a></li>
+                            <li><a class="dropdown-item step-link" href="javascript:void(0)" onclick="checkStepAccess(4)" data-step="4">
+                                <i class="fas fa-cogs me-2"></i>Step 4: Operational Training
+                                <span class="step-status" id="step4-status"></span>
+                            </a></li>
+                            <li><a class="dropdown-item step-link" href="javascript:void(0)" onclick="checkStepAccess(5)" data-step="5">
+                                <i class="fas fa-bullhorn me-2"></i>Step 5: Branding & Marketing
+                                <span class="step-status" id="step5-status"></span>
+                            </a></li>
+                            <li><a class="dropdown-item step-link" href="javascript:void(0)" onclick="checkStepAccess(6)" data-step="6">
+                                <i class="fas fa-handshake me-2"></i>Step 6: Partnership & Growth
+                                <span class="step-status" id="step6-status"></span>
+                            </a></li>
+                            <li><a class="dropdown-item step-link" href="javascript:void(0)" onclick="checkStepAccess(7)" data-step="7">
+                                <i class="fas fa-headset me-2"></i>Step 7: Continuous Support
+                                <span class="step-status" id="step7-status"></span>
+                            </a></li>
+                        </ul>
+                    </li>
+                    <!-- Resources Navigation -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-folder-open me-1"></i>Resources
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="resources.html">
+                                <i class="fas fa-file-pdf me-2"></i>Documents & Forms
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#videos">
+                                <i class="fas fa-video me-2"></i>Training Videos
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#knowledge">
+                                <i class="fas fa-book me-2"></i>Knowledge Base
+                            </a></li>
+                            <li><a class="dropdown-item" href="resources.html#downloads">
+                                <i class="fas fa-download me-2"></i>Downloads
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="resources.html#external">
+                                <i class="fas fa-external-link-alt me-2"></i>External Resources
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showFaqModal()">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSupportModal()">
+                            <i class="fas fa-headset me-1"></i>Support
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="checkProgress()" title="Check Current Progress">
+                            <i class="fas fa-chart-line me-1"></i>Debug
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Right Side Elements -->
+                <div class="navbar-nav ms-auto d-flex align-items-center">
+                    <!-- Progress Indicator (Hidden on mobile) -->
+                    <div class="progress-indicator d-none d-lg-flex flex-column me-3">
+                        <span class="progress-text">Welcome back, User</span>
+                        <span class="progress-steps">2 of 5 steps completed</span>
+                    </div>
+                    
+                    <!-- Notifications -->
+                    <div class="nav-item dropdown me-2">
+                        <a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">Notifications</li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle me-2 text-info"></i>Step 3 available</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-check-circle me-2 text-success"></i>Step 2 completed</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-envelope me-2 text-primary"></i>Welcome message</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://ui-avatars.com/api/?name=User&amp;background=FFAF9C&amp;color=4D0032&amp;bold=true&amp;size=32" alt="User" class="rounded-circle me-2 user-avatar avatar-small">
+                            <span class="d-none d-lg-inline user-display-name">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://ui-avatars.com/api/?name=User&amp;background=FFAF9C&amp;color=4D0032&amp;bold=true&amp;size=40" alt="User" class="rounded-circle me-2 user-avatar">
+                                    <div>
+                                        <strong class="user-display-name">User</strong><br>
+                                        <small class="text-muted">Director</small>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="showFaqModal()"><i class="fas fa-question-circle me-2"></i>Help & Support</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="handleLogout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Overall Steps Progress -->
+    <div id="overallProgressWrap" class="overall-progress sticky-top">
+      <div class="container">
+        <div class="overall-progress__bar">
+          <div id="overallProgressBar" class="overall-progress__bar-fill" style="width:0%"></div>
+        </div>
+        <div class="overall-progress__label" id="overallProgressLabel">Step 0 of 7</div>
+      </div>
+    </div>
+    
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Landing Page -->
+        <section id="landing" class="section-page active">
+            <div class="container">
+                <div class="row">
+                    <!-- Main Content Area -->
+                    <div class="col-lg-8 content-area">
+                        <!-- Welcome Hero Section -->
+                        <div class="welcome-hero-section">
+                            <div class="hero-content">
+                                <h1 class="hero-title">Welcome to Flint</h1>
+                                <h2 class="hero-subtitle">Build your business. Backed by Flint.</h2>
+                                <p class="hero-description">You're not working for us. You're building your own business with us by your side. Let's get you set up for success.</p>
+                                
+                                <div class="hero-actions">
+                                    <button class="btn btn-coral" onclick="navigateToSection('step1')">
+                                        Continue Journey →
+                                    </button>
+                                    <button class="btn btn-outline-coral" onclick="showVideoModal()">
+                                        View Progress
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-video">
+                                <div class="video-player" id="hero-video-player" onclick="playYouTubeInline('M7lc1UVf-VE', 'hero-video-player')">
+                                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&amp;h=400&amp;fit=crop&amp;crop=center" alt="Directors Portal Introduction" class="video-thumbnail">
+                                    <div class="play-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                    <div class="video-caption">
+                                        <strong>Welcome to Directors Portal</strong><br>
+                                        <small>Watch our introduction video</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New Modern Progress Section -->
+                        <div class="journey-progress-new">
+                            <!-- Compact Section Header -->
+                            <div class="journey-header-compact">
+                                <div class="header-left">
+                                    <div class="title-with-icon">
+                                        <i class="fas fa-route"></i>
+                                        <h2 class="journey-title">Your Journey Progress</h2>
+                                    </div>
+                                    <p class="journey-subtitle">Complete your onboarding steps to unlock the full potential</p>
+                                </div>
+                                <div class="header-right">
+                                    <div class="progress-stats-inline">
+                                        <div class="progress-circle-compact">
+                                            <svg class="progress-ring" width="60" height="60">
+                                                <circle class="progress-ring-circle-bg" cx="30" cy="30" r="25"></circle>
+                                                <circle class="progress-ring-circle" cx="30" cy="30" r="25"></circle>
+                                            </svg>
+                                            <div class="progress-text">
+                                                <span class="progress-percentage" id="home-progress-percentage">0%</span>
+                                            </div>
+                                        </div>
+                                        <div class="stats-row">
+                                            <div class="stat-item">
+                                                <span class="stat-number" id="home-points-earned">0</span>
+                                                <span class="stat-label">Points Earned</span>
+                                            </div>
+                                            <div class="stat-divider">|</div>
+                                            <div class="stat-item">
+                                                <span class="stat-number">100</span>
+                                                <span class="stat-label">Total Points</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Journey Cards Grid -->
+                            <div class="journey-cards-grid">
+                                <div class="row g-3">
+                                    <!-- Step 1 Card -->
+                                    <div class="col-md-6">
+                                        <div class="journey-card" id="journey-step1" onclick="checkStepAccess(1)">
+                                            <div class="card-body">
+                                                <h5 class="card-title-center">Welcome & Introduction</h5>
+                                                <div class="step-icon">
+                                                    <i class="fas fa-handshake" style="color: #4D0032;"></i>
+                                                </div>
+                                                <p class="card-description">Get familiar with Flint's vision and values</p>
+                                                <div class="card-footer">
+                                                    <span class="status-badge">
+                                                        <i class="fas fa-play"></i> Available
+                                                    </span>
+                                                    <span class="points">10 pts</span>
+                                                </div>
+                                                <button class="continue-btn" style="display: none;">
+                                                    <i class="fas fa-arrow-right"></i> Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 2 Card -->
+                                    <div class="col-md-6">
+                                        <div class="journey-card" id="journey-step2" onclick="checkStepAccess(2)">
+                                            <div class="card-body">
+                                                <h5 class="card-title-center">Legal & Compliance Setup</h5>
+                                                <div class="step-icon">
+                                                    <i class="fas fa-gavel" style="color: #4D0032;"></i>
+                                                </div>
+                                                <p class="card-description">Complete legal requirements and compliance</p>
+                                                <div class="card-footer">
+                                                    <span class="status-badge">
+                                                        <i class="fas fa-lock"></i> Locked
+                                                    </span>
+                                                    <span class="points">25 pts</span>
+                                                </div>
+                                                <button class="continue-btn" style="display: none;">
+                                                    <i class="fas fa-arrow-right"></i> Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 3 Card -->
+                                    <div class="col-md-6">
+                                        <div class="journey-card" id="journey-step3" onclick="checkStepAccess(3)">
+                                            <div class="card-body">
+                                                <h5 class="card-title-center">Accounting & Financial Orientation</h5>
+                                                <div class="step-icon">
+                                                    <i class="fas fa-calculator" style="color: #4D0032;"></i>
+                                                </div>
+                                                <p class="card-description">Set up accounting and financial planning</p>
+                                                <div class="card-footer">
+                                                    <span class="status-badge">
+                                                        <i class="fas fa-lock"></i> Locked
+                                                    </span>
+                                                    <span class="points">20 pts</span>
+                                                </div>
+                                                <button class="continue-btn" style="display: none;">
+                                                    <i class="fas fa-arrow-right"></i> Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 4 Card -->
+                                    <div class="col-md-6">
+                                        <div class="journey-card" id="journey-step4" onclick="checkStepAccess(4)">
+                                            <div class="card-body">
+                                                <h5 class="card-title-center">Operational Training</h5>
+                                                <div class="step-icon">
+                                                    <i class="fas fa-cogs" style="color: #4D0032;"></i>
+                                                </div>
+                                                <p class="card-description">Master operational processes and tools</p>
+                                                <div class="card-footer">
+                                                    <span class="status-badge">
+                                                        <i class="fas fa-lock"></i> Locked
+                                                    </span>
+                                                    <span class="points">15 pts</span>
+                                                </div>
+                                                <button class="continue-btn" style="display: none;">
+                                                    <i class="fas fa-arrow-right"></i> Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 5 Card -->
+                                    <div class="col-md-6">
+                                        <div class="journey-card" id="journey-step5" onclick="checkStepAccess(5)">
+                                            <div class="card-body">
+                                                <h5 class="card-title-center">Branding & Marketing</h5>
+                                                <div class="step-icon">
+                                                    <i class="fas fa-bullhorn" style="color: #4D0032;"></i>
+                                                </div>
+                                                <p class="card-description">Build your brand and marketing strategies</p>
+                                                <div class="card-footer">
+                                                    <span class="status-badge">
+                                                        <i class="fas fa-lock"></i> Locked
+                                                    </span>
+                                                    <span class="points">10 pts</span>
+                                                </div>
+                                                <button class="continue-btn" style="display: none;">
+                                                    <i class="fas fa-arrow-right"></i> Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 6 Card -->
+                                    <div class="col-md-6">
+                                        <div class="journey-card" id="journey-step6" onclick="checkStepAccess(6)">
+                                            <div class="card-body">
+                                                <h5 class="card-title-center">Partnership & Growth</h5>
+                                                <div class="step-icon">
+                                                    <i class="fas fa-handshake" style="color: #4D0032;"></i>
+                                                </div>
+                                                <p class="card-description">Build partnerships and growth strategies</p>
+                                                <div class="card-footer">
+                                                    <span class="status-badge">
+                                                        <i class="fas fa-lock"></i> Locked
+                                                    </span>
+                                                    <span class="points">10 pts</span>
+                                                </div>
+                                                <button class="continue-btn" style="display: none;">
+                                                    <i class="fas fa-arrow-right"></i> Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 7 Card -->
+                                    <div class="col-md-6">
+                                        <div class="journey-card" id="journey-step7" onclick="checkStepAccess(7)">
+                                            <div class="card-body">
+                                                <h5 class="card-title-center">Continuous Support</h5>
+                                                <div class="step-icon">
+                                                    <i class="fas fa-headset" style="color: #4D0032;"></i>
+                                                </div>
+                                                <p class="card-description">Access ongoing support and feedback</p>
+                                                <div class="card-footer">
+                                                    <span class="status-badge">
+                                                        <i class="fas fa-lock"></i> Locked
+                                                    </span>
+                                                    <span class="points">10 pts</span>
+                                                </div>
+                                                <button class="continue-btn" style="display: none;">
+                                                    <i class="fas fa-arrow-right"></i> Continue
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Sidebar -->
+                    <div class="col-lg-4 sidebar-enhanced">
+                        <!-- Quick Links Enhanced -->
+                        <div class="sidebar-section-modern quick-links-enhanced">
+                            <div class="section-header">
+                                <h4><i class="fas fa-rocket me-2"></i>Quick Actions</h4>
+                                <span class="section-badge">Essential</span>
+                            </div>
+                            <div class="quick-links-grid-modern">
+                                <a href="#" class="quick-link-modern slack">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fab fa-slack"></i>
+                                        </div>
+                                        <div class="link-indicator online"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">Slack Community</span>
+                                        <span class="link-subtitle">24/7 Support Chat</span>
+                                        <div class="link-stats">
+                                            <span class="active-users">156 online</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </div>
+                                </a>
+                                
+                                <a href="#" class="quick-link-modern faq" onclick="showFaqModal()">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fas fa-question-circle"></i>
+                                        </div>
+                                        <div class="link-indicator"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">FAQ & Help</span>
+                                        <span class="link-subtitle">Instant Answers</span>
+                                        <div class="link-stats">
+                                            <span class="help-articles">50+ articles</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </div>
+                                </a>
+                                
+                                <a href="tel:+61485853537" class="quick-link-modern support">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fas fa-headset"></i>
+                                        </div>
+                                        <div class="link-indicator available"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">Live Support</span>
+                                        <span class="link-subtitle">Call: 0485 853 537</span>
+                                        <div class="link-stats">
+                                            <span class="response-time">< 2min response</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                </a>
+                                
+                                <a href="https://zoom.us/" target="_blank" class="quick-link-modern calendar">
+                                    <div class="link-visual">
+                                        <div class="link-icon-modern">
+                                            <i class="fas fa-video"></i>
+                                        </div>
+                                        <div class="link-indicator"></div>
+                                    </div>
+                                    <div class="link-content">
+                                        <span class="link-title">Schedule Meeting</span>
+                                        <span class="link-subtitle">Book Zoom Session</span>
+                                        <div class="link-stats">
+                                            <span class="next-slot">Via zoom.us</span>
+                                        </div>
+                                    </div>
+                                    <div class="link-arrow">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- My Documents Enhanced -->
+                        <div class="sidebar-section-modern documents-enhanced">
+                            <div class="section-header">
+                                <h4><i class="fas fa-file-alt me-2"></i>My Documents</h4>
+                                <span class="document-count">8 files</span>
+                            </div>
+                            <div class="documents-list">
+                                <div class="document-item">
+                                    <div class="doc-icon pdf">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="doc-info">
+                                        <span class="doc-name">Director Agreement</span>
+                                        <span class="doc-meta">PDF • 2.3 MB • Signed</span>
+                                    </div>
+                                    <div class="doc-actions">
+                                        <button class="btn-doc-action"><i class="fas fa-download"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="document-item">
+                                    <div class="doc-icon excel">
+                                        <i class="fas fa-file-excel"></i>
+                                    </div>
+                                    <div class="doc-info">
+                                        <span class="doc-name">Revenue Tracker</span>
+                                        <span class="doc-meta">XLSX • 1.1 MB • Updated</span>
+                                    </div>
+                                    <div class="doc-actions">
+                                        <button class="btn-doc-action"><i class="fas fa-external-link-alt"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="document-item">
+                                    <div class="doc-icon word">
+                                        <i class="fas fa-file-word"></i>
+                                    </div>
+                                    <div class="doc-info">
+                                        <span class="doc-name">Training Manual</span>
+                                        <span class="doc-meta">DOCX • 5.7 MB • New</span>
+                                    </div>
+                                    <div class="doc-actions">
+                                        <button class="btn-doc-action"><i class="fas fa-eye"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-view-all">
+                                <i class="fas fa-folder-open me-1"></i>View All Documents
+                            </button>
+                        </div>
+                        
+                        <!-- Recent Activity Enhanced -->
+                        <div class="sidebar-section-modern activity-enhanced">
+                            <div class="section-header">
+                                <h4><i class="fas fa-clock me-2"></i>Recent Activity</h4>
+                                <span class="activity-badge live">Live</span>
+                            </div>
+                            <div class="activity-timeline">
+                                <div class="activity-item-modern">
+                                    <div class="activity-dot completed"></div>
+                                    <div class="activity-content-modern">
+                                        <div class="activity-header">
+                                            <span class="activity-title">Step 2 Completed</span>
+                                            <span class="activity-time">2h ago</span>
+                                        </div>
+                                        <p class="activity-description">Finished Legal & Ownership Structure</p>
+                                        <div class="activity-meta">
+                                            <span class="activity-points">+50 pts</span>
+                                            <span class="achievement">🏆 Legal Expert Badge Earned</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item-modern">
+                                    <div class="activity-dot download"></div>
+                                    <div class="activity-content-modern">
+                                        <div class="activity-header">
+                                            <span class="activity-title">Documents Downloaded</span>
+                                            <span class="activity-time">1d ago</span>
+                                        </div>
+                                        <p class="activity-description">Partnership Agreement & Tax Forms</p>
+                                        <div class="activity-meta">
+                                            <span class="file-count">3 files</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item-modern">
+                                    <div class="activity-dot video"></div>
+                                    <div class="activity-content-modern">
+                                        <div class="activity-header">
+                                            <span class="activity-title">Video Watched</span>
+                                            <span class="activity-time">2d ago</span>
+                                        </div>
+                                        <p class="activity-description">Welcome from Christian (12:34)</p>
+                                        <div class="activity-meta">
+                                            <span class="watch-time">100% completion</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Support Enhanced -->
+                        <div class="sidebar-section-modern support-enhanced">
+                            <div class="support-card">
+                                <div class="support-icon">
+                                    <i class="fas fa-life-ring"></i>
+                                </div>
+                                <h4>Need Assistance?</h4>
+                                <p>Our expert team is here to guide you through every step of your journey.</p>
+                                <div class="support-stats">
+                                    <div class="stat">
+                                        <span class="stat-value">4.9★</span>
+                                        <span class="stat-label">Support Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-value">< 1h</span>
+                                        <span class="stat-label">Avg Response</span>
+                                    </div>
+                                </div>
+                                <div class="support-actions">
+                                    <button class="btn btn-support-primary">
+                                        <i class="fas fa-comments me-1"></i>Start Chat
+                                    </button>
+                                    <a href="tel:+61485853537" class="btn btn-support-secondary">
+                                        <i class="fas fa-phone me-1"></i>Call Now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 1: Welcome & Introduction -->
+        <section id="step1" class="section-page step-white-bg">
+            <div class="container py-5">
+                <div class="step-header-modern">
+                    <h1>Step 1: Welcome & Introduction</h1>
+                    <p class="step-description">Learn about Flint's mission, values, and unique business model. Discover what makes us Australia's #1 independent brokerage and how our Directors model empowers your success.</p>
+                </div>
+
+                <!-- Step 1 Action Form -->
+                <div class="step-form-container compact-form" id="step1-form-card">
+                    <div class="form-header-compact">
+                        <div class="form-badge">
+                            <span class="step-number">1</span>
+                        </div>
+                        <div class="form-title-compact">
+                            <h4>Quick Setup Form</h4>
+                            <p class="form-subtitle">Complete this form to get started</p>
+                        </div>
+                    </div>
+                    <div class="form-body-compact">
+                        <form id="form-step1" class="compact-step-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-name">Full Name *</label>
+                                    <input type="text" id="step-name" name="name" class="form-input-compact" placeholder="Enter your full name" required />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-email">Email Address *</label>
+                                    <input type="email" id="step-email" name="email" class="form-input-compact" placeholder="your@email.com" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-welcome_call_time">Welcome Call Date & Time *</label>
+                                    <input type="datetime-local" id="step-welcome_call_time" name="welcome_call_time" class="form-input-compact" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <div class="checkbox-compact">
+                                        <input type="checkbox" id="step-ack_values" name="ack_values" required />
+                                        <label for="step-ack_values" class="checkbox-label">I've reviewed Flint's core values</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-goals">Your Goals (Optional)</label>
+                                    <textarea id="step-goals" name="goals" class="form-textarea-compact" placeholder="Tell us about your goals, niche, targets, locations..." rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-status">
+                                <small class="status-text" id="form-step1-status">Form auto-saves as you type</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hero Video Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="video-section-enhanced">
+                            <div class="video-placeholder-enhanced" id="enhanced-video-player" onclick="playYouTubeInline('M7lc1UVf-VE', 'enhanced-video-player')">
+                                <div class="video-thumbnail">
+                                    <img src="https://img.youtube.com/vi/M7lc1UVf-VE/maxresdefault.jpg" alt="Welcome to Flint Group" />
+                                    <div class="video-overlay">
+                                        <div class="play-button-large">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="video-content">
+                                    <h3>Welcome to Flint Group</h3>
+                                    <p>Learn about our journey, vision for the future, and how we're revolutionizing the mortgage industry in Australia</p>
+                                    <div class="video-stats">
+                                        <span class="video-duration">
+                                            <i class="fas fa-clock"></i> 5:30
+                                        </span>
+                                        <span class="video-views">
+                                            <i class="fas fa-eye"></i> 10,542 views
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission & Vision -->
+                <div class="row my-5">
+                    <div class="col-lg-6">
+                        <div class="card h-100">
+                            <div class="card__body">
+                                <h3><i class="fas fa-bullseye me-2"></i>Our Mission</h3>
+                                <p class="lead">Freedom Through Property</p>
+                                <p>As the #1 independent brokerage in Australia, we're committed to lifelong client service that goes far beyond a single transaction.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card h-100">
+                            <div class="card__body">
+                                <h3><i class="fas fa-eye me-2"></i>Our Vision</h3>
+                                <p class="lead">Empowering Brokers Nationwide</p>
+                                <p>To create the most successful and fulfilling career opportunities for mortgage professionals across Australia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flint Values -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Our Core Values</h2>
+                    <div class="row g-4" id="valuesGrid">
+                        <!-- Values will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- FlintEngine vs FlintMedia -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Our Support Ecosystem</h2>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4>FlintEngine</h4>
+                                <p>Your dedicated back office support team handling:</p>
+                                <ul>
+                                    <li>Document processing</li>
+                                    <li>Compliance management</li>
+                                    <li>Client communication</li>
+                                    <li>Settlement support</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <h4>FlintMedia</h4>
+                                <p>Your marketing and content platform providing:</p>
+                                <ul>
+                                    <li>Custom branded materials</li>
+                                    <li>Social media content</li>
+                                    <li>Lead generation campaigns</li>
+                                    <li>Brand management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Directors Model Infographic -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">The Flint Directors Model</h2>
+                    <div class="infographic-placeholder">
+                        <i class="fas fa-chart-network"></i>
+                        <h4>Own Your Business, Keep Your Freedom</h4>
+                        <p>Interactive infographic showing the Directors ownership structure and benefits</p>
+                    </div>
+                </div>
+
+                <!-- Downloadable Checklists -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Getting Started Checklists</h2>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="checklist-card">
+                                <i class="fas fa-clipboard-list"></i>
+                                <h5>Week 1 Checklist</h5>
+                                <p>Essential tasks for your first week</p>
+                                <a href="week1-checklist.pdf" target="_blank" class="btn btn--primary btn--sm">
+                                    <i class="fas fa-download me-2"></i>Download PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="checklist-card">
+                                <i class="fas fa-tasks"></i>
+                                <h5>Month 1 Goals</h5>
+                                <p>Key objectives for your first month</p>
+                                <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" class="btn btn--primary btn--sm">
+                                    <i class="fas fa-download me-2"></i>Download PDF
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="checklist-card">
+                                <i class="fas fa-trophy"></i>
+                                <h5>90-Day Plan</h5>
+                                <p>Strategic roadmap for your first quarter</p>
+                                <a href="https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf" target="_blank" class="btn btn--primary btn--sm">
+                                    <i class="fas fa-download me-2"></i>Download PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn--secondary" onclick="navigateToSection('landing')">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                    </button>
+                    <button class="btn btn--primary" onclick="completeStep(1)">
+                        Complete Step 1 <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="checkStepAccess(1)" class="step-nav-item" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="checkStepAccess(2)" class="step-nav-item" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Tools & Tech Stack -->
+        <section id="step2" class="section-page step-white-bg">
+            <div class="container py-5">
+                <div class="step-header-modern">
+                    <h1>Step 2: Tools & Tech Stack</h1>
+                    <p class="step-description">Discover the powerful tools and technologies that will accelerate your success as a Flint director. Each platform is carefully selected to enhance your productivity and client experience.</p>
+                </div>
+
+                <!-- Step 2 Action Form -->
+                <div class="step-form-container compact-form" id="step2-form-card">
+                    <div class="form-header-compact">
+                        <div class="form-badge">
+                            <span class="step-number">2</span>
+                        </div>
+                        <div class="form-title-compact">
+                            <h4>Legal & Business Setup</h4>
+                            <p class="form-subtitle">Complete your business registration details</p>
+                        </div>
+                    </div>
+                    <div class="form-body-compact">
+                        <form id="form-step2" class="compact-step-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-entity_name">Entity/Trading Name *</label>
+                                    <input type="text" id="step-entity_name" name="entity_name" class="form-input-compact" placeholder="Your business name" required />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-abn">ABN *</label>
+                                    <input type="text" id="step-abn" name="abn" class="form-input-compact" placeholder="11 222 333 444" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-acn">ACN (if company)</label>
+                                    <input type="text" id="step-acn" name="acn" class="form-input-compact" placeholder="123 456 789" />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-afca">AFCA Number *</label>
+                                    <input type="text" id="step-afca" name="afca" class="form-input-compact" placeholder="AFCA number" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-reg_address">Registered Business Address *</label>
+                                    <input type="text" id="step-reg_address" name="reg_address" class="form-input-compact" placeholder="Full business address" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-crn">Credit Rep Number *</label>
+                                    <input type="text" id="step-crn" name="crn" class="form-input-compact" placeholder="CRN number" required />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-franchise_agreement">Franchise Agreement *</label>
+                                    <input type="file" id="step-franchise_agreement" name="franchise_agreement" class="form-file-compact" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-disclosure_doc">Disclosure Document *</label>
+                                    <input type="file" id="step-disclosure_doc" name="disclosure_doc" class="form-file-compact" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <div class="checkbox-compact">
+                                        <input type="checkbox" id="step-ownership_ack" name="ownership_ack" required />
+                                        <label for="step-ownership_ack" class="checkbox-label">I understand and agree that I own my clients, partners, and trail book</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-status">
+                                <small class="status-text" id="form-step2-status">Form auto-saves as you type</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Grid -->
+                <div class="tech-stack-section">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="tech-platform-card">
+                                <div class="platform-header">
+                                    <div class="platform-icon hubspot">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="platform-info">
+                                        <h3>HubSpot CRM</h3>
+                                        <p>Comprehensive customer relationship management platform for tracking leads, managing contacts, and automating your sales pipeline.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="platform-features">
+                                    <h4>Key Features:</h4>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i>Lead Management</li>
+                                        <li><i class="fas fa-check"></i>Pipeline Tracking</li>
+                                        <li><i class="fas fa-check"></i>Email Automation</li>
+                                        <li><i class="fas fa-check"></i>Reporting & Analytics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="platform-actions">
+                                    <button class="btn btn--primary">
+                                        <i class="fas fa-play me-2"></i>Watch Intro Video
+                                    </button>
+                                    <a href="https://www.hubspot.com/" target="_blank" class="btn btn--outline">
+                                        <i class="fas fa-external-link-alt me-2"></i>Open Platform
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="tech-platform-card">
+                                <div class="platform-header">
+                                    <div class="platform-icon brokerengine">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="platform-info">
+                                        <h3>BrokerEngine</h3>
+                                        <p>Specialized mortgage origination system designed for brokers to streamline loan processing and client management.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="platform-features">
+                                    <h4>Key Features:</h4>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i>Loan Origination</li>
+                                        <li><i class="fas fa-check"></i>Compliance Tools</li>
+                                        <li><i class="fas fa-check"></i>Document Management</li>
+                                        <li><i class="fas fa-check"></i>Client Portal</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="platform-actions">
+                                    <button class="btn btn--primary">
+                                        <i class="fas fa-play me-2"></i>Watch Intro Video
+                                    </button>
+                                    <a href="https://www.brokerengine.com.au/" target="_blank" class="btn btn--outline">
+                                        <i class="fas fa-external-link-alt me-2"></i>Open Platform
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="tech-platform-card">
+                                <div class="platform-header">
+                                    <div class="platform-icon middle">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="platform-info">
+                                        <h3>Middle</h3>
+                                        <p>Advanced mortgage technology platform that connects brokers with lenders and automates the loan process.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="platform-features">
+                                    <h4>Key Features:</h4>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i>Lender Network</li>
+                                        <li><i class="fas fa-check"></i>Application Processing</li>
+                                        <li><i class="fas fa-check"></i>Rate Comparison</li>
+                                        <li><i class="fas fa-check"></i>Status Tracking</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="platform-actions">
+                                    <button class="btn btn--primary">
+                                        <i class="fas fa-play me-2"></i>Watch Intro Video
+                                    </button>
+                                    <a href="https://www.middleapp.com/" target="_blank" class="btn btn--outline">
+                                        <i class="fas fa-external-link-alt me-2"></i>Open Platform
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="tech-platform-card">
+                                <div class="platform-header">
+                                    <div class="platform-icon flintconnect">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="platform-info">
+                                        <h3>Flint Connect</h3>
+                                        <p>Our proprietary communication and collaboration platform designed specifically for Flint directors.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="platform-features">
+                                    <h4>Key Features:</h4>
+                                    <ul class="feature-list">
+                                        <li><i class="fas fa-check"></i>Team Messaging</li>
+                                        <li><i class="fas fa-check"></i>Training Modules</li>
+                                        <li><i class="fas fa-check"></i>Resource Library</li>
+                                        <li><i class="fas fa-check"></i>Performance Dashboard</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="platform-actions">
+                                    <button class="btn btn--primary">
+                                        <i class="fas fa-play me-2"></i>Watch Intro Video
+                                    </button>
+                                    <a href="https://connect.flint.com.au/" target="_blank" class="btn btn--outline">
+                                        <i class="fas fa-external-link-alt me-2"></i>Open Platform
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seamless Integration Section -->
+                <div class="integration-section">
+                    <div class="integration-content">
+                        <h2>Seamless Integration</h2>
+                        <p>All these tools work together in harmony, sharing data and insights to give you a complete view of your business and clients. No more switching between disconnected systems.</p>
+                        
+                        <div class="integration-indicators">
+                            <div class="indicator active"></div>
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                            <div class="indicator"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn--secondary" onclick="navigateToSection('step1')">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" onclick="completeStep(2)">
+                        Complete Step 2 <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item current" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: Accounting & Financial -->
+        <section id="step3" class="section-page step-white-bg">
+            <div class="container py-5">
+                <div class="step-header-modern">
+                    <h1>Step 3: Accounting & Financial Orientation</h1>
+                    <p class="step-description">Set up robust accounting systems, understand revenue flows, and master financial planning for sustainable business growth.</p>
+                </div>
+
+                <!-- Step 3 Action Form -->
+                <div class="step-form-container compact-form" id="step3-form-card">
+                    <div class="form-header-compact">
+                        <div class="form-badge">
+                            <span class="step-number">3</span>
+                        </div>
+                        <div class="form-title-compact">
+                            <h4>Financial Setup</h4>
+                            <p class="form-subtitle">Configure your accounting and financial details</p>
+                        </div>
+                    </div>
+                    <div class="form-body-compact">
+                        <form id="form-step3" class="compact-step-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-accounting_platform">Accounting Platform *</label>
+                                    <select id="step-accounting_platform" name="accounting_platform" class="form-select-compact" required>
+                                        <option value="">Select platform...</option>
+                                        <option value="Xero">Xero</option>
+                                        <option value="MYOB">MYOB</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-gst_registered">GST Registered? *</label>
+                                    <select id="step-gst_registered" name="gst_registered" class="form-select-compact" required>
+                                        <option value="">Select...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-accounts_email">Accounts Email *</label>
+                                    <input type="email" id="step-accounts_email" name="accounts_email" class="form-input-compact" placeholder="accounts@company.com" required />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-bank">Bank Account (BSB-Account) *</label>
+                                    <input type="text" id="step-bank" name="bank" class="form-input-compact" placeholder="123-456 78901234" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <div class="checkbox-compact">
+                                        <input type="checkbox" id="step-ack_invoicing" name="ack_invoicing" required />
+                                        <label for="step-ack_invoicing" class="checkbox-label">I know how to invoice Flint for commission splits</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-status">
+                                <small class="status-text" id="form-step3-status">Form auto-saves as you type</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hero Financial Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="financial-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Master Your Financial Foundation</h3>
+                                <p>Build a solid financial framework that scales with your success</p>
+                                <div class="hero-benefits">
+                                    <div class="benefit-item">
+                                        <i class="fas fa-calculator"></i>
+                                        <span>Automated Accounting</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-chart-pie"></i>
+                                        <span>Revenue Tracking</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-file-invoice-dollar"></i>
+                                        <span>Tax Optimization</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Setup Cards -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Complete Financial Setup</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="financial-card">
+                                <div class="card-icon accounting">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <h4>Accounting System</h4>
+                                <p>Set up your complete accounting infrastructure with industry-leading tools.</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i>Xero Integration</li>
+                                    <li><i class="fas fa-check"></i>Automated Invoicing</li>
+                                    <li><i class="fas fa-check"></i>Expense Tracking</li>
+                                    <li><i class="fas fa-check"></i>Bank Reconciliation</li>
+                                </ul>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-cog me-2"></i>Setup Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="financial-card">
+                                <div class="card-icon revenue">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <h4>Revenue Flows</h4>
+                                <p>Understand commission structures, payment cycles, and income optimization.</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i>Commission Calculator</li>
+                                    <li><i class="fas fa-check"></i>Payment Schedules</li>
+                                    <li><i class="fas fa-check"></i>Bonus Structures</li>
+                                    <li><i class="fas fa-check"></i>Revenue Forecasting</li>
+                                </ul>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-chart-bar me-2"></i>Learn More
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="financial-card">
+                                <div class="card-icon planning">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <h4>Financial Planning</h4>
+                                <p>Create budgets, set financial goals, and plan for business growth.</p>
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check"></i>Budget Templates</li>
+                                    <li><i class="fas fa-check"></i>Goal Setting</li>
+                                    <li><i class="fas fa-check"></i>Cash Flow Planning</li>
+                                    <li><i class="fas fa-check"></i>Growth Projections</li>
+                                </ul>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-rocket me-2"></i>Start Planning
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn--secondary" onclick="navigateToSection('step2')">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" onclick="completeStep(3)">
+                        Complete Step 3 <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item current" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: Operational Training -->
+        <section id="step4" class="section-page step-white-bg">
+            <div class="container py-5">
+                <div class="step-header-modern">
+                    <h1>Step 4: Operational Training</h1>
+                    <p class="step-description">Master Flint's technology stack, operational processes, and workflow systems to maximize your efficiency and client satisfaction.</p>
+                </div>
+
+                <!-- Step 4 Action Form -->
+                <div class="step-form-container compact-form" id="step4-form-card">
+                    <div class="form-header-compact">
+                        <div class="form-badge">
+                            <span class="step-number">4</span>
+                        </div>
+                        <div class="form-title-compact">
+                            <h4>System Access & Training</h4>
+                            <p class="form-subtitle">Verify access and schedule your training</p>
+                        </div>
+                    </div>
+                    <div class="form-body-compact">
+                        <form id="form-step4" class="compact-step-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-has_hubspot">HubSpot Access? *</label>
+                                    <select id="step-has_hubspot" name="has_hubspot" class="form-select-compact" required>
+                                        <option value="">Select...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-has_be">BrokerEngine Access? *</label>
+                                    <select id="step-has_be" name="has_be" class="form-select-compact" required>
+                                        <option value="">Select...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-has_aol">AOL Access? *</label>
+                                    <select id="step-has_aol" name="has_aol" class="form-select-compact" required>
+                                        <option value="">Select...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-has_collab">Slack & Drive Access? *</label>
+                                    <select id="step-has_collab" name="has_collab" class="form-select-compact" required>
+                                        <option value="">Select...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-training_time">Training Session Time *</label>
+                                    <input type="datetime-local" id="step-training_time" name="training_time" class="form-input-compact" required />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-sop_ack">SOP Acknowledgement</label>
+                                    <input type="file" id="step-sop_ack" name="sop_ack" class="form-file-compact" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-status">
+                                <small class="status-text" id="form-step4-status">Form auto-saves as you type</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hero Operations Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="operations-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h3>Streamlined Operations Mastery</h3>
+                                <p>Learn the systems and processes that drive successful directors</p>
+                                <div class="hero-metrics">
+                                    <div class="metric-item">
+                                        <span class="metric-number">75%</span>
+                                        <span class="metric-label">Time Saved</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-number">40+</span>
+                                        <span class="metric-label">Automated Tasks</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <span class="metric-number">99.9%</span>
+                                        <span class="metric-label">Uptime</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Stack Overview -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Master Your Technology Stack</h2>
+                    <div class="operations-grid">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="operations-card workflow">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h4>Workflow Automation</h4>
+                                    <p>Automate repetitive tasks and streamline your daily operations.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-robot"></i>
+                                            <span>Automated lead routing</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-envelope"></i>
+                                            <span>Email sequences</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-calendar-check"></i>
+                                            <span>Appointment scheduling</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-file-signature"></i>
+                                            <span>Document processing</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-play me-2"></i>Watch Training
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="operations-card systems">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h4>System Integration</h4>
+                                    <p>Learn how all systems work together seamlessly for maximum efficiency.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-sync"></i>
+                                            <span>CRM synchronization</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-database"></i>
+                                            <span>Data integration</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-shield-alt"></i>
+                                            <span>Security protocols</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-backup"></i>
+                                            <span>Backup systems</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-book me-2"></i>Study Guide
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="operations-card processes">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-clipboard-list"></i>
+                                    </div>
+                                    <h4>Standard Processes</h4>
+                                    <p>Master the proven processes that ensure consistent, quality outcomes.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-user-plus"></i>
+                                            <span>Client onboarding</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-file-contract"></i>
+                                            <span>Loan processing</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-handshake"></i>
+                                            <span>Settlement procedures</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-chart-line"></i>
+                                            <span>Follow-up protocols</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-download me-2"></i>Download SOPs
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="operations-card quality">
+                                    <div class="operations-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <h4>Quality Assurance</h4>
+                                    <p>Implement quality controls that ensure excellence in every interaction.</p>
+                                    <div class="operations-features">
+                                        <div class="feature-row">
+                                            <i class="fas fa-check-double"></i>
+                                            <span>Quality checklists</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-star"></i>
+                                            <span>Client satisfaction</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-balance-scale"></i>
+                                            <span>Compliance monitoring</span>
+                                        </div>
+                                        <div class="feature-row">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                            <span>Performance metrics</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn--primary btn--full">
+                                        <i class="fas fa-clipboard-check me-2"></i>View Checklist
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn--secondary" onclick="navigateToSection('step3')">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" onclick="completeStep(4)">
+                        Complete Step 4 <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item current" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 5: Branding & Marketing -->
+        <section id="step5" class="section-page step-white-bg">
+            <div class="container py-5">
+                <div class="step-header-modern">
+                    <h1>Step 5: Branding & Marketing Launch</h1>
+                    <p class="step-description">Develop your personal brand, launch targeted marketing campaigns, and build a powerful online presence that attracts and converts prospects.</p>
+                </div>
+
+                <!-- Step 5 Action Form -->
+                <div class="step-form-container compact-form" id="step5-form-card">
+                    <div class="form-header-compact">
+                        <div class="form-badge">
+                            <span class="step-number">5</span>
+                        </div>
+                        <div class="form-title-compact">
+                            <h4>Brand & Marketing Setup</h4>
+                            <p class="form-subtitle">Define your brand and social presence</p>
+                        </div>
+                    </div>
+                    <div class="form-body-compact">
+                        <form id="form-step5" class="compact-step-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-niche">Your Niche/Positioning *</label>
+                                    <input type="text" id="step-niche" name="niche" class="form-input-compact" placeholder="e.g., First home buyers, Investors, Commercial" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-linkedin">LinkedIn URL</label>
+                                    <input type="url" id="step-linkedin" name="linkedin" class="form-input-compact" placeholder="https://linkedin.com/in/yourname" />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-instagram">Instagram Handle</label>
+                                    <input type="text" id="step-instagram" name="instagram" class="form-input-compact" placeholder="@yourusername" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-website">Website URL</label>
+                                    <input type="url" id="step-website" name="website" class="form-input-compact" placeholder="https://yourwebsite.com" />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-brand_asset">Headshot/Logo</label>
+                                    <input type="file" id="step-brand_asset" name="brand_asset" class="form-file-compact" accept="image/*" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-branding_session">FlintMedia Branding Session *</label>
+                                    <input type="datetime-local" id="step-branding_session" name="branding_session" class="form-input-compact" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-status">
+                                <small class="status-text" id="form-step5-status">Form auto-saves as you type</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hero Marketing Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="marketing-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <h3>Build Your Brand Empire</h3>
+                                <p>Create a compelling brand that stands out in the competitive mortgage market</p>
+                                <div class="hero-showcase">
+                                    <div class="showcase-item">
+                                        <i class="fas fa-palette"></i>
+                                        <span>Brand Identity</span>
+                                    </div>
+                                    <div class="showcase-item">
+                                        <i class="fas fa-globe"></i>
+                                        <span>Digital Presence</span>
+                                    </div>
+                                    <div class="showcase-item">
+                                        <i class="fas fa-magnet"></i>
+                                        <span>Lead Generation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Components -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Complete Marketing Suite</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card branding">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <h4>Brand Development</h4>
+                                <p>Create a professional brand identity that reflects your values and attracts your ideal clients.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Logo & Visual Identity</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Brand Guidelines</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Color Schemes</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Typography System</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-palette me-2"></i>Create Brand
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card website">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-laptop"></i>
+                                </div>
+                                <h4>Website & Digital</h4>
+                                <p>Launch a professional website with integrated lead capture and conversion optimization.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Responsive Website</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>SEO Optimization</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Lead Capture Forms</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Analytics Integration</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-globe me-2"></i>Build Website
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card social">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-share-alt"></i>
+                                </div>
+                                <h4>Social Media</h4>
+                                <p>Establish a strong social media presence with content that engages and converts.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Platform Setup</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Content Calendar</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Post Templates</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Engagement Strategy</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-thumbs-up me-2"></i>Start Social
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card campaigns">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4>Lead Generation</h4>
+                                <p>Launch targeted campaigns that generate quality leads and grow your business.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Google Ads Setup</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Facebook Marketing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Email Campaigns</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Landing Pages</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-magnet me-2"></i>Generate Leads
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card content">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-pen-fancy"></i>
+                                </div>
+                                <h4>Content Strategy</h4>
+                                <p>Develop compelling content that educates prospects and positions you as an expert.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Blog Articles</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Video Content</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Downloadable Guides</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Newsletter Templates</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-edit me-2"></i>Create Content
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="marketing-card analytics">
+                                <div class="marketing-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <h4>Analytics & ROI</h4>
+                                <p>Track performance, measure ROI, and optimize your marketing for maximum results.</p>
+                                <div class="marketing-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Performance Tracking</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>ROI Analysis</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>A/B Testing</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Optimization Reports</span>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-analytics me-2"></i>View Analytics
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn--secondary" onclick="navigateToSection('step4')">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" onclick="completeStep(5)">
+                        Complete Step 5 <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item current" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
+            </div>
+        
+</section>
+
+        <!-- Step 6: Partnership & Growth -->
+        <section id="step6" class="section-page step-white-bg">
+            <div class="container py-5">
+                <div class="step-header-modern">
+                    <h1>Step 6: Partnership & Growth Strategy</h1>
+                    <p class="step-description">Build strategic partnerships, develop growth plans, and scale your business through proven strategies and powerful network connections.</p>
+                </div>
+
+                <!-- Step 6 Action Form -->
+                <div class="step-form-container compact-form" id="step6-form-card">
+                    <div class="form-header-compact">
+                        <div class="form-badge">
+                            <span class="step-number">6</span>
+                        </div>
+                        <div class="form-title-compact">
+                            <h4>Growth & Partnership Planning</h4>
+                            <p class="form-subtitle">Set your targets and partnership strategy</p>
+                        </div>
+                    </div>
+                    <div class="form-body-compact">
+                        <form id="form-step6" class="compact-step-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-target">12-Month Target ($) *</label>
+                                    <input type="number" id="step-target" name="target" class="form-input-compact" placeholder="e.g., 50000000" required />
+                                </div>
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-niche_focus">Primary Niche Focus *</label>
+                                    <input type="text" id="step-niche_focus" name="niche_focus" class="form-input-compact" placeholder="e.g., First home buyers" required />
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-partner_types">Target Partner Types</label>
+                                    <textarea id="step-partner_types" name="partner_types" class="form-textarea-compact" placeholder="e.g., accountants, buyers agents, lawyers, medical professionals..." rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-deck">Partnership Deck (Optional)</label>
+                                    <input type="file" id="step-deck" name="deck" class="form-file-compact" accept=".pdf,.ppt,.pptx" />
+                                </div>
+                            </div>
+                            
+                            <div class="form-status">
+                                <small class="status-text" id="form-step6-status">Form auto-saves as you type</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hero Growth Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="growth-hero-section">
+                            <div class="hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Scale Your Success</h3>
+                                <p>Transform your business through strategic partnerships and accelerated growth</p>
+                                <div class="hero-growth-stats">
+                                    <div class="growth-stat">
+                                        <span class="stat-number">300%</span>
+                                        <span class="stat-label">Avg. Growth</span>
+                                    </div>
+                                    <div class="growth-stat">
+                                        <span class="stat-number">500+</span>
+                                        <span class="stat-label">Partner Network</span>
+                                    </div>
+                                    <div class="growth-stat">
+                                        <span class="stat-number">$50M+</span>
+                                        <span class="stat-label">Partnership Value</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Partnership & Growth Components -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Strategic Growth Framework</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="growth-card partnerships">
+                                <div class="growth-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h4>Strategic Partnerships</h4>
+                                <p>Connect with key partners who can accelerate your business growth and expand your market reach.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Referral Partners</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-home"></i>
+                                                <span>Real Estate Agents</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-calculator"></i>
+                                                <span>Accountants & CPAs</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-gavel"></i>
+                                                <span>Legal Professionals</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-chart-pie"></i>
+                                                <span>Financial Planners</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-network-wired me-2"></i>Build Network
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="growth-card scaling">
+                                <div class="growth-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4>Business Scaling</h4>
+                                <p>Implement proven strategies to scale your operations, increase revenue, and build a sustainable business.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Growth Strategies</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-users"></i>
+                                                <span>Team Building</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-cogs"></i>
+                                                <span>Process Optimization</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-expand-arrows-alt"></i>
+                                                <span>Market Expansion</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-layer-group"></i>
+                                                <span>Service Diversification</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-chart-line me-2"></i>Scale Business
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="growth-card network">
+                                <div class="growth-icon">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <h4>Director Network</h4>
+                                <p>Connect with fellow directors, share insights, and collaborate on business opportunities.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Networking Benefits</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-comment-dots"></i>
+                                                <span>Peer Collaboration</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-lightbulb"></i>
+                                                <span>Knowledge Sharing</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-puzzle-piece"></i>
+                                                <span>Joint Ventures</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-trophy"></i>
+                                                <span>Best Practice Exchange</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-user-friends me-2"></i>Join Network
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="growth-card mentorship">
+                                <div class="growth-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <h4>Mentorship Program</h4>
+                                <p>Access experienced mentors who provide guidance, insights, and strategic advice for your growth journey.</p>
+                                <div class="growth-features">
+                                    <div class="feature-group">
+                                        <h6>Mentorship Benefits</h6>
+                                        <div class="feature-list">
+                                            <div class="feature-item">
+                                                <i class="fas fa-compass"></i>
+                                                <span>Strategic Guidance</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-bullseye"></i>
+                                                <span>Goal Setting</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-chart-bar"></i>
+                                                <span>Performance Review</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="fas fa-graduation-cap"></i>
+                                                <span>Skill Development</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-chalkboard-teacher me-2"></i>Find Mentor
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Growth Metrics Dashboard -->
+                <div class="my-5">
+                    <div class="growth-metrics-section">
+                        <h3 class="text-center mb-4">Track Your Growth Journey</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">$0</span>
+                                    <span class="metric-label">Monthly Revenue</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">0</span>
+                                    <span class="metric-label">New Clients</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">0</span>
+                                    <span class="metric-label">Partnerships</span>
+                                </div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <span class="metric-value">0%</span>
+                                    <span class="metric-label">Growth Rate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn--secondary" onclick="navigateToSection('step5')">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" onclick="completeStep(6)">
+                        Complete Step 6 <i class="fas fa-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item current" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
+            </div>
+        
+</section>
+
+        <!-- Step 7: Continuous Support -->
+        <section id="step7" class="section-page step-white-bg">
+            <div class="container py-5">
+                <div class="step-header-modern">
+                    <h1>Step 7: Continuous Support & Feedback</h1>
+                    <p class="step-description">Experience world-class ongoing support, feedback mechanisms, and continuous learning opportunities. Your success is our commitment.</p>
+                </div>
+
+                <!-- Step 7 Action Form -->
+                <div class="step-form-container compact-form" id="step7-form-card">
+                    <div class="form-header-compact">
+                        <div class="form-badge">
+                            <span class="step-number">7</span>
+                        </div>
+                        <div class="form-title-compact">
+                            <h4>Continuous Support & Feedback</h4>
+                            <p class="form-subtitle">Set your support preferences and training needs</p>
+                        </div>
+                    </div>
+                    <div class="form-body-compact">
+                        <form id="form-step7" class="compact-step-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-col">
+                                    <label class="form-label-compact" for="step-cadence">Check-in Frequency *</label>
+                                    <select id="step-cadence" name="cadence" class="form-select-compact" required>
+                                        <option value="">Select frequency...</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Quarterly">Quarterly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <label class="form-label-compact" for="step-support_needs">Training & Support Areas</label>
+                                    <textarea id="step-support_needs" name="support_needs" class="form-textarea-compact" placeholder="e.g., credit policy, content creation, HubSpot training..." rows="3"></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-col form-col-full">
+                                    <div class="form-checkbox-compact">
+                                        <input type="checkbox" id="step-subscribe_ed" name="subscribe_ed" />
+                                        <label for="step-subscribe_ed">Subscribe to education updates & resources</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-status">
+                                <small class="status-text" id="form-step7-status">Form auto-saves as you type</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Hero Support Section -->
+                <div class="row my-5">
+                    <div class="col-12">
+                        <div class="support-hero-section">
+                            <div class="support-hero-content">
+                                <div class="hero-icon">
+                                    <i class="fas fa-life-ring"></i>
+                                </div>
+                                <h3>24/7 Support Ecosystem</h3>
+                                <p>Access comprehensive support whenever you need it, from technical assistance to business coaching.</p>
+                                <div class="hero-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-number">< 15min</span>
+                                        <span class="stat-label">Response Time</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">4.9★</span>
+                                        <span class="stat-label">Support Rating</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">24/7</span>
+                                        <span class="stat-label">Availability</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Channels -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Multiple Support Channels</h2>
+                    <div class="row g-4">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="support-channel-card">
+                                <div class="channel-icon live-chat">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <h4>Live Chat Support</h4>
+                                <p>Instant help with real-time chat support available 24/7.</p>
+                                <div class="channel-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i>Instant messaging</li>
+                                        <li><i class="fas fa-check"></i>Screen sharing</li>
+                                        <li><i class="fas fa-check"></i>File sharing</li>
+                                        <li><i class="fas fa-check"></i>Priority routing</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-comment-dots me-2"></i>Start Chat
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="support-channel-card">
+                                <div class="channel-icon phone-support">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h4>Phone Support</h4>
+                                <p>Speak directly with our expert support team for complex issues.</p>
+                                <div class="channel-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i>Dedicated hotline</li>
+                                        <li><i class="fas fa-check"></i>Expert technicians</li>
+                                        <li><i class="fas fa-check"></i>Callback service</li>
+                                        <li><i class="fas fa-check"></i>Conference calls</li>
+                                    </ul>
+                                </div>
+                                <a href="tel:+61485853537" class="btn btn--primary btn--full">
+                                    <i class="fas fa-phone me-2"></i>Call Now
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6">
+                            <div class="support-channel-card">
+                                <div class="channel-icon video-support">
+                                    <i class="fas fa-video"></i>
+                                </div>
+                                <h4>Video Sessions</h4>
+                                <p>Face-to-face support sessions for personalized assistance.</p>
+                                <div class="channel-features">
+                                    <ul>
+                                        <li><i class="fas fa-check"></i>One-on-one sessions</li>
+                                        <li><i class="fas fa-check"></i>Screen sharing</li>
+                                        <li><i class="fas fa-check"></i>Recording available</li>
+                                        <li><i class="fas fa-check"></i>Group training</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--primary btn--full">
+                                    <i class="fas fa-calendar me-2"></i>Book Session
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback & Improvement -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Continuous Feedback & Improvement</h2>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="feedback-card">
+                                <div class="feedback-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Performance Analytics</h4>
+                                <p>Track your progress with detailed analytics and insights into your business performance.</p>
+                                <div class="feedback-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <span>Monthly Performance Reports</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-target"></i>
+                                        <span>Goal Tracking & Milestones</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-trophy"></i>
+                                        <span>Achievement Recognition</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="feedback-card">
+                                <div class="feedback-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <h4>Mentorship Program</h4>
+                                <p>Connect with experienced directors for guidance, advice, and strategic business insights.</p>
+                                <div class="feedback-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-handshake"></i>
+                                        <span>Dedicated Mentor Assignment</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-calendar-check"></i>
+                                        <span>Regular Check-in Sessions</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-lightbulb"></i>
+                                        <span>Strategic Business Advice</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community & Resources -->
+                <div class="my-5">
+                    <h2 class="section-title text-center mb-5">Community & Learning Resources</h2>
+                    <div class="community-section">
+                        <div class="row g-4">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon slack">
+                                        <i class="fab fa-slack"></i>
+                                    </div>
+                                    <h5>Slack Community</h5>
+                                    <p>Join 500+ directors in our active community</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-circle text-success"></i>
+                                        124 online now
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon knowledge">
+                                        <i class="fas fa-book-open"></i>
+                                    </div>
+                                    <h5>Knowledge Base</h5>
+                                    <p>Comprehensive guides and documentation</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-file-alt"></i>
+                                        200+ articles
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon webinars">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                    </div>
+                                    <h5>Weekly Webinars</h5>
+                                    <p>Live training sessions and Q&A</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-calendar"></i>
+                                        Every Tuesday 2PM
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="community-card">
+                                    <div class="community-icon events">
+                                        <i class="fas fa-calendar-star"></i>
+                                    </div>
+                                    <h5>Networking Events</h5>
+                                    <p>Regular meetups and conferences</p>
+                                    <span class="community-stats">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        Next: March 15
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Guarantee -->
+                <div class="my-5">
+                    <div class="success-guarantee-section">
+                        <div class="guarantee-content">
+                            <div class="guarantee-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Your Success is Guaranteed</h3>
+                            <p class="lead">We're committed to your long-term success. If you're not satisfied with our support within the first 90 days, we'll work with you until you are.</p>
+                            <div class="guarantee-features">
+                                <div class="guarantee-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>90-Day Success Guarantee</span>
+                                </div>
+                                <div class="guarantee-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Unlimited Support Access</span>
+                                </div>
+                                <div class="guarantee-item">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Personal Success Manager</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn btn--secondary" onclick="navigateToSection('step6')">
+                        <i class="fas fa-arrow-left me-2"></i>Previous Step
+                    </button>
+                    <button class="btn btn--primary" onclick="completeStep(7); showCompletionModal()">
+                        Complete Onboarding <i class="fas fa-check ms-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step Navigation -->
+                <div class="step-navigation">
+                    <a href="javascript:void(0)" onclick="navigateToSection('step1')" class="step-nav-item completed" title="Step 1: Legal Structure"><span class="step-number">1</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step2')" class="step-nav-item completed" title="Step 2: Tools & Tech Stack"><span class="step-number">2</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step3')" class="step-nav-item completed" title="Step 3: Accounting & Financial"><span class="step-number">3</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step4')" class="step-nav-item completed" title="Step 4: Brand & Marketing"><span class="step-number">4</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step5')" class="step-nav-item completed" title="Step 5: Operations"><span class="step-number">5</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step6')" class="step-nav-item completed" title="Step 6: Growth"><span class="step-number">6</span></a>
+                    <div class="step-nav-connector completed"></div>
+                    <a href="javascript:void(0)" onclick="navigateToSection('step7')" class="step-nav-item current" title="Step 7: Optimization"><span class="step-number">7</span></a>
+                </div>
+            </div>
+        
+</section>
+    </main>
+
+    <!-- Floating Elements -->
+    <button class="floating-btn faq-btn" onclick="showFaqModal()">
+        <i class="fas fa-question-circle"></i>
+    </button>
+
+    <button class="floating-btn next-step-btn d-lg-none" id="mobileNextBtn">
+        Next Step <i class="fas fa-arrow-right ms-1"></i>
+    </button>
+
+    <!-- Modals -->
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to Flint Group</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <p>Introductory video content would be embedded here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Footer -->
+    <footer class="main-footer-enhanced">
+        <div class="footer-background">
+            <div class="footer-pattern"></div>
+        </div>
+        <div class="container">
+            <!-- Footer Main Content -->
+            <div class="footer-main">
+                <div class="row">
+                    <!-- Brand Section -->
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="footer-brand-enhanced">
+                            <div class="brand-logo-wrapper">
+                                <img src="FLINT_FULL_LOGO.png" alt="Flint Logo" class="footer-logo-enhanced">
+                            </div>
+                            <p class="brand-description">
+                                Australia's #1 independent mortgage brokerage empowering directors 
+                                with cutting-edge technology, comprehensive support, and unmatched opportunities.
+                            </p>
+                            
+                            <!-- Our Impact Below Brand Description -->
+                            <div class="footer-stats-compact">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-chart-line me-2"></i>Our Impact
+                                </h6>
+                                <div class="stats-row">
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">500+</span>
+                                        <span class="stat-label">Directors</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">$2B+</span>
+                                        <span class="stat-label">Settled</span>
+                                    </div>
+                                    <div class="stat-item-row">
+                                        <span class="stat-number">4.9★</span>
+                                        <span class="stat-label">Rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Navigation -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-compass me-2"></i>Navigation
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="javascript:void(0)" onclick="navigateToSection('landing')">
+                                    <i class="fas fa-home me-2"></i>Dashboard
+                                </a></li>
+                                <li><a href="javascript:void(0)" onclick="navigateToSection('step1')">
+                                    <i class="fas fa-play me-2"></i>Getting Started
+                                </a></li>
+                                <li><a href="#" onclick="showFaqModal()">
+                                    <i class="fas fa-question me-2"></i>FAQ
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-headset me-2"></i>Support
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Resources -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-book me-2"></i>Resources
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#">
+                                    <i class="fas fa-file-alt me-2"></i>Documentation
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-video me-2"></i>Training Videos
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-download me-2"></i>Templates
+                                    <span class="link-badge new">New</span>
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-tools me-2"></i>Calculators
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Community & Support -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-users me-2"></i>Community
+                            </h6>
+                            <ul class="footer-links-enhanced">
+                                <li><a href="#">
+                                    <i class="fab fa-slack me-2"></i>Slack Channel
+                                    <span class="link-indicator online"></span>
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-calendar me-2"></i>Events
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-graduation-cap me-2"></i>Training
+                                </a></li>
+                                <li><a href="#">
+                                    <i class="fas fa-trophy me-2"></i>Leaderboard
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info - Next to Community -->
+                    <div class="col-lg-2 col-md-6 mb-4">
+                        <div class="footer-section-enhanced">
+                            <h6 class="footer-title-enhanced">
+                                <i class="fas fa-phone me-2"></i>Contact Us
+                            </h6>
+                            <div class="contact-info-compact">
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-envelope me-2"></i>
+                                    <a href="mailto:support@flint.com.au">support@flint.com.au</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-phone me-2"></i>
+                                    <a href="tel:1300354686">1300 354 686</a>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-map-marker-alt me-2"></i>
+                                    <span>Sydney, Australia</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Social Media Below Contact -->
+                            <div class="social-media-enhanced">
+                                <h6 class="footer-title-enhanced">
+                                    <i class="fas fa-share-alt me-2"></i>Follow Us
+                                </h6>
+                                <div class="social-links-row">
+                                    <a href="#" class="social-link-enhanced linkedin" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced twitter" title="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced facebook" title="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced instagram" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="social-link-enhanced youtube" title="YouTube">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-divider-enhanced"></div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="copyright-enhanced">
+                            <p>&copy; 2025 Flint Group. All rights reserved.</p>
+                            <div class="company-info">
+                                <span>ACN: 123 456 789</span>
+                                <span>Australian Credit Licence: 987654</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-legal-enhanced">
+                            <a href="#privacy">Privacy Policy</a>
+                            <a href="#terms">Terms of Service</a>
+                            <a href="#cookies">Cookie Policy</a>
+                            <a href="#accessibility">Accessibility</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <!-- FAQ Modal -->
+    <div class="modal fade" id="faqModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Frequently Asked Questions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                                    How long does the onboarding process take?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    The complete onboarding process typically takes 2-3 weeks, depending on your pace and the complexity of your setup.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                                    What support is available during onboarding?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You have access to our dedicated onboarding team, live chat support, and your assigned mentor throughout the process.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                                    Can I complete steps out of order?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    While we recommend following the sequence, you can skip ahead if needed. Some steps may depend on others being completed first.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h6 class="accordion-header" id="faqHeading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                                    What happens after I complete onboarding?
+                                </button>
+                            </h6>
+                            <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHeading4" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You'll have full access to all Flint systems and ongoing support. Your mentor will continue to be available for guidance.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Completion Modal -->
+    <div class="modal fade" id="completionModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center py-5">
+                    <i class="fas fa-trophy fa-4x text-primary mb-3"></i>
+                    <h3>Congratulations!</h3>
+                    <p class="lead">You've successfully completed the Flint Directors onboarding process.</p>
+                    <p>Welcome to the Flint family! Your journey to building a successful mortgage broking business starts now.</p>
+                    <div class="mt-4">
+                        <button class="btn btn--primary me-2" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn--outline" onclick="navigateToSection('landing')">Go to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div class="modal fade" id="supportModal" tabindex="-1" aria-labelledby="supportModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supportModalLabel">
+                        <i class="fas fa-headset me-2"></i>Get in touch
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="support-info">
+                        <div class="mb-4">
+                            <i class="fas fa-envelope support-icon mb-3"></i>
+                            <h6>Email Support</h6>
+                            <a href="mailto:hello@flintgroup.au" class="support-link">hello@flintgroup.au</a>
+                        </div>
+                        <div class="mb-4">
+                            <i class="fas fa-phone support-icon mb-3"></i>
+                            <h6>Phone Support</h6>
+                            <a href="tel:0485853537" class="support-link">0485 853 537</a>
+                        </div>
+                        <div class="support-hours">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-2"></i>
+                                Available Monday - Friday, 9AM - 5PM AEST
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="mailto:hello@flintgroup.au" class="btn btn-primary">
+                        <i class="fas fa-envelope me-2"></i>Send Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
